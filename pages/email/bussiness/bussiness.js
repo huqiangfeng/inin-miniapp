@@ -29,10 +29,10 @@ Page({
 			id: 20200431,
 			name: "不限"
 		}],
-		currentBussinessActiveIndex:-1,
+		currentBussinessActiveIndex:0,
 		currentBussinessActiveName:'',
 		currentBussinessActiveNameTemp:'',
-		currentInstryActiveIndex:-1,
+		currentInstryActiveIndex:0,
 		currentInstryActiveName:'',
 		currentInstryActiveNameTemp:'',
 		currentProvinceActiveIndex:0,
@@ -500,7 +500,7 @@ Page({
 					element.simpleName  = element.name.substring(0,4);
 					if(element.distance){
 						if(element.distance > 1000){
-							element.distance = ((element.distance) / 1000).toFixed(2)
+							element.distanceKM = ((element.distance) / 1000).toFixed(2)
 						}
 					}
 				}

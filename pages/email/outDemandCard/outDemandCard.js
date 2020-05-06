@@ -94,7 +94,7 @@ Page({
   on_WechatSIValue(e) {
     if (e.detail !== this.data.content) {
       this.setData({
-        content: this.data.content + e.detail
+        content: e.detail
       })
     }
   },

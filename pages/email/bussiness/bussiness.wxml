@@ -153,7 +153,7 @@
                         <image src="https://wx.onechuan.com/api_test/images/wx/send_blue.png" style="width: 48rpx;height: 48rpx;"> </image>
                     </view>
                     <view class="company-dis" wx:if="{{item.distance}}">
-                        <text class="text-two" wx:if="{{item.distance >= 1000}}">{{item.distance}}公里</text>
+                        <text class="text-two" wx:if="{{item.distance >= 1000}}">{{item.distanceKM}}千米</text>
                         <text class="text-two" wx:if="{{item.distance < 1000}}">{{item.distance}}米</text> 
                     </view>
                 </view>

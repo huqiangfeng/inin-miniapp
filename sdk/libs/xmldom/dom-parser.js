@@ -1,23 +1,15 @@
 function DOMParser(options) {
-    this.options = options || {
-        locator: {}
-    };
+    this.options = options || {locator: {}};
 
 }
 DOMParser.prototype.parseFromString = function (source, mimeType) {
     var options = this.options;
     var sax = new XMLReader();
-    var domBuilder = options.domBuilder || new DOMHandler(); //contentHandler and LexicalHandler
+    var domBuilder = options.domBuilder || new DOMHandler();//contentHandler and LexicalHandler
     var errorHandler = options.errorHandler;
     var locator = options.locator;
     var defaultNSMap = options.xmlns || {};
-    var entityMap = {
-        'lt': '<',
-        'gt': '>',
-        'amp': '&',
-        'quot': '"',
-        'apos': "'"
-    }
+    var entityMap = {'lt': '<', 'gt': '>', 'amp': '&', 'quot': '"', 'apos': "'"}
     if (locator) {
         domBuilder.setDocumentLocator(locator)
     }
@@ -37,7 +29,6 @@ DOMParser.prototype.parseFromString = function (source, mimeType) {
     }
     return domBuilder.document;
 }
-
 function buildErrorHandler(errorImpl, domBuilder, locator) {
     if (!errorImpl) {
         if (domBuilder instanceof DOMHandler) {
@@ -48,17 +39,17 @@ function buildErrorHandler(errorImpl, domBuilder, locator) {
     var errorHandler = {}
     var isCallback = errorImpl instanceof Function;
     locator = locator || {}
-
     function build(key) {
         var fn = errorImpl[key];
         if (!fn && isCallback) {
             fn = errorImpl.length == 2 ? function (msg) {
-                errorImpl(key, msg)
-            } : errorImpl;
+                    errorImpl(key, msg)
+                } : errorImpl;
         }
         errorHandler[key] = fn && function (msg) {
-            fn('[xmldom ' + key + ']\t' + msg + _locator(locator));
-        } || function () {};
+                fn('[xmldom ' + key + ']\t' + msg + _locator(locator));
+            } || function () {
+            };
     }
 
     build('warning');
@@ -80,7 +71,6 @@ function buildErrorHandler(errorImpl, domBuilder, locator) {
 function DOMHandler() {
     this.cdata = false;
 }
-
 function position(locator, node) {
     node.lineNumber = locator.lineNumber;
     node.columnNumber = locator.columnNumber;
@@ -121,14 +111,17 @@ DOMHandler.prototype = {
         var tagName = current.tagName;
         this.currentElement = current.parentNode;
     },
-    startPrefixMapping: function (prefix, uri) {},
-    endPrefixMapping: function (prefix) {},
+    startPrefixMapping: function (prefix, uri) {
+    },
+    endPrefixMapping: function (prefix) {
+    },
     processingInstruction: function (target, data) {
         var ins = this.document.createProcessingInstruction(target, data);
         this.locator && position(this.locator, ins)
         appendElement(this, ins);
     },
-    ignorableWhitespace: function (ch, start, length) {},
+    ignorableWhitespace: function (ch, start, length) {
+    },
     characters: function (chars, start, length) {
         chars = _toString.apply(this, arguments)
         ////console.log(chars)
@@ -143,12 +136,13 @@ DOMHandler.prototype = {
             this.locator && position(this.locator, charNode)
         }
     },
-    skippedEntity: function (name) {},
+    skippedEntity: function (name) {
+    },
     endDocument: function () {
         this.document.normalize();
     },
     setDocumentLocator: function (locator) {
-        if (this.locator = locator) { // && !('lineNumber' in locator)){
+        if (this.locator = locator) {// && !('lineNumber' in locator)){
             locator.lineNumber = 0;
         }
     },
@@ -191,17 +185,15 @@ DOMHandler.prototype = {
         throw error;
     }
 }
-
 function _locator(l) {
     if (l) {
         return '\n@' + (l.systemId || '') + '#[line:' + l.lineNumber + ',col:' + l.columnNumber + ']'
     }
 }
-
 function _toString(chars, start, length) {
     if (typeof chars == 'string') {
         return chars.substr(start, length)
-    } else { //java sax connect width xmldom on rhino(what about: "? && !(chars instanceof String)")
+    } else {//java sax connect width xmldom on rhino(what about: "? && !(chars instanceof String)")
         if (chars.length >= start + length || start) {
             return new java.lang.String(chars, start, length) + '';
         }
@@ -253,7 +245,7 @@ function appendElement(hander, node) {
     } else {
         hander.currentElement.appendChild(node);
     }
-} //appendChild and setAttributeNS are preformance key
+}//appendChild and setAttributeNS are preformance key
 
 if (typeof require == 'function') {
     var XMLReader = require('./sax').XMLReader;

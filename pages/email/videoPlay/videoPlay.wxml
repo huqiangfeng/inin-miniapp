@@ -19,7 +19,7 @@
                     <!-- <view class="mute" bindtap='videoMute'>
                         <image style="height:50rpx ;width: 50rpx;" src="{{videoMute}}"></image>
                     </view> -->
-                    <view class="collection">
+                    <view class="collection" bindtap="collectionVideo" data-index="{{index}}" data-videoid="{{item.videoId}}">
                         <image style="width: 68rpx;height: 68rpx;" class="collection_img" src="../../../static/images/mine/is_collected.png"></image>
                         <span class="look_num">{{item.lookdNum}}</span>
                     </view>

@@ -90,11 +90,58 @@ Page({
 				})
 				wx.createVideoContext('0').play();
 				// this.currentVideoIsCollected(this.data.videoList[0].videoId)
+				
 			}else{
 				wx.showToast({
 					title: '获取企业视频失败',
 					icon: 'none',
 					duration: 2000
+				})
+			}
+		})
+	},
+	// 收藏视屏 
+	collectionVideo(e){
+		var value = wx.getStorageSync('Login')
+		let tempvideoList = this.data.videoList
+		let tIndex = e.currentTarget.dataset.index;
+		let access_token = value.inin.access_token;
+		let videoId = e.currentTarget.dataset.videoid;
+		
+		req_fn.req('api/user/vod/' + videoId + '/is-collected',{
+			access_token:access_token
+		},'get').then(res => {
+			console.log(res)
+			if(res.data){
+				wx.showToast({
+					title:"您已经收藏该视频",
+					icon:"none",
+					duration:1000
+				})
+				return
+			}else{
+				req_fn.req('api/user/vod/collection',{
+					access_token:access_token,
+					id:videoId
+				},'post').then(res => {
+					console.log(res,'collection')
+					if(res.code == 0){
+						wx.showToast({
+							title:"收藏成功",
+							icon:"none",
+							duration:1000
+						})
+						tempvideoList[tIndex].lookdNum = Number(tempvideoList[tIndex].lookdNum) + 1;
+						this.setData({
+							videoList:tempvideoList
+						})
+					}else{
+						wx.showToast({
+							title:"收藏失败",
+							icon:"none",
+							duration:1000
+						})
+					}
 				})
 			}
 		})

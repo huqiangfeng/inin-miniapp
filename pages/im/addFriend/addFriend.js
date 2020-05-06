@@ -14,7 +14,7 @@ Page({
     localImg: app.localImg,
     imagePath: req_fn.imagePath,
     searchData: "", //18911111111
-    lists: [{}],
+    lists: [],
     isPhone: false, //不是手机号
     // 立即邀请
     isButtomShow: false,

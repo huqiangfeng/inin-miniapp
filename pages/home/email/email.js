@@ -212,6 +212,7 @@ Page({
         companyLists: unArr
       })
     })
+    console.log(this.data.companyLists,'companyLists')
   },
   uniqueArr(arr){
 	//console.log(arr,'uniqueArr')

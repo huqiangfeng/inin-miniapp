@@ -82,6 +82,7 @@ Page({
     this.getMailboxAmount(); //收件箱列表数量
     this.getNavTotalNumber();//获取导航栏的数量
     this.getXuqiuUnreadNum();
+    this.getVisitUnreadNum()
   },
   getNavTotalNumber(){
     // /api/company/{id}/statistic
@@ -98,10 +99,21 @@ Page({
       }else{
         this.setData({
           videoNum:res.data.vodAmount,
-          visitNum:res.data.mailboxVisitAmount,
+          
           sendMsg:res.data.newsAmount,
         })
       }
+    })
+  },
+  // 获取拜访导航栏的未读数
+  getVisitUnreadNum(){
+    req_fn.req('api/my/mailbox-amount', {
+      access_token:util.getLocal('Login').inin.access_token,
+      requirementType:'visit'
+    }, "get").then(res => {
+      this.setData({
+        visitNum:res.data.processingAmount,
+      })
     })
   },
   // 获取导航栏的需求未读数
@@ -251,21 +263,53 @@ Page({
   // 触底事件的处理函数
   on_scrollLower() {
     if(this.data.activeList == 'X'){
-      this.setData({
-        hasNone: false,
-        loadingShow: true,
-        loading: true
-      })
-      if (this.data.peopleData.length != 0) {
-        this.getData(
-          "before",
-          this.data.peopleData[this.data.peopleData.length - 1].createTime
-        );
-      } else {
-        this.getData();
+      // this.setData({
+      //   hasNone: false,
+      //   loadingShow: true,
+      //   loading: true
+      // })
+      // if (this.data.peopleData.length != 0) {
+      //   console.log(this.data.peopleData[this.data.peopleData.length - 1].createTime)
+      //   this.getData("before",this.data.peopleData[this.data.peopleData.length - 1].createTime
+      //   );
+      // } else {
+      //   this.getData();
+      // }
+      let currentPeopleData = this.data.peopleData;
+      let url = "public/company/" + this.data.company.id + "/mailboxes";
+      if (this.data.login) {
+        url = "api/company/" + this.data.company.id + "/mailboxes";
       }
-    }else{
-      return
+      if(currentPeopleData.length != 0){
+        req_fn.req(url, {
+          timeDirection: 'before',
+          lastTime: currentPeopleData[currentPeopleData.length - 1].createTime,
+          readStatus: this.data.readStatus
+        }, "post").then(res => {
+          if(res.code == 0){
+            let moreResponse = this.changeAvatar(res.data);
+            if(moreResponse.length != 0){
+              let newMoreData = currentPeopleData.concat(moreResponse)
+
+              this.setData({
+                peopleData:newMoreData
+              })
+            }else{
+              wx.showToast({
+                title:"暂无新数据",
+                icon:"none",
+                duration:1000
+              })
+            }
+          }else{
+            wx.showToast({
+              title:"加载数据失败",
+              icon:"none",
+              duration:1000
+            })
+          }
+        })
+      }
     }
   },
   // 切换nav
