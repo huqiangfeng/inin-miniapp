@@ -1,0 +1,3 @@
+    <needCard isSwiper="{{ true }}" testText="{{testText}}" cardList="{{ cardList }}" swiperIndex="{{ swiperIndex }}"
+        bind:changeSwiperIndex="changeSwiperIndex" bind:send="send" bind:forward="forward" loginFlag="{{isLogin}}">
+    </needCard>

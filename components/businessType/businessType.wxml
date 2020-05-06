@@ -1,0 +1,20 @@
+<!-- components/businessType/businessType.wxml -->
+<view class="business-type">
+  <!-- 内容关键词 -->
+  <view class="type-content clearfix">
+    <view class="type-item type-item1" bind:tap="on_change">
+      <text class="text">换一换</text>
+    </view>
+    <view class="type-item {{ checkeds.length === 0?'active':'' }}" bind:tap="on_unlimited">
+      <text class="text">不限</text>
+    </view>
+    <view class="type-item {{ item.checked ?'active':'' }}" wx:for="{{list}}" wx:key="index" bind:tap="on_checkedItem" data-index="{{ index }}">
+      <text class="text">{{item.name}}</text>
+    </view>
+  </view>
+  <!-- btn -->
+  <view class="btn-box">
+    <view class="reset" bind:tap="on_unlimited">重置</view>
+    <view class="yes" bind:tap="on_confirm">确定</view>
+  </view>
+</view>

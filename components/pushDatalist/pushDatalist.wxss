@@ -1,0 +1,28 @@
+/* components/pushDetails/pushDetails.wxss */
+@import "/wxParse/wxParse.wxss";
+
+.push-page {
+  padding: 40rpx 30rpx;
+}
+
+.push-page .title {
+  font-size: 44rpx;
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: 500;
+  color: rgba(51, 51, 51, 1);
+  line-height: 62rpx;
+}
+
+.push-page .itme {
+  height: 33rpx;
+  font-size: 24rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: rgba(102, 102, 102, 1);
+  line-height: 33rpx;
+  margin: 30rpx 0 50rpx;
+}
+
+.push-page .read {
+  margin: 130rpx 0 80rpx;
+}

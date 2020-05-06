@@ -1,0 +1,66 @@
+<scroll-view scroll-y="true" class="_div entire" style="animation:fadeIn 1s;" bindscrolltolower="on_scrollLower" bindscroll="on_scroll">
+    <!-- 遮罩成 -->
+    <overlay show="{{stateModal}}" bind:tap="on_stateHidden"></overlay>
+    <view class="share_modal" hidden='{{shareFlag}}' bind:tap="hdieModal"></view>
+    <!-- 头部 -->
+    <cardBGC delta="{{ delta }}" background="{{ scrollActive?'#fff':'' }}" title="{{ scrollActive?company.name:''  }}">
+        <card bind:titleImgErr="titleImgErr" company="{{ company }}" bind:onCollect="onCollect"></card>
+    </cardBGC>
+    <view class="_div require_list {{scrollActive?'scroll':'' }}" wx:if="{{login||peopleData.length>0}}">
+        <!-- 需求名片 / 推送消息 -->
+        <view class="nav-content">
+            <view class="nav nav_bar">
+                <view class="nav_item {{activeNav == 0 ? 'nav_item_active' : ''}}" data-index="0" data-value="V" bindtap="switchNav">
+                    <text class="nav_name">视频</text>
+                    <text class="nav_num">({{videoNum}})</text>
+                </view>
+                <view class="nav_item {{activeNav == 1 ? 'nav_item_active' : ''}}" data-index="1" data-value="X" bindtap="switchNav">
+                    <text class="nav_name">需求</text>
+                    <text class="nav_num">({{xuqiuNum}})</text>
+                </view>
+                <view class="nav_item {{activeNav == 2 ? 'nav_item_active' : ''}}" data-index="2" data-value="S" bindtap="switchNav">
+                    <text class="nav_name">拜访</text>
+                    <text class="nav_num">({{visitNum}})</text>
+                </view>
+                <view class="nav_item {{activeNav == 3 ? 'nav_item_active' : ''}}" data-index="3" data-value="T" bindtap="switchNav">
+                    <text class="nav_name">推送</text>
+                    <text class="nav_num">({{sendMsg}})</text>
+                </view> 
+            </view>
+        </view>
+        <!-- 状态筛选 -->
+        <view wx:if="{{login}}" class="clearfix state-content">
+            <view class="state {{scrollActive?'scroll':'' }}" bind:tap="on_stateShow" hidden="{{activeList ==='V' || activeList ==='S'}}">
+                <image hidden="{{scrollActive}}" src="{{localImg+'/zuangtai.png'}}" class="_image img_icon"></image>
+                <text>{{ scrollActive?'状态筛选':'按状态' }}</text>
+                <image hidden="{{!scrollActive}}" src="{{localImg+'/weixuanzhe.png'}}" class="_image img_icon2"></image>
+            </view>
+            <!-- modal框 -->
+            <view class="state-modal {{scrollActive?'scroll':'' }}" wx:if="{{stateModal}}">
+                <view bind:tap="on_modalChecked" class="modal-item {{ item.checked?'active':''}}" wx:for="{{modalData}}" wx:key="index" data-index="{{ index }}">
+                    <text>{{item.k}}</text>
+                    <image hidden="{{ !scrollActive|| !item.checked }}" src="{{localImg+'/yesState.png'}}" class="_image _icon"></image>
+                </view>
+            </view>
+        </view>
+        <!-- 列表 -->
+        <view hidden="{{activeList !=='V'}}">
+            <videoContent shareFlag='{{shareFlag}}' company="{{company}}" bind:compontpass='compontpass'></videoContent>
+        </view>
+        <view hidden="{{activeList !=='X'}}">
+            <cardList peopleData="{{ peopleData }}" isAuth="{{ isAuth }}" loading="{{ loading }}" loadingShow="{{ loadingShow }}" bind:toLogin="toLogin" bind:toAttestation="toAttestation" bind:attestation="toAttestation" bind:tapItem="ontapItem"></cardList>
+        </view>
+        <view hidden="{{activeList !=='S'}}">
+            <visitResult company="{{company}}" bind:myevent="currentStatus" id="visitResult"></visitResult>
+        </view>
+        <view hidden="{{activeList !=='T'}}">
+            <pushList></pushList>
+        </view>
+    </view>
+    <image wx:if="{{localImg&&isAuth&&login&&company.canSendRequirement}}" src="{{imagePath+'send_big.png'}}" class="_image send_icon" bindtap="send"></image>
+    <image wx:elif="{{!company.canSendRequirement}}" src="{{'/static/images/inbox/send_grey.png'}}" class="_image send_icon" bindtap="send"></image>
+    <view class="_div Prompt" wx:if="{{peopleData.length==0&&hasNone}}">
+        <image wx:if="{{localImg}}" src="{{imagePath+'user_inexistence.png'}}" class="_image Prompt_Img_Icon"></image>
+        <view class="_div Prompt_Title">还没收到过消息噢～</view>
+    </view>
+</scroll-view>

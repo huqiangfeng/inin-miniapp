@@ -1,0 +1,47 @@
+<!-- /*
+ * @Author: wangyuan 
+ * @Date: 2020-03-17 17:28:30 
+ * @Last Modified by:   wonyuan@163.com 
+ * @Last Modified time: 2020-03-17 17:28:30 
+ */ -->
+ <view class="visitResult">
+    <van-overlay show="{{ show }}" bind:click="onClickHide" style="position: relative;">
+        <view class="static_box">
+            <block>
+                <view bindtap="switchStatic" class="statc_item {{currentActiveStatic == index ? 'statc_item_active' : ''}}" wx:for="{{staticArr}}" wx:key="index" data-index="{{index}}">
+                    <text>{{item.text}}</text>
+                    <!-- <text>({{currentActiveStaticNum}}封)</text> -->
+                </view>
+            </block>
+        </view>
+    </van-overlay>
+    <view class="select" id="select">
+        <view class="select_item" bindtap="showStatic">
+            <image class="select_img" src="../../static/images/zuangtai.png"></image>
+            <text class="static">{{static}}</text>
+        </view>
+    </view>
+    <view class="contentList">
+        <block>
+            <view class="list_item" wx:for="{{visitArray}}" wx:key="index" data-index="{{index}}" bindtap="viewCard">
+                <view class="left_item">
+                    <van-image width="100rpx" height="100rpx" fit="contain" src="{{item.logoUrl}}}"/>
+                </view>
+                <view class="right_item">
+                    <text class="name">{{item.sendUserName}}</text>
+                    <view class="tips">
+                        <view class="tips_item" wx:for="{{item.keyWordsArr}}" wx:key="index">{{item}}</view>
+                    </view>
+                    <view class="read_static">
+                        <text wx:if="{{item.loginUserRead}}" class="has_read read">已读</text>
+                        <text wx:else class="no_read read">未读</text>
+                        <text class="card">拜访名片</text>
+                    </view>
+                </view>
+                <view class="time">{{item.newTiem}}</view>
+            </view>
+        </block>
+        
+    </view>
+ </view>
+

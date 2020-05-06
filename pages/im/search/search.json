@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "publicSearch": "/components/publicSearch/publicSearch",
+    "pushList": "/components/pushList/pushList",
+    "chattingRecords": "/components/chattingRecords/chattingRecords",
+    "cardList": "/components/cardList/cardList",
+    "friendList": "/components/friendList/friendList"
+  },
+  "navigationBarTitleText": "消息"
+}

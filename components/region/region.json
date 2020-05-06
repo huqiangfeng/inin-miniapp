@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "nav": "/components/nav/nav",
+    "sidebar": "/components/sidebar/sidebar"
+  }
+}

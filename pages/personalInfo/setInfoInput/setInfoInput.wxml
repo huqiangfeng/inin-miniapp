@@ -1,0 +1,19 @@
+<view class="_div entire">
+    <view class="_div header">
+        <view class="_div bigger" bindtap="back">
+            <image wx:if="{{localImg}}" src="{{localImg+'return.png'}}" class="_image header_icon">
+            </image>
+        </view>
+        {{title}}
+    </view>
+    <view class="_div input_area"><input type="text" value="{{inputData}}" bindinput="onChangeValue"
+            placeholder="{{tip}}" maxlength="{{maxLength}}" class="_input" />
+        <image wx:if="{{localImg&&inputData!=''}}" src="{{localImg+'mine/delete_grey.png'}}" class="_image icon"
+            bindtap="empty">
+        </image>
+    </view>
+    <view class="_div word_count">
+        {{inputData.length}}/{{maxLength}}
+    </view>
+    <view bindtap="sumbit" class="_div {{inputData == '' ? 'Grey_Gradual_Btn' : 'Blue_Gradual_Btn'}}"> 保存 </view>
+</view>

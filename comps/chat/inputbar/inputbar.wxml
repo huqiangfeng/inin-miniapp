@@ -1,0 +1,80 @@
+<view class="room_bar">
+		<view class="input_area">
+				<!-- 左边的图标 -->
+				<view class="input_area_left">
+						<!--  -->
+						<image hidden="{{!isKwyboard}}" src="/static/images/message/voice_upright.png" style="width: 32rpx;height:48rpx;margin-top: 5rpx;" mode="widthFix" catchtap="toggleRecordModal" class="_image"></image>
+						<!--  -->
+						<image hidden="{{isKwyboard}}" src="/static/images/message/keyboard.png" style="width: 46rpx;height:46rpx;margin-top:5rpx;" mode="widthFix" catchtap="switchIsKwyboard" class="_image "></image>
+				</view>
+				<!-- 输入框/录音btn -->
+				<view class="input_area_content">
+						<!-- 输入框 -->
+						<chat-suit-main isKwyboard="{{ !isKwyboard }}" id="chat-suit-main" userId="{{ userId }}" chatType="{{ chatType }}" bind:inputFocused="cancelEmoji" bind:oninput="oninput" bind:refresh="refresh"></chat-suit-main>
+						<!-- 语音 -->
+						<chat-suit-audio isKwyboard="{{ isKwyboard }}" id="chat-suit-audio" userId="{{ userId }}" chatType="{{ chatType }}" bind:refresh="refresh" bind:recordingstatus="recordingstatus"></chat-suit-audio>
+				</view>
+				<!-- 右边的图标和按钮 -->
+				<view class="input_area_right">
+						<!-- 表情 -->
+						<image src="/static/images/message/meme.png" mode="widthFix" bindtap="openEmoji" class="_image meme_png"></image>
+						<!-- 加号 -->
+						<image hidden="{{  chatValue != ''  }}" src="/static/images/message/menu.png" mode="widthFix" bindtap="showMenu" class="_image menu-png"></image>
+						<!-- 发送 -->
+						<view class="_div send_btn" hidden="{{ chatValue ===''}}" bindtap="sendMsg">发送</view>
+				</view>
+		</view>
+		<!-- 下面的选项菜单 -->
+		<view class="_div menu" hidden="{{isMenu}}">
+				<!-- 拍照 -->
+				<view class=" bottom_menu_block" bind:tap="openCamera">
+						<view class="_div bottom_menu_back_img">
+								<image src="/static/images/message/menu5.png" style="width: 48rpx;height: 44rpx;" class="_image"></image>
+						</view>
+						<view class="_div">相机</view>
+				</view>
+				<!-- 相册 -->
+				<view class="_div bottom_menu_block" bindtap="sendImage">
+						<view class="_div bottom_menu_back_img">
+								<image src="/static/images/message/menu1.png" style="width: 48rpx;height: 44rpx;" class="_image"></image>
+						</view>
+						<view class="_div">相册</view>
+				</view>
+				<!-- 个人名片 -->
+				<view class="bottom_menu_block" bind:tap="showManKeep">
+						<view class="_div bottom_menu_back_img">
+								<image src="/static/images/message/menu2.png" style="width: 54rpx;height: 42rpx;" class="_image"></image>
+						</view>
+						<view class="_div">个人名片</view>
+				</view>
+				<!-- 需求名片 -->
+				<view class="bottom_menu_block" bind:tap="">
+						<view class="_div bottom_menu_back_img">
+								<image src="/static/images/message/menu2.png" style="width: 54rpx;height: 42rpx;" class="_image"></image>
+						</view>
+						<view class="_div">需求名片</view>
+				</view>
+				<!-- 视频通话 现在的其实是发送视频文件 -->
+				<!-- <view class="bottom_menu_block" bind:tap="sendVideo">
+						<view class="_div bottom_menu_back_img">
+								<image src="/static/images/message/menu3.png" style="width: 54rpx;height: 32rpx;" class="_image"></image>
+						</view>
+						<view class="_div">视频通话</view>
+				</view> -->
+				<!-- 位置 -->
+				<!-- <view class="bottom_menu_block" bind:tap="sendLocation">
+						<view class="_div bottom_menu_back_img">
+								<image src="/static/images/message/menu4.png" style="width: 44rpx;height: 54rpx;" class="_image"></image>
+						</view>
+						<view class="_div">位置</view>
+				</view> -->
+		</view>
+		<!-- 图片 -->
+		<chat-suit-image bind:refresh="refresh" id="chat-suit-image" userId="{{ userId }}" chatType="{{ chatType }}"></chat-suit-image>
+		<!-- 位置 -->
+		<!-- <chat-suit-location id="chat-suit-location" userId="{{ userId }}"></chat-suit-location> -->
+		<!-- 视频 -->
+		<!-- <chat-suit-video id="chat-suit-video" userId="{{ userId }}"></chat-suit-video> -->
+		<!-- 表情 -->
+		<chat-suit-emoji id="chat-suit-emoji" bind:newEmojiStr="emojiAction"></chat-suit-emoji>
+</view>

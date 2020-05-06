@@ -1,0 +1,44 @@
+<!-- /*
+ * @Author: wangyuan 
+ * @Date: 2020-03-20 15:15:27 
+ * @Last Modified by:   wonyuan@163.com 
+ * @Last Modified time: 2020-03-20 15:15:27 
+ */ -->
+ <view class="videoPlay">
+    <swiper bindchange="swiperChange" bindtransition="bindtransition" bindanimationfinish="bindanimationfinish" easing-function="linear" indicator-dots vertical style="width: 100%;height: 100%;">
+        <block wx:for="{{videoList}}" wx:key="index">
+            <swiper-item data-index="{{index}}" item-id="{{index}}">
+                <view class="swiper_item" data-index="{{index}}">
+                    <video show-mute-btn bindplay="bindplay" id="{{index}}" style="width: 100%;height: 100%;" data-index="{{index}}" initial-time="1"  src="{{item.playUrl}}" ></video>
+                    <!-- <view bind:tap="shareFn" class="share_btn">
+                        <image style="width:25rpx;height:25rpx" class="share_icon" src="../../../static/images/inbox/forward.png"></image>
+                    </view> -->
+                    <button class="share_btn" open-type="share" data-index="{{index}}">
+                        <image style="width:25rpx;height:25rpx" class="share_icon" src="../../../static/images/inbox/forward.png"></image>
+                    </button>
+                    <!-- <view class="mute" bindtap='videoMute'>
+                        <image style="height:50rpx ;width: 50rpx;" src="{{videoMute}}"></image>
+                    </view> -->
+                    <view class="collection">
+                        <image style="width: 68rpx;height: 68rpx;" class="collection_img" src="../../../static/images/mine/is_collected.png"></image>
+                        <span class="look_num">{{item.lookdNum}}</span>
+                    </view>
+                    <view class="look">
+                        <image style="width: 70rpx;height: 42rpx;" class="collection_img" src="../../../static/images/kankan.png"></image>
+                        <span class="look_num"></span>
+                    </view>
+                    <view class="content">
+                        <view class="user_info">
+                            <span class="name">@{{item.name}}</span>
+                            <span class="time">·{{item.createTime}}</span>
+                        </view>
+                        <view class="title">
+                            #{{item.description}}
+                        </view>
+                    </view>
+                </view>
+            </swiper-item>
+        </block>
+    </swiper>
+ </view>
+

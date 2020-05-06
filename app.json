@@ -1,0 +1,155 @@
+{
+  "usingComponents": {
+    "van-popup": "@vant/weapp/popup/index",
+    "van-datetime-picker": "@vant/weapp/datetime-picker/index",
+    "van-row": "@vant/weapp/row/index",
+    "van-col": "@vant/weapp/col/index",
+    "van-radio": "@vant/weapp/radio/index",
+    "van-radio-group": "@vant/weapp/radio-group/index",
+    "van-cell": "@vant/weapp/cell/index",
+    "van-cell-group": "@vant/weapp/cell-group/index",
+    "van-overlay": "@vant/weapp/overlay/index",
+    "van-image": "@vant/weapp/image/index",
+    "van-field": "@vant/weapp/field/index",
+    "van-dropdown-menu": "@vant/weapp/dropdown-menu/index",
+    "van-dropdown-item": "@vant/weapp/dropdown-item/index",
+    "van-search": "@vant/weapp/search/index",
+    "van-grid": "@vant/weapp/grid/index",
+    "van-grid-item": "@vant/weapp/grid-item/index"
+  },
+  "pages": [
+    "pages/home/email/email",
+    "pages/home/companyName/companyName",
+    "pages/home/SearchCompanyName/SearchCompanyName",
+    "pages/home/login/login",
+    "pages/home/loginTel/loginTel",
+    "pages/home/information/information",
+    "pages/home/personal/personal",
+    "pages/home/enterpriseAuthentication/enterpriseAuthentication",
+    "pages/home/LoginProtocol/LoginProtocol"
+  ],
+  "plugins": {
+    "WechatSI": {
+      "version": "0.3.3",
+      "provider": "wx069ba97219f66d99"
+    }
+  },
+  "subpackages": [{
+      "root": "pages/im/",
+      "name": "IM",
+      "pages": [
+        "userInfo/userInfo",
+        "search/search",
+        "searchChattingRecords/searchChattingRecords",
+        "searchCard/searchCard",
+        "searchPush/searchPush",
+        "addFriend/addFriend",
+        "friendRequest/friendRequest",
+        "chat/chat",
+        "map/map",
+        "chatSearch/chatSearch",
+        "businessCard/businessCard",
+        "systemMessages/systemMessages"
+      ]
+    },
+    {
+      "root": "pages/email/",
+      "name": "shoujianxiang",
+      "pages": [
+        "search/search",
+        "demandCompany/demandCompany",
+        "authentication/authentication",
+        "cooperationOrfinancing/cooperationOrfinancing",
+        "outDemandCard/outDemandCard",
+        "download/download",
+        "accessory/accessory",
+        "newAccessory/newAccessory",
+        "pushDatalist/pushDatalist",
+        "videoPlay/videoPlay",
+        "videoShare/videoShare",
+        "visitHome/visitHome",
+        "visitHomeSuccess/visitHomeSuccess",
+        "visitPersonInfo/visitPersonInfo",
+        "bussiness/bussiness"
+      ]
+    },
+    {
+      "root": "pages/personalInfo/",
+      "name": "woDe",
+      "pages": [
+        "myInfo/myInfo",
+        "setInfoInput/setInfoInput",
+        "myCollect/myCollect",
+        "myFriend/myFriend",
+        "myKeyword/myKeyword",
+        "myKeywordList/myKeywordList",
+        "mySend/mySend",
+        "mySendEvolve/mySendEvolve",
+        "myTranspond/myTranspond",
+        "setCity/setCity",
+        "qrCode/qrCode",
+        "myCard/myCard",
+        "myVisitBusiness/myVisitBusiness",
+        "myVisitProcess/myVisitProcess"
+      ]
+    },
+    {
+      "root": "pages/else/",
+      "name": "qiTa",
+      "pages": [
+        "downloadApp/downloadApp",
+        "service/service"
+      ],
+      "independent": true
+    }
+  ],
+  "preloadRule": {
+    "pages/home/email/email": {
+      "network": "all",
+      "packages": [
+        "IM",
+        "shoujianxiang",
+        "woDe",
+        "qiTa"
+      ]
+    }
+  },
+  "tabBar": {
+    "color": "#999",
+    "backgroundColor": "#FFFFFF",
+    "selectedColor": "#5F7AFF",
+    "borderStyle": "white",
+    "list": [{
+        "text": "消息",
+        "pagePath": "pages/home/information/information",
+        "iconPath": "static/message.png",
+        "selectedIconPath": "static/message-active.png"
+      },
+      {
+        "text": "收件箱",
+        "pagePath": "pages/home/email/email",
+        "iconPath": "static/inbox.png",
+        "selectedIconPath": "static/inbox-active.png"
+      },
+      {
+        "text": "我的",
+        "pagePath": "pages/home/personal/personal",
+        "iconPath": "static/mine.png",
+        "selectedIconPath": "static/mine-active.png"
+      }
+    ],
+    "position": "bottom"
+  },
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "",
+    "navigationBarTextStyle": "black"
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "  "
+    }
+  },
+  "sitemapLocation": "sitemap.json"
+}

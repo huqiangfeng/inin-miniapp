@@ -1,0 +1,69 @@
+<!-- components/needCard/needCard.wxml -->
+<view class="_div entire">
+    <navigation-bar delta="{{ delta }}" show="{{ true }}" color="#fff" title="{{cardList[swiperIndex].companyName }}" back="{{ true }}"></navigation-bar>
+    <slot></slot>
+    <!-- swiper 轮播 -->
+    <swiper wx:if="{{ isSwiper }}" previous-margin="30rpx" next-margin="30rpx" indicator-dots="{{false}}" duration="500" current="{{swiperIndex}}" bindchange="changeSwiperIndex" class="_swiper">
+        <block wx:key="j" key="{{j}}" wx:for="{{cardList}}" wx:for-index="j" wx:for-item="item">
+            <swiper-item class="_swiper-item">
+                <view class="_div card">
+                    <button wx:if="{{loginFlag == true}}" bindtap="forward" data-id="{{ item.id }}" class="_button forward" id="shareBtn" open-type="share" type="primary" hover-class="other-button-hover">
+                        <view class="_div">
+                            <image src="/static/images/inbox/forward.png" class="_image forward_icon"></image>
+                            转发
+                        </view>
+                    </button>
+
+                    <button wx:if="{{loginFlag == false }}" bindtap="noLoginForward" data-id="{{ item.id }}" class="_button forward" id="shareBtn" type="primary" hover-class="other-button-hover">
+                        <view class="_div">
+                            <image src="/static/images/inbox/forward.png" class="_image forward_icon"></image>
+                            转发
+                        </view>
+                    </button>
+                    <view class="_div company">
+                        <image wx:if="{{item.sendUserAvatar!=null}}" src="{{item.sendUserAvatar}}" class="_image avatar"></image>
+                        <image wx:else src="{{imagePath+'user.png'}}" class="_image avatar"></image>
+                        <view class="_div company_info">
+                            <view class="_div company_owner">
+                                {{item.sendUserName!=null?item.sendUserName:''}}
+                            </view>
+                            <view class="_div company_name">
+                                {{item.sendUserCompany!=null?item.sendUserCompany:''}}
+                            </view>
+                            <view class="_div company_job">
+                                {{item.sendUserPosition!=null?item.sendUserPosition:''}}
+                            </view>
+                        </view>
+                    </view>
+                    <view class="_div tabs">
+                        <view class="_div tab" wx:key="i" key="{{i}}" wx:for="{{item.keywords}}" wx:for-index="i" wx:for-item="key">
+                            {{key}}
+                        </view>
+                    </view>
+                    <view class="_div company_introduce">{{item.content}}</view>
+                    <view wx:if="{{item.attachment!=null}}" class="_div company_accessory">
+                        <view class="_div company_accessory_title">附件</view>
+                        <view class="_div company_accessory_content" data-index="{{ j }}" bindtap="viewAttachment" data-eventid="{{'2_'+j}}">
+                            <image src="{{imagePath+'folder.png'}}" class="_image company_accessory_icon">
+                                <view class="_div folderSuffix">{{item.attachment.suffixName}}</view>
+                            </image>
+                            <view class="_div">
+                                <view class="_div company_accessory_name">
+                                    {{item.attachment.attachmentName}}
+                                </view>
+                                <view class="_div company_accessory_time">
+                                    <label class="_span">{{item.attachment.measurement}}</label>
+                                    <label class="_span">{{item.attachment.time}}上传</label>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+                <view class="_div btn" bindtap="send" data-userid="{{ item.sendUserId }}" data-id="{{ item.id }}">
+                    <image class="_image icon" wx:if="{{localImg}}" src="{{localImg+'message/message_blue.png'}}"></image>
+                    发消息
+                </view>
+            </swiper-item>
+        </block>
+    </swiper>
+</view>

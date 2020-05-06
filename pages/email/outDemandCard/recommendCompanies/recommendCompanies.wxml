@@ -1,0 +1,16 @@
+<!-- pages/email/outDemandCard/components/recommendCompanies.wxml -->
+<view class="recommend">
+  <view class="nav">
+    <image class="img-bg" src="{{ imagePath+'sendSucceed.png' }}"></image>
+    <navigation-bar delta="{{ delta?delta:1 }}" show="{{ true }}" color="#fff" back="{{ true }}"></navigation-bar>
+  </view>
+  <!-- 字串线 -->
+  <view class="threading">
+    <text>投递该公司还投了</text>
+  </view>
+  <!-- 公司列表 -->
+  <view class="list">
+    <companyList bind:titleImgErr="titleImgErr" lists='{{companyLists}}' recommend='{{true}}' bind:onListEvent="onChangeCompanyPage" bind:onRecommendChecked="onRecommendChecked"></companyList>
+  </view>
+  <view class="btn" bind:tap="allSumbit">一键合作</view>
+</view>

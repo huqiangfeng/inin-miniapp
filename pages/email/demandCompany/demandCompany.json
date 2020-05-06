@@ -1,0 +1,13 @@
+{
+  "usingComponents": {
+    "cardBGC": "/components/cardBGC/cardBGC",
+    "cardList": "/components/cardList/cardList",
+    "videoContent":"/components/videoContent/videoContent",
+    "visitResult":"/components/visitResult/visitResult",
+    "overlay": "/components/overlay/overlay",
+    "pushList": "/components/pushList/pushList",
+    "card": "/components/card/card"
+  },
+  "navigationBarTitleText": "需求名片",
+  "navigationStyle": "custom"
+}

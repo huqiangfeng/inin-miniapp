@@ -1,0 +1,101 @@
+<!-- pages/information/information.wxml -->
+<view class="_div entire">
+    <!-- 搜索 -->
+    <view class="public-search">
+        <publicSearch disabled="{{ true }}" placeholder='搜索' bind:onTapInput="onChangePageSearch"></publicSearch>
+    </view>
+    <!-- <view class="_div shadow"></view> -->
+    <!--  -->
+    <view class="_div message">
+        <view class="_div message_block" bindtap="changePages" data-index="1">
+            <image wx:if="{{localImg}}" src="{{imagePath+'blue_person.png'}}" class="_image message_icon"></image>
+            <view class="_div message_font">添加好友</view>
+            <!-- <view wx:if="{{msg1>0}}"
+                class="_div message_tip {{msg1<10?'message_tip_min':''}}  {{ msg1>9&&msg1<99?'message_tip_normal':''}} {{ msg1>98?'message_tip_max':''}}">
+                {{msg1>98?'99+':msg1}}
+            </view> -->
+        </view>
+        <view class="_div message_block" bindtap="changePages" data-index="2">
+            <image wx:if="{{localImg}}" src="{{imagePath+'green_person.png'}}" class="_image message_icon"></image>
+            <view class="_div message_font">好友请求</view>
+            <view wx:if="{{msg2>0}}" class="_div message_tip {{msg2<10?'message_tip_min':''}} {{ msg2>9&&msg2<99?'message_tip_normal':''}} {{ msg2>98?'message_tip_max':''}}">
+                {{msg2>98?'99+':msg2}}
+            </view>
+        </view>
+        <view class="_div message_block" bindtap="changePages" data-index="3">
+            <image wx:if="{{localImg}}" src="{{imagePath+'red_roll.png'}}" class="_image message_icon"></image>
+            <view class="_div message_font">系统通知</view>
+            <view wx:if="{{msg3>0}}" class="_div message_tip {{msg3<10?'message_tip_min':''}} {{ msg3>9&&msg3<99?'message_tip_normal':''}} {{ msg3>98?'message_tip_max':''}}">
+                {{msg3>98?'99+':msg3}}
+            </view>
+        </view>
+    </view>
+    <!-- <view class="admin_message" wx:if="{{isAdminMsg}}">这里还是小传的信息显示</view> -->
+
+    <!-- changePage(item.listid) -->
+    <!-- :style="{'height':listsHeight+'px'}" -->
+    <view class="_div lists" scroll-y="true" wx:if="{{lists.length>0}}">
+        <!-- :style="{transform:delBtnId==item.listid?'translateX(-180rpx)':'none'}" -->
+        <view class="_div list_contentbox" wx:key="i" data-userId="{{item.listid}}" bindtap="changePage" data-index="{{i }}" wx:for="{{lists}}" wx:for-index="i" wx:for-item="item">
+            <mp-slideview id="{{ item.listid }}" buttons="{{ item.id === delBtnId ?slideButtons2:slideButtons1}}" ishiddendel="{{ confirmDel && delBtnId == item.id}}" index="{{ i }}" bindshow="showDel" bindhide="hideDel" bindbuttontap="slideButtonTap">
+                <view class="_div list">
+                    <view class="_div list_all">
+                        <image wx:if="{{item.avatar}}" src="{{item.avatar+'?width=100'}}" class="_image avatar"></image>
+                        <image wx:elif="{{localImg}}" src="{{imagePath+'user.png'}}" class="_image avatar"></image>
+                        <view class="_div list_content">
+                            <view class="_div list_content_title_l">{{item.name}}</view>
+                            <view class="_div list_content_title_r Omit">{{item.companyName}}</view>
+                            <view class="_div list_content_flag">
+                                <view class="_div flag">
+                                    「
+                                    <label wx:if="{{item.data[item.data.length-1].type=='txt'}}" class="_span">
+                                        消息
+                                    </label>
+                                    <label wx:if="{{item.data[item.data.length-1].type=='emoji'}}" class="_span">
+                                        消息
+                                    </label>
+                                    <label wx:if="{{item.data[item.data.length-1].type=='img'}}" class="_span">
+                                        图片
+                                    </label>
+                                    <label wx:if="{{item.data[item.data.length-1].type=='audio'}}" class="_span">
+                                        语音
+                                    </label>
+                                    」
+                                </view>
+                                <view class="_div Omit">
+                                    <label wx:if="{{item.data[item.data.length-1].type=='txt'}}" class="_span">
+                                        {{item.data[item.data.length-1].text}}
+                                    </label>
+                                    <label wx:if="{{item.data[item.data.length-1].type=='emoji'}}" class="_span emoji-box">
+                                        <view wx:for="{{ item.data[item.data.length-1].text  }}" wx:for-index="emojiI" wx:for-item="emojiItmen" wx:key="emojiI">
+                                            <view wx:if="{{ emojiItmen.type == 'emoji' }}">
+                                                <image class="img-emoji" src="{{ localImg +'faces/'+ emojiItmen.data }}" mode="widthFix"></image>
+                                            </view>
+                                            <view wx:else>{{ emojiItmen.data }}</view>
+                                        </view>
+                                    </label>
+                                    <label wx:if="{{item.data[item.data.length-1].type=='audio'}}" class="_span">
+                                        {{item.data[item.data.length-1].length}}s
+                                    </label>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="_div list-right-box">
+                        <view class="_div list_time">{{item.data[item.data.length-1].day}}</view>
+                        <view class="_div unread-box" hidden="{{item.unread == 0}}">
+                            <view class="_div unread  {{item.unread<10?'unread-min':''}} {{ item.unread>9&&item.unread<99?'unread-normal':''}} {{ item.unread>98?'unread-max':''}} ">
+                                {{item.unread}}
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </mp-slideview>
+        </view>
+    </view>
+    <view class="_div Prompt" wx:else>
+        <image wx:if="{{localImg}}" src="{{imagePath+'user_inexistence.png'}}" class="_image Prompt_Img_Icon"></image>
+        <view class="_div Prompt_Title">还没收到过消息噢～</view>
+    </view>
+    <view class="_div Shadow"></view>
+</view>

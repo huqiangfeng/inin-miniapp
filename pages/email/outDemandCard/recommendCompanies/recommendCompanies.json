@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "navigation-bar": "/components/weui-components/navigation-bar/navigation-bar",
+    "companyList": "/components/companyList/companyList"
+  }
+}

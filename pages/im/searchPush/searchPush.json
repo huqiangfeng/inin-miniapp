@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "publicSearch": "/components/publicSearch/publicSearch",
+    "pushList": "/components/pushList/pushList"
+  },
+  "navigationBarTitleText": "消息"
+}

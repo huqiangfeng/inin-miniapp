@@ -1,0 +1,141 @@
+<template name="txt">
+		<text class="msg-text" style="float:left;">{{text }}</text>
+</template>
+<template name="emoji">
+		<image class="avatar" src="{{ localImg +'faces/' + text}}" style="width:40rpx; height:40rpx; margin:0 0 2px 0; float:left;" />
+</template>
+<template name="img">
+		<!-- bind:tap="previewImage" -->
+		<image class="avatar" src="{{ item.text }}" style="width:90px; height:120px; margin:2px auto;" mode="aspectFit" data-url="{{ item.text }}" />
+</template>
+<template name="video">
+		<video src="{{ item.text }}" controls autoplay />
+</template>
+<template name="audio">
+		<audio src="{{ item.text }}" controls autoplay />
+</template>
+<!-- 小传 admin -->
+<template name="admin">
+		<view class="call-box">
+				<view class="call-header">
+						<view class="row">
+								<view class="left">
+										<image class="call-avatar" src="{{item.ext.companyLogo}}" />
+								</view>
+								<view class="right">{{ item.ext.companyName }}</view>
+						</view>
+				</view>
+				<view class="call-body">
+						<view class="row" wx:if="{{item.ext.resultStatus==='success'}}">
+								<view class="left">
+										<image class="call-avatar" src="https://wx.onechuan.com/api_test/images/wx/send_blue.png" />
+								</view>
+								<view class="right">{{ item.ext.contactName +'·' + item.ext.contactDepartment }}</view>
+						</view>
+						<view class="row">
+								<view class="left">时间</view>
+								<view class="right">{{ item.ext.date  }}</view>
+						</view>
+						<view class="row">
+								<view class="left">业务</view>
+								<view class="right">{{ item.ext.content }}</view>
+						</view>
+						<view class="row" wx:if="{{item.ext.resultStatus==='success'}}">
+								<view class="left">地址</view>
+								<view class="right">{{ item.ext.contactAddress }}</view>
+						</view>
+						<view class="row" wx:if="{{item.ext.resultStatus==='success'}}" catchtap="to_map" data-ext="{{item.ext}}">
+								<view class="left"></view>
+								<view class="right">
+										<image class="map" id="map" mode="widthFix" src="{{item.ext.map}}"></image>
+										<!-- <map class="map" id="map" longitude="{{item.ext.longitude}}" latitude="{{item.ext.latitude}}" scale="16" markers="{{item.ext.markers}}"></map> -->
+								</view>
+						</view>
+						<view class="btn" wx:if="{{item.ext.resultStatus==='failure'}}" bind:tap="on_again" data-ext="{{item.ext}}">
+								再约
+						</view>
+				</view>
+		</view>
+</template>
+<!-- 个人名片 -->
+<template name="manKeep">
+		<view class="msg-text mankeep" bind:tap="toChat" data-id="{{ data.userId }}">
+				<view class="mankeep-content">
+						<view>
+								<image class="avatar img-avatar" src="{{ data.avatar }}" mode="aspectFit" />
+						</view>
+						<view>
+								<view class="name">{{ data.name }}</view>
+								<view class="user-short">{{ data.userShortId }}</view>
+								<view class="companyn-name">{{ data.companyName }}</view>
+						</view>
+				</view>
+				<view class="text">个人名片</view>
+		</view>
+</template>
+<!-- 微信号 -->
+<template name="weiChat"></template>
+<!-- view 换成 scroll-view效果更好 用view是为了要stopPullDownRefresh -->
+<view class="wrap">
+		<scroll-view scroll-y="true" bindscrolltoupper="refresh" upper-threshold='10' scroll-into-view="{{ toView }}">
+				<view class="pad-30">
+						<!-- 好友卡片 -->
+						<card cardInfo="{{ cardInfo }}" bind:addFriend="addFriend"></card>
+				</view>
+				<view class="message" wx:for="{{ chatMsg }}" wx:key="listid" id="{{ item.mid }}" wx:for-index="i">
+						<!-- 消息时间 -->
+						<view class="time" wx:if="{{item.date}}">
+								<text class="time-text">{{item.date}}</text>
+						</view>
+						<view class="main" class="{{ item.send?'self':'uesr' }}">
+								<view class="user">
+										<!-- yourname：就是消息的 from -->
+										<!-- <text class="user-text">{{ item.yourname + ' ' + item.time}}</text> -->
+								</view>
+								<!-- 头像 -->
+								<image class="avatar portrait" src="{{item.send ?   myAvatar: cardInfo.avatar }}" />
+								<!-- 聊天内容 catch:touchend="handleCancel" -->
+								<view class="msg" data-index="{{ i }}" data-type="{{ item.type }}" catch:tap="handleCancel" bind:touchstart="handleStart" catch:touchmove="handleMove" catch:touchcancel="handleCancel">
+										<!-- 复制/删除 -->
+										<view class="toolCabinet {{ isToolTop ?'tooltop':'toolbuttom'  }}" wx:if="{{ item.isToolShow }}">
+												<view class="tool-item" wx:if="{{ item.type=='txt'|| item.type == 'emoji' }}" catch:touchstart="copy" data-type="{{ item.type }}" data-index="{{ i }}">
+														<text>复制</text>
+												</view>
+												<view class="tool-item" catch:touchstart="del" data-index="{{ i }}">
+														<text>删除</text>
+												</view>
+										</view>
+										<!-- 发送错误 -->
+										<image class="err {{(item.send && item.isFail) ? 'show' : 'hide'}}" src="{{ localImg +'/message/msgerr.png' }}" />
+										<!-- 聊天内容 图片/视频 -->
+										<view wx:if="{{ item.type == 'img' || item.type == 'video' }}">
+												<template is="{{ item.type }}" data="{{ item }}" />
+										</view>
+										<!-- 语音 -->
+										<audio-msg id="{{ 'audio'+ i }}" wx:if="{{ item.type == 'audio' }}" msg="{{ item }}" localimg="{{ localImg }}"></audio-msg>
+										<!-- 文字 -->
+										<view wx:elif="{{ item.type == 'txt'}}">
+												<template is="txt" data="{{  text:item.text  }}" />
+										</view>
+										<!-- 文字和表情 -->
+										<view wx:elif="{{  item.type == 'emoji' ||item.type == 'admin'  }}">
+												<view class="template" wx:for="{{ item.text }}" wx:key="index">
+														<template is="{{ item.type }}" data="{{ text:item.data , localImg }}" />
+												</view>
+										</view>
+										<!-- 扩展 -->
+										<view wx:elif="{{  item.type == 'ext' }}">
+												<template is="{{ item.text.extraType }}" data="{{ data:item.text , localImg }}" />
+										</view>
+								</view>
+						</view>
+						<!-- 小传 -->
+						<view wx:if="{{  item.type == 'admin' && item.ext.resultStatus }}">
+								<!-- is="{{ item.type }}" -->
+								<template is="{{ item.type }}" data="{{ item }}" />
+						</view>
+				</view>
+				<view class="stance"></view>
+		</scroll-view>
+</view>
+<view style="height: 1px;"></view>

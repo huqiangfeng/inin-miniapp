@@ -1,0 +1,27 @@
+<view hidden="{{isManKeepShow}}" class="main {{ view }}" style="padding-bottom:{{ styleKeyboard }}" bindtap="normalScroll">
+		<view class="_div video_window" wx:if="{{recording.status!=0}}">
+				<image src="/static/images/message/recording.png" class="_image video_window_icon1" mode="widthFix" wx:if="{{recording.status==1}}"></image>
+				<image src="/static/images/message/ashbin.png" class="_image video_window_icon2" mode="widthFix" wx:elif="{{recording.status==2}}"></image>
+				<view class="_div video_window_time">{{recording.minutes}}</view>
+				<view class="_div video_window_tip">{{recording.status==1?'手指上滑，取消发送':'松开手指，取消发送'}}</view>
+		</view>
+		<!-- 微信手机号 -->
+		<!-- <view class="wx-tel"> -->
+				<!-- <view class="wx-content"> -->
+						<!-- <image src="/static/images/wxhao.png" class="_image " mode="widthFix"></image>
+						<text>微信号</text> -->
+				<!-- </view> -->
+				<!-- <view class="l"></view>
+				<view class="tel-content">
+						<image src="/static/images/dianhua.png" class="_image " mode="widthFix"></image>
+						<text>电话</text>
+				</view> -->
+		<!-- </view> -->
+		<chat-msglist id="chat-msglist" userId="{{ userId }}"></chat-msglist>
+</view>
+<view hidden="{{isManKeepShow}}">
+		<chat-inputbar id="chat-inputbar" class="{{ isIPX&&!inputBottmo?'view_X':'' }}" style="bottom:{{ inputBottmo }}" userId="{{ userId }}" chatType="{{ chatType }}" bind:refresh="refresh" bind:recordingstatus="recordingstatus" bind:liststart="listStart" bind:showManKeep="showManKeep"></chat-inputbar>
+</view>
+<view hidden="{{!isManKeepShow}}" class="my-friend">
+		<myFriend bind:checkedItem="checkedItem"></myFriend>
+</view>

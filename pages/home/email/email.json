@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "companyList": "/components/companyList/companyList",
+    "publicSearch": "/components/publicSearch/publicSearch"
+  },
+  "navigationBarTitleText": "收件箱"
+}

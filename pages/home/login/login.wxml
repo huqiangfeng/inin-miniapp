@@ -1,0 +1,25 @@
+<view class="entire">
+    <image wx:if="{{localImg}}" src="{{imagePath+'user.png'}}" class="avtar"></image>
+    <view class="font_title">{{!impower?'一传申请获得以下权限：':'登录后即注册成为一传成员'}}</view>
+    <view class=" font_con">
+        <view wx:if="{{!impower}}" class="">获得你的公开信息（昵称、头像等）</view>
+        <view wx:else style="font-size:22rpx;" class="">
+            请仔细阅读
+            <label style="color:#5F7AFF;" bindtap="changePageToLoginProtocol" class="_span">
+                《一传用户协议》
+            </label>
+            ，如不同意相关协议
+            内容，您应停止登录
+        </view>
+    </view>
+    <view class=" btn">
+        <button wx:if="{{canIUse&&!impower}}" open-type="getUserInfo" bindgetuserinfo="onGotUserInfo" class="_button">
+            授权用户信息
+        </button>
+        <button wx:elif="{{canIUse&&impower}}" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" class="_button">
+            微信手机号快速登录
+        </button>
+        <label wx:elif="{{!canIUse}}" class="_span">请升级微信版本</label>
+    </view>
+    <view class="other_phone" wx:if="{{impower}}" bindtap="changePageToLoginTel">其他手机号登录</view>
+</view>

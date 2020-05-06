@@ -1,0 +1,129 @@
+/* pages/email//authentication/authentication.wxss */
+
+.entire {
+    width: 100%;
+    height: 100%;
+    background-color: #f2f2f2;
+}
+
+.navBack {
+    font-size: 33rpx;
+    background: linear-gradient(315deg,
+            rgba(95, 122, 255, 1) 0%,
+            rgba(119, 169, 255, 1) 100%);
+}
+
+.return {
+    width: 33rpx;
+    height: 33rpx;
+}
+
+.nav {
+    position: absolute;
+    top: 0;
+    left: 30rpx;
+    right: 30rpx;
+    background-color: #fff;
+    transform: translateY(150rpx);
+    box-shadow: 2px 4px 12px 6px rgba(140, 140, 140, 0.1);
+    border-radius: 20rpx;
+}
+
+.email {
+    margin-top: 222rpx;
+    line-height: 88rpx;
+    display: flex;
+    padding: 0 40rpx;
+    justify-content: space-between;
+    background-color: #fff;
+}
+
+.email_title {
+    color: #060606;
+    font-size: 28rpx;
+}
+
+.email_content {
+    color: #333;
+    font-size: 30rpx;
+}
+
+.form {
+    margin-top: 216rpx;
+    background-color: #fff;
+}
+
+.weui-cell_input {
+    height: 88rpx;
+    line-height: 88rpx;
+}
+
+.get_code {
+    margin-right: 30rpx;
+    padding: 4rpx 20rpx;
+    color: #fff;
+    line-height: 37rpx;
+    font-size: 26rpx;
+    font-family: PingFangSC-Regular;
+    font-weight: 400;
+    background: linear-gradient(316deg,
+            rgba(47, 88, 255, 1) 0%,
+            rgba(111, 141, 255, 1) 100%);
+    border-radius: 22rpx;
+}
+
+.get_code_grey {
+    color: #666;
+    background: none;
+    background-color: #cfcfcf;
+}
+
+.btn {
+    margin: 158rpx auto;
+    text-align: center;
+    width: 610rpx;
+    line-height: 88rpx;
+    color: #fff;
+    background: linear-gradient(317deg,
+            rgba(95, 122, 255, 1) 0%,
+            rgba(119, 169, 255, 1) 100%);
+    border-radius: 44rpx;
+}
+
+/* --------- */
+
+.entire1 {
+    width: 100%;
+    height: 100%;
+    font-size: 32rpx;
+    padding-top: 100rpx;
+}
+
+.entire1 .img {
+    width: 180rpx;
+    height: 180rpx;
+}
+
+.entire1 .font_blue {
+    margin: 0 auto;
+    text-align: center;
+    width: 256rpx;
+    line-height: 45rpx;
+    font-family: PingFangSC-Medium;
+    font-weight: 500;
+    color: #5f7aff;
+}
+
+.entire1 .btn {
+    margin: 170rpx auto;
+    text-align: center;
+    width: 610rpx;
+    line-height: 88rpx;
+    font-family: PingFangSC-Regular;
+    font-weight: 400;
+    color: #fff;
+    background: linear-gradient(317deg,
+            rgba(95, 122, 255, 1) 0%,
+            rgba(119, 169, 255, 1) 100%);
+    border-radius: 44rpx;
+}

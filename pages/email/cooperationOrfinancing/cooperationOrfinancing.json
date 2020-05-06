@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "needCard": "/components/needCard/needCard"
+  },
+  "navigationBarTitleText": "需求名片",
+  "navigationStyle": "custom"
+}

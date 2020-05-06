@@ -1,0 +1,58 @@
+/* pages/home/companyName/companyName.wxss */
+
+/* pages/inbox/inbox.wxss */
+.entire {
+  width: 100%;
+  height: 100%;
+  /* padding-top: 130rpx; */
+}
+
+.title {
+  margin-top: 18rpx;
+  margin-bottom: 290rpx;
+  text-align: center;
+  font-size: 44rpx;
+  color: #333;
+  font-weight: 500;
+  line-height: 62rpx;
+}
+
+.width_c {
+  width: 610rpx;
+  margin: 0 auto;
+  border-radius: 44rpx;
+  line-height: 88rpx;
+}
+
+.input_company {
+  width: 610rpx;
+  margin: 0 auto 40px;
+  border-radius: 44rpx;
+  line-height: 88rpx;
+  background: rgba(240, 240, 240, 1);
+  position: relative;
+}
+
+.input_company1 {
+  height: 88rpx;
+}
+
+.input_company .input_name {
+  /* margin-top: 24rpx; */
+  line-height: 88rpx;
+  margin-left: 52rpx;
+  font-size: 28rpx;
+  font-weight: 400;
+  color: #060606;
+}
+
+.input_company .input_value {
+  width: 430rpx;
+  position: absolute;
+  top: 24rpx;
+  left: 147rpx;
+}
+
+.btn {
+  margin-top: 100rpx;
+}

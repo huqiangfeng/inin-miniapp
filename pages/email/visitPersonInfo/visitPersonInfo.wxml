@@ -1,0 +1,45 @@
+
+<!--pages/email/visitPersonInfo/visitPersonInfo.wxml-->
+<!-- /*
+ * @Author: wangyuan 
+ * @Date: 2020-04-01 18:32:17 
+ * @Last Modified by:   wonyuan@163.com 
+ * @Last Modified time: 2020-04-01 18:32:17 
+ */ -->
+<view class="box">
+    <view class="swp">
+        <swiper style="min-height: 869rpx" current="{{currentIndex}}" bindchange="bindchange">
+            <block wx:for="{{visitList}}" wx:key="index">
+                <swiper-item style="display: flex;justify-content: center;align-items: center;">
+                    <view class="swiper_item">
+                        <view class="top_box">
+                            <view class="left avarte">
+                                <van-image  fit="contain"  width="120rpx" height="120rpx" src="{{item.logoUrl}}"/>
+                            </view>
+                            <view class="right info">
+                                <text class="name">{{item.sendUserName}}</text>
+                                <text class="company_name">{{item.sendUserCompany}}</text>
+                                <text class="position_name">{{item.sendUserPosition}}</text>
+                            </view>
+                        </view>
+                        <veiw class="bootom_box">
+                            <view class="visit_business visit_item" >
+                                <view class="title">拜访业务</view>
+                                <view class="content">{{item.content}}</view>
+                            </view>
+                            <view class="app_time visit_item">
+                                <view class="title">期望约见时间</view>
+                                <view class="content">{{item.appointment}}</view>
+                            </view>
+                            <view class="depatrment visit_item">
+                                <view class="title">拜访部门</view>
+                                <view class="content">{{item.deliverDepartment}}</view>
+                            </view>
+                        </veiw>
+                    </view>
+                </swiper-item>
+            </block>
+        </swiper>
+    </view>
+    <view class="btn send" bindtap="sendMessage">发信息</view>
+</view>

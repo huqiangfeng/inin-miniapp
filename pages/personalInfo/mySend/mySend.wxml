@@ -1,0 +1,30 @@
+<!-- personalInfo//mySend/mySend.wxml -->
+<view class="_div entire">
+    <nav navStyle="height: 90rpx;box-shadow: 0rpx 4rpx 12rpx 6rpx rgba(140, 140, 140, 0.1);color: #666;" navList="{{navList}}" isCut="{{true}}" defaultNav="{{nav}}" bind:checkde="changeNav"></nav>
+    <view class="_div lists" wx:key="i" key="{{i}}" wx:for="{{cardList}}" wx:for-index="i" wx:for-item="item">
+        <view class="_div list">
+            <view class="_div list_sb_row" bindtap="sendProgress" data-id="{{ item.id }}">
+                <view class="_div list-title">需求名片</view>
+                <view class="_div list-time">{{item.time}}</view>
+            </view>
+            <view class="_div list_content Omit" bindtap="sendProgress" data-id="{{ item.id }}">
+                {{item.content}}
+            </view>
+            <view class="_div list_sb_row">
+                <view class="_div list_name Omit" bindtap="sendProgress" data-id="{{ item.id }}">
+                    {{item.sendUserName}} ‧ {{item.sendUserCompany}}
+                </view>
+                <view bindtap="forwardList" data-item="{{ item }}" class="_div {{['list_status', item.statusDisplay == '被转发' ? 'list_status_blue' : '']}}">
+                    {{item.statusDisplay!=null?item.statusDisplay:''}}
+                    <label wx:if="{{item.statusAmount}}" class="_span">
+                        ({{item.statusAmount!=null?item.statusAmount:''}})
+                    </label>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="_div Prompt" wx:if="{{cardList.length==0}}">
+        <image wx:if="{{localImg}}" src="{{imagePath+'no_send.png'}}" class="_image Prompt_Img_Icon"></image>
+        <view class="_div Prompt_Title">还未进行过任何投递噢～</view>
+    </view>
+</view>

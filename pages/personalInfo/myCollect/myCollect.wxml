@@ -1,0 +1,13 @@
+<view class="_div entire">
+    <view class="_div list-box" wx:if="{{companyLists.length>0}}">
+        <companyList bind:titleImgErr="titleImgErr" lists='{{companyLists}}' iconCollect='{{true}}' bind:onListEvent="changeCompanyPage" bind:onIconCollectEvent="onIconCollectEvent"></companyList>
+    </view>
+    <view class="_div Prompt" wx:else>
+        <image wx:if="{{localImg}}" src="{{imagePath+'no_collect.png'}}" class="_image Prompt_Img_Icon"></image>
+        <view class="_div Prompt_Title">还没收到过消息噢～</view>
+    </view>
+    <view class="_div Grey_Bottom_Sense" wx:if="{{loadingShow}}">
+        <image wx:if="{{localImg&&loading}}" src="{{localImg+'loading_icon.png'}}" style="width:30rpx;height:30rpx;margin-right:6rpx;" class="_image"></image>
+        {{loading?'加载更多':'所有数据已加载完'}}
+    </view>
+</view>

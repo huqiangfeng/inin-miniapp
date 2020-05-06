@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "mp-slideview": "/components/weui-components/slideview/slideview"
+  },
+  "navigationBarTitleText": "我的好友"
+}

@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "publicSearch": "/components/publicSearch/publicSearch"
+  }
+}

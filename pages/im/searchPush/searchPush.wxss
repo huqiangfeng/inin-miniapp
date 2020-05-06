@@ -1,0 +1,70 @@
+/* pages/im//search/search.wxss */
+/* 搜索 */
+.search {
+  background-color: #F5F6F8;
+  padding-bottom: 30rpx;
+}
+
+.search .public-search {
+  /* position: absolute; */
+  width: 100%;
+  /* top: 0; */
+  background-color: #fff;
+}
+
+.search .record {
+  background: rgba(255, 255, 255, 1);
+  margin-bottom: 20rpx;
+  padding: 0 30rpx;
+}
+
+.search .title {
+  height: 88rpx;
+  font-size: 26rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: rgba(153, 153, 153, 1);
+  line-height: 88rpx;
+  border-bottom: 1px solid #EAEAEA;
+
+}
+
+.search .list {
+  margin-left: -30rpx;
+  /* border-bottom: 1px solid #EAEAEA; */
+}
+
+/* // weui */
+.search .weui-cell {
+  padding: 11rpx 0;
+  background: rgba(255, 255, 255, 1);
+}
+
+.search .weui-cell:before {
+  border: none;
+}
+
+.search .weui-cell__bd {
+  color: #5F7AFF;
+  height: 33rpx;
+  font-size: 24rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: rgba(95, 122, 255, 1);
+  line-height: 33rpx;
+}
+
+.search .weui-cell__hd_img {
+  margin-right: 20rpx;
+  vertical-align: baseline;
+  width: 30rpx;
+  height: 30rpx;
+  position: relative;
+  top: 4rpx;
+
+}
+
+.search .weui-cell__ft {
+  color: #666;
+  font-size: 26rpx;
+}

@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "overlay": "/components/overlay/overlay"
+  },
+  "navigationBarTitleText": "我的附件"
+}

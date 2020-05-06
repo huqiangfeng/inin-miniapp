@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "publicSearch": "/components/publicSearch/publicSearch"
+  },
+  "navigationBarTitleText": "添加好友"
+}

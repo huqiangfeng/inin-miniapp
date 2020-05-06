@@ -1,0 +1,100 @@
+/* personalInfo//myKeyword/myKeyword.wxss */
+.entire {
+    height: 100%;
+    color: #333;
+    font-size: 26rpx;
+    padding: 0 40rpx;
+}
+
+.title {
+    margin: 80rpx 0rpx 16rpx 0rpx;
+    font-weight: 500;
+    line-height: 37rpx;
+}
+
+.keyword {
+    margin-top: 30rpx;
+    padding: 0 30rpx;
+    min-height: 100rpx;
+    background: #f0f0f0;
+    border-radius: 60rpx;
+}
+
+.add_keyword {
+    margin-top: 30rpx;
+    padding: 0 30rpx;
+    min-height: 100rpx;
+    background: #f0f0f0;
+    border-radius: 60rpx;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-content: space-around;
+}
+
+/* // 未添加关键词 */
+.placeholder {
+    color: #999;
+    font-size: 30rpx;
+}
+
+.keyword_icon_add {
+    width: 48rpx;
+    height: 48rpx;
+}
+
+/* // 已选择关键词 */
+.edit_keyword {
+    margin-top: 30rpx;
+    padding: 0 30rpx;
+    min-height: 100rpx;
+    background: #f0f0f0;
+    border-radius: 60rpx;
+    position: relative;
+}
+
+.keyword_tags {
+    display: flex;
+    justify-content: flex-start;
+    align-content: flex-start;
+    flex-wrap: wrap;
+    padding-top: 30rpx;
+}
+
+.keyword_tag {
+    padding: 9rpx 60rpx 9rpx 22rpx;
+    margin-right: 30rpx;
+    margin-bottom: 30rpx;
+    color: #5f7aff;
+    background: rgba(255, 255, 255, 1);
+    border-radius: 34rpx;
+    border: 1rpx solid rgba(95, 122, 255, 1);
+    position: relative;
+}
+
+.keyword_tag_del {
+    width: 20rpx;
+    height: 20rpx;
+    position: absolute;
+    position: absolute;
+    right: 5rpx;
+    bottom: 0;
+    padding: 20rpx;
+}
+
+.keyword_icon_edit {
+    width: 34rpx;
+    height: 34rpx;
+    position: absolute;
+    right: 30rpx;
+    bottom: 30rpx;
+}
+
+/* // 保存按钮 */
+.btn {
+    margin-top: 170rpx;
+    font-size: 32rpx;
+    font-family: PingFangSC-Regular, PingFang SC;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 1);
+}

@@ -1,0 +1,132 @@
+/* components/friendList/friendList.wxss */
+.component_lists {
+    width: 100%;
+    height: 100%;
+}
+
+.component_list {
+    padding: 34rpx 29rpx 31rpx 30rpx;
+    border-bottom: 2rpx solid #eaeaea;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.component_avatar {
+    width: 106rpx;
+    height: 106rpx;
+    margin-top: 24rpx;
+    border-radius: 50%;
+}
+
+.component_list_left {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    position: relative;
+}
+
+.component_content {
+    display: block;
+    margin-left: 25rpx;
+    margin-right: 54rpx;
+}
+
+.component_title {
+    height: 48rpx;
+    font-size: 28rpx;
+    font-weight: 500;
+    color: rgba(51, 51, 51, 1);
+    line-height: 48rpx;
+}
+
+.component_tags {
+    padding-top: 6rpx;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
+.component_tag {
+    padding: 3rpx 10rpx;
+    line-height: 30rpx;
+    font-size: 18rpx;
+    color: #333;
+    background-color: #f0f0f0;
+    border-radius: 34rpx;
+    margin-right: 10rpx;
+    white-space: nowrap;
+}
+
+.component_msg {
+    display: flex;
+    margin-top: 14rpx;
+    height: 37rpx;
+    font-weight: 400;
+    color: #333;
+    font-size: 26rpx;
+    font-family: PingFangSC-Regular;
+    font-weight: 400;
+    line-height: 37rpx;
+}
+
+.read {
+    color: #999;
+}
+
+.unread {
+    color: #5F7AFF;
+}
+
+.component_time {
+    color: #999;
+    font-size: 22rpx;
+    font-weight: 400;
+    line-height: 30rpx;
+    white-space: nowrap;
+    position: absolute;
+    top: 8rpx;
+    right: 0;
+}
+
+.vague {
+    filter: blur(10rpx);
+}
+
+.component_shade {
+    height: 411rpx;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.7);
+    text-align: center;
+    z-index: 9;
+}
+
+.component_shade_title {
+    height: 42rpx;
+    font-size: 30rpx;
+    font-family: PingFangSC-Medium;
+    font-weight: 500;
+    color: #333;
+    line-height: 42rpx;
+    margin-top: 50rpx;
+}
+
+.component_shade_btn {
+    width: 250rpx;
+    line-height: 72rpx;
+    font-size: 32rpx;
+    margin: 60rpx auto;
+    color: #fff;
+    background: linear-gradient(317deg,
+            rgba(95, 122, 255, 1) 0%,
+            rgba(119, 169, 255, 1) 100%);
+    border-radius: 36rpx;
+}
+
+.Grey_Bottom_Sense {
+    text-align: center;
+    /* height: ; */
+}

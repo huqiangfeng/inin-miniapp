@@ -1,0 +1,177 @@
+/* pages/email//demandCompany/demandCompany.wxss */
+
+.entire {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.share_modal{
+    width: 100%;
+    height: 100%;
+    background:rgba(2,2,2,0.3);
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 50;
+}
+
+.Prompt {
+    margin-top: 280rpx;
+}
+
+.require_list {
+    margin-top: 130rpx;
+}
+
+.require_list.scroll {
+    margin-top: 240rpx;
+}
+
+.send_icon {
+    width: 126rpx;
+    height: 126rpx;
+    position: fixed;
+    right: 30rpx;
+    bottom: 130rpx;
+}
+
+/* nav */
+.nav-content {
+    border-bottom: 1px solid #EAEAEA;
+}
+.nav-content .nav{
+    width: 100%;
+    height: 80rpx;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.nav-content .nav .nav_item{
+    width: 25%;
+    height: 100%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+    
+}
+.nav-content .nav .nav_item .nav_name{
+    font-size: 30rpx;
+    color: #666;
+}
+.nav-content .nav .nav_item .nav_num{
+    font-size: 22rpx;
+    color: #838383;
+    margin-left: 5rpx;
+}
+.nav-content .nav .nav_item_active .nav_name{
+    color: #4C587C;
+    font-size: 38rpx;
+}
+.nav-content .nav .nav_item_active .nav_num{
+    font-size: 22rpx;
+    color: #4C587C;
+    margin-left: 5rpx;
+}
+
+/* 状态 */
+.state-content {
+    position: relative;
+}
+
+.state {
+    height: 37rpx;
+    font-size: 26rpx;
+    font-family: PingFangSC-Regular, PingFang SC;
+    font-weight: 400;
+    color: rgba(72, 84, 120, 1);
+    line-height: 37rpx;
+    padding: 12rpx 30rpx 0 0;
+    float: right;
+}
+
+.state.scroll {
+    position: fixed;
+    top: 62px;
+    left: 0;
+    padding-top: 80rpx;
+    z-index: 2;
+    width: 100%;
+    height: 80rpx;
+    line-height: 80rpx;
+    background: rgba(245, 246, 248, 1);
+    font-size: 28rpx;
+    color: rgba(51, 51, 51, 1);
+    padding-left: 30rpx;
+}
+
+.state .img_icon {
+    width: 27rpx;
+    height: 27rpx;
+    vertical-align: middle;
+    margin-right: 15rpx;
+}
+
+.state .img_icon2 {
+    width: 20rpx;
+    height: 12rpx;
+    vertical-align: middle;
+    margin-left: 15rpx;
+}
+
+.state-modal {
+    position: absolute;
+    top: 150%;
+    right: 30rpx;
+    z-index: 9;
+    background-color: #fff;
+    padding: 0 40rpx;
+    border-radius: 20rpx;
+}
+
+.state-modal.scroll {
+    background-color: #fff;
+    position: fixed;
+    top: 62px;
+    left: 0;
+    padding-top: 80rpx;
+    z-index: 2;
+    width: 100%;
+    font-size: 28rpx;
+    color: rgba(51, 51, 51, 1);
+    padding-left: 30rpx;
+    border-radius: 0;
+}
+
+.state-modal.scroll:after {
+    border: none;
+}
+
+.state-modal:after {
+    content: "";
+    width: 0rpx;
+    height: 0rpx;
+    border: 12rpx solid rgba(0, 0, 0, 0);
+    border-bottom: 20rpx solid #fff;
+    position: absolute;
+    bottom: 100%;
+    right: 30rpx;
+}
+
+.state-modal .modal-item {
+    width: 255rpx;
+    font-size: 26rpx;
+    font-family: PingFangSC-Regular, PingFang SC;
+    font-weight: 400;
+    color: rgba(51, 51, 51, 1);
+    line-height: 87rpx;
+}
+
+.state-modal .modal-item.active {
+    color: #4A64E4;
+}
+
+.state-modal ._icon {
+    width: 30rpx;
+    height: 24rpx;
+}

@@ -1,0 +1,17 @@
+<!-- components/wechatSI.wxml -->
+<view class="wechat" hidden="{{!isShow}}" catch:tap="catchtap">
+  <view class="header">
+    <text hidden="{{text}}">普通话</text>
+    <text class="text" hidden="{{!text}}">{{ text }}</text>
+  </view>
+  <view class="content">
+    <text hidden="{{active}}">按住说话</text>
+    <view>
+      <view class="video-box" catch:touchstart="handleRecording" catch:touchmove="handleRecordingMove" catch:touchend="handleRecordingCancel" catch:touchcancel="handleRecordingCancel">
+        <image hidden="{{active}}" class="img" src="{{ imagePath+'yuying.png' }}" mode="widthFix"></image>
+        <image hidden="{{!active}}" class="img active" src="{{ imagePath+'yuyingactive.png' }}" mode="widthFix"></image>
+      </view>
+    </view>
+    <image class="img hidden" bind:tap="on_hidden" src="{{ imagePath+'yuying.png' }}" mode="widthFix"></image>
+  </view>
+</view>

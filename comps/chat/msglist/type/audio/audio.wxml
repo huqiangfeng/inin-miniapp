@@ -1,0 +1,13 @@
+<view class="audio-player" style="opacity: {{opcity}}">
+		<view class="controls play-btn">
+				<image hidden="{{ hiddenImg }}" src="{{send ? imagePath+'video_white.png' : imagePath+'video_black.png'}}"></image>
+				<image hidden="{{ !hiddenImg }}" src="{{send ? imagePath+'video_white.gif' : imagePath+'video_black.gif'}}"></image>
+		</view>
+		<text class="time">{{ time }}</text>
+		<!-- <view
+		class="controls pause-btn"
+		wx:if="{{ curStatus == playStatus.PLAYING }}"
+		bind:tap="audioPause">
+		<image bind:tap="audioPause" src="../../../../../images/audioPause.png"></image>
+	</view> -->
+</view>

@@ -1,0 +1,41 @@
+<!-- components/friendList/friendList.wxml -->
+<view class="  component_lists">
+    <scroll-view scroll-y="{{isAuth&&login}}" bindscrolltoupper="upper" bindscrolltolower="lower" class="_scroll-view ">
+        <view class="component_list" wx:key="i" key="{{i}}" data-index="{{i}}" bindtap="_tapItem" wx:for="{{peopleData}}" wx:for-index="i" wx:for-item="item">
+            <view class="  {{['component_list_left', isAuth || i < 3 ? '' : 'vague']}}">
+                <image class="_image  component_avatar" wx:if="{{item.sendUserAvatar+'?width=50'}}" src="{{item.sendUserAvatar}}" lazy-load></image>
+                <image class="_image  component_avatar" wx:elif="{{localImg}}" src="{{imagePath+'user.png'}}"></image>
+                <view class="  component_content">
+                    <view class="  component_title">{{item.sendUserName}}</view>
+                    <view class="  component_tags">
+                        <view class="  component_tag" wx:key="j" key="{{j}}" wx:for="{{item.keywords}}" wx:for-index="j" wx:for-item="tag">
+                            {{tag}}
+                        </view>
+                    </view>
+                    <view class="  component_msg">
+                        <view class="{{ item.loginUserRead?'read':'unread' }} ">
+                            {{ item.loginUserRead?'「已读」':' 「未读」 ' }}
+                        </view>
+                        <view>需求名片</view>
+                    </view>
+                </view>
+                <view class="  component_time">{{item.time}}</view>
+            </view>
+        </view>
+        <view class="  Grey_Bottom_Sense" wx:if="{{loadingShow}}">
+            <image wx:if="{{localImg&&loading}}" src="{{localImg+'loading_icon.png'}}" style="width:30rpx;height:30rpx;margin-right:6rpx;" class="_image "></image>
+            {{loading?'加载更多':'所有数据已加载完'}}
+        </view>
+        <view wx:if="{{!isAuth||!login}}" class="component_shade">
+            <view class="  component_shade_title">
+                {{login?'认证你的企业身份，即可查看更多收件箱内容':'登录后可查看更多信息，解锁更多服务噢～'}}
+            </view>
+            <view wx:if="{{!isAuth && login}}" class="  component_shade_btn" bindtap="_toAttestation">
+                去认证
+            </view>
+            <view wx:if="{{!login}}" bindtap="_toLogin" class="_navigator  component_shade_btn">
+                登录
+            </view>
+        </view>
+    </scroll-view>
+</view>

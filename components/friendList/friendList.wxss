@@ -1,0 +1,74 @@
+/* components/friendList/friendList.wxss */
+.list {
+  display: flex;
+  align-items: flex-start;
+  margin-left: 30rpx;
+  /* //左移的按钮专用 */
+  position: relative;
+}
+
+.move-x {
+  transition: all 300ms 0s linear;
+}
+
+.list_contentbox {
+  /* border-bottom: 1rpx solid #eaeaea; */
+}
+
+.list_img {
+  margin-top: 16rpx;
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 100%;
+}
+
+.avatar_none {
+  margin-top: 10rpx;
+  width: 70rpx;
+  height: 70rpx;
+  border: 1rpx solid #ccc;
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18rpx;
+}
+
+.list_con {
+  flex: 1;
+  margin-left: 20rpx;
+  position: relative;
+  overflow: hidden;
+  /* border-bottom: 1rpx solid #eaeaea; */
+}
+
+
+.list_con_name {
+  margin-top: 23rpx;
+  height: 40rpx;
+  font-size: 28rpx;
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 1);
+  line-height: 40rpx;
+}
+
+.list_con_company {
+  margin: 5rpx 0 22rpx;
+  height: 30rpx;
+  font-size: 22rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: rgba(102, 102, 102, 1);
+  line-height: 30rpx;
+}
+
+/* 遮盖底边框用的 */
+.overspread {
+  width: 100%;
+  height: 1px;
+  background-color: #eaeaea;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}

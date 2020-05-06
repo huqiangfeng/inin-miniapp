@@ -1,0 +1,64 @@
+<!-- im//addFriend/addFriend.wxml -->
+<view class="_div entire">
+    <!-- 搜索 -->
+    <publicSearch placeholder='搜索姓名/手机号/一传号' value="{{searchData}}" bind:onSearch="search" bind:onClear="cancel" bind:onChangeValue="changeValue"></publicSearch>
+    <view class="_div user_inexistence" wx:if="{{lists.length==0&&searchData!=''}}">
+        <image wx:if="{{localImg}}" src="{{imagePath+'user_inexistence.png'}}" class="_image user_inexistence"></image>
+        <view style class="_div">该用户不存在噢～</view>
+        <view class="_div Blue_Gradual_Btn invite_btn" bindtap="invite" wx:if="{{isPhone}}">
+            立即邀请
+        </view>
+    </view>
+    <view class="_div lists" wx:else>
+        <view class="_div tip" wx:if="{{searchData==''}}">你可能感兴趣：</view>
+        <!-- (item) -->
+        <view class="_div list" wx:key="i" key="{{i}}" bindtap="changePage" data-id="{{ item.friendStatus =='myself'?'': item.userId }}" wx:for="{{lists}}" wx:for-index="i" wx:for-item="item">
+            <view class="_div list_all">
+                <image wx:if="{{item.avatar}}" src="{{item.avatar}}" class="_image avatar"></image>
+                <view class="_div avatar" wx:else>{{item.name!=null?item.name:''}}</view>
+                <view class="_div list_content">
+                    <view class="_div list_content_people">{{item.name!=null?item.name:''}}</view>
+                    <view wx:if="{{item.userCard.companyName}}" class="_div list_content_company">
+                        {{item.userCard.companyName}}
+                    </view>
+                    <view wx:if="{{item.userCard.positionName}}" class="_div list_content_job">
+                        {{item.userCard.positionName!=null?item.userCard.positionName:''}}
+                    </view>
+                    <view class="_div list_content_tags">
+                        <view class="_div Grey_Tag" wx:key="j" key="{{j}}" wx:for="{{item.keywordList}}" wx:for-index="index" wx:for-item="j">
+                            {{j}}
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view wx:if="{{item.friendStatus==null}}" class="_div Blue_Gradual_Btn add_friend" catchtap="addFriend" data-index="{{ i }}">
+                <image class="add_white" src="{{localImg+'message/add_white.png'}}" mode="aspectFit" l></image>
+                好友
+            </view>
+            <view wx:elif="{{item.friendStatus=='friend'}}" class="_div are_friend is_add_friend" bindtap="addFriend" data-index="{{ i }}">
+                <image wx:if="{{localImg}}" src="{{localImg+'message/message_blue.png'}}" class="_image icon"></image>
+                联系
+            </view>
+            <view wx:elif="{{item.friendStatus=='applying'}}" class="_div apply_friend is_add_friend" bindtap="addFriend(item)" data-index="{{ i }}">
+                <image wx:if="{{localImg}}" src="{{localImg+'message/message_grey.png'}}" class="_image icon"></image>
+                等待验证
+            </view>
+        </view>
+        <view class="_div Grey_Bottom_Sense" wx:if="{{loadingShow&&lists.length>5}}">
+            <image wx:if="{{localImg&&loading}}" src="{{localImg+'loading_icon.png'}}" style="width:30rpx;height:30rpx;margin-right:6rpx;" class="_image"></image>
+            {{loading?'加载更多':'所有数据已加载完'}}
+        </view>
+    </view>
+    <view class="_div forward_window" wx:if="{{isButtomShow}}">
+        <view class="_div forward_window_content">
+            <view style="display: flex;justify-content: space-around;" class="_div">
+                <button class="_button forward_window_text" id="shareBtn" open-type="share" type="primary" hover-class="other-button-hover">
+                    <image src="{{imagePath+'wx.png'}}" wx:if="{{localImg}}" class="_image"></image>
+                    <view class="_div">微信</view>
+                </button>
+            </view>
+            <view class="_div forward_window_line"></view>
+            <view class="_div forward_window_btn" bindtap="onIsButtomShow">取消</view>
+        </view>
+    </view>
+</view>

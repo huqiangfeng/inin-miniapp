@@ -1,0 +1,57 @@
+<!-- components/companyList/companyList.wxml -->
+
+<view class="  component_entire">
+    <view class="  component_company_list" wx:key="index" key="{{index}}" wx:for="{{lists}}" wx:for-index="index" wx:for-item="item">
+        <view class="crecommend icon_box" wx:if="{{recommend}}" bindtap="onRecommendChecked" data-index="{{ index }}">
+            <image hidden="{{item.checked}}" class="_image  crecommend_icon" src="{{localImg+'/yt-no.png'}}"></image>
+            <image hidden="{{!item.checked}}" class="_image  crecommend_icon" src="{{localImg+'yt-yes.png'}}"></image>
+        </view>
+        <view class="component_company_content" bindtap="onListEvent" data-index="{{ index }}">
+            <image binderror="titleImgErr" data-index="{{index}}" class="_image  component_company_img" wx:if="{{item.logoUrl}}" src="{{item.logoUrl}}">
+                <label wx:if="{{item.msgMyUnread&&item.msgMyUnread!=0&&item.msgMyUnread!=null}}" class="_span  component_company_img_count {{item.msgMyUnread<10?'message_tip_min':''}} {{ item.msgMyUnread>9&&item.msgMyUnread<99?'message_tip_normal':''}} {{ item.msgMyUnread>98?'message_tip_max':''}}">
+                    {{item.msgMyUnread>98?'99+':item.msgMyUnread}}
+                </label>
+            </image>
+            <view wx:else class="  component_company_img">
+                {{item.rename}}
+                <label wx:if="{{item.msgMyUnread&&item.msgMyUnread!=0&&item.msgMyUnread!=null}}" class="_span  component_company_img_count {{item.msgMyUnread<10?'message_tip_min':''}} {{ item.msgMyUnread>9&&item.msgMyUnread<99?'message_tip_normal':''}} {{ item.msgMyUnread>98?'message_tip_max':''}}">
+                    {{item.msgMyUnread>98?'99+':item.msgMyUnread}}
+                </label>
+            </view>
+            <view class="flex1">
+                <view class="  component_company_msg">{{item.name}}</view>
+                <view class="  component_company_statistic">
+                    <view style="text-align:center" class=" ">
+                        <view class="  component_company_statistic_num">
+                            {{item.statistics.viewCount!=null?item.statistics.viewCount:0}}
+                        </view>
+                        <view class="  component_company_statistic_title">浏览量</view>
+                    </view>
+                    <view class="  line"></view>
+                    <view style="text-align:center" class=" ">
+                        <view class="  component_company_statistic_num">
+                            {{item.statistics.receiveCount!=null?item.statistics.receiveCount:0}}
+                        </view>
+                        <view class="  component_company_statistic_title">收件量</view>
+                    </view>
+                    <view class="  line"></view>
+                    <view style="text-align:center" class=" ">
+                        <view class="  component_company_statistic_num">
+                            {{ item.statistics.peopleCount!=null?item.statistics.peopleCount:0}}
+                        </view>
+                        <view class="  component_company_statistic_title">人脉</view>
+                    </view>
+                </view>
+                <view wx:if="{{!!item.firend}}" class="firend">{{ item.firend }}个好友在该公司</view>
+            </view>
+        </view>
+        <view class="icon_box" wx:if="{{iconSend}}">
+            <image wx:if="{{item.canSendRequirement}}" class="_image  component_send_icon" src="{{imagePath+'send_blue.png'}}" bindtap="onIconSendEvent" data-index="{{ index }}"></image>
+            <image wx:else class="_image  component_send_icon" src="{{localImg+'inbox/send_grey.png'}}" bindtap="onIconSendEvent" data-index="{{ index }}"></image>
+        </view>
+        <view class="icon_box" wx:if="{{iconCollect}}">
+            <image wx:if="{{item.grey}}" class="_image  component_send_icon" src="{{localImg+'mine/grey_collected.png'}}" bindtap="onIconCollectEvent" data-index="{{ index }}"></image>
+            <image wx:else class="_image  component_send_icon" src="{{localImg+'mine/not_collect.png'}}" bindtap="onIconCollectEvent" data-index="{{ index }}"></image>
+        </view>
+    </view>
+</view>

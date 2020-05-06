@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "publicSearch": "/components/publicSearch/publicSearch",
+    "cardList": "/components/cardList/cardList"
+  },
+  "navigationBarTitleText": "消息"
+}

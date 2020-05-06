@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "card": "/components/card/card",
+    "wechatSI": "/components/wechatSI/wechatSI",
+    "recommendCompanies": "./recommendCompanies/recommendCompanies",
+    "navigation-bar": "/components/weui-components/navigation-bar/navigation-bar"
+  },
+  "navigationBarTitleText": "需求名片",
+  "navigationStyle": "custom"
+}

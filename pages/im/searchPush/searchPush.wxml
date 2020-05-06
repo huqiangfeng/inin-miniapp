@@ -1,0 +1,13 @@
+<!-- pages/im//search/search.wxml -->
+<view class="search">
+  <view class="public-search">
+    <publicSearch placeholder='搜索' bind:onCancelBtn="onCancelBtn" value="{{searchData}}" bind:onSearch="getData" bind:onClear="onChangeValue" bind:onChangeValue="onChangeValue"></publicSearch>
+  </view>
+  <!-- 推送消息 -->
+  <view class="record">
+    <view class="title">推送消息</view>
+    <view class="list">
+      <pushList id="pushList"></pushList>
+    </view>
+  </view>
+</view>

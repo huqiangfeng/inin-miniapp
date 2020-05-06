@@ -1,0 +1,8 @@
+<!-- components/cardBGC/cardBGC.wxml -->
+<view class="_div  navBack" id="nav">
+    <navigation-bar background="{{background}}" delta="{{ delta }}" show="{{ true }}" color="{{ !!background?'#333':'#fff' }}" title="{{ title }}" back="{{ true }}"></navigation-bar>
+    <view class="_div nav">
+        <slot></slot>
+    </view>
+</view>
+<!-- background="linear-gradient(315deg,rgba(95, 122, 255, 1) 0%,rgba(119, 169, 255, 1) 100%)" -->

@@ -1,0 +1,250 @@
+.entire {
+    width: 100%;
+    height: 100%;
+    color: #333;
+    background-color: #f2f2f2;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.admin_message{
+    width: 690rpx;
+    height: 180rpx;
+    background-color: #333;
+}
+.public-search {
+    background-color: #fff;
+    position: relative;
+}
+
+.public-search::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    box-shadow: 0px 4px 12px 6px rgba(140, 140, 140, 0.1);
+}
+
+.shadow {
+    height: 2rpx;
+    box-shadow: 0px 4rpx 12rpx 6rpx rgba(140, 140, 140, 0.1);
+    position: absolute;
+    width: 100%;
+}
+
+/* // 头部三个图标 */
+.message {
+    margin-bottom: 20rpx;
+    background-color: #fff;
+    height: 220rpx;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 24rpx;
+    font-family: PingFangSC-Medium;
+    font-weight: 500;
+}
+
+.message_block {
+    display: flex;
+    justify-content: center;
+    align-content: space-around;
+    flex-wrap: wrap;
+    width: 120rpx;
+    height: 150rpx;
+    position: relative;
+    text-align: center;
+}
+
+.message_icon {
+    width: 80rpx;
+    height: 80rpx;
+}
+
+.message_font {
+    font-size: 24rpx;
+    font-family: PingFangSC-Medium, PingFang SC;
+    font-weight: 500;
+    color: rgba(51, 51, 51, 1);
+}
+
+.message_tip {
+    line-height: 30rpx;
+    font-size: 22rpx;
+    text-align: center;
+    color: #fff;
+    background-color: #e91f1f;
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(6rpx, -12rpx);
+}
+
+.message_tip_normal {
+    border-radius: 20rpx;
+    width: 40rpx;
+}
+
+.message_tip_max {
+    width: 50rpx;
+    border-radius: 20rpx;
+}
+
+.message_tip_min {
+    width: 33rpx;
+    border-radius: 100%;
+}
+
+/* // 消息列表 */
+
+.lists {
+    background-color: #fff;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    height: 100%;
+    padding-bottom: 30rpx;
+    flex: 1;
+    padding: 0 30rpx
+}
+
+.list_contentbox {
+    border-bottom: 1rpx solid #eaeaea;
+}
+
+.list {
+    /* // single row */
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    /* // padding: 39rpx 30rpx 32rpx 30rpx; */
+    padding: 39rpx 0rpx 32rpx 0rpx;
+    position: relative;
+}
+
+.single_row {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.list_all {
+    /* // img+content */
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 550rpx;
+}
+
+.list-right-box {
+    width: 200rpx;
+    padding-right: 30rpx;
+    box-sizing: border-box;
+}
+
+.avatar {
+    width: 100rpx;
+    height: 100rpx;
+    margin-right: 21rpx;
+    border-radius: 100%;
+}
+
+.list_content {
+    max-width: 70%;
+}
+
+.list_content_title_l {
+    font-size: 28rpx;
+    line-height: 40rpx;
+    font-family: PingFangSC-Medium;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.list_content_title_r {
+    font-weight: 400;
+    font-size: 22rpx;
+    margin-bottom: 10rpx;
+}
+
+.list_content_tags {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+
+}
+
+.list_content_tags .Grey_Tag {
+    margin-right: 10rpx;
+}
+
+.list_content_flag {
+    display: flex;
+    justify-content: flex-start;
+    font-size: 26rpx;
+    margin-left: -10rpx;
+
+}
+
+.list_content_flag .flag {
+    color: #999;
+    /* margin-right: 10rpx; */
+    white-space: nowrap;
+}
+
+.list_time {
+    color: #999;
+    font-size: 22rpx;
+    text-align: right;
+}
+
+.unread-box {
+    padding-top: 16rpx;
+    text-align: right;
+    padding-right: 5rpx;
+}
+
+.unread {
+    display: inline-block;
+    line-height: 30rpx;
+    font-size: 22rpx;
+    text-align: center;
+    color: #fff;
+    background-color: #e91f1f;
+    transform: translate(6rpx, -12rpx);
+}
+
+.unread-normal {
+    border-radius: 20rpx;
+    width: 40rpx;
+}
+
+.unread-max {
+    width: 50rpx;
+    border-radius: 20rpx;
+}
+
+.unread-min {
+    width: 33rpx;
+    border-radius: 100%;
+}
+
+/* // 红色删除图标 */
+.del_btn {
+    width: 180rpx;
+    height: 100%;
+    color: #fff;
+    background: #e91f1f;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translateX(210rpx);
+}
+
+.emoji-box view {
+    display: inline-block
+}

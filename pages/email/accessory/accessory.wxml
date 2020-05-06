@@ -1,0 +1,27 @@
+<!-- pages/email//accessory/accessory.wxml -->
+<view class="accessory">
+  <view class="list">
+    <template is="list" data="{{list, imagePath,localImg}}"></template>
+  </view>
+  <view class="btn" bind:tap="newAccessory">上传新的附件</view>
+</view>
+<!-- 遮罩 -->
+<overlay show="{{ overlayShow }}" bind:tap="hiddenOverlay">
+  <view class="btn-box">
+    <view catch:tap="del" class="btn-del">删除</view>
+    <view class="btn-cancel">取消</view>
+  </view>
+</overlay>
+<!-- 列表 -->
+<template name="list">
+  <view class="list-item" wx:for="{{list}}" wx:key="index" bind:tap="viewAttachment" data-index="{{index}}">
+    <image src="{{imagePath +'fashongzhuangtai.png'}}" class="_image img-left"></image>
+    <view class="item-info">
+      <view class="item-name">{{ item.attachmentName }}</view>
+      <view>
+        <text class="item-size item-time">{{  item.size + item.time  }}</text>
+      </view>
+    </view>
+    <image src="{{localImg +'diandiandian.png'}}" data-id="{{item.id}}" catch:tap="showOverlay" class="_image img-right"></image>
+  </view>
+</template>

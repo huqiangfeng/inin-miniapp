@@ -1,0 +1,62 @@
+<!-- pages/im//search/search.wxml -->
+<view class="search">
+  <view class="public-search">
+    <publicSearch placeholder='搜索' bind:onCancelBtn="onCancelBtn" value="{{searchData}}" bind:onSearch="getData" bind:onClear="onChangeValue" bind:onChangeValue="onChangeValue"></publicSearch>
+  </view>
+  <!-- 联系人 -->
+  <view class="record">
+    <view class="title">联系人</view>
+    <view class="list">
+      <friendList id="friendList"></friendList>
+    </view>
+    <view bindtap="changePage" data-url="/pages/personalInfo/myFriend/myFriend" class="_div weui-cell weui-cell_access" hover-class="weui-cell_active">
+      <view class="_div weui-cell__hd">
+        <image src="{{localImg+'/inbox/search.png'}}" class="_image weui-cell__hd_img"></image>
+      </view>
+      <view class="_div weui-cell__bd">更多联系人</view>
+      <view class="_div weui-cell__ft weui-cell__ft_in-access"></view>
+    </view>
+  </view>
+  <!-- 联系记录 -->
+  <view class="record">
+    <view class="title">联系记录</view>
+    <view class="list">
+      <chattingRecords id="chattingRecordss"></chattingRecords>
+    </view>
+    <view bindtap="changePage" data-url="/pages/im/searchChattingRecords/searchChattingRecords" class="_div weui-cell weui-cell_access" hover-class="weui-cell_active">
+      <view class="_div weui-cell__hd">
+        <image src="{{localImg+'/inbox/search.png'}}" class="_image weui-cell__hd_img"></image>
+      </view>
+      <view class="_div weui-cell__bd">更多联系记录</view>
+      <view class="_div weui-cell__ft weui-cell__ft_in-access"></view>
+    </view>
+  </view>
+  <!-- 需求名片 -->
+  <view class="record">
+    <view class="title">需求名片</view>
+    <view class="list">
+      <cardList peopleData="{{ peopleData }}" isAuth="{{ true }}" loading="{{ loading }}" loadingShow="{{ loadingShow }}" bind:toLogin="toLogin" bind:toAttestation="toAttestation" bind:attestation="toAttestation" bind:tapItem="ontapItem"></cardList>
+    </view>
+    <view bindtap="changePage" data-url="/pages/im/searchCard/searchCard" class="_div weui-cell weui-cell_access" hover-class="weui-cell_active">
+      <view class="_div weui-cell__hd">
+        <image src="{{localImg+'/inbox/search.png'}}" class="_image weui-cell__hd_img"></image>
+      </view>
+      <view class="_div weui-cell__bd">更多需求名片</view>
+      <view class="_div weui-cell__ft weui-cell__ft_in-access"></view>
+    </view>
+  </view>
+  <!-- 推送消息 -->
+  <view class="record">
+    <view class="title">推送消息</view>
+    <view class="list">
+      <pushList id="pushList"></pushList>
+    </view>
+    <view bindtap="changePage" data-url="/pages/im/searchPush/searchPush" class="_div weui-cell weui-cell_access" hover-class="weui-cell_active">
+      <view class="_div weui-cell__hd">
+        <image src="{{localImg+'/inbox/search.png'}}" class="_image weui-cell__hd_img"></image>
+      </view>
+      <view class="_div weui-cell__bd">更多推送消息</view>
+      <view class="_div weui-cell__ft weui-cell__ft_in-access"></view>
+    </view>
+  </view>
+</view>

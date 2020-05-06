@@ -1,0 +1,29 @@
+<!-- (item) -->
+<view class="list">
+  <view class="_div item" wx:key="i" key="{{i}}" bindtap="changePage" wx:for="{{list}}" wx:for-index="i" wx:for-item="item">
+    <view class="_div item_all">
+      <image src="{{item.avatar}}" class="_image avatar"></image>
+      <view class="_div item_content">
+        <view class="_div item_content_people">{{item.name!=null?item.name:''}}</view>
+        <view wx:if="{{item.userCard.companyName}}" class="_div item_content_company">
+          {{item.userCard.companyName}}
+        </view>
+        <view wx:if="{{item.userCard.positionName}}" class="_div item_content_job">
+          {{item.userCard.positionName!=null?item.userCard.positionName:''}}
+        </view>
+      </view>
+    </view>
+    <view wx:if="{{item.friendStatus==null}}" class="_div Blue_Gradual_Btn add_friend" catchtap="addFriend" data-index="{{ i }}">
+      <image class="add_white" src="{{localImg+'message/add_white.png'}}" mode="aspectFit" l></image>
+      好友
+    </view>
+    <view wx:elif="{{item.friendStatus=='friend'}}" class="_div are_friend is_add_friend" bindtap="addFriend" data-index="{{ i }}">
+      <image wx:if="{{localImg}}" src="{{localImg+'message/message_blue.png'}}" class="_image icon"></image>
+      联系
+    </view>
+    <view wx:elif="{{item.friendStatus=='applying'}}" class="_div apply_friend is_add_friend" bindtap="addFriend(item)" data-index="{{ i }}">
+      <image wx:if="{{localImg}}" src="{{localImg+'message/message_grey.png'}}" class="_image icon"></image>
+      等待验证
+    </view>
+  </view>
+</view>

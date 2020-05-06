@@ -1,0 +1,96 @@
+/* pages/personalInfo/myVisitProcess/myVisitProcess.wxss */
+.process{
+    width: 100%;
+    height: 100%;
+    background:linear-gradient(317deg,rgba(95,122,255,1) 0%,rgba(119,169,255,1) 100%);
+}
+.process .header{
+    width:750rpx;
+    height:200rpx;
+    background:rgba(255,255,255,1);
+}
+.process .header .update_time{
+    font-size:20rpx;
+    font-family:PingFangSC-Regular,PingFang SC;
+    font-weight:400;
+    color:rgba(153,153,153,1);
+    padding-left: 25rpx;
+}
+.process .content{
+    width: 100%;
+    height: calc(100% - 200rpx);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    margin-top: 20rpx;
+    padding-top: 1rpx;
+}
+.process .content .card{
+    width:690rpx;
+    min-height:100rpx;
+    padding-bottom: 100rpx;
+    background:rgba(255,255,255,1);
+    box-shadow:2rpx 4rpx 12rpx 6rpx rgba(63,82,158,0.25);
+    border-radius:20rpx;
+}
+.process .content .card .top{
+    width: 620rpx;
+    height: 210rpx;
+    border-bottom: 1rpx solid #EAEAEA;
+    margin:0 auto;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.process .content .card .top .left{
+    width: 120rpx;
+    height: 120rpx;
+    border-radius: 50%;
+    margin: 0 20rpx 0 40rpx;
+}
+.process .content .card .top .right{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+.process .content .card .top .right .name{
+    font-size:36rpx;
+    font-family:PingFangSC-Medium,PingFang SC;
+    font-weight:bold;
+    color:rgba(51,51,51,1);
+}
+.process .content .card .top .right .company_name{
+    font-size:26rpx;
+    font-family:PingFangSC-Medium,PingFang SC;
+    font-weight:500;
+    color:rgba(102,102,102,1);
+}
+.process .content .card .top .right .position_name{
+    font-size:24rpx;
+    font-family:PingFangSC-Regular,PingFang SC;
+    font-weight:400;
+    color:rgba(102,102,102,1);
+}
+.process .content .card .business{
+    width: 620rpx;
+    margin: 0 auto;
+}
+.process .content .card .business .sub_business{
+    width:100%;
+    height: auto;
+}
+.process .content .card .business .sub_business .title{
+    height: 100rpx;
+    line-height: 100rpx;
+    font-size:32rpx;
+    font-family:PingFangSC-Medium,PingFang SC;
+    font-weight:bold;
+    color:rgba(51,51,51,1);
+}
+.process .content .card .business .sub_business .text{
+    font-size:28rpx;
+    font-family:PingFangSC-Regular,PingFang SC;
+    font-weight:400;
+    color:rgba(51,51,51,1);
+}

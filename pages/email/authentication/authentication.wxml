@@ -1,0 +1,42 @@
+<view wx:if="{{!isShowSucceed}}" class="_div entire">
+    <cardBGC delta="{{ delta }}">
+        <card company="{{ company }}" schema="editWhite" bind:onEdit="onEditCard"></card>
+    </cardBGC>
+    <view class="_div email" wx:if="{{isAuth}}">
+        <view class="_div email_title">企业邮箱：</view>
+        <view class="_div email_content">{{company.defaultAuthEmail}}</view>
+    </view>
+    <view class="_div form" wx:else>
+        <view class="_div weui-cell weui-cell_input">
+            <view class="_div weui-cell__hd">
+                <view class="_div weui-label">企业邮箱：</view>
+            </view>
+            <view class="_div weui-cell__bd">
+                <input class="_input weui-input" type="email" placeholder="输入邮箱" value="{{email}}" id='email' bindinput="bindInputValue" />
+            </view>
+        </view>
+        <view class="_div weui-cell weui-cell_input weui-cell_vcode">
+            <view class="_div weui-cell__hd">
+                <view class="_div weui-label">验证码</view>
+            </view>
+            <view class="_div weui-cell__bd">
+                <input class="_input weui-input" id='captcha' type="text" placeholder="输入验证码" value="{{captcha}}" bindinput="bindInputValue" />
+            </view>
+            <view bindtap="getCode" class="_div {{['weui-cell__ft get_code', timer == '60' ? '' : 'get_code_grey']}}">
+                <label wx:if="{{timer=='60'}}" class="_span">获取验证码</label>
+                <label wx:else class="_span">{{timer}}S</label>
+            </view>
+        </view>
+    </view>
+    <view class="_div btn" wx:if="{{isAuth}}" bindtap="relieve">解绑</view>
+    <view class="_div btn" wx:else bindtap="sumbit">提交</view>
+</view>
+<view wx:if="{{isShowSucceed}}" class="succeed">
+    <view class="_div entire1">
+        <view style="margin: 100rpx auto 40rpx auto;text-align:center;" class="_div">
+            <image class="_image img" wx:if="{{localImg}}" src="{{imagePath+'attestation_success.png'}}"></image>
+        </view>
+        <view class="_div font_blue">已完成企业认证！</view>
+        <view class="_div btn" bindtap="sumbitToPage">提交</view>
+    </view>
+</view>

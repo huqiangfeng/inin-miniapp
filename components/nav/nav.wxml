@@ -1,0 +1,8 @@
+<!-- components/nav/nav.wxml -->
+<view class="_div navs" style="{{navStyle}}">
+  <view bindtap="changeNav" wx:for="{{navList}}" wx:key="index" data-tab="{{item.value}}" class="_div nav-item {{nav === item.value ? 'nav-active' : ''}}">
+    {{item.name}}
+    <!-- 中间的杠杠 -->
+    <view class="_div cut-off-rule" wx:if="{{ index!=0&& isCut }}"></view>
+  </view>
+</view>

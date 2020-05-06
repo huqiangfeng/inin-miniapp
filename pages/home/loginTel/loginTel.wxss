@@ -1,0 +1,92 @@
+/* pages/loginTel/loginTel.wxss */
+
+.entire {
+    padding: 0 40rpx;
+    height: 100%;
+    font-family: PingFangSC-Regular;
+    font-weight: 400;
+    font-size: 30rpx;
+}
+
+.shadow {
+    height: 2rpx;
+    box-shadow: 0rpx 4rpx 12rpx 6rpx rgba(140, 140, 140, 0.1);
+    margin-bottom: 99rpx;
+}
+
+.logos {
+    max-width: 260rpx;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto 30rpx auto;
+}
+
+.avtar {
+    width: 90rpx;
+    height: 90rpx;
+}
+
+.icon {
+    width: 41rpx;
+    height: 41rpx;
+}
+
+.tip {
+    text-align: center;
+    font-size: 24rpx;
+    color: #999999;
+    line-height: 33rpx;
+    margin-bottom: 70rpx;
+}
+
+.get_code {
+    margin-right: 30rpx;
+    padding: 4rpx 20rpx;
+    color: #fff;
+    line-height: 37rpx;
+    font-size: 26rpx;
+    font-family: PingFangSC-Regular;
+    font-weight: 400;
+    background: linear-gradient(316deg,
+            rgba(47, 88, 255, 1) 0%,
+            rgba(111, 141, 255, 1) 100%);
+    border-radius: 22rpx;
+}
+
+.get_code_grey {
+    color: #666;
+    background: none;
+    background-color: #cfcfcf;
+}
+
+.protocol {
+    margin-top: 15rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20rpx;
+    color: #000;
+}
+
+.choose_img {
+    width: 24rpx;
+    height: 24rpx;
+    margin-right: 10rpx;
+}
+
+/*  weui */
+.weui-label {
+    font-size: 28rpx;
+    width: 150rpx;
+}
+
+.weui-cells::before,
+.weui-cell::before {
+    border-top: none;
+}
+
+.weui-cell {
+    border-bottom: 1rpx solid #d9d9d9;
+    padding: 30rpx 0 10rpx 0;
+}

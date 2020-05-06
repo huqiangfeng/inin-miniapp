@@ -1,0 +1,20 @@
+/* components/cardBGC/cardBGC.wxss */
+@import '../../app.wxss';
+
+.navBack {
+  padding-bottom: 110rpx;
+  background: linear-gradient(315deg,
+      rgba(95, 122, 255, 1) 0%,
+      rgba(119, 169, 255, 1) 100%);
+  position: relative;
+}
+
+.nav {
+  position: absolute;
+  left: 30rpx;
+  right: 30rpx;
+  background-color: #fff;
+  transform: translateY(30rpx);
+  box-shadow: 2px 4px 12px 6px rgba(140, 140, 140, 0.1);
+  border-radius: 20rpx;
+}

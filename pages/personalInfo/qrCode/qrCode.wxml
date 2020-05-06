@@ -1,0 +1,13 @@
+<!-- pages/personalInfo//qrCode/qrCode.wxml -->
+<view class="qrcode">
+	<view class="qrcode-content">
+		<view class="info">
+			<image wx:if="{{avatar}}" src="{{avatar}}" class="_image weui-cell__hd_avatar"></image>
+			<text>{{name}}</text>
+		</view>
+		<canvas style="width: 520rpx; height: 520rpx;" canvas-id="myQrcode" class="canvas"></canvas>
+		<view class="footer">
+			<text>扫一扫上面的二维码图案，加我为好友吧～</text>
+		</view>
+	</view>
+</view>

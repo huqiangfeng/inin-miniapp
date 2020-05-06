@@ -1,0 +1,57 @@
+<!-- inbox//outDemandCard/outDemandCard.wxml -->
+<view class="recommendCompanies" hidden="{{!recommendCompanies}}">
+    <recommendCompanies id="recommend-companies" bind:allSumbit="allSumbit" bind:toRecommend="toRecommend"></recommendCompanies>
+</view>
+<view hidden="{{recommendCompanies}}" class="_div entire" bindtap="on_hiddenWechatSI">
+    <view class="_div navBack">
+        <navigation-bar delta="{{ delta }}" show="{{ true }}" color="#fff" title="需求名片" back="{{ true }}"></navigation-bar>
+        <view class="_div nav">
+            <card company="{{company}}" schema="editBlue" bind:onEdit="onEdit"></card>
+        </view>
+    </view>
+    <view class="_div greet">
+        <view class="_div greet_title">跟企业打个招呼吧</view>
+        <view class="_div greet_content" wx:if="{{!dialogVisible}}">
+            <textarea value="{{content}}" bindinput="onChangeValue" style="min-height:200rpx;" show-confirm-bar="{{false}}" auto-height maxlength="{{200}}" placeholder="请输入" class="_textarea" />
+            <view class="_div greet_phonetics">
+                <image catch:tap="on_showWechatSI" wx:if="{{localImg}}" src="{{localImg+'inbox/phonetics.png'}}" class="_image phonetics_icon"></image>
+                <view style="line-height:30rpx;" class="_div">{{content.length}}/200</view>
+            </view>
+        </view>
+        <view class="_div add_keyword" wx:if="{{keywords.length==0}}">
+            <view class="_div placeholder">添加关键词</view>
+            <view class="_div bigger_b" bindtap="showAddKeyword"></view>
+            <image wx:if="{{localImg}}" src="{{imagePath+'add_blue.png'}}" class="_image keyword_icon_add" bindtap="showAddKeyword"></image>
+        </view>
+        <view class="_div edit_keyword" wx:else>
+            <view class="_div keyword_tags">
+                <view class="_div keyword_tag" wx:key="i" key="{{i}}" wx:for="{{keywords}}" wx:for-index="i" wx:for-item="item">
+                    <view class="_div">{{item}}</view>
+                    <view class="_div bigger_s" bindtap="addKeyword" data-item="{{ item }}">
+                        <image wx:if="{{localImg}}" src="{{localImg+'fanhui.png'}}" class="_image keyword_tag_del"></image>
+                    </view>
+                </view>
+            </view>
+            <view class="_div bigger_b" bindtap="showAddKeyword"></view>
+            <image wx:if="{{localImg}}" src="{{localImg+'inbox/pen_blue.png'}}" class="_image keyword_icon_edit" bindtap="showAddKeyword"></image>
+        </view>
+    </view>
+    <view class="_div Blue_Gradual_Btn" bindtap="sumbit">发送</view>
+    <view class="_div dialog" wx:if="{{dialogVisible}}">
+        <view class="_div dialog_body">
+            <view class="_div dialog_body_del" bindtap="tagsClose">
+                <image wx:if="{{localImg}}" src="{{localImg+'fanhui.png'}}" class="_image del_icon" bindtap="tagsClose"></image>
+            </view>
+            <view class="_div dialog_body_title">{{keywordsTitle}}</view>
+            <view class="_div dialog_body_title1">添加关键词增加反馈几率</view>
+            <view class="_div dialog_body_content">
+                <view wx:key="j" key="{{j}}" wx:for="{{keywordLists}}" wx:for-index="j" wx:for-item="item" class="_div {{[  'dialog_body_content_tag',  showKeyword[j] ? 'dialog_body_content_tag_active' : '']}}">
+                    <view class="_div" bindtap="addKeyword" data-item="{{ item }}">{{item}}</view>
+                </view>
+            </view>
+            <view class="_div Blue_Gradual_Btn dialog_body_btn" bindtap="tagsSubmit">完成</view>
+            <view class="_div dialog_body_tip">已选{{keywords.length}}/4</view>
+        </view>
+    </view>
+    <wechatSI isShow="{{wechatSIIsShow}}" bindhidden="on_hiddenWechatSI" bindsetValue="on_WechatSIValue"></wechatSI>
+</view>

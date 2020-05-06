@@ -1,0 +1,4 @@
+<!-- pages/personalInfo//setCity/setCity.wxml -->
+<view class="set-city">
+  <region transmit="{{ true }}" hidden="{{true}}" bind:checked="regionChecked"></region>
+</view>

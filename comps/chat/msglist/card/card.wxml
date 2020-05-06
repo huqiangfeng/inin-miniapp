@@ -1,0 +1,25 @@
+<view class="_div card" hidden="{{!(cardInfo.userId)}}">
+    <!-- {{cardInfo.avatar}} -->
+    <image src="{{cardInfo.avatar}}" class="_image card-avatar">
+    </image>
+    <view class="_div card-con">
+        <view class="_div card-name">
+            {{cardInfo.name!=null?cardInfo.name:''}}
+        </view>
+        <view class="_div card-company" wx:if="{{cardInfo.userCard}}">
+            {{cardInfo.userCard.companyName!=null?cardInfo.userCard.companyName:''}}
+        </view>
+        <view class="_div card-job" wx:if="{{cardInfo.userCard}}">
+            {{cardInfo.userCard.positionName!=null?cardInfo.userCard.positionName:''}}
+        </view>
+        <view class="_div add_friend_blue" wx:if="{{cardInfo.friendStatus==null}}" bindtap="addFriend">
+            <image src="/static/images/message/add_white.png" class="_image card-icon"></image>
+            <label class="_span">好友</label>
+        </view>
+        <view class="_div add_friend_white" wx:elif="{{cardInfo.friendStatus=='friend'}}">
+            <image src="/static/images/message/beFriends.png" class="_image card-icon"></image>
+            <label class="_span">互为好友</label>
+        </view>
+        <view wx:else class="_div add_friend_grey"> 等待验证 </view>
+    </view>
+</view>

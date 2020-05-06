@@ -1,0 +1,8 @@
+<!-- components/pushDetails/pushDetails.wxml -->
+<import src="../../wxParse/wxParse.wxml" />
+<view class="push-page">
+  <view class="title">{{  info.title }}</view>
+  <view class="itme">{{info.time }}  ·小传推送</view>
+  <template is="wxParse" data="{{wxParseData:article.nodes}}" />
+  <view class="read itme">123次阅读</view>
+</view>

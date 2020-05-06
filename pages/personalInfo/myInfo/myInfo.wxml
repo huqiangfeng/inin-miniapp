@@ -1,0 +1,87 @@
+<!-- personalInfo//myInfo/myInfo.wxml -->
+<view class="_div entire">
+    <view class="_div shadow"></view>
+    <view class="_div weui-cells weui-cells_after-title">
+        <view class="_div weui-cell weui-cell_access" hover-class="weui-cell_active" bindtap="getAvatar">
+            <view class="_div weui-cell__bd">头像</view>
+            <view class="_div weui-cell__ft weui-cell__ft_in-access">
+                <image wx:if="{{peopleInfo.avatar}}" src="{{peopleInfo.avatar}}" class="_image weui-cell__hd_avatar"></image>
+            </view>
+        </view>
+        <navigator url="{{'/pages/personalInfo/setInfoInput/setInfoInput?type=name&input='+peopleInfo.name}}" class="_navigator weui-cell weui-cell_access" hover-class="weui-cell_active">
+            <view class="_div weui-cell__bd">姓名</view>
+            <view class="_div weui-cell__ft weui-cell__ft_in-access">
+                {{peopleInfo.name!=null?peopleInfo.name:''}}
+            </view>
+        </navigator>
+        <view class="_div weui-cell weui-cell_access">
+            <view class="_div weui-cell__bd">性别</view>
+            <view class="_div weui-cell__ft">
+                <!-- 男 -->
+                <view class="label" bindtap="changeSex" data-sex="F">
+                    <image wx:if="{{localImg&&peopleInfo.gender=='F'}}" src="{{localImg+'mine/is_choose.png'}}" class="_image weui-cell__hd_img"></image>
+                    <image wx:elif="{{localImg}}" src="{{localImg+'mine/no_choose.png'}}" class="_image weui-cell__hd_img"></image>
+                    <label style="margin-right:58rpx;" class="_span">男</label>
+                </view>
+                <!-- 女 -->
+                <view class="label" bindtap="changeSex" data-sex="M">
+                    <image wx:if="{{localImg&&peopleInfo.gender=='M'}}" src="{{localImg+'mine/is_choose.png'}}" class="_image weui-cell__hd_img"></image>
+                    <image wx:elif="{{localImg}}" src="{{localImg+'mine/no_choose.png'}}" class="_image weui-cell__hd_img"></image>
+                    <label class="_span">女</label>
+                </view>
+            </view>
+        </view>
+        <navigator url="{{'/pages/personalInfo/qrCode/qrCode?userId='+ peopleInfo.userId +'&name='+ peopleInfo.name +'&avatar='+peopleInfo.avatar}}" class="_navigator weui-cell weui-cell_access" hover-class="weui-cell_active">
+            <view class="_div weui-cell__bd">我的二维码</view>
+            <view class="_div weui-cell__ft weui-cell__ft_in-access">
+                <image class="img_icon_qr" src="{{localImg+'qr.png'}}"></image>
+            </view>
+        </navigator>
+        <view class="_div weui-cell weui-cell_access" wx:if="{{peopleInfo.defaultAuthStatus=='yes'}}">
+            <view class="_div weui-cell__bd">公司</view>
+            <view class="_div weui-cell__ft">
+                {{peopleInfo.defaultCompanyName!=null?peopleInfo.defaultCompanyName:''}}
+            </view>
+        </view>
+        <navigator url="{{ '/pages/home/companyName/companyName?name='+ peopleInfo.defaultCompanyName +'&amend=true' }}" class="_navigator weui-cell weui-cell_access" hover-class="weui-cell_active" wx:else>
+            <view class="_div weui-cell__bd">公司</view>
+            <view class="_div weui-cell__ft weui-cell__ft_in-access">
+                {{peopleInfo.defaultCompanyName!=null?peopleInfo.defaultCompanyName:''}}
+            </view>
+        </navigator>
+        <navigator url="{{'/pages/personalInfo/setInfoInput/setInfoInput?type=positionName&input='+peopleInfo.defaultCompanyPosition}}" class="_navigator weui-cell weui-cell_access" hover-class="weui-cell_active">
+            <view class="_div weui-cell__bd">公司职位</view>
+            <view class="_div weui-cell__ft weui-cell__ft_in-access">
+                {{peopleInfo.defaultCompanyPosition!=null?peopleInfo.defaultCompanyPosition:''}}
+            </view>
+        </navigator>
+        <navigator url="{{'/pages/personalInfo/setCity/setCity?city='+peopleInfo.defaultAreaName}}" class="_navigator weui-cell weui-cell_access" hover-class="weui-cell_active">
+            <view class="_div weui-cell__bd">城市</view>
+            <view class="_div weui-cell__ft weui-cell__ft_in-access">
+                {{peopleInfo.defaultAreaName!=null?peopleInfo.defaultAreaName:''}}
+            </view>
+        </navigator>
+        <view class="_div weui-cell weui-cell_access" hover-class="weui-cell_active">
+            <view class="_div weui-cell__bd">手机号</view>
+            <view class="_div weui-cell__ft">
+                {{peopleInfo.account!=null?peopleInfo.account:''}}
+            </view>
+        </view>
+        <!-- 提示 -->
+        <view class="hint">
+            <image class="img_icon" src="{{localImg+'jinhao.png'}}"></image>
+            <text>仅用户可查看自己的手机号，其他人不可见</text>
+        </view>
+        <navigator url="{{'/pages/personalInfo/setInfoInput/setInfoInput?type=weixin&input='+peopleInfo.defaultWeixin}}" class="_navigator weui-cell weui-cell_access" hover-class="weui-cell_active">
+            <view class="_div weui-cell__bd">微信号</view>
+            <view class="_div weui-cell__ft weui-cell__ft_in-access">
+                {{peopleInfo.defaultWeixin!=null?peopleInfo.defaultWeixin:''}}
+            </view>
+        </navigator>
+        <!-- 提示 -->
+        <view class="hint">
+            <image class="img_icon" src="{{localImg+'jinhao.png'}}"></image>
+            <text>只有当你主动与好友交换或同意后才会展示给对方</text>
+        </view>
+    </view>
+</view>

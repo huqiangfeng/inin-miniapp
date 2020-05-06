@@ -1,0 +1,120 @@
+/* pages/im//friendRequest/friendRequest.wxss */
+.entire {
+    width: 100%;
+    height: 100%;
+    font-weight: 400;
+    color: #333;
+    background-color: #fff;
+}
+
+.shadow {
+    box-shadow: 0rpx 4rpx 12rpx 6rpx rgba(140, 140, 140, 0.1);
+}
+
+/* // 消息列表 */
+.lists {
+    color: #666;
+}
+
+.list {
+    /* // single row */
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    /* // padding: 39rpx 30rpx 32rpx 30rpx; */
+    margin: 0 30rpx;
+    padding: 39rpx 0rpx 32rpx 0rpx;
+    border-bottom: 1rpx solid #eaeaea;
+}
+
+.single_row {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.list {
+    position: relative;
+}
+
+.list_all {
+    /* // img+content */
+    display: flex;
+    justify-content: flex-start;
+    max-width: 70%;
+    align-items: center;
+}
+
+.avatar {
+    width: 100rpx;
+    height: 100rpx;
+    margin-right: 21rpx;
+    border-radius: 100%;
+}
+
+.list_content {
+    font-size: 22rpx;
+    line-height: 30rpx;
+    max-width: 70%;
+}
+
+.list_content_people {
+    font-size: 28rpx;
+    font-family: PingFangSC-Medium;
+    font-weight: 500;
+    color: #333;
+    line-height: 40rpx;
+    margin-right: 15rpx;
+}
+
+.list_content_company {
+    margin-top: 2rpx;
+}
+
+.list_content_job {
+    margin-top: 3rpx;
+}
+
+.list_content_tags {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+
+}
+
+.list_content_tags .Grey_Tag {
+    margin-right: 10rpx;
+    margin-bottom: 10rpx;
+}
+
+.is_add_friend {
+    white-space: nowrap;
+    margin: 13rpx 0 0 0;
+    width: 88rpx;
+    font-size: 26rpx;
+    line-height: 44rpx;
+    text-align: center;
+    border-radius: 22rpx;
+    position: absolute;
+    top: 30rpx;
+}
+
+.add_friend_white {
+    border: 1rpx solid #d2d2d2;
+    background-color: #fff;
+    right: 100rpx;
+}
+
+.add_friend_blue {
+    color: #fff;
+    background: linear-gradient(316deg,
+            rgba(47, 88, 255, 1) 0%,
+            rgba(111, 141, 255, 1) 100%);
+    right: 0rpx;
+}
+
+.add_friend_Grey {
+    color: #666;
+    font-size: 24rpx;
+    line-height: 33rpx;
+    margin-top: 13rpx;
+}

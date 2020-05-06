@@ -1,0 +1,92 @@
+/* pages/email/videoPlay/videoPlay.wxss */
+.videoPlay{
+    width: 100%;
+    height: 100%;
+}
+.swiper_item{
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+.share_btn{
+    width:55rpx;
+    height:55rpx;
+    border-radius: 50%;
+    background:rgba(0,0,0,0.3);
+    position: absolute;
+    top:57rpx ;
+    right: 20rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    outline: none;
+    border: 0;
+    padding: 0;
+    margin: 0;
+}
+.mute{
+    width:55rpx;
+    height:55rpx;
+    background:rgba(0,0,0,0.3);
+    border-radius: 50%;
+    position: absolute;
+    top: 174rpx;
+    right: 40rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.collection{
+    width: 68rpx;
+    height: 120rpx;
+    position: absolute;
+    top: 752rpx;
+    right: 40rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+.collection .look_num{
+    font-size:22rpx;
+    font-weight:500;
+    color:rgba(255,255,255,1);
+}
+.look{
+    width: 70rpx;
+    height: 120rpx;
+    position: absolute;
+    top: 926rpx;
+    right: 40rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+.look .look_num{
+    font-size:22rpx;
+    margin-top: 16rpx;
+    font-weight:500;
+    color:rgba(255,255,255,1);
+}
+.content{
+    min-width: 340rpx;
+    position: absolute;
+    bottom: 180rpx;
+    left: 40rpx;
+    font-family: "courier";
+}
+.content .user_info .name{
+    font-size: 34rpx;
+    color: #fff;
+    text-shadow:0rpx 1rpx 2rpx rgba(0,0,0,0.34);
+}
+.content .user_info .time{
+    font-size: 28rpx;
+    color: #ECECEC;
+    text-shadow:0rpx 1rpx 2rpx rgba(0,0,0,0.34);
+}
+.content .title{
+    font-size: 30rpx;
+    color: #EDEDED;
+}

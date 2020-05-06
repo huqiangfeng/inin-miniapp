@@ -1,0 +1,39 @@
+<!-- personalInfo//myFriend/myFriend.wxml -->
+<view class="_div entire">
+  <view class="_div shadow">
+    <view class="_div search">
+      <image wx:if="{{localImg}}" bindtap="onTapgitData" src="{{localImg+'inbox/search.png'}}" class="_image input_search"></image>
+      <input class="_input component_input_value" type="text" value="{{name}}" bindinput="changeName" placeholder="搜索姓名" confirm-type="search" placeholder-style="color: #999;font-size: 26rpx;padding-left:0rpx;" style="padding-left: 111rpx;padding-top: 8rpx;" />
+    </view>
+  </view>
+  <!--  -->
+  <scroll-view scroll-y scroll-into-view="{{locate}}" class="_scroll-view lists" wx:if="{{lists.length>0}}">
+    <view wx:key="i" key="{{i}}" id="{{item.nameFirstLetter}}" data-userId="{{item.userId}}" wx:for="{{lists}}" wx:for-index="i" wx:for-item="item" class="_div list_contentbox">
+      <view class="_div tags" wx:if="{{i!=0&&item.nameFirstLetter!=lists[i-1].nameFirstLetter||i==0}}">
+        {{item.nameFirstLetter}}
+      </view>
+      <mp-slideview buttons="{{ item.userId === delBtnId ?slideButtons2:slideButtons1}}" index="{{ i }}" bindshow="showDel" bindhide="hideDel" bindbuttontap="slideButtonTap" ishiddendel="{{ confirmDel && delBtnId == item.userId }}">
+        <view class="_div list move-x" bindtap="checkedItem" data-item="{{ item }}">
+          <image wx:if="{{item.avatar}}" src="{{item.avatar+'?width=100'}}" class="_image list_img"></image>
+          <view wx:elif="{{localImg}}" class="_div avatar_none">{{item.name}}</view>
+          <view class="_div list_con">
+            <view class="overspread"></view>
+            <view class="_div list_con_name">{{item.name}}</view>
+            <view class="_div list_con_company">{{item.userCard.companyName}}</view>
+          </view>
+        </view>
+      </mp-slideview>
+    </view>
+  </scroll-view>
+  <!--  -->
+  <view class="_div Prompt" wx:else>
+    <image wx:if="{{localImg}}" src="{{imagePath+'user_inexistence.png'}}" class="_image Prompt_Img_Icon"></image>
+    <view class="_div Prompt_Title">暂时木有好友呀～</view>
+  </view>
+  <view class="_div locate_tags">
+    <view class="_div" wx:key="i" key="{{i}}" wx:for="{{locateTags}}" wx:for-index="i" wx:for-item="item">
+      <!-- locate=item -->
+      <label bindtap="LocationChange" data-item="{{item}}" class="_span">{{item}}</label>
+    </view>
+  </view>
+</view>

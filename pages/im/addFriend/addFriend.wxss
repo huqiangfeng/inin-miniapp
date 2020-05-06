@@ -1,0 +1,265 @@
+/* im//addFriend/addFriend.wxss */
+.entire {
+    width: 100%;
+    height: 100%;
+    font-weight: 400;
+    color: #333;
+    background-color: #fff;
+}
+._div lists{
+    min-height: 100px;
+}
+.shadow {
+    display: flex;
+    justify-content: space-around;
+    padding-top: 40rpx;
+    padding-bottom: 20rpx;
+    box-shadow: 0rpx 4rpx 12rpx 6rpx rgba(140, 140, 140, 0.1);
+}
+
+/* // 用户不存在 */
+.user_inexistence {
+    width: 330rpx;
+    margin: 150rpx auto;
+    font-size: 30rpx;
+    color: #666;
+    text-align: center;
+
+}
+
+.user_inexistence image {
+    width: 330rpx;
+    height: 306rpx;
+    margin-bottom: 50rpx;
+}
+
+.invite_btn {
+    width: 250rpx;
+    margin-top: 50rpx;
+    font-size: 32rpx;
+    border-radius: 36rpx;
+    color: #fff;
+}
+
+/* // 消息列表 */
+.lists {
+    color: #666;
+}
+
+.tip {
+    margin-top: 30rpx;
+    margin-left: 30rpx;
+    font-size: 28rpx;
+    line-height: 40rpx;
+}
+
+.list {
+    /* // single row */
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin: 0 30rpx;
+    /* padding: 39rpx 0rpx 32rpx 0rpx; */
+    border-bottom: 1rpx solid #eaeaea;
+}
+
+.single_row {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.list_all {
+    /* // img+content */
+    display: flex;
+    justify-content: flex-start;
+    flex: 1;
+    box-sizing: border-box;
+    align-items: center;
+}
+
+.avatar {
+    width: 100rpx;
+    height: 100rpx;
+    margin-right: 21rpx;
+    border-radius: 100%;
+}
+
+.list_content {
+    font-size: 22rpx;
+    line-height: 30rpx;
+    flex: 1;
+}
+
+.list_content_people {
+    height: 48rpx;
+    font-size: 28rpx;
+    font-family: PingFangSC-Medium, PingFang SC;
+    font-weight: 500;
+    color: rgba(51, 51, 51, 1);
+    line-height: 40rpx;
+    margin-top: 25rpx;
+}
+
+.list_content_company {
+    margin-top: 2rpx;
+    height: 30rpx;
+    font-size: 22rpx;
+    font-family: PingFangSC-Regular, PingFang SC;
+    font-weight: 400;
+    color: rgba(102, 102, 102, 1);
+    line-height: 30rpx;
+}
+
+.list_content_job {
+    margin-top: 3rpx;
+    height: 30rpx;
+    font-size: 22rpx;
+    font-family: PingFangSC-Regular, PingFang SC;
+    font-weight: 400;
+    color: rgba(102, 102, 102, 1);
+    line-height: 30rpx;
+}
+
+.list_content_tags {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    margin-bottom: 24rpx;
+
+}
+
+.list_content_tags .Grey_Tag {
+    margin-right: 10rpx;
+    margin-top: 8rpx;
+    height: 30rpx;
+    background: rgba(240, 240, 240, 1);
+    border-radius: 34rpx;
+    font-size: 18rpx;
+    font-family: PingFangSC-Regular, PingFang SC;
+    font-weight: 400;
+    color: rgba(51, 51, 51, 1);
+    line-height: 30rpx;
+}
+
+.is_add_friend {
+    white-space: nowrap;
+    margin: 13rpx 0 0 0;
+    font-size: 26rpx;
+    line-height: 44rpx;
+}
+
+.add_friend {
+    white-space: nowrap;
+    margin: 13rpx 0 0 0;
+    width: 122rpx;
+    font-size: 26rpx;
+    line-height: 44rpx;
+    color: #fff;
+    background: linear-gradient(316deg,
+            rgba(47, 88, 255, 1) 0%,
+            rgba(111, 141, 255, 1) 100%);
+}
+
+.add_white {
+    width: 21rpx;
+    height: 21rpx;
+}
+
+.are_friend {
+    width: 122rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #5f7aff;
+    border-radius: 22rpx;
+    border: 1rpx solid #5f7aff;
+}
+
+.apply_friend {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 168rpx;
+    font-size: 24rpx;
+    text-align: center;
+    color: #666;
+    border-radius: 22rpx;
+    border: 1rpx solid #666;
+}
+
+.icon {
+    width: 24rpx;
+    height: 24rpx;
+    margin-right: 8rpx;
+}
+
+/* // 转发的底部弹窗 */
+.forward_window {
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.forward_window_content {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 348rpx;
+    color: #666;
+    background-color: #fff;
+
+
+}
+
+.forward_window_content image {
+    margin-top: 43rpx;
+    margin-bottom: 19rpx;
+    width: 86rpx;
+    height: 86rpx;
+}
+
+.forward_window_text {
+    width: 100rpx;
+    display: flex;
+    justify-content: center;
+    align-content: flex-start;
+    flex-wrap: wrap;
+    font-size: 24rpx;
+}
+
+.forward_window_line {
+    width: 670rpx;
+    height: 2rpx;
+    background-color: #eaeaea;
+    margin: 20rpx auto 29rpx auto;
+}
+
+.forward_window_btn {
+    width: 610rpx;
+    line-height: 88rpx;
+    text-align: center;
+    background: #d8d8d8;
+    border-radius: 44rpx;
+    margin: 0 auto;
+    font-size: 32rpx;
+}
+
+button,
+button::after {
+    border: none;
+    color: #666;
+    background: none;
+    margin: 0;
+    padding: 0;
+}
+
+.forward_window button {
+    background-color: #fff;
+    color: #666;
+
+}

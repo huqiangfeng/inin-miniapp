@@ -1,0 +1,156 @@
+.entire {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    color: #333;
+    background: linear-gradient(317deg,
+            rgba(95, 122, 255, 1) 0%,
+            rgba(119, 169, 255, 1) 100%);
+}
+
+/* // 投递状态 */
+.evolve_status {
+    background-color: #fff;
+    display: flex;
+    justify-content: space-between;
+    padding: 37rpx;
+    align-items: flex-start;
+    text-align: center;
+    font-size: 24rpx;
+}
+
+.evolve_block {
+    position: relative;
+    min-width: 130rpx;
+}
+
+.evolve_time {
+    color: #999;
+    font-size: 20rpx;
+    line-height: 28rpx;
+    white-space: nowrap;
+}
+
+.choose_icon {
+    width: 40rpx;
+    height: 40rpx;
+}
+
+.line_icon {
+    width: 100rpx;
+    height: 8rpx;
+    margin-top: 16rpx;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translate(105rpx, 0);
+}
+
+/* // 名片部分 */
+.info {
+    flex: 1;
+    margin: 20rpx 40rpx;
+    border-radius: 20rpx;
+    background-color: #fff;
+    /* min-height: 600rpx; */
+    overflow: hidden;
+    overflow-y: auto;
+}
+
+.card {
+    margin: 0rpx 30rpx 0 30rpx;
+    display: flex;
+    align-items: center;
+    padding-top: 40rpx;
+    padding-bottom: 40rpx;
+    border-bottom: 2rpx solid #eaeaea;
+}
+
+.avatar {
+    width: 122rpx;
+    height: 122rpx;
+    border-radius: 100%;
+    margin-right: 20rpx;
+}
+
+.card_name {
+    font-size: 36rpx;
+    font-weight: 500;
+    line-height: 50rpx;
+    margin-bottom: 5rpx;
+}
+
+.card_company {
+    font-size: 26rpx;
+    font-weight: 500;
+    line-height: 37rpx;
+    margin-bottom: 5rpx;
+}
+
+.card_job {
+    font-size: 24rpx;
+    line-height: 33rpx;
+}
+
+.tags {
+    margin-top: 30rpx;
+    padding: 0 30rpx;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.tag {
+    padding: 8rpx 20rpx;
+    line-height: 33rpx;
+    color: #fff;
+    font-size: 24rpx;
+    background: linear-gradient(317deg, #5f7aff 0%, #77a9ff 100%);
+    border-radius: 34rpx;
+    margin-right: 30rpx;
+    margin-bottom: 30rpx;
+    white-space: nowrap;
+}
+
+.content {
+    margin: 40rpx 30rpx;
+    font-size: 28rpx;
+    line-height: 40rpx;
+    padding-bottom: 60rpx;
+}
+
+/* // 附件 */
+.accessory {
+    border-top: 2rpx solid #eaeaea;
+    padding: 20rpx 30rpx 60rpx 30rpx;
+}
+
+.accessory_title {
+    font-size: 28rpx;
+    font-family: PingFangSC-Medium;
+    font-weight: 500;
+    line-height: 40rpx;
+    margin-bottom: 20rpx;
+}
+
+.accessory_con {
+    display: flex;
+}
+
+.accessory_icon {
+    width: 94rpx;
+    height: 94rpx;
+    margin-right: 20rpx;
+}
+
+.accessory_name {
+    height: 48rpx;
+    font-size: 34rpx;
+    margin-bottom: 5rpx;
+}
+
+.accessory_info {
+    color: #999;
+    height: 30rpx;
+    font-size: 22rpx;
+}

@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "wechatSI": "../../../components/wechatSI/wechatSI"
+  },
+  "navigationBarBackgroundColor":"#77A9FF",
+  "navigationBarTextStyle":"white",
+  "navigationBarTitleText":"拜访"
+}

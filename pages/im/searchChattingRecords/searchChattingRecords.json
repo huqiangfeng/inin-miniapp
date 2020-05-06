@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "publicSearch": "/components/publicSearch/publicSearch",
+    "chattingRecords": "/components/chattingRecords/chattingRecords"
+  },
+  "navigationBarTitleText": "消息"
+}

@@ -1,0 +1,49 @@
+.recommend {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.recommend .nav {
+  width: 100%;
+  height: 292rpx;
+}
+.recommend .nav .img-bg {
+  width: 100%;
+  height: 100%;
+}
+.recommend .threading {
+  margin: 40rpx 30rpx;
+  height: 1px;
+  position: relative;
+  background: #dbdee9;
+}
+.recommend .threading text {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #848cb1;
+  line-height: 40rpx;
+  padding: 0 30rpx;
+  background-color: #fff;
+}
+.recommend .list {
+  flex: 1;
+  overflow: hidden;
+}
+.recommend .btn {
+  width: 610rpx;
+  height: 88rpx;
+  margin: 16rpx auto;
+  background: linear-gradient(317deg, #5f7aff 0%, #77a9ff 100%);
+  border-radius: 44rpx;
+  font-size: 32rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #ffffff;
+  line-height: 88rpx;
+  text-align: center;
+}

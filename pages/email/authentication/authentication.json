@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "cardBGC": "/components/cardBGC/cardBGC",
+    "card": "/components/card/card"
+  },
+  "navigationBarTitleText": "企业认证",
+  "navigationStyle": "custom"
+}

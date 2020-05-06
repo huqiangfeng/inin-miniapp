@@ -1,0 +1,68 @@
+<view class="_div entire">
+    <navigation-bar delta="{{ delta }}" show="{{ true }}" color="#fff" title="{{ sendData.companyName }}" back="{{ true }}"></navigation-bar>
+    <view class="_div evolve_status">
+        <view class="_div evolve_block">
+            <image wx:if="{{localImg}}" src="{{localImg+'mine/is_choose.png'}}" class="_image choose_icon"></image>
+            <view class="_div">已投递</view>
+            <view class="_div">{{sendData.time}}</view>
+            <image wx:if="{{localImg&&sendData.firstViewedTime}}" src="{{localImg+'mine/evolve_blue.png'}}" class="_image line_icon"></image>
+            <image wx:elif="{{localImg}}" src="{{localImg+'mine/evolve_grey.png'}}" class="_image line_icon"></image>
+        </view>
+        <view class="_div evolve_block">
+            <image wx:if="{{localImg&&sendData.firstViewedTime!=''}}" src="{{localImg+'mine/is_choose.png'}}" class="_image choose_icon"></image>
+            <image wx:elif="{{localImg}}" src="{{localImg+'mine/no_choose.png'}}" class="_image choose_icon"></image>
+            <view class="_div">被查看</view>
+            <view class="_div">{{sendData.firstViewedTime}}</view>
+            <image wx:if="{{localImg&&sendData.firstTalkTime!=''&&sendData.firstForwardTime!=''}}" src="{{localImg+'mine/evolve_blue.png'}}" class="_image line_icon"></image>
+            <image wx:elif="{{localImg}}" src="{{localImg+'mine/evolve_grey.png'}}" class="_image line_icon"></image>
+        </view>
+        <view class="_div evolve_block">
+            <image wx:if="{{localImg&&(sendData.firstTalkTime!=''||sendData.firstForwardTime!='')}}" src="{{localImg+'mine/is_choose.png'}}" class="_image choose_icon"></image>
+            <image wx:elif="{{localImg}}" src="{{localImg+'mine/no_choose.png'}}" class="_image choose_icon"></image>
+            <view wx:if="{{sendData.firstForwardTime==''}}" class="_div">有意向</view>
+            <view wx:else class="_div">被转发</view>
+            <view wx:if="{{sendData.firstForwardTime==''}}" class="_div">
+                {{sendData.firstTalkTime}}
+            </view>
+            <view wx:else class="_div">{{sendData.firstTalkTime}}</view>
+            <image wx:if="{{localImg&&sendData.firstTalkTime!=''&&sendData.firstForwardTime!=''}}" src="{{localImg+'mine/evolve_blue.png'}}" class="_image line_icon"></image>
+            <image wx:elif="{{localImg}}" src="{{localImg+'mine/evolve_grey.png'}}" class="_image line_icon"></image>
+        </view>
+        <view class="_div evolve_block">
+            <image wx:if="{{localImg}}" src="{{localImg+'mine/no_choose.png'}}" class="_image choose_icon"></image>
+            <view wx:if="{{sendData.firstForwardTime==''}}" class="_div">被转发</view>
+            <view wx:else class="_div">有意向</view>
+            <view wx:if="{{sendData.firstForwardTime==''}}" class="_div">
+                {{sendData.firstForwardTime}}
+            </view>
+            <view wx:else class="_div">{{sendData.firstTalkTime}}</view>
+        </view>
+    </view>
+    <view class="_div info">
+        <view class="_div card">
+            <image wx:if="{{sendData.sendUserAvatar}}" src="{{sendData.sendUserAvatar}}" class="_image avatar"></image>
+            <image wx:elif="{{localImg}}" src="{{imagePath+'user.png'}}" class="_image avatar"></image>
+            <view class="_div card_content">
+                <view class="_div card_name">{{sendData.sendUserName}}</view>
+                <view class="_div card_company">{{sendData.sendUserCompany}}</view>
+                <view class="_div card_job">{{sendData.sendUserPosition}}</view>
+            </view>
+        </view>
+        <view class="_div tags">
+            <view class="_div tag" wx:key="i" key="{{i}}" wx:for="{{sendData.keywords}}" wx:for-index="i" wx:for-item="item">
+                {{item}}
+            </view>
+        </view>
+        <view class="_div content">{{sendData.content}}</view>
+        <view class="_div accessory" wx:if="{{sendData.attachment!=null}}">
+            <view class="_div accessory_title">附件</view>
+            <view class="_div accessory_con" bindtap="viewAttachment" data-eventid="{{'1'}}" data-comkey="{{$k}}">
+                <image wx:if="{{localImg}}" src="{{imagePath+'folder.png'}}" class="_image accessory_icon"></image>
+                <view class="_div">
+                    <view class="_div accessory_name">{{sendData.attachmentName}}</view>
+                    <view class="_div accessory_info">{{sendData.measurement}} {{fileTime}}上传</view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

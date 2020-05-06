@@ -1,0 +1,69 @@
+<!-- /*
+ * @Author: wangyuan 
+ * @Date: 2020-03-13 17:28:50 
+ * @Last Modified by:   wonyuan@163.com 
+ * @Last Modified time: 2020-03-13 17:28:50 
+ */ -->
+<view class="container">
+   	<block wx:for="{{videoList}}" wx:key='index'>
+		<view class="content">
+			<view class="video_item" data-index='{{index}}'>
+				<view class="item_header">
+				   <view class="le_con">
+					   <view class="user_avatar">
+							<image style="width: 64rpx;height: 64rpx;border-radius: 50%;" src="{{item.user.avatar}}"></image>
+					   </view>
+					   <view class="user_info">
+						   <view class="user_name_position">
+							   <span class="name">{{item.user.name}}</span>
+							   <span class="positon">-{{item.user.positionName}}</span>
+						   </view>
+						   <view class="user_comapny">
+							   {{item.user.companyName}}
+						   </view>
+					   </view>
+				   </view>
+				   <view class="ri_con">
+					   <!-- 是好友 -->
+						<view wx:if="{{item.friendStatus == null}}" class="add_btn" bindtap='addFriend' data-index="{{index}}" data-userId="{{item.user.userId}}">
+							<span style="font-weight: bold;">+</span>
+							好友
+						</view>
+						<view wx:if="{{item.friendStatus == 'friend'}}" class="wait_feiend" data-index="{{index}}" data-userId="{{item.user.userId}}">
+							联系
+						</view>
+						<view wx:if="{{item.friendStatus == 'applying'}}" class="wait_feiend" data-index="{{index}}" data-userId="{{item.user.userId}}">
+							等待验证
+						</view>
+				   </view>
+				</view>
+				<view class="item_body">
+				   <view style="width: 100%;height: 100%;border-radius: 10rpx;">
+					   <image data-index="{{index}}" bindtap="playVideo"  style="width: 100%;height: 100%;border-radius: 10rpx;" mode="scaleToFill" src='{{item.vod.coverUrl}}'></image>
+				   </view>
+				   <view class="look_num">
+						<image style="width:30rpx;height:18rpx;margin-right: 5rpx;" mode="scaleToFill" src='../../static/see.png'></image>
+					   	<span>{{item.vod.lookdNum}}人</span>
+				   </view>
+				</view>
+				<view class="item_bottom">
+					<view class="title">#{{item.vod.description}}</view>
+					<view class="opation">
+						<span class="time">{{item.vod.releaseTime}}</span>
+						<view class="soon" bindtap='shareBtn' data-index='{{index}}'>...</view>
+					</view>
+					<view class="share_box" wx:if="{{item.vod.isChecked}}">
+						<view class="forward">
+							<image  mode="scaleToFill" style="width: 30rpx;height:30rpx;margin-right:30rpx;margin-left: 40rpx;" src='../../static/sharevideo.png'></image>
+							<button open-type="share" class="share_btn">分享当前视频</button>
+							<!-- <span style="color:#333;font-size: 26rpx;">分享当前视频</span> -->
+						</view>
+					</view>
+				</view>
+			<!-- <video binderror='binderror' autoplay wx:if="{{item.vod.isChecked}}" style="width: 100%;" src="{{item.vod.playUrl}}"></video>
+			<image wx:else style="width: 100%;height: 100%;" mode="scaleToFill" src='{{item.vod.coverUrl}}'></image> -->
+			 </view>
+		</view>
+      	
+   </block>
+</view>

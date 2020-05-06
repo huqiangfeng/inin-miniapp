@@ -1,0 +1,242 @@
+@import '../../app.wxss';
+
+.back_gauge {
+    width: 690rpx;
+    height: 240rpx;
+    background: rgba(255, 255, 255, 1);
+    box-shadow: 2rpx 4rpx 12rpx 6rpx rgba(140, 140, 140, 0.1);
+    border-radius: 20rpx;
+}
+
+.component_company_list {
+    width: 690rpx;
+    height: 180rpx;
+    background: rgba(255, 255, 255, 1);
+    box-shadow: 2rpx 4rpx 12rpx 6rpx rgba(140, 140, 140, 0.1);
+    border-radius: 20rpx;
+    /* padding-left: 30rpx;
+    padding-right: 30rpx;
+    margin-top: 35rpx; */
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.component_edit {
+    position: absolute;
+    top: 20rpx;
+    right: 20rpx;
+    height: 45rpx;
+    display: flex;
+    align-items: center;
+    font-weight: 400;
+    font-family: PingFangSC-Regular;
+}
+
+.component_edit_white {
+    position: absolute;
+    top: 20rpx;
+    right: 20rpx;
+    height: 45rpx;
+    display: flex;
+    align-items: center;
+    font-weight: 400;
+    font-family: PingFangSC-Regular;
+    font-size: 24rpx;
+    color: #979797;
+}
+
+.component_edit_blue {
+    position: absolute;
+    top: 20rpx;
+    right: 20rpx;
+    height: 45rpx;
+    display: flex;
+    align-items: center;
+    font-weight: 400;
+    font-family: PingFangSC-Regular;
+    font-size: 22rpx;
+    justify-content: center;
+    width: 110rpx;
+    border-radius: 23rpx;
+    color: #fff;
+    background: linear-gradient(315deg, #5f7aff 0%, #77a9ff 100%);
+}
+
+.component_icon {
+    width: 26rpx;
+    height: 26rpx;
+    margin-right: 9rpx;
+    /* background: rgba(151, 151, 151, 1); */
+}
+
+.single_row {
+    display: flex;
+}
+
+.component_company_content {
+    display: flex;
+    /* margin-top: 30rpx; */
+}
+
+.flex1 {
+    flex: 1;
+    padding-left: 20rpx;
+}
+
+.component_company_img2 {
+    width: 120rpx;
+    height: 120rpx;
+    border-radius: 50%;
+    margin: 58rpx 0 0 20rpx;
+}
+
+.component_company_img1 {
+    width: 90rpx;
+    height: 91rpx;
+    margin: 47rpx 0 0 20rpx;
+}
+
+.component_company_img_null {
+    width: 90rpx;
+    height: 91rpx;
+    margin: 47rpx 0 0 20rpx;
+    border: 1rpx solid #ccc;
+    display: flex;
+    justify-content: center;
+    font-size: 24rpx;
+    align-items: center;
+    color: rgba(102, 102, 102, 1);
+    line-height: 37rpx;
+    padding: 10rpx;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.component_company_msg1 {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    height: 48rpx;
+    font-size: 26rpx;
+    font-family: PingFangSC-Medium, PingFang SC;
+    font-weight: 500;
+    color: rgba(51, 51, 51, 1);
+    line-height: 48rpx;
+    margin-top: 35rpx;
+}
+
+.component_company_msg2 {
+    height: 37rpx;
+    font-size: 26rpx;
+    font-family: PingFangSC-Medium, PingFang SC;
+    font-weight: 500;
+    color: rgba(102, 102, 102, 1);
+    line-height: 37rpx;
+    margin-top: 5rpx;
+}
+
+.line {
+    width: 2rpx;
+    height: 30rpx;
+    background-color: #d2d2d2;
+    margin: 20rpx 14rpx;
+}
+
+/* // 企业力量量收藏量 */
+.component_company_statistic {
+    display: flex;
+    margin-top: 6rpx;
+}
+
+.component_company_statistic_num {
+    font-size: 24rpx;
+    font-family: PingFangSC-Regular, PingFang SC;
+    font-weight: 400;
+    color: rgba(102, 102, 102, 1);
+    line-height: 33rpx;
+}
+
+.component_company_statistic_title {
+    font-size: 18rpx;
+    font-family: PingFangSC-Regular, PingFang SC;
+    font-weight: 400;
+    color: rgba(153, 153, 153, 1);
+    line-height: 25rpx;
+}
+
+/* // 输入职位 */
+.component_people_name {
+    padding-top: 55rpx;
+    height: 50rpx;
+    font-size: 36rpx;
+    font-family: PingFangSC-Medium, PingFang SC;
+    font-weight: 500;
+    color: rgba(51, 51, 51, 1);
+    line-height: 50rpx;
+
+}
+
+.component_input_job {
+    font-size: 24rpx;
+    font-family: PingFangSC-Regular, PingFang SC;
+    font-weight: 400;
+    color: rgba(102, 102, 102, 1);
+    line-height: 33rpx;
+}
+
+.component_send_icon {
+    width: 48rpx;
+    height: 48rpx;
+}
+
+.collect {
+    width: 127rpx;
+    padding: 5rpx 10rpx;
+    line-height: 46rpx;
+    font-size: 22rpx;
+    text-align: center;
+    border-radius: 45rpx;
+    border: 1px solid rgba(95, 122, 255, 1);
+    white-space: nowrap;
+}
+
+.no_collect {
+
+    width: 127rpx;
+    height: 45rpx;
+    line-height: 45rpx;
+    font-size: 22rpx;
+    text-align: center;
+    border-radius: 23rpx;
+    border: 1px solid rgba(95, 122, 255, 1);
+    white-space: nowrap;
+    color: #fff;
+    background: linear-gradient(315deg,
+            rgba(95, 122, 255, 1) 0%,
+            rgba(119, 169, 255, 1) 100%);
+    margin: 40rpx 20rpx 0 0;
+}
+
+.is_collect {
+
+    width: 127rpx;
+    height: 45rpx;
+    background: rgba(255, 255, 255, 1);
+    border-radius: 23rpx;
+    border: 1px solid rgba(95, 122, 255, 1);
+    color: #5f7aff;
+    line-height: 45rpx;
+    font-size: 22rpx;
+    text-align: center;
+    white-space: nowrap;
+    margin: 40rpx 20rpx 0 0;
+
+}
+
+.star {
+    width: 24rpx;
+    height: 24rpx;
+    vertical-align: sub;
+    margin-bottom: 3rpx;
+}

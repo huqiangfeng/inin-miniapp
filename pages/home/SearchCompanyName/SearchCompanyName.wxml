@@ -1,0 +1,28 @@
+<!-- pages/home/SearchCompanyName/SearchCompanyName.wxml -->
+<view class="_div entire">
+    <view class="_div search_row">
+        <view class="_div component_input_back">
+            <input class="_input component_input_value" type="text" value="{{searchData}}" bindinput="onChangeValue" placeholder="搜索关键词" confirm-type="search" placeholder-style="color: #999;font-size: 26rpx;padding-left:0rpx;" style="width:75%;" />
+            <image class="_image component_input_search" wx:if="{{localImg}}" src="{{localImg+'inbox/search.png'}}" bindtap="search"></image>
+            <image wx:if="{{localImg&&searchData!=''}}" src="{{localImg+'mine/delete_grey.png'}}" class="_image component_del_icon" catchtap="onDelData"></image>
+        </view>
+        <label bindtap="returnPage" class="_span">取消</label>
+    </view>
+    <view class="_div lists" wx:if="{{companyLists&&companyLists.length>0}}">
+        <view class="_div list" wx:key="i" key="{{i}}" bindtap="changeCompanyPage" data-index="{{ i }}" wx:for="{{companyLists}}" wx:for-index="i" wx:for-item="item">
+            <image class="_image company_img" wx:if="{{localImg&&item.logo}}" src="{{item.logo}}"></image>
+            <view wx:else class="_div company_img" style="border-radius: 50%;border: 1rpx solid #ccc;">
+                {{item.img}}
+            </view>
+            <view class="_div company_name">{{item.name}}</view>
+        </view>
+    </view>
+    <view class="_div Prompt" wx:elif="{{searchData!=''}}">
+        <image wx:if="{{localImg}}" src="{{imagePath+'no_search.png'}}" class="_image Prompt_Img_Icon"></image>
+        <view class="_div Prompt_Title">暂无搜索结果噢～</view>
+    </view>
+    <view class="_div Grey_Bottom_Sense" wx:if="{{loadingShow}}">
+        <image wx:if="{{localImg&&loading}}" src="{{localImg+'loading_icon.png'}}" style="width:30rpx;height:30rpx;margin-right:6rpx;" class="_image"></image>
+        {{loading?'加载更多':'所有数据已加载完'}}
+    </view>
+</view>

@@ -1,0 +1,78 @@
+<!-- inbox//search/search.wxml -->
+<view class="_div  entire">
+    <!-- modal -->
+<van-overlay show="{{showModal}}"  bind:click="onClickHide" style="position:relative">
+    <view class="opations">
+        <veiw class="option_item">
+            <text class="text">拜访</text>
+            <view class="icon_b icon" catchtap="visitEvent">
+                <image class="icon_item" src="../../../static/visit.png"></image>
+            </view>
+        </veiw>
+        <veiw class="option_item" style="margin-top:15rpx">
+            <text class="text">合作</text>
+            <view class="icon_h icon" catchtap="cooperationEvent">
+                <image class="icon_item" src="../../../static/coor.png"></image>
+            </view>
+        </veiw>
+    </view>
+</van-overlay>
+    <view class="public-search">
+        <publicSearch placeholder='搜索关键词' bind:onCancelBtn="onCancelBtn" value="{{searchData}}" bind:onSearch="getData" bind:onClear="clear" bind:onChangeValue="onChangeValue">
+            <!-- 搜索条件 -->
+            <view wx:if="{{transmit}}" class="search-condition">
+                <view class="search-item" bind:tap='navType' data-type="region">
+                    <view class="text {{!!location || searchCheckde === 'region'? 'checkde':'' }}">
+                        所在地区
+                    </view>
+                    <image wx:if="{{searchCheckde === 'region'}}" src="{{localImg+'/yixuanzhe.png'}}" class="_image  _Img_Icon"></image>
+                    <image wx:else="{{localImg}}" src="{{localImg+'weixuanzhe.png'}}" class="_image  _Img_Icon"></image>
+                </view>
+                <view class="search-item" bind:tap='navType' data-type="businessType">
+                    <view class=" text {{ businessType.length !==0 || searchCheckde==='businessType'?'checkde':'' }}">
+                        业务类型
+                    </view>
+                    <image wx:if="{{searchCheckde==='businessType'}}" src="{{localImg+'/yixuanzhe.png'}}" class="_image  _Img_Icon"></image>
+                    <image wx:else="{{localImg}}" src="{{localImg+'weixuanzhe.png'}}" class="_image  _Img_Icon"></image>
+                </view>
+            </view>
+            <view class="region" hidden="{{searchCheckde !== 'region'}}">
+                <region transmit="{{ !!transmit }}" bind:checked="regionChecked"></region>
+            </view>
+            <view class="region" hidden="{{searchCheckde !== 'businessType'}}">
+                <businessType transmit="{{ !!transmit }}" bind:confirm="typeChecked"></businessType>
+            </view>
+        </publicSearch>
+    </view>
+    <!-- 遮罩 -->
+    <overlay show="{{ searchCheckde == 'region'|| searchCheckde == 'businessType'  }}" bind:tap="on_huddenSearchCheckde"></overlay>
+    <!-- 推荐类别 -->
+    <!-- <view class="_div  search_before" wx:if="{{!isSearch}}">
+        <view class="_div  search_before_title">
+            <image src="{{localImg+'inbox/recommend.png'}}" wx:if="{{localImg}}" style="width:34rpx;height:38rpx;"
+                class="_image "></image> <label style="margin-left: 20rpx;"> 推荐类别</label>
+        </view>
+        <view class="_div  search_before_tags">
+            <view class="_div  search_before_tag" wx:key="i" data-text="{{ item }}" bindtap="searchCategory"
+                wx:for="{{tags}}" wx:for-index="i" wx:for-item="item">
+                {{item}}
+            </view>
+        </view>
+    </view> -->
+    <view class="recommend">
+        <van-dropdown-menu active-color="#4A64E4">
+            <van-dropdown-item title="距离" value="{{currentVal}}" options="{{ option1 }}" bind:change="changeDistance" />
+        </van-dropdown-menu>
+    </view>
+    <view class="entire-content">
+        <scroll-view class="company-list" scroll-y="true" bindscrolltolower="on_scrollLower">
+            <view wx:if="{{companyLists.length>0}}">
+                <companyList bind:showModal="showModal" bind:titleImgErr="titleImgErr" lists='{{companyLists}}' iconSend='{{isLogin}}' bind:onListEvent="onChangeCompanyPage" bind:onIconSendEvent="onIconSendEvent" bind:scrollLower="on_scrollLower"></companyList>
+            </view>
+            <view class="_div  Prompt" wx:else="{{isSearch}}">
+                <image wx:if="{{localImg}}" src="{{imagePath+'no_search.png'}}" class="_image  Prompt_Img_Icon"></image>
+                <view class="_div  Prompt_Title">暂无搜索结果噢～</view>
+            </view>
+        </scroll-view>
+    </view>
+</view>

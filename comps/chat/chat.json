@@ -1,0 +1,8 @@
+{
+	"component": true,
+	"usingComponents": {
+		"chat-msglist": "msglist/msglist",
+		"myFriend": "/components/myFriend/myFriend",
+		"chat-inputbar": "inputbar/inputbar"
+	}
+}

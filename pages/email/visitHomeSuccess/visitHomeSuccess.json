@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "van-divider": "@vant/weapp/divider/index"
+  },
+  "navigationBarBackgroundColor":"#6f88f8",
+  "navigationBarTextStyle":"white"
+}

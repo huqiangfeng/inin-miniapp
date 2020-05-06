@@ -1,0 +1,159 @@
+/* components/chattingRecords/chattingRecords.wxss */
+
+/* // 消息列表 */
+
+.lists {
+  background-color: #fff;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  height: 100%;
+  padding-bottom: 30rpx;
+  flex: 1;
+  padding: 0 30rpx
+}
+
+.list_contentbox {
+  border-bottom: 1rpx solid #eaeaea;
+}
+
+.list {
+  /* // single row */
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  /* // padding: 39rpx 30rpx 32rpx 30rpx; */
+  padding: 39rpx 0rpx 32rpx 0rpx;
+  position: relative;
+}
+
+.single_row {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.list_all {
+  /* // img+content */
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 550rpx;
+}
+
+.list-right-box {
+  width: 200rpx;
+  padding-right: 30rpx;
+  box-sizing: border-box;
+}
+
+.avatar {
+  width: 100rpx;
+  height: 100rpx;
+  margin-right: 21rpx;
+  border-radius: 100%;
+}
+
+.list_content {
+  max-width: 70%;
+}
+
+.list_content_title_l {
+  font-size: 28rpx;
+  line-height: 40rpx;
+  font-family: PingFangSC-Medium;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.list_content_title_r {
+  font-weight: 400;
+  font-size: 22rpx;
+  margin-bottom: 10rpx;
+}
+
+.list_content_tags {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+
+}
+
+.list_content_tags .Grey_Tag {
+  margin-right: 10rpx;
+}
+
+.list_content_flag {
+  display: flex;
+  justify-content: flex-start;
+  font-size: 26rpx;
+  margin-left: -10rpx;
+
+}
+
+.list_content_flag .flag {
+  color: #999;
+  /* margin-right: 10rpx; */
+  white-space: nowrap;
+}
+
+.list_time {
+  color: #999;
+  font-size: 22rpx;
+  text-align: right;
+}
+
+.img-emoji {
+  width: 22rpx;
+  height: 22rpx;
+  display: inline-block;
+}
+
+
+.unread-box {
+  padding-top: 16rpx;
+  text-align: right;
+  padding-right: 5rpx;
+}
+
+.unread {
+  display: inline-block;
+  line-height: 30rpx;
+  font-size: 22rpx;
+  text-align: center;
+  color: #fff;
+  background-color: #e91f1f;
+  transform: translate(6rpx, -12rpx);
+}
+
+.unread-normal {
+  border-radius: 20rpx;
+  width: 40rpx;
+}
+
+.unread-max {
+  width: 50rpx;
+  border-radius: 20rpx;
+}
+
+.unread-min {
+  width: 33rpx;
+  border-radius: 100%;
+}
+
+/* // 红色删除图标 */
+.del_btn {
+  width: 180rpx;
+  height: 100%;
+  color: #fff;
+  background: #e91f1f;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translateX(210rpx);
+}
+
+.emoji-box view {
+  display: inline-block
+}

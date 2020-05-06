@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "chat": "../../comps/chat/chat"
+  },
+  "navigationBarTitleText": "需求名片"
+}

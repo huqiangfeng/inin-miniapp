@@ -1,0 +1,21 @@
+<!-- pages/personalInfo//myTranspond/myTranspond.wxml -->
+<view class="_div entire">
+    <view class="_div shadow"></view>
+    <view class="_div lists">
+        <view class="_div list" wx:key="i" key="{{i}}" wx:for="{{cardList}}" wx:for-index="i" wx:for-item="item">
+            <image wx:if="{{item.avatar}}" src="{{item.avatar}}" class="_image avatar"></image>
+            <image wx:elif="{{localImg}}" src="{{imagePath+'user.png'}}" class="_image avatar"></image>
+            <view class="_div content">
+                <view class="_div name">{{item.name}}</view>
+                <view class="_div company">{{item.userCard.companyName}}</view>
+                <view class="_div job">{{item.userCard.positionName}}</view>
+                <view class="_div tabs">
+                    <view class="_div Grey_Tag" wx:key="j" key="{{j}}" wx:for="{{item.keywordList}}" wx:for-index="j" wx:for-item="tag">
+                        {{tag}}
+                    </view>
+                </view>
+            </view>
+            <view class="_div time">{{item.time}}</view>
+        </view>
+    </view>
+</view>

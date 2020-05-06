@@ -1,0 +1,65 @@
+.entire {
+  width: 100%;
+  height: 100%;
+  color: #333;
+  font-weight: 400;
+  font-family: PingFangSC-Regular;
+}
+
+/* // 列表 */
+.lists {
+  margin: 0rpx 40rpx 0 40rpx;
+}
+
+.list {
+  padding: 40rpx 0;
+  border-bottom: 1rpx solid #eaeaea;
+}
+
+.list_sb_row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.list-title {
+  font-size: 30rpx;
+  font-family: PingFangSC-Medium;
+  font-weight: 500;
+  line-height: 42rpx;
+}
+
+.list-time {
+  font-size: 22rpx;
+  line-height: 30px;
+  color: #999;
+  text-align: right;
+}
+
+.list_content {
+  width: 80%;
+  font-size: 28rpx;
+  font-family: PingFangSC-Medium;
+  line-height: 40rpx;
+  margin-top: 15rpx;
+  margin-bottom: 25rpx;
+}
+
+.list_name {
+  width: 80%;
+  color: #666;
+  font-size: 24rpx;
+  line-height: 33rpx;
+}
+
+.list_status {
+  color: #333;
+  font-size: 24rpx;
+  line-height: 33rpx;
+  text-align: right;
+}
+
+.list_status_blue {
+  color: #5f7aff;
+  font-weight: 500;
+}

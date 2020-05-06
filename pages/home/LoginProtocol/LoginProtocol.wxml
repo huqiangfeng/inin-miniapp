@@ -1,0 +1,5 @@
+<!--pages/home/LoginProtocol/LoginProtocol.wxml-->
+<view class="container">
+    <web-view src="https://wx.onechuan.com/agreement?client_id=weixin_applet_key&nonce=7&timestamp=1570859739336"
+        bindmessage=""></web-view>
+</view>

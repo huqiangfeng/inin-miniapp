@@ -1,0 +1,164 @@
+<!-- pages/personal/personal.wxml -->
+<view class="_div entire">
+    <view class="_div nav_back">
+        <navigation-bar show="{{ true }}" color="#fff" back="{{ false }}"></navigation-bar>
+        <!-- 蓝色头部 -->
+        <view class="_div nav" bindtap="toMyInfo" wx:if="{{isLogin}}">
+            <view class="_div nav_content">
+                <image src="{{peopleInfo.avatar}}" wx:if="{{peopleInfo.avatar}}" class="_image avatar"></image>
+                <image src="{{imagePath+'user.png'}}" wx:elif="{{localImg}}" class="_image avatar"></image>
+                <view style="flex:1;" class="_div">
+                    <view class="_div nav_con_first">
+                        <view class="_div nav_con_first_name Omit">
+                            <label wx:if="{{peopleInfo.name}}" class="_span">
+                                {{peopleInfo.name}}
+                            </label>
+                            <label wx:else class="_span">暂无</label>
+                        </view>
+                        <!-- 去认证 -->
+                        <view catchtap="approve" class="_div {{peopleInfo.defaultAuthStatus == 'no'  ? 'nav_con_first_approve'  : 'nav_con_first_approve_no'}}">
+                            <image src="{{localImg+'mine/no_approve.png'}}" wx:if="{{localImg&&peopleInfo.defaultAuthStatus=='no'}}" class="_image approve_icon"></image>
+                            <image src="{{localImg+'mine/is_approve.png'}}" wx:if="{{localImg&&peopleInfo.defaultAuthStatus=='yes'}}" class="_image approve_icon"></image>
+                            <label wx:if="{{peopleInfo.defaultAuthStatus=='no'}}" class="_span">
+                                去认证
+                            </label>
+                            <label wx:else class="_span">已认证</label>
+                        </view>
+                    </view>
+                    <view class="_div nav_con_second">
+                        {{peopleInfo.defaultCompanyName?peopleInfo.defaultCompanyName:''}}
+                    </view>
+                    <view style="font-size: 26rpx;">一传号：{{peopleInfo.userShortId}}</view>
+                </view>
+            </view>
+            <view style="flex:1;height:110rpx;display: flex;justify-content: flex-end;align-items: center;padding-right: 10rpx;" class="_navigator">
+                <view class="_div nav_arrow"></view>
+            </view>
+        </view>
+        <view class="_div nav_no_login" wx:elif="{{!isLogin}}">
+            <view class="_div">一键登录，解锁更多功能哦～</view>
+            <navigator url="/pages/home/login/login" class="_navigator nav_no_login_btn">
+                登录/注册
+            </navigator>
+        </view>
+    </view>
+    <!-- 我的投递 -->
+    <view class="_div my_send">
+        <view class="_div weui-cells weui-cells_after-title">
+            <view bindtap="changePage" data-url="/pages/personalInfo/mySend/mySend" class="_div weui-cell weui-cell_access" hover-class="weui-cell_active">
+                <view class="_div weui-cell__hd">
+                    <image wx:if="{{localImg}}" src="{{localImg+'mine/my_post.png'}}" class="_image weui-cell__hd_img"></image>
+                </view>
+                <view class="_div weui-cell__bd">我的投递</view>
+                <view class="_div weui-cell__ft ">全部 》</view>
+            </view>
+        </view>
+        <view class="_div my_send_msgs">
+            <view class="_div my_send_msg" bindtap="mySend" data-status="viewed">
+                <image wx:if="{{localImg}}" src="{{imagePath+'be_look.png'}}" class="_image my_send_msg_img"></image>
+                <view class="_div my_send_msg_text">
+                    被查看
+                    ({{peopleInfo.userSendbox?peopleInfo.userSendbox.viewedCount:0}})
+                </view>
+            </view>
+            <view class="_div my_send_msg" bindtap="mySend" data-status="talked">
+                <image wx:if="{{localImg}}" src="{{imagePath+'be_intentioned.png'}}" class="_image my_send_msg_img"></image>
+                <view class="_div my_send_msg_text">
+                    有意向({{peopleInfo.userSendbox?peopleInfo.userSendbox.talkedCount:0}})
+                </view>
+            </view>
+            <view class="_div my_send_msg" bindtap="mySend" data-status="forward">
+                <image wx:if="{{localImg}}" src="{{imagePath+'be_transpond.png'}}" class="_image my_send_msg_img"></image>
+                <view class="_div my_send_msg_text">
+                    被转发({{peopleInfo.userSendbox?peopleInfo.userSendbox.forwardedCount:0}})
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="_div grey_line"></view>
+    <!-- 个人中心 -->
+    <view class="_div personal_center">
+        <view class="_div weui-cells weui-cells_after-title">
+            <!-- 拜访业务 -->
+            <view bindtap="changePage" data-url="/pages/personalInfo/myVisitBusiness/myVisitBusiness" class="_div weui-cell weui-cell_access" hover-class="weui-cell_active">
+                <view class="_div weui-cell__hd">
+                    <image wx:if="{{localImg}}" src="{{localImg+'mine/my_friend.png'}}" class="_image weui-cell__hd_img"></image>
+                </view>
+                <view class="_div weui-cell__bd">拜访业务</view>
+                <view class="_div weui-cell__ft weui-cell__ft_in-access"></view>
+            </view>
+            <!-- 我的名片 -->
+            <view bindtap="changePage" data-url="/pages/personalInfo/myCard/myCard" class="_div weui-cell weui-cell_access" hover-class="weui-cell_active">
+                <view class="_div weui-cell__hd">
+                    <image wx:if="{{localImg}}" src="{{localImg+'mine/my_friend.png'}}" class="_image weui-cell__hd_img"></image>
+                </view>
+                <view class="_div weui-cell__bd">我的名片</view>
+                <view class="_div weui-cell__ft weui-cell__ft_in-access"></view>
+            </view>
+            <!-- 我的好友 -->
+            <view bindtap="changePage" data-url="/pages/personalInfo/myFriend/myFriend" class="_div weui-cell weui-cell_access" hover-class="weui-cell_active">
+                <view class="_div weui-cell__hd">
+                    <image wx:if="{{localImg}}" src="{{localImg+'mine/my_friend.png'}}" class="_image weui-cell__hd_img"></image>
+                </view>
+                <view class="_div weui-cell__bd">我的好友</view>
+                <view class="_div weui-cell__ft weui-cell__ft_in-access"></view>
+            </view>
+            <!-- 我的收藏 -->
+            <view bindtap="changePage" data-url="/pages/personalInfo/myCollect/myCollect" class="_div weui-cell weui-cell_access" hover-class="weui-cell_active">
+                <view class="_div weui-cell__hd">
+                    <image wx:if="{{localImg}}" src="{{localImg+'mine/my_collect.png'}}" class="_image weui-cell__hd_img"></image>
+                </view>
+                <view class="_div weui-cell__bd">我的收藏</view>
+                <view class="_div weui-cell__ft weui-cell__ft_in-access"></view>
+            </view>
+            <!-- 我的关键词 -->
+            <view bindtap="changePage" data-url="/pages/personalInfo/myKeyword/myKeyword" class="_div weui-cell weui-cell_access" hover-class="weui-cell_active">
+                <view class="_div weui-cell__hd">
+                    <image wx:if="{{localImg}}" src="{{localImg+'mine/my_keyword.png'}}" class="_image weui-cell__hd_img"></image>
+                </view>
+                <view class="_div weui-cell__bd">我的关键词</view>
+                <view class="_div weui-cell__ft weui-cell__ft_in-access"></view>
+            </view>
+            <view class="_div grey_line"></view>
+            <!-- 企业认证 -->
+            <view bindtap="changePage" data-url="/pages/email/authentication/authentication" class="_div weui-cell weui-cell_access" hover-class="weui-cell_active">
+                <view class="_div weui-cell__hd">
+                    <image wx:if="{{localImg}}" src="{{localImg+'mine/company_attestation.png'}}" class="_image weui-cell__hd_img"></image>
+                </view>
+                <view class="_div weui-cell__bd">企业认证</view>
+                <view class="_div weui-cell__ft weui-cell__ft_in-access"></view>
+            </view>
+            <view bindtap="changePage" data-url="/pages/email/accessory/accessory" class="_div weui-cell weui-cell_access" hover-class="weui-cell_active">
+                <view class="_div weui-cell__hd">
+                    <image wx:if="{{localImg}}" src="{{imagePath+'myfujian.png'}}" class="_image weui-cell__hd_img"></image>
+                </view>
+                <view class="_div weui-cell__bd">我的附件</view>
+                <view class="_div weui-cell__ft weui-cell__ft_in-access"></view>
+            </view>
+            <view class="_div grey_line"></view>
+            <!-- 企业认证 -->
+            <!-- <button class="_div weui-cell weui-cell_access" hover-class="weui-cell_active" open-type="contact" bindcontact="handleContact">
+                <view class="_div weui-cell__hd">
+                    <image wx:if="{{localImg}}" src="{{localImg+'kefu.png'}}" class="_image weui-cell__hd_img"></image>
+                </view>
+                <view class="_div weui-cell__bd">在线客服</view>
+                <view class="_div weui-cell__ft weui-cell__ft_in-access"></view>
+            </button> -->
+            <view bindtap="changePage" data-url="/pages/else/service/service" class="_div weui-cell weui-cell_access" hover-class="weui-cell_active">
+                <view class="_div weui-cell__hd">
+                    <image wx:if="{{localImg}}" src="{{localImg+'kefu.png'}}" class="_image weui-cell__hd_img"></image>
+                </view>
+                <view class="_div weui-cell__bd">在线客服</view>
+                <view class="_div weui-cell__ft weui-cell__ft_in-access"></view>
+            </view>
+        </view>
+    </view>
+    <!-- 下载 -->
+    <view class=" download-box">
+        <view class="_div download" bindtap="download">
+            <image wx:if="{{localImg}}" src="{{localImg+'mine/download_blue.png'}}" class="_image download_img"></image>
+            下载一传APP,开启商业社交新体验
+        </view>
+    </view>
+    <view class="_div Shadow"></view>
+</view>

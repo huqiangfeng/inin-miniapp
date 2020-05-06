@@ -1,0 +1,13 @@
+<!-- pages/im//search/search.wxml -->
+<view class="search">
+  <view class="public-search">
+    <publicSearch placeholder='搜索' bind:onCancelBtn="onCancelBtn" value="{{searchData}}" bind:onSearch="getData" bind:onClear="onChangeValue" bind:onChangeValue="onChangeValue"></publicSearch>
+  </view>
+  <!-- 需求名片 -->
+  <view class="record">
+    <view class="title">需求名片</view>
+    <view class="list">
+      <cardList peopleData="{{ peopleData }}" isAuth="{{ true }}" loading="{{ loading }}" loadingShow="{{ loadingShow }}" bind:toLogin="toLogin" bind:toAttestation="toAttestation" bind:attestation="toAttestation" bind:tapItem="ontapItem"></cardList>
+    </view>
+  </view>
+</view>

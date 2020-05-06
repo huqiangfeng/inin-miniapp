@@ -1,0 +1,39 @@
+<!-- personalInfo//myKeyword/myKeyword.wxml -->
+<view class="_div  entire">
+    <view class="_div  title">我的关键词：</view>
+    <!-- 未选择我的关键词 -->
+    <view class="_div  add_keyword" wx:if="{{myWords.length==0}}">
+        <view class="_div  placeholder">添加关键词</view>
+        <image wx:if="{{localImg}}" data-type="mine" data-isedit="{{false}}" src="{{imagePath+'add_blue.png'}}" class="_image  keyword_icon_add" bindtap="showAddKeyword"></image>
+    </view>
+    <!-- 显示已选择我的关键词 -->
+    <view class="_div  edit_keyword" wx:else>
+        <view class="_div  keyword_tags">
+            <view class="_div  keyword_tag" wx:key="i" key="{{i}}" wx:for="{{myWords}}" wx:for-index="i" wx:for-item="item">
+                <view class="_div ">{{item}}</view>
+                <image wx:if="{{localImg}}" src="{{localImg+'del.png'}}" class="_image  keyword_tag_del" bindtap="delKeyword" data-type="mine" data-item="{{ item }}"></image>
+            </view>
+        </view>
+        <image wx:if="{{localImg}}" data-type="mine" data-isedit="{{true}}" src="{{localImg+'inbox/pen_blue.png'}}" class="_image  keyword_icon_edit" bindtap="showAddKeyword"></image>
+    </view>
+    <view class="_div  title">期待结识关键词：</view>
+    <!-- 未选择期待结识关键词 -->
+    <view class="_div  add_keyword" wx:if="{{wantWords.length==0}}">
+        <view class="_div  placeholder">添加关键词</view>
+        <image wx:if="{{localImg}}" data-type="meet" data-isedit="{{false}}" src="{{imagePath+'add_blue.png'}}" class="_image  keyword_icon_add" bindtap="showAddKeyword"></image>
+    </view>
+    <!-- 显示已选择期待结识关键词 -->
+    <view class="_div  edit_keyword" wx:else>
+        <view class="_div  keyword_tags">
+            <view class="_div  keyword_tag" wx:key="i" key="{{i}}" wx:for="{{wantWords}}" wx:for-index="i" wx:for-item="item">
+                <view class="_div ">{{item}}</view>
+                <image wx:if="{{localImg}}" src="{{localImg+'del.png'}}" class="_image  keyword_tag_del" bindtap="delKeyword" data-type="meet" data-item="{{ item }}"></image>
+            </view>
+        </view>
+        <image wx:if="{{localImg}}" data-type="meet" data-isedit="{{true}}" src="{{localImg+'inbox/pen_blue.png'}}" class="_image  keyword_icon_edit" bindtap="showAddKeyword"></image>
+    </view>
+    <!-- 保存按钮 -->
+    <view class="_div  Blue_Gradual_Btn btn" wx:if="{{myWords.length>0&&wantWords.length>0}}" bindtap="addKeyword">
+        保存
+    </view>
+</view>

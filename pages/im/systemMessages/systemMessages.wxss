@@ -1,0 +1,49 @@
+/* im//systemMessages/systemMessages.wxss */
+.entire {
+    height: 100%;
+    padding: 1rpx 40rpx;
+    color: #666;
+    background-color: #f2f2f2;
+    font-family: PingFangSC-Regular;
+    font-weight: 400;
+    overflow-y: scroll;
+}
+
+.time {
+    margin: 28rpx 0;
+    text-align: center;
+    font-size: 23rpx;
+    line-height: 32rpx;
+}
+
+.card {
+    padding: 30rpx;
+    border-radius: 20rpx;
+    background-color: #fff;
+    margin-bottom: 20rpx;
+    position: relative;
+    box-shadow: 2rpx 4rpx 12rpx 6rpx rgba(140, 140, 140, 0.1);
+}
+
+.card_title {
+    color: #333;
+    font-weight: 550;
+    font-size: 28rpx;
+    line-height: 40rpx;
+    margin-bottom: 10rpx;
+}
+
+.card_con {
+    font-size: 26rpx;
+    line-height: 37rpx;
+}
+
+.dot {
+    width: 14rpx;
+    height: 14rpx;
+    border-radius: 100%;
+    background: #e91f1f;
+    position: absolute;
+    top: 20rpx;
+    right: 20rpx;
+}

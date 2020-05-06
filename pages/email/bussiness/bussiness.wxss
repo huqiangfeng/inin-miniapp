@@ -1,0 +1,388 @@
+/* pages/email/bussiness/bussiness.wxss */
+.bussiness{
+    width: 100%;
+    height: auto;
+}
+.bussiness .header-search{
+    width: 100%;
+    height: 100rpx;
+}
+.bussiness .switch{
+    width:100%;
+    height: 96rpx;
+}
+.bussiness .switch .loaction-nav{
+    width:100%;
+    height:80rpx;
+    background:#F5F6F8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.bussiness .switch .loaction-nav .item{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.bussiness .switch .loaction-nav .item .inner{
+    font-size:26rpx;
+    font-weight:400;
+    color:rgba(51,51,51,1);
+    width: auto;
+    height: 100%;
+    box-sizing: border-box;
+    border: 0;
+    line-height: 80rpx;
+    padding: 0 20rpx;
+}
+.bussiness .switch .loaction-nav .item  .active{
+    border-bottom:6rpx solid #5F7AFF;
+    line-height: 74rpx;
+    color: #5F7AFF;
+}
+.bussiness .switch  .area-list{
+    width: 100%;
+    height: 836rpx;
+    background: #FFFFFF;
+}
+.bussiness .switch  .area-list .header{
+    width: 100%;
+    height: 134rpx;
+}
+.bussiness .switch  .area-list .header .l-text{
+    font-size:24rpx;
+    font-weight:400;
+    color:rgba(51,51,51,1);
+    padding: 16rpx 0 0 33rpx;
+}
+.bussiness .switch  .area-list .header .location-info{
+    width: 100%;
+    height: 60rpx;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 30rpx;
+    margin-top: 25rpx;
+}
+.bussiness .switch  .area-list .header .location-info .current-location{
+    width:136rpx;
+    height:60rpx;
+    background:linear-gradient(316deg,rgba(47,88,255,1) 0%,rgba(111,141,255,1) 100%);
+    border-radius:30rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 30rpx;
+}
+.bussiness .switch  .area-list .header .location-info .current-location .icon{
+    width: 30rpx;
+    height: 38rpx;
+    margin-right: 10rpx;
+}
+.bussiness .switch  .area-list .header .location-info .current-location .lo-text{
+    font-size:28rpx;
+    font-weight:500;
+    color:rgba(255,255,255,1);
+}
+.bussiness .switch  .area-list .header .location-info  .refresh-location{
+    width:136rpx;
+    height:60rpx;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.bussiness .switch  .area-list .header .location-info  .refresh-location .refresg-icon{
+    width: 26rpx;
+    height: 26rpx;
+}
+.bussiness .switch  .area-list .header .location-info  .refresh-location  .re-text{
+    font-size:26rpx;
+    font-weight:400;
+    color:rgba(102,102,102,1);
+}
+.bussiness .switch  .area-list .aera-content{
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-top: 30rpx;
+}
+.bussiness .switch  .area-list .aera-content .left{
+    width: 38%;
+    height:640rpx;
+    background-color: #F5F6F8;
+    overflow: scroll;
+}
+.bussiness .switch  .area-list .aera-content .left .province-item{
+    width:100%;
+    height: 80rpx;
+    line-height: 80rpx;
+    padding-left: 30rpx;
+}
+.bussiness .switch  .area-list .aera-content .left .active{
+    background-color: #fff;
+}
+.bussiness .switch  .area-list .aera-content .right{
+    width: 62%;
+    height: 640rpx;
+    overflow: scroll;
+    background-color: #fff;
+}
+.bussiness .switch  .area-list .aera-content .right .city-content{
+    width:100%;
+    height: 80rpx;
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+}
+.bussiness .switch  .area-list .aera-content .right .city-content .name-text{
+    font-size:26rpx;
+    font-weight:400;
+    color:rgba(51,51,51,1);
+    margin-left: 56rpx;
+}
+.bussiness .switch  .area-list .aera-content .right .city-content .city-icon{
+    width: 34rpx;
+    height: 34rpx;
+    margin-right: 40rpx;
+}
+
+.bussiness .switch .business-type{
+    width: 100%;
+    height: auto;
+}
+.bussiness .switch .business-type .bussiness-content{
+    width: 690rpx;
+    height:610rpx ;
+    overflow: auto;
+    margin:0 auto;
+}
+.bussiness .switch .business-type .bussiness-content .bussiness-item{
+    width:145rpx;
+    height:60rpx;
+    background-color: #F5F6F8;
+    border-radius:10rpx;
+    text-align: center;
+    line-height: 60rpx;
+    color: #333333;
+    font-size: 24rpx;
+    float: left;
+    margin-right:28rpx;
+    margin-bottom: 30rpx;
+    overflow: hidden;
+}
+.bussiness .switch .business-type .bussiness-content .active{
+    background:linear-gradient(317deg,rgba(95,122,255,1) 0%,rgba(119,169,255,1) 100%);
+    color: #FFFFFF;
+}
+.bussiness .switch .distance-item{
+    width: 100%;
+    height: 80rpx;
+    font-size: 26rpx;
+    color: #333333;
+    padding-left: 40rpx;
+    
+}
+.bussiness .switch .diatance-active{
+    color: #4A64E4;
+    font-weight: bold;
+}
+
+.bussiness .switch .options{
+    width: 100%;
+    height: 80rpx;
+    border-top: 1px solid #EAEAEA;
+    box-sizing:border-box;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.bussiness .switch .options .btn{
+    width: 50%;
+    height: 100%;
+    text-align: center;
+    line-height: 80rpx;
+    font-size: 28rpx;
+}
+.bussiness .switch .options .reset{
+    color: #333333;
+}
+.bussiness .switch .options .confirm{
+    color: #FFFFFF;
+    background:linear-gradient(to left, #2F58FF,#6F8DFF)
+}
+
+
+.bussiness .switch  .area-list .header .bussiness .content{
+    width: 100%;
+    min-height: 250rpx;
+}
+.bussiness .content .noDate{
+    width: 100%;
+    height: 300rpx;
+    text-align: center;
+    line-height: 300rpx;
+    font-size: 28rpx;
+    font-weight: bold;
+    color: #333333;
+}
+.bussiness .content .content-item{
+    width: 690rpx;
+    height: 250rpx;
+    border-bottom:1px solid #EAEAEA;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.bussiness .content .content-item .item-left{
+    width: 90rpx;
+    height:250rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 20rpx;
+}
+.bussiness .content .content-item .item-left .company-logo{
+    background:rgba(255,255,255,1);
+    box-shadow:0px 1px 3rpx 2rpx rgba(191,191,191,0.15);
+    border:1px solid rgba(243,243,243,1);
+    box-sizing: border-box;
+    width: 90rpx;
+    height: 90rpx;
+    position: relative;
+}
+.bussiness .content .content-item .item-left .company-logo .unread-msg{
+    width:40rpx;
+    height:30rpx;
+    background:rgba(233,31,31,1);
+    border-radius:15rpx;
+    position: absolute;
+    top: -15rpx;
+    right: -20rpx;
+    font-size: 24rpx;
+    text-align: center;
+    line-height: 30rpx;
+    color: #fff;
+
+}
+.bussiness .content .content-item .item-right{
+    width: 48rpx;
+    height:250rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.bussiness .content .content-item .item-right .icon-box{
+    width:48rpx;
+    height:48rpx;
+    margin-bottom: 10rpx;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.bussiness .content .content-item .item-right .company-dis{
+    color: #999999;
+    width: 100rpx;
+    font-size: 22rpx;
+    margin-top: 20rpx;
+}
+.bussiness .content .content-item .item-center{
+    width: 500rpx;
+    overflow: hidden;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+.bussiness .content .content-item .item-center .company-name{
+    color: #333333;
+    font-size: 28rpx;
+    font-weight: bold;
+}
+.bussiness .content .content-item .item-center .item-options{
+   width: auto;
+   height: 50rpx;
+   display: flex;
+   justify-content: flex-start;
+   align-items: center;
+   margin-top:6rpx
+}
+.bussiness .content .content-item .item-center .item-options .option-item{
+    width: 80rpx;
+    height: 50rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items: center;
+}
+.bussiness .content .content-item .item-center .item-options  .option-item-distance{
+    width: 80rpx;
+    height: 50rpx;
+    color: #666666;
+    font-size: 24rpx;
+    margin: 10rpx 0 0 30rpx;
+}
+.bussiness .content .content-item .item-center .item-options .receive-num{
+    border-left: 1px solid #D2D2D2;
+    border-right: 1px solid #D2D2D2;
+
+}
+.bussiness .content .content-item .item-center .item-options .option-item .text-one{
+    color: #666666;
+    font-size: 24rpx;
+}
+.bussiness .content .content-item .item-center .item-options .option-item .text-two{
+    color: #999999;
+    font-size: 18rpx;
+}
+.bussiness .content .content-item .item-center .item-tips{
+    color: #666666;
+    font-size: 22rpx;
+    margin-top: 16rpx;
+}
+.opations{
+    width: 200rpx;
+    height: 260rpx;
+    position: absolute;
+    bottom: 10rpx;
+    right: 40rpx;
+}
+.opations .option_item{
+    width: 100%;
+    height: 108rpx;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.opations .option_item .text{
+    color: #f3f5f7;
+    font-size:28rpx;
+    font-weight: bolder;
+}
+.opations .option_item .icon{
+    width:108rpx;
+    height:108rpx;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.opations .option_item .icon .icon_item{
+    width: 36rpx;
+    height:36rpx;
+}
+.opations .option_item .icon_b{
+    background:linear-gradient(149deg,rgba(19,188,132,1) 0%,rgba(17,184,128,1) 100%);
+    box-shadow:0 1rpx 5rpx 0 rgba(0,0,0,0.3);
+}
+.opations .option_item .icon_h{
+    background:linear-gradient(316deg,rgba(245,137,49,1) 0%,rgba(255,149,62,1) 100%);
+    box-shadow:0px 1rpx 5rpx 0px rgba(0,0,0,0.3);
+}

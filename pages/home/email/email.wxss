@@ -1,0 +1,172 @@
+.entire {
+    width: 100%;
+    height: 100%;
+    /* overflow: hidden; */
+    overflow-y: auto;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+.opations{
+    width: 200rpx;
+    height: 260rpx;
+    position: absolute;
+    bottom: 10rpx;
+    right: 40rpx;
+}
+.opations .option_item{
+    width: 100%;
+    height: 108rpx;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.opations .option_item .text{
+    color: #f3f5f7;
+    font-size:28rpx;
+    font-weight: bolder;
+}
+.opations .option_item .icon{
+    width:108rpx;
+    height:108rpx;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.opations .option_item .icon .icon_item{
+    width: 36rpx;
+    height:36rpx;
+}
+.opations .option_item .icon_b{
+    background:linear-gradient(149deg,rgba(19,188,132,1) 0%,rgba(17,184,128,1) 100%);
+    box-shadow:0 1rpx 5rpx 0 rgba(0,0,0,0.3);
+}
+.opations .option_item .icon_h{
+    background:linear-gradient(316deg,rgba(245,137,49,1) 0%,rgba(255,149,62,1) 100%);
+    box-shadow:0px 1rpx 5rpx 0px rgba(0,0,0,0.3);
+}
+.list {
+    flex: 1;
+    overflow: hidden;
+    overflow-y: auto;
+}
+
+/* 全球传递 */
+.transmit {
+    margin: 20rpx auto;
+    line-height: 70rpx;
+    text-align: center;
+    width: 271rpx;
+    height: 70rpx;
+    background: linear-gradient(317deg, rgba(95, 122, 255, 1) 0%, rgba(119, 169, 255, 1) 100%);
+    box-shadow: 0px 2px 4px 0px rgba(156, 173, 251, 1);
+    border-radius: 44rpx;
+}
+
+.transmit .transmit-img {
+    width: 36rpx;
+    height: 23rpx;
+    margin-right: 5rpx;
+}
+
+.transmit .transmit-txt {
+    font-size: 28rpx;
+    font-family: PingFangSC-Regular, PingFang SC;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 1);
+}
+
+.back_gauge {
+    padding-left: 30rpx;
+    padding-right: 30rpx;
+}
+
+.search {
+    padding-left: 30rpx;
+    padding-right: 30rpx;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 20rpx;
+    box-shadow: 0rpx 4rpx 12rpx 6rpx rgba(140, 140, 140, 0.1);
+    margin-bottom: 45rpx;
+}
+
+.search_title {
+    font-size: 28rpx;
+    color: #333;
+    font-weight: 600;
+}
+
+.input_back {
+    width: 544rpx;
+    background: rgba(240, 240, 240, 1);
+    height: 60rpx;
+    border-radius: 60rpx;
+    position: relative;
+}
+
+.input_value {
+    position: absolute;
+    top: 0;
+    left: 111rpx;
+    height: 60rpx;
+}
+
+.input_search {
+    width: 29rpx;
+    height: 29rpx;
+    position: absolute;
+    top: 17rpx;
+    left: 47rpx;
+}
+
+/* // 未登录按钮 */
+.btn {
+    width: 250rpx;
+    margin-top: 50rpx;
+}
+
+
+
+
+/*  */
+
+.component_input_back {
+    width: 100%;
+    background: rgba(240, 240, 240, 1);
+    height: 60rpx;
+    border-radius: 60rpx;
+    position: relative;
+}
+
+.component_input_value {
+    width: 75%;
+    position: absolute;
+    top: 0;
+    left: 111rpx;
+    height: 60rpx;
+}
+
+.component_input_search {
+    width: 29rpx;
+    height: 29rpx;
+    position: absolute;
+    top: 17rpx;
+    left: 47rpx;
+}
+
+.component_del_icon {
+    width: 34rpx;
+    height: 34rpx;
+    position: absolute;
+    top: 15rpx;
+    right: 15rpx;
+    z-index: 10000;
+}
+
+/*  */
+.Prompt {
+    flex: 1
+}

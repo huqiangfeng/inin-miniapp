@@ -1,0 +1,364 @@
+.pad-30 {
+  padding: 30rpx;
+}
+
+.wrap {
+  background-color: #f2f2f2;
+  height: 100%;
+}
+
+.wrap>scroll-view {
+  height: 100%;
+}
+
+.stance {
+  width: 100%;
+  height: 150rpx;
+}
+
+.message {
+  width: 92%;
+  height: auto;
+  padding: 15rpx 30rpx;
+  position: relative;
+}
+
+.time {
+  margin-bottom: 14rpx;
+  text-align: center;
+}
+
+.time .time-text {
+  height: 33rpx;
+  font-size: 24rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: rgba(153, 153, 153, 1);
+  line-height: 33rpx;
+}
+
+.user .user-text {
+  margin: auto 100rpx 8rpx;
+  font-size: 20rpx;
+  color: #dcdcdc;
+  display: block;
+}
+
+.avatar {
+  width: 80rpx;
+  height: 80rpx;
+  margin: 0 30rpx 0 0;
+  float: left;
+}
+
+.portrait {
+  border-radius: 50%;
+}
+
+.msg {
+  display: inline-block;
+  padding: 20rpx;
+  max-width: calc(85% - 80rpx);
+  min-height: 40rpx;
+  font-size: 24rpx;
+  /*overflow: hidden;*/
+  text-align: left;
+  word-break: break-all;
+  background-color: #fff;
+  border-radius: 26rpx;
+  position: relative;
+  /* margin-top: 24rpx; */
+}
+
+.self .msg:after {
+  content: '';
+  width: 0rpx;
+  height: 0px;
+  border-color: transparent transparent #5f7aff #5f7aff;
+  border-style: solid;
+  border-width: 30rpx;
+  position: absolute;
+  top: -6rpx;
+  right: -12rpx;
+  border-radius: 12rpx;
+  transform: rotate(-28deg);
+  z-index: 1;
+}
+
+.uesr .msg:after {
+  content: '';
+  width: 0px;
+  height: 0px;
+  border-color: #fff #fff transparent transparent;
+  border-style: solid;
+  border-width: 30rpx;
+  position: absolute;
+  top: 25rpx;
+  left: -12rpx;
+  border-radius: 12rpx;
+  transform: rotate(-28deg);
+  z-index: 0;
+}
+
+.msg .msg-text,
+.msg .audio-player,
+.msg .avatar {
+  position: relative;
+  z-index: 9;
+}
+
+.msg .msg_poprightarrow {
+  position: absolute;
+  right: -10rpx;
+  height: 18rpx;
+  width: 18rpx;
+  margin-top: -10rpx;
+}
+
+.msg .msg_popleftarrow {
+  position: absolute;
+  left: -14rpx;
+  height: 18rpx;
+  width: 18rpx;
+  margin-top: -10rpx;
+}
+
+.msg .msg-text {
+  line-height: 40rpx;
+  font-size: 32rpx;
+  margin: 0;
+}
+
+/*.msg:before {
+	content: " ";
+	position: absolute;
+	top: 9px;
+	right: 100%;
+	border: 6px solid transparent;
+	border-right-color: #EDEDED;
+}*/
+
+.self {
+  text-align: right;
+}
+
+.self .avatar {
+  float: right;
+  margin: 0 0 0 30rpx;
+}
+
+.user {
+  position: relative;
+  bottom: -30rpx;
+}
+
+.self .msg {
+  background-color: #5f7aff;
+  color: #fff;
+}
+
+.self .msg:before {
+  right: inherit;
+  left: 100%;
+  border-right-color: transparent;
+  border-left-color: #b2e281;
+}
+
+.template {
+  display: inline;
+}
+
+.err {
+  width: 32rpx;
+  height: 32rpx;
+  position: absolute;
+  left: -40rpx;
+}
+
+.hide {
+  display: none;
+}
+
+.show {
+  display: block;
+}
+
+.toolCabinet {
+  position: absolute;
+  background: rgba(34, 34, 34, 1);
+  border-radius: 10rpx;
+  z-index: 99;
+  display: flex;
+  transform: translateX(-50%);
+  left: 50%;
+}
+
+.tooltop {
+  top: -90rpx;
+}
+
+.toolbuttom {
+  bottom: -90rpx;
+}
+
+.toolCabinet .tool-item {
+  width: 90rpx;
+  text-align: center;
+  font-size: 26rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  color: rgba(255, 255, 255, 1);
+  line-height: 60rpx;
+  border-right: 1px solid #fff;
+  position: relative;
+  z-index: 9;
+}
+
+.toolbuttom:after {
+  content: '';
+  width: 0rpx;
+  height: 0px;
+  border-color: rgba(34, 34, 34, 1);
+  border-style: solid;
+  border-width: 20rpx;
+  position: absolute;
+  top: 10rpx;
+  right: 50%;
+  border-radius: 4rpx;
+  transform: rotate(-45deg) translateX(71%);
+}
+
+.tooltop:after {
+  content: '';
+  width: 0rpx;
+  height: 0px;
+  border-color: rgba(34, 34, 34, 1);
+  border-style: solid;
+  border-width: 20rpx;
+  position: absolute;
+  bottom: -30rpx;
+  right: 50%;
+  border-radius: 4rpx;
+  transform: rotate(-45deg) translateX(71%);
+}
+
+.toolCabinet .tool-item:last-child {
+  border-right: none;
+}
+
+.mankeep .text {
+  height: 30rpx;
+  font-size: 22rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  line-height: 50rpx;
+  margin-top: 20rpx;
+}
+
+.uesr .mankeep .text {
+  border-top: 1px solid #eaeaea;
+}
+
+.self .mankeep .text {
+  color: rgba(255, 255, 255, 1);
+  border-top: 1px solid #b0c0ff;
+}
+
+.mankeep-content {
+  display: flex;
+  align-items: center;
+  width: 450rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.mankeep-content .img-avatar {
+  width: 90rpx;
+  height: 90rpx;
+  border-radius: 50%;
+}
+
+.mankeep-content .name {
+  height: 45rpx;
+  font-size: 32rpx;
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: 500;
+  line-height: 45rpx;
+}
+
+.mankeep-content .user-short {
+  height: 28rpx;
+  font-size: 20rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  line-height: 28rpx;
+  letter-spacing: 1rpx;
+}
+
+.mankeep-content .companyn-name {
+  height: 25rpx;
+  font-size: 18rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  line-height: 25rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* 小传 */
+.message .call-box {
+  box-sizing: border-box;
+  width: 580rpx;
+  margin: 40rpx auto;
+  padding: 0 30rpx 20rpx;
+  background: rgba(255, 255, 255, 1);
+  box-shadow: 0px 1px 10rpx 1px rgba(151, 170, 249, 0.3);
+  border-radius: 10rpx;
+}
+
+.message .call-box .call-header {
+  border-bottom: 1px solid #eaeaea;
+}
+
+.message .call-box .row {
+  padding: 20rpx 0;
+  display: flex;
+}
+
+.message .call-box .row .call-avatar {
+  width: 70rpx;
+  height: 70rpx;
+}
+
+.message .call-box .row .left {
+  font-size: 26rpx;
+  color: rgba(153, 153, 153, 1);
+  line-height: 37rpx;
+  margin-right: 20rpx;
+}
+
+.message .call-box .row .right {
+  flex: 1;
+  font-size: 26rpx;
+  color: rgba(51, 51, 51, 1);
+  line-height: 37rpx;
+  display: flex;
+  align-items: center;
+}
+
+.message .call-box .row .map {
+  width: 100%;
+}
+
+.message .call-box .btn {
+  text-align: center;
+  margin: 20rpx auto;
+  width: 520rpx;
+  height: 70rpx;
+  line-height: 70rpx;
+  background: linear-gradient(317deg, rgba(95, 122, 255, 1) 0%, rgba(119, 169, 255, 1) 100%);
+  border-radius: 40rpx;
+  font-size: 28rpx;
+  color: #FFFFFF;
+}

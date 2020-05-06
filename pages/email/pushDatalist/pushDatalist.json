@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "pushDatalist": "/components/pushDatalist/pushDatalist"
+  }
+}

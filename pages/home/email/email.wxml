@@ -1,0 +1,40 @@
+<!-- 填写公司名称 -->
+<!-- modal -->
+<van-overlay show="{{ overlayShow }}" bind:click="onClickHide" style="position:relative">
+    <view class="opations">
+        <veiw class="option_item">
+            <text class="text">拜访</text>
+            <view class="icon_b icon" catchtap="visitEvent">
+                <image class="icon_item" src="../../../static/visit.png"></image>
+            </view>
+        </veiw>
+        <veiw class="option_item" style="margin-top:15rpx">
+            <text class="text">合作</text>
+            <view class="icon_h icon" catchtap="cooperationEvent">
+                <image class="icon_item" src="../../../static/coor.png"></image>
+            </view>
+        </veiw>
+
+    </view>
+</van-overlay>
+
+<view class=" entire">
+    <publicSearch disabled="{{ true }}" placeholder='搜索关键词/企业' search_title="企业/老板" bind:onTapInput="onChangePageSearch"></publicSearch>
+    <!-- 列表 -->
+    <view class="list" wx:if="{{companyLists.length>0}}">
+        <companyList bind:titleImgErr="titleImgErr" lists='{{companyLists}}' iconSend='{{true}}' bind:onListEvent="onChangeCompanyPage"  bind:showModal="showModal"></companyList>
+    </view>
+    <view class=" Prompt" wx:elif="{{companyLists.length==0}}">
+        <image wx:if="{{localImg}}" src="{{imagePath+'no_demand.png'}}" class="_image Prompt_Img_Icon"></image>
+        <view class=" Prompt_Title">{{login==1?'填写公司名称，收件箱里才有东西噢～':'收件箱里是空空的噢～'}}</view>
+        <navigator wx:if="{{!login}}" url="/pages/home/login/login" class="_navigator Blue_Gradual_Btn btn">
+            登录
+        </navigator>
+    </view>
+    <!-- 全球传递入口 -->
+    <view wx:if="{{login}}" class="transmit" bindtap="goGlobalTransmit">
+        <image src="../../../static/images/kankan.png" class="_image transmit-img"></image>
+        <text class="transmit-txt">看看合作机会</text>
+    </view>
+</view>
+<view class="Shadow"></view>

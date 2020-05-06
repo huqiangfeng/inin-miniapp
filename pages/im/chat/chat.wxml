@@ -1,0 +1,1 @@
+<chat id="chat" userId="{{ userId }}" chatType="singleChat"></chat>

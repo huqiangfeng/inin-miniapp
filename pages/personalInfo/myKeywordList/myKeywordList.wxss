@@ -1,0 +1,132 @@
+/* personalInfo//myKeywordList/myKeywordList.wxss */
+
+.entire {
+    width: 100%;
+    height: 100%;
+    color: #333;
+    font-weight: 400;
+    font-size: 26rpx;
+    display: flex;
+    flex-direction: column;
+}
+
+/* // 头部 */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 30rpx;
+    height: 88rpx;
+    line-height: 88rpx;
+    border-bottom: 2rpx solid #d2d2d2;
+}
+
+.title {
+    font-size: 28rpx;
+    font-weight: 500;
+    line-height: 40px;
+}
+
+.btn {
+    width: 145rpx;
+    height: 46rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24rpx;
+    color: #fff;
+    background: linear-gradient(317deg, #5f7aff 0%, #77a9ff 100%);
+    border-radius: 44rpx;
+}
+
+/* // 已选择标签组 */
+.tags {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    margin: 35rpx 30rpx;
+}
+
+.tag {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 60rpx;
+    background: rgba(255, 255, 255, 1);
+    border-radius: 34rpx;
+    border: 1px solid #5f7aff;
+    color: #5f7aff;
+    margin-right: 48rpx;
+    margin-bottom: 28rpx;
+    padding: 0rpx 70rpx 0rpx 30rpx;
+    position: relative;
+}
+
+.keyword_tag_del {
+    width: 20rpx;
+    height: 20rpx;
+    position: absolute;
+    right: 10rpx;
+    bottom: 0;
+    padding: 20rpx;
+
+}
+
+/* // 选择标签 */
+.choose_tag {
+    display: flex;
+    flex: 1;
+    justify-content: flex-start;
+}
+
+.classify {
+    width: 280rpx;
+    text-align: center;
+    font-size: 28rpx;
+    background-color: #f0f0f0;
+}
+
+.classify_bar {
+    padding: 24rpx 0;
+    line-height: 40rpx;
+}
+
+.classify_bar_active {
+    background-color: #fff;
+}
+
+.choose {
+    width: 90%;
+    padding: 0 5%;
+    height: 100%;
+    overflow-y: scroll;
+}
+
+.choose_bar {
+    font-size: 26rpx;
+    line-height: 37rpx;
+    padding: 21rpx 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.choose_icon {
+    width: 34rpx;
+    height: 34rpx;
+}
+
+/* 搜索到的关键词列表 */
+.search-list {
+    flex: 1;
+    padding: 0 30rpx;
+
+}
+
+.search-list .search-item {
+    border-bottom: 1px solid #EAEAEA;
+    line-height: 120rpx;
+    font-size: 28rpx;
+    font-weight: 500;
+    color: rgba(51, 51, 51, 1);
+}

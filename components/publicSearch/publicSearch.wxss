@@ -1,0 +1,60 @@
+/* components/publicSearch/publcSearch.wxss */
+.search-content {
+    box-shadow: 0rpx 4rpx 12rpx 6rpx rgba(140, 140, 140, 0.1);
+}
+
+.search {
+    padding: 0 30rpx 20rpx 30rpx;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* margin-bottom: 45rpx; */
+}
+
+.search_title {
+    font-size: 28rpx;
+    color: #333;
+    font-weight: 600;
+    margin-right: 30rpx;
+}
+
+._span {
+    margin-left: 30rpx;
+}
+
+.component_input_back {
+    flex: 1;
+    /* width: 100%; */
+    background: rgba(240, 240, 240, 1);
+    height: 60rpx;
+    border-radius: 60rpx;
+    position: relative;
+}
+
+.component_input_value {
+    width: 75%;
+    position: absolute;
+    height: 100%;
+    top: 0;
+    left: 111rpx;
+    font-size: 26rpx !important;
+}
+
+.component_input_search {
+    width: 29rpx;
+    height: 29rpx;
+    position: absolute;
+    top: 0;
+    left: 30rpx;
+    padding: 17rpx;
+}
+
+.component_del_icon {
+    width: 34rpx;
+    height: 34rpx;
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 15rpx;
+    z-index: 10000;
+}

@@ -1,0 +1,65 @@
+/* pages/email/videoShare/videoShare.wxss */
+.video{
+    width:100%;
+    height: 100%;
+    position: relative;
+}
+#myVideo{
+    width:100%;
+    height: 100%;
+}
+.collection{
+    width: 68rpx;
+    height: 120rpx;
+    position: absolute;
+    top: 752rpx;
+    right: 40rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+.collection .look_num{
+    font-size:22rpx;
+    font-weight:500;
+    color:rgba(255,255,255,1);
+}
+.look{
+    width: 70rpx;
+    height: 120rpx;
+    position: absolute;
+    top: 926rpx;
+    right: 40rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+.look .look_num{
+    font-size:22rpx;
+    margin-top: 16rpx;
+    font-weight:500;
+    color:rgba(255,255,255,1);
+}
+.content{
+    min-width: 340rpx;
+    position: absolute;
+    bottom: 180rpx;
+    left: 40rpx;
+    font-family: "courier";
+}
+.content .user_info .name{
+    font-size: 34rpx;
+    color: #fff;
+    text-shadow:0rpx 1rpx 2rpx rgba(0,0,0,0.34);
+}
+.content .user_info .time{
+    font-size: 28rpx;
+    color: #ECECEC;
+    text-shadow:0rpx 1rpx 2rpx rgba(0,0,0,0.34);
+}
+.content .title{
+    font-size: 30rpx;
+    color: #EDEDED;
+}
+    

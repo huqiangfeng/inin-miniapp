@@ -1,0 +1,17 @@
+<!--im//systemMessages/systemMessages.wxml-->
+<view class="_div  entire">
+    <view class="_div " wx:key="i" key="{{i}}" wx:for="{{list}}" wx:for-index="i" wx:for-item="item">
+        <view class="_div  time" wx:if="{{i!=0&&item.time!=list[i-1].time||i==0}}">
+            {{item.time}}
+        </view>
+        <view class="_div  card">
+            <view class="_div  card_title">
+                {{item.typeName}}
+            </view>
+            <view class="_div  card_con">
+                {{item.content}}
+            </view>
+            <view class="_div  dot" wx:if="{{item.readStatus==null}}"></view>
+        </view>
+    </view>
+</view>

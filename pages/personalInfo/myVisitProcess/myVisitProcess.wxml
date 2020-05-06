@@ -1,0 +1,42 @@
+<!-- /*
+ * @Author: wangyuan 
+ * @Date: 2020-04-07 17:01:39 
+ * @Last Modified by:   wonyuan@163.com 
+ * @Last Modified time: 2020-04-07 17:01:39 
+ */ -->
+ <view class="process">
+    <view class="header">
+        <van-steps active-color="#5F7AFF" steps="{{ steps }}" active="{{ active }}"/>
+        <view class="update_time">06-12 16:08</view>
+    </view>
+    <view class="content">
+        <view class="card">
+            <view class="top info">
+                <view class="left avatar"></view>
+                <view class="right company">
+                    <text class="name">汪渊</text>
+                    <text class="company_name">行鲨鱼（上海）科技股份有限公司</text>
+                    <text class="position_name">设计师</text>
+                </view>
+            </view>
+            <view class="business">
+                <view class="sub_business">
+                    <view class="title">拜访业务</view>
+                    <view class="text">您好，可以了解有关人事方面的信息，有机会可以合作下。盼回复，谢谢！</view>
+                </view>
+                <view class="sub_business">
+                    <view class="title">期望约见时间</view>
+                    <view class="text">2019年2月26日  09:00-10:00</view>
+                </view>
+                <view class="sub_business">
+                    <view class="title">拜访部门</view>
+                    <view class="text">财务部</view>
+                </view>
+                <view class="sub_business">
+                    <view class="title">预约结果</view>
+                    <view class="text">预约成功，并获取该公司地址位置，与对方建立商务合作！</view>
+                </view>
+            </view>
+        </view>
+    </view>
+ </view>

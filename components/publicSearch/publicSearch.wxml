@@ -1,0 +1,41 @@
+<!--components/publicSearch/publcSearch.wxml-->
+<view class="search-content">
+  <view class="search">
+    <view wx:if="{{ search_title }}" class=" search_title">
+      {{ search_title }}</view
+    >
+
+    <view class=" component_input_back" bindtap="onTapInput">
+      <input
+        class="_input component_input_value"
+        type="text"
+        bindinput="onChangeValue"
+        bind:blur="onChangeValue"
+        value="{{ publicValue }}"
+        placeholder="{{ placeholder }}"
+        confirm-type="search"
+        placeholder-style="color: #999;font-size: 26rpx;padding-left:0rpx;"
+        disabled="{{ disabled }}"
+      />
+
+      <image
+        class="_image component_input_search"
+        wx:if="{{ localImg }}"
+        src="{{ localImg + 'inbox/search.png' }}"
+        bindtap="onSearch"
+      ></image>
+      <image
+        wx:if="{{ localImg && publicValue != '' }}"
+        src="{{ localImg + 'mine/delete_grey.png' }}"
+        class="_image component_del_icon"
+        bindtap="onClear"
+      ></image>
+    </view>
+
+    <label wx:if="{{ isShowCancelBtn }}" bindtap="onCancelBtn" class="_span "
+      >取消</label
+    >
+  </view>
+  <slot></slot>
+</view>
+

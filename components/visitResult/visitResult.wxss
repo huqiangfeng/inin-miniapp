@@ -1,0 +1,119 @@
+/* components/visitResult/visitResult.wxss */
+.select{
+    width: 100%;
+    height: 90rpx;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+.select .select_item{
+    width: 200rpx;
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+.select .select_item .select_img{
+    width: 27rpx;
+    height: 27rpx;
+}
+.select .select_item .static{
+    color: #485478;
+    font-size:26rpx ;
+    font-weight: bold;
+    margin: 0 30rpx 0 15rpx;
+}
+.visitResult .static_box{
+    width:340rpx;
+    height:300rpx;
+    background:rgba(255,255,255,1);
+    border-radius:15rpx;
+    position: fixed;
+    top:490rpx ;
+    right: 30rpx;
+}
+.visitResult .static_box .statc_item{
+    width: 90%;
+    height: 100rpx;
+    text-align: center;
+    line-height: 100rpx;
+    color: #333333;
+    font-size: 26rpx;
+}
+.visitResult .static_box .statc_item_active{
+    color: #4A64E4;
+}
+.contentList{
+    width: 100%;
+    min-height: 200rpx;
+}
+.list_item{
+    width: 98%;
+    margin-left: 1%;
+    height: 200rpx;
+    border-bottom: 1rpx solid #eaeaea;
+    box-sizing: border-box;
+    margin-bottom: 10rpx;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.list_item .time{
+    width: 70rpx;
+    height: 100%;
+    color: #999999;
+    font-size: 22rpx;
+    align-self: flex-end;
+}
+.list_item .left_item{
+    width: 100rpx;
+    height: 100rpx;
+    border-radius: 50%;
+    background-color: blueviolet;
+    margin-right: 20rpx;
+}
+.list_item .right_item{
+    width: 500rpx;
+    height:120rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+.list_item .right_item .name{
+    color: #333333;
+    font-size: 28rpx;
+    font-weight: bold;
+
+}
+.list_item .right_item .tips{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 10rpx;
+}
+.list_item .right_item .tips .tips_item{
+    height:30rpx;
+    padding:3rpx 10rpx ;
+    background:rgba(240,240,240,1);
+    border-radius:34rpx;
+    text-align: center;
+    color: #333333;
+    font-size: 18rpx;
+    margin-right: 10rpx;
+}
+.list_item .right_item .read_static .read{
+    font-size: 26rpx;
+}
+.list_item .right_item .read_static .has_read{
+    color: #666;
+}
+.list_item .right_item .read_static .no_read{
+    color: #5F7AFF;
+}
+.list_item .right_item .read_static .card{
+    color: #333333;
+    font-size: 26rpx;
+    margin-left: 15rpx;
+    font-weight: bold;
+}

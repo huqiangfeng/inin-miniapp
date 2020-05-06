@@ -1,0 +1,31 @@
+<!--else//downloadApp/downloadApp.wxml-->
+
+<view class="container">
+    <web-view src='https://wx.onechuan.com/downloadApp/index.html'></web-view>
+</view>
+
+
+
+
+<!-- http://welcome.onechuan.com/app.apk -->
+<!-- <view
+      class=''
+      @click="downloadApp"
+    >
+      下载
+    </view>
+    <progress
+      :percent="percent"
+      show-info
+    /> -->
+<!-- http://welcome.onechuan.com -->
+<!-- https://sj.qq.com -->
+
+<!-- <image
+      src='http://192.168.31.115:8088/images/download.png'
+      mode="scaleToFill"
+      @click="previewImage"
+      data-src="http://192.168.31.115:8088/images/download.png"
+      show-menu-by-longpress
+      style="width:100%;height:100%;"
+    /> -->

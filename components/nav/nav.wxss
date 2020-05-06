@@ -1,0 +1,50 @@
+/* components/nav/nav.wxss */
+/* // 导航 */
+.navs {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 26rpx;
+  height: 80rpx;
+  /* background: rgba(245, 246, 248, 1); */
+  font-family: PingFangSC-Regular, PingFang SC;
+  color: rgba(51, 51, 51, 1);
+}
+
+.nav-item {
+  position: relative;
+  flex: 1;
+  text-align: center;
+  line-height: 80rpx;
+  height: 100%;
+}
+
+.nav-active {
+  color: #4A64E4;
+  font-weight: 500;
+  position: relative;
+}
+
+.nav-active::after {
+  width: 40rpx;
+  height: 6rpx;
+  background: linear-gradient(317deg,
+      rgba(95, 122, 255, 1) 0%,
+      rgba(119, 169, 255, 1) 100%);
+  border-radius: 6rpx;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 0rpx;
+  content: '';
+}
+
+.cut-off-rule {
+  width: 1px;
+  height: 32rpx;
+  background-color: #d2d2d2;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}

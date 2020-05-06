@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "publicSearch": "/components/publicSearch/publicSearch",
+    "region": "/components/region/region",
+    "overlay": "/components/overlay/overlay",
+    "businessType": "/components/businessType/businessType",
+    "companyList": "/components/companyList/companyList"
+  },
+  "navigationBarTitleText": "搜索公司/法人"
+}

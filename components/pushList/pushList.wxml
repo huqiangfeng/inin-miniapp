@@ -1,0 +1,15 @@
+<!-- components/pushList/pushList.wxml -->
+<view class="push-list">
+  <view class="ul">
+    <view class="li" wx:for="{{list}}" wx:key="index" bind:tap="tapItem" data-index="{{index}}">
+      <view class="title">{{item.title}}</view>
+      <view class="short-content">{{item.shortContent}}</view>
+      <view class="tiem">
+        <view>{{item.time}}  ·</view>
+        <view class="{{item.loginUserRead?'':'read'}}">
+          {{ item.loginUserRead?'「已读此文章」':'「未读此文章」' }}
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

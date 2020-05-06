@@ -1,0 +1,4 @@
+/* pages/personalInfo//setCity/setCity.wxss */
+.set-city {
+  height: 100%;
+}

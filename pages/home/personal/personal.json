@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "navigation-bar": "/components/weui-components/navigation-bar/navigation-bar"
+  },
+  "navigationBarTitleText": "我的",
+  "navigationStyle": "custom"
+}

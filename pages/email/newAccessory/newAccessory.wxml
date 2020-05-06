@@ -1,0 +1,44 @@
+<view class="new-accessory">
+  <template is="title" data="{{state}}"></template>
+  <template is="content-text" data="{{state,email}}"></template>
+  <view class="input-content" hidden="{{state !=='0' && state !=='1' }}">
+    <view class="">邮箱：</view>
+    <input bind:input="bindValue" bind:blur="bindValue" disabled="{{ state==='1' }}" class="input" placeholder="输入邮箱" />
+  </view>
+  <template is="btn" data="{{state}}"></template>
+</view>
+<!-- // -->
+<template name="title">
+  <view class="title" hidden="{{state !=='0'}}">填写您的邮箱</view>
+  <view class="title" hidden="{{state !=='1'}}">发送成功</view>
+  <view class="title" hidden="{{state !=='2'}}">检测中</view>
+  <view class="title" hidden="{{state !=='3'}}">上传成功</view>
+  <view class="title" hidden="{{state !=='4'}}">上传失败</view>
+</template>
+<!-- // -->
+<template name="content-text">
+  <view class="content-text" hidden="{{state !=='0'}}">
+    您将收到一封来自一传的邮件，将所要上传的文件
+  作为附件回复，即可完成上传。
+  </view>
+  <view class="content-text" hidden="{{state !=='1'}}">
+    请前往邮箱中查收来自一传的新邮件，将所要上传
+  的文件作为附件回复，即可完成上传。
+  </view>
+  <view class="content-text" hidden="{{state !=='2'}}">收件箱为{{email}},我们正
+  在检测，请耐心等待…</view>
+  <view class="content-text" hidden="{{state !=='3'}}">已完成附件上传，请注意前往查看！</view>
+  <view class="content-text" hidden="{{state !=='4'}}">未能查找到您的附件文件，请检查邮件地址是否正
+  确，或者当前网络是否正</view>
+</template>
+<!-- // -->
+<template name="btn">
+  <view class="btn" hidden="{{state !=='0'}}" bind:tap="sendEmail">发送邮件</view>
+  <view class="btn" hidden="{{state !=='1'}}" bind:tap="setState" data-state="2">我已发送附件文件</view>
+  <view class="btn reset-btn" hidden="{{state !=='1'}}" bind:tap="setState" data-state="0">
+    重新填写邮箱
+  </view>
+  <view class="loading" hidden="{{state !=='2'}}"></view>
+  <view class="btn" hidden="{{state !=='3'}}" bind:tap="succeed">完成</view>
+  <view class="btn" hidden="{{state !=='4'}}" bind:tap="setState" data-state="0">重新发送</view>
+</template>

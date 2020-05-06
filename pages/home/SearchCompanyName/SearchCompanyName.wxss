@@ -1,0 +1,82 @@
+/* pages/home/SearchCompanyName/SearchCompanyName.wxss */
+.component_input_back {
+    width: 610rpx;
+    background: rgba(240, 240, 240, 1);
+    height: 60rpx;
+    border-radius: 60rpx;
+    position: relative;
+}
+
+.component_input_value {
+    position: absolute;
+    top: 0;
+    left: 111rpx;
+    height: 60rpx;
+}
+
+.component_input_search {
+    width: 29rpx;
+    height: 29rpx;
+    position: absolute;
+    top: 17rpx;
+    left: 47rpx;
+}
+
+.component_del_icon {
+    width: 34rpx;
+    height: 34rpx;
+    position: absolute;
+    top: 15rpx;
+    right: 15rpx;
+    z-index: 10000;
+}
+
+.entire {
+    width: 100%;
+    height: 100%;
+}
+
+.search_row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 30rpx 20rpx 30rpx;
+    box-shadow: 0px 4px 12px 6px rgba(140, 140, 140, 0.1);
+    /* margin-bottom: 90rpx; */
+    margin-bottom: 30rpx;
+}
+
+/* // 点击聚焦搜索框 */
+.search_being {
+    width: 100%;
+    height: 100rpx;
+}
+
+.list {
+    padding: 17rpx 30rpx;
+    font-size: 28rpx;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    align-content: center;
+}
+
+.company_img {
+    width: 60rpx;
+    height: 60rpx;
+    margin-right: 20rpx;
+    white-space: nowrap;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20rpx;
+}
+
+.company_name {
+    width: 90%;
+    color: #333;
+}
+
+.company_name_blue {
+    color: #5f7aff;
+}

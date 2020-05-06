@@ -1,0 +1,153 @@
+.main {
+	width: 100%;
+	height: 100%;
+	box-sizing: border-box;
+	position: fixed;
+}
+
+.my-friend {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	z-index: 999;
+	background-color: #fff;
+}
+
+.view_X {
+	padding-bottom: 70rpx;
+}
+
+chat-inputbar {
+	border-bottom: 1px solid #EAEAEA;
+	width: 100%;
+	height: auto;
+	position: fixed;
+	bottom: 0;
+	right: 0;
+	z-index: 1;
+	background-color: #fff;
+	transform: translateZ(1000px);
+}
+
+chat-msglist {
+	height: 100%
+}
+
+/* 正常的 */
+.scroll_view {
+	padding-bottom: 100rpx;
+}
+
+/* 表情菜单 */
+.scroll_view_menu {
+	padding-bottom: 510rpx;
+}
+
+/* 键盘 */
+.scroll_view_change {
+	padding-bottom: 120rpx;
+}
+
+/* X正常的 */
+.scroll_view_X {
+	padding-bottom: 176rpx;
+}
+
+/* 表情菜单 */
+.scroll_view_menu_X {
+	padding-bottom: 590rpx;
+}
+
+
+
+/* // 录音弹窗 */
+.video_window {
+	width: 273rpx;
+	height: 276rpx;
+	color: #eaeaea;
+	font-weight: 400;
+	background: rgba(0, 0, 0, 0.6);
+	border-radius: 10rpx;
+	text-align: center;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	z-index: 999999;
+	transform: translate(-50%, -50%);
+}
+
+.video_window_icon1 {
+	width: 66rpx;
+	height: 102rpx;
+	margin-top: 42rpx;
+}
+
+.video_window_icon2 {
+	width: 88rpx;
+	height: 88rpx;
+	margin-top: 55rpx;
+}
+
+.video_window_time {
+	font-size: 26rpx;
+	margin-top: 5rpx;
+	line-height: 38rpx;
+}
+
+.video_window_tip {
+	font-size: 24rpx;
+	position: absolute;
+	bottom: 30rpx;
+	text-align: center;
+	width: 100%;
+}
+
+/* 微信手机号 */
+
+.wx-tel {
+	display: flex;
+	background: rgba(255, 255, 255, 1);
+	border-top: 1px solid #EAEAEA;
+	height: 109rpx;
+}
+
+.wx-tel text {
+	font-size: 22rpx;
+	font-family: PingFangSC-Regular, PingFang SC;
+	font-weight: 400;
+	color: rgba(102, 102, 102, 1);
+	line-height: 30rpx;
+}
+
+.wx-tel .l {
+	width: 1px;
+	height: 70rpx;
+	margin: auto 0;
+	background-color: #EAEAEA;
+}
+
+.wx-tel .wx-content {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.wx-tel .wx-content ._image {
+	margin: 16rpx 0 10rpx;
+	width: 48rpx;
+	height: 39rpx;
+}
+
+.wx-tel .tel-content {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.wx-tel .tel-content ._image {
+	margin: 13rpx 0 10rpx;
+	width: 30rpx;
+	height: 42rpx;
+}

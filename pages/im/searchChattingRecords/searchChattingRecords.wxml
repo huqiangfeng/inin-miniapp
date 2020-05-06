@@ -1,0 +1,12 @@
+<view class="search">
+  <view class="public-search">
+    <publicSearch placeholder='搜索' bind:onCancelBtn="onCancelBtn" value="{{searchData}}" bind:onSearch="getData" bind:onClear="onChangeValue" bind:onChangeValue="onChangeValue"></publicSearch>
+  </view>
+  <!-- 联系记录 -->
+  <view class="record">
+    <view class="title">联系记录</view>
+    <view class="list">
+      <chattingRecords id="chattingRecordss"></chattingRecords>
+    </view>
+  </view>
+</view>

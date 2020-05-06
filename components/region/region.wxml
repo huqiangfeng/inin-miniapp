@@ -1,0 +1,40 @@
+<!-- components/region/region.wxml -->
+<view class="location-page">
+  <!-- 国内国外 -->
+  <view hidden="{{hidden}}">
+    <nav navStyle="background: rgba(245, 246, 248, 1);" navList="{{navList}}" isCut="{{isCut}}" bind:checkde="changeNav"></nav>
+  </view>
+  <!-- 定位 -->
+  <view class="position-content">
+    <view class="title">定位城市</view>
+    <view class="position-box">
+      <view class="btn-icon" bindtap="on_affirm">
+        <image class="img" src="{{localImg + '/dingwei.png' }}"></image>
+        {{ autoLocation.name }}
+      </view>
+      <view class="btn-position" bindtap="getlocation">
+        <image class="img" src="{{localImg + '/shuaxing.png' }}"></image>
+        <text>重新定位</text>
+      </view>
+    </view>
+  </view>
+  <!-- 列表 -->
+  <view class="position-list-content">
+    <view class="sidebar" v-bounce>
+      <sidebar activeKey="{{ activeKey }}" bind:change="on_changeSidebar" list="{{ list }}"></sidebar>
+    </view>
+    <view class="city-content">
+      <view class="ul">
+        <view class="li" bindtap="on_checked" data-index="{{ index }}" wx:for="{{list[activeKey].citys}}" wx:key="index">
+          <text class="span">{{ item.name }}</text>
+          <image wx:if="{{item.checked}}" class="img" src="{{localImg + '/mine/is_choose.png' }}" alt=""></image>
+          <image wx:else class="img" src="{{localImg + '/mine/no_choose.png' }}" alt=""></image>
+        </view>
+      </view>
+      <!-- <view class="btn-box">
+        <view bindtap="filtrate" class="reset">重置</view>
+        <view class="affirm {{ !checked ?'affirm-bgc':'' }}" bindtap="on_affirm">确认</view>
+      </view> -->
+    </view>
+  </view>
+</view>

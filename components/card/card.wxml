@@ -1,0 +1,65 @@
+<!--components/card/card.wxml-->
+<view>
+    <view class=" {{[schema == 'collect' ?  'component_company_list':'back_gauge' ]}}">
+        <view wx:if="{{schema=='editWhite'}}" class=" component_edit_white">
+            <image wx:if="{{localImg}}" src="{{localImg+'mine/edit_white.png'}}" class="_image component_icon">
+            </image>
+            <view bindtap="onEdit">编辑
+            </view>
+        </view>
+        <view wx:if="{{schema=='editBlue'}}" class=" component_edit_blue">
+            <image wx:if="{{localImg}}" src="{{localImg+'mine/edit_white1.png'}}" class="_image component_icon">
+            </image>
+            <view bindtap="onEdit">编辑
+            </view>
+        </view>
+        <view class=" component_company_content">
+            <image binderror="titleImgErr" data-type="logoUrl"
+                class="_image {{schema=='collect'?'component_company_img1':'component_company_img2'}}"
+                wx:if="{{localImg&&company.logoUrl}}" src="{{company.logoUrl}}">
+            </image>
+            <image binderror="titleImgErr" data-type="logo"
+                class="_image  {{schema=='collect'?'component_company_img1':'component_company_img2'}}"
+                wx:elif="{{localImg&&company.logo}}" src="{{company.logo}}">
+            </image>
+            <view class=" component_company_img_null" wx:else>
+                {{company.rename}}
+            </view>
+            <view class="flex1">
+                <view wx:if="{{schema=='editWhite'||schema=='editBlue'}}" class=" component_people_name">
+                    {{company.personName}}
+                </view>
+                <view class="{{schema=='collect'?'component_company_msg1':'component_company_msg2'}} ">
+                    <span>{{company.name}}</span>
+                </view>
+                <view wx:if="{{schema=='collect'}}" class=" component_company_statistic">
+                    <view style="text-align:center">
+                        <view class=" component_company_statistic_num">
+                            {{company.statistics.viewCount!=null?company.statistics.viewCount:0}}
+                        </view>
+                        <view class=" component_company_statistic_title">浏览量</view>
+                    </view>
+                    <view class=" line"></view>
+                    <view style="text-align:center">
+                        <view class=" component_company_statistic_num">
+                            {{company.statistics.receiveCount!=null?company.statistics.receiveCount:0}}
+                        </view>
+                        <view class=" component_company_statistic_title">收件量</view>
+                    </view>
+                </view>
+                <view wx:if="{{schema=='editWhite'}}" class=" component_input_job">
+                    {{company.defaultCompanyPosition?company.defaultCompanyPosition:'输入职位'}}
+                </view>
+                <view wx:if="{{schema=='editBlue'}}" class=" component_input_job">
+                    {{company.defaultCompanyPosition!=null?company.defaultCompanyPosition:''}}
+                </view>
+            </view>
+        </view>
+        <view class=" is_collect" wx:if="{{company.isCollect&&schema=='collect'}}" bindtap="onCollect">
+            <image class="_image star" wx:if="{{localImg}}" src="{{localImg+'mine/not_collect.png'}}"></image> 已收藏
+        </view>
+        <view class=" no_collect" wx:if="{{!company.isCollect&&schema=='collect'}}" bindtap="onCollect">
+            <image class="_image star" wx:if="{{localImg}}" src="{{localImg+'mine/is_collected.png'}}"></image> 收藏
+        </view>
+    </view>
+</view>

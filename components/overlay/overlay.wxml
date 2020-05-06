@@ -1,0 +1,4 @@
+<!-- components/overlay/overlay.wxml -->
+<view hidden="{{!show}}" catch:touchmove="on_touchmove" class="overlay" bind:tap="on_tap">
+  <slot></slot>
+</view>

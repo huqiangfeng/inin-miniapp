@@ -1,0 +1,7 @@
+<!-- adjust-position="true"  键盘弹起时，是否自动上推页面-->
+<!--  cursor-spacing="15"   指定光标与键盘的距离，取 input 距离底部的距离和 cursor-spacing 指定的距离的最小值作为光标与键盘的距离-->
+<form class="text-input">
+	<input class="f news" cursor-spacing="15" hidden="{{ isKwyboard }}" adjust-position="{{ false }}" confirm-hold="true" hold-keyboard="ture" type="text" value="{{ inputMessage }}"
+		confirm-type="send" bindconfirm="sendMessage" bindinput="bindMessage" bindtap="focus" bindfocus="focus"
+		bindblur="blur" placeholder="说点什么吧" placeholder-style="color:#CFCFCF; padding-left:5px;" />
+</form>

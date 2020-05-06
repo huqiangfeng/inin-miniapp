@@ -1,0 +1,7 @@
+{
+	"component": true,
+	"usingComponents": {
+		"audio-msg": "type/audio/audio",
+		"card": "card/card"
+	}
+}

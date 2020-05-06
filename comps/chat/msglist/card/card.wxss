@@ -1,0 +1,104 @@
+/* // 名片 */
+.card {
+    padding: 0rpx 20rpx;
+    background-color: #fff;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    position: relative;
+    border-radius: 20rpx;
+    box-shadow: 2rpx 4rpx 12rpx 6rpx rgba(140, 140, 140, 0.1);
+}
+
+.card-avatar {
+    margin: 40rpx 10rpx 40rpx 0rpx;
+    width: 102rpx;
+    height: 102rpx;
+    border-radius: 100%;
+}
+
+.card-name {
+    margin-top: 34rpx;
+    font-size: 32rpx;
+    font-weight: 500;
+    line-height: 45rpx;
+}
+
+.card-company {
+    margin: 5rpx 0;
+    color: #666;
+    font-size: 24rpx;
+    font-weight: 500;
+    line-height: 33rpx;
+}
+
+.card-job {
+    margin-bottom: 40rpx;
+    color: #666;
+    font-size: 22rpx;
+    line-height: 30rpx;
+}
+
+/* // 加好友 */
+.add_friend {
+    position: absolute;
+    top: 20rpx;
+    right: 20rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24rpx;
+    padding: 5rpx 20rpx;
+    height: 44rpx;
+    border-radius: 22rpx;
+}
+
+.add_friend_blue {
+    position: absolute;
+    top: 20rpx;
+    right: 20rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24rpx;
+    padding: 5rpx 20rpx;
+    height: 44rpx;
+    border-radius: 22rpx;
+    color: #fff;
+    background: linear-gradient(316deg, #2f58ff 0%, #6f8dff 100%);
+}
+
+.card-icon {
+    width: 22rpx;
+    height: 22rpx;
+    margin-right: 10rpx;
+}
+
+.add_friend_white {
+    position: absolute;
+    top: 20rpx;
+    right: 20rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24rpx;
+    padding: 5rpx 20rpx;
+    height: 44rpx;
+    border-radius: 22rpx;
+    color: #5f7aff;
+    border: 1rpx solid #5f7aff;
+}
+
+.add_friend_grey {
+    position: absolute;
+    top: 20rpx;
+    right: 20rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24rpx;
+    padding: 5rpx 20rpx;
+    height: 44rpx;
+    border-radius: 22rpx;
+    color: #666;
+}

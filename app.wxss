@@ -1,0 +1,163 @@
+/**app.wxss**/
+
+@import '/static/weui-wxss/weui.wxss';
+
+.clearfix:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+  color: transparent;
+}
+
+page {
+  height: 100%;
+}
+
+.img-emoji {
+  width: 22rpx;
+  height: 22rpx;
+  display: inline-block;
+}
+
+.weui-input {
+  height: 2.58823529em;
+  min-height: 2.58823529em;
+  line-height: 2.58823529em;
+}
+
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 200rpx 0;
+  box-sizing: border-box;
+}
+
+.Shadow {
+  position: fixed;
+  box-shadow: 0rpx 4rpx 12rpx 6rpx rgba(140, 140, 140, 0.1);
+  width: 100%;
+  height: 1rpx;
+  left: 0;
+  bottom: 0;
+}
+
+.common_btn {
+  text-align: center;
+  margin: 0 auto;
+  width: 610rpx;
+  line-height: 88rpx;
+  border-radius: 44rpx;
+}
+
+.Blue_Gradual_Btn {
+  text-align: center;
+  margin: 0 auto;
+  width: 610rpx;
+  line-height: 88rpx;
+  border-radius: 44rpx;
+  color: #fff;
+  background: linear-gradient(317deg, #5f7aff 0%, #77a9ff 100%);
+}
+
+.Grey_Gradual_Btn {
+  text-align: center;
+  margin: 0 auto;
+  width: 610rpx;
+  line-height: 88rpx;
+  border-radius: 44rpx;
+  color: #666;
+  background-color: #d8d8d8;
+}
+
+.Grey_Tag {
+  display: inline-block;
+  white-space: nowrap;
+  padding: 3rpx 9rpx;
+  line-height: 25rpx;
+  border-radius: 34rpx;
+  font-size: 18rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: #666666;
+  background: #f0f0f0;
+}
+
+.Omit {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.Prompt {
+  text-align: center;
+  margin-top: 150rpx;
+}
+
+.Prompt_Img_Icon {
+  margin: 0 auto;
+  width: 330rpx;
+  height: 325rpx;
+  margin-bottom: 50rpx;
+}
+
+.Prompt_Title {
+  text-align: center;
+  font-size: 30rpx;
+  color: #666;
+  line-height: 42rpx;
+}
+
+.Grey_Bottom_Sense {
+  width: 100%;
+  height: 110rpx;
+  font-size: 26rpx;
+  color: #666;
+  background: #f2f2f2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Grey_Bottom_Sense image {
+  animation: loading 3s;
+}
+
+@keyframes loading {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+page {
+  line-height: 1.6;
+  font-family: -apple-system-font, Helvetica Neue, sans-serif;
+}
+
+icon {
+  vertical-align: middle;
+}

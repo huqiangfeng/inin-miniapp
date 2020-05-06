@@ -1,0 +1,19 @@
+<!--pages/home/companyName/companyName.wxml-->
+<view class="_div entire">
+    <view class="_div title"> 填写公司名称 </view>
+    <view class="_div input_company">
+        <label class="_span input_name">公司:</label>
+        <input class="_input input_value" type="text" value="{{companyName}}" placeholder="输入公司" confirm-type="done"
+            placeholder-style="color: #999;font-size: 30rpx;" disabled bindtap="changePage" />
+    </view>
+    <view wx:if="{{ !amend }}" class="_div input_company">
+        <label class="_span input_name">职位:</label>
+        <input class="_input input_value" type="text" bind:input="onInput" value="{{positionName}}" placeholder="输入职位" confirm-type="done"
+            placeholder-style="color: #999;font-size: 30rpx;" />
+    </view>
+    <view wx:else class="_div input_company1">
+
+    </view>
+    <view class="_div Blue_Gradual_Btn btn" bindtap="sumbit"> 完成
+    </view>
+</view>

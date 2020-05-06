@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "companyList": "/components/companyList/companyList"
+  },
+  "navigationBarTitleText": "我的收藏"
+}

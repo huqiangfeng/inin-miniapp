@@ -1,0 +1,11 @@
+<view wx:key="i" key="{{i}}" id="{{item.nameFirstLetter}}" data-userId="{{item.userId}}" wx:for="{{lists}}" wx:for-index="i" wx:for-item="item" class="_div list_contentbox">
+  <view class="_div list move-x" bindtap="changePage" data-id="{{ item.userId }}">
+    <image wx:if="{{item.avatar}}" src="{{item.avatar+'?width=100'}}" class="_image list_img"></image>
+    <view wx:elif="{{localImg}}" class="_div avatar_none">{{item.name}}</view>
+    <view class="_div list_con">
+      <view class="overspread"></view>
+      <view class="_div list_con_name">{{item.name}}</view>
+      <view class="_div list_con_company">{{item.userCard.companyName}}</view>
+    </view>
+  </view>
+</view>

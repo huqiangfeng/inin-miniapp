@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "van-steps": "@vant/weapp/steps/index"
+  },
+  "navigationBarTitleText":"我的拜访",
+  "navigationBarTextStyle":"white",
+  "navigationBarBackgroundColor":"#5F7AFF"
+}

@@ -1,0 +1,49 @@
+<!-- /*
+ * @Author: wangyuan 
+ * @Date: 2020-03-30 15:32:39 
+ * @Last Modified by:   wonyuan@163.com 
+ * @Last Modified time: 2020-03-30 15:32:39 
+ */ -->
+<view class="visit_success">
+    <view class="header">
+        <image src="../../../static/send_success.png"></image>
+    </view>
+    <van-divider contentPosition="center">拜访该公司还拜访了</van-divider>
+    <view class="company_list">
+        <block>
+            <view class="list_item" wx:for="{{companyList}}" wx:key="index">
+               <view class="left">
+                   <view class="radio nocheck" bindtap="switchRadio" data-index="{{index}}">
+                       <image wx:if="{{item.isCheck}}" src='../../../static/images/yt-yes.png'></image>
+                       <image wx:else src='../../../static/images/yt-no.png'></image>
+                   </view>
+               </view>
+               <view class="right">
+                   <view class="company_logo">
+                    <van-image round width="90rpx" height="90rpx" src="{{item.logoUrl}}"/>
+                   </view>
+                   <view class="company_info">
+                       <text class="name">{{item.name}}</text>
+                       <view class="opstions">
+                           <view class="item look_num">
+                               <text>{{item.statistics.viewCount}}</text>
+                               <text>浏览量</text>
+                           </view>
+                           <view class="item reveive_num">
+                                <text>{{item.statistics.receiveCount}}</text>
+                                <text>收件量</text>
+                           </view>
+                           <view class="item link">
+                                <text>{{item.statistics.peopleCount}}</text>
+                                <text>人脉</text>
+                           </view>
+                       </view>
+                   </view>
+               </view>
+            </view>
+        </block>
+    </view>
+    <view class="footer">
+        <view class="visit_btn" bindtap="allVisitEvent">一键传递</view>
+    </view>
+</view>

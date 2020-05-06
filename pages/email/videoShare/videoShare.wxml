@@ -1,0 +1,26 @@
+<!-- /*
+ * @Author: wangyuan 
+ * @Date: 2020-03-25 15:57:04 
+ * @Last Modified by:   wonyuan@163.com 
+ * @Last Modified time: 2020-03-25 15:57:04 
+ */ -->
+<view class="video">
+    <video id="myVideo" play-btn-position="center" initial-time="1" src="{{playUrl}}" ></video>
+    <view class="collection">
+        <image style="width: 68rpx;height: 68rpx;" class="collection_img" src="../../../static/images/mine/is_collected.png"></image>
+        <span class="look_num">122</span>
+    </view>
+    <view class="look">
+        <image style="width: 70rpx;height: 42rpx;" class="collection_img" src="../../../static/images/kankan.png"></image>
+        <span class="look_num">1.2万</span>
+    </view>
+    <view class="content">
+        <view class="user_info">
+            <span class="name">@{{name}}</span>
+            <span class="time">·{{createTime}}</span>
+        </view>
+        <view class="title">
+            #{{description}}
+        </view>
+    </view>
+</view>

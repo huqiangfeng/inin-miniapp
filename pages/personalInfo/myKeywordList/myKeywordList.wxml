@@ -1,0 +1,45 @@
+<!-- personalInfo//myKeywordList/myKeywordList.wxml -->
+<view class="_div entire">
+    <publicSearch value="{{ value }}" placeholder="搜索添加关键词" bind:onSearch="onSearch" bind:onClear="onClear" bind:onChangeValue="onChangeValue"></publicSearch>
+    <!-- 关键词 保存 -->
+    <view hidden="{{ value !='' }}" class="_div header">
+        <view class="_div title">关键词</view>
+        <view class="_div btn" bindtap="saveKeywords">保存({{keywords.length}}/4)</view>
+    </view>
+    <!-- 已选择标签组 -->
+    <view hidden="{{ value !='' }}" class="_div tags">
+        <view class="_div tag" wx:key="i" key="{{i}}" wx:for="{{keywords}}" wx:for-index="i" wx:for-item="item">
+            <label class="_span">{{item}}</label>
+            <image wx:if="{{localImg}}" src="{{localImg+'del.png'}}" class="_image keyword_tag_del" bindtap="delKeyword" data-name="{{ item }}"></image>
+        </view>
+    </view>
+    <!-- 选择标签 -->
+    <view hidden="{{ value !='' }}" class="_div choose_tag">
+        <!-- 左侧分类 -->
+        <view class="_div classify">
+            <!-- bar=i -->
+            <view wx:key="i" key="{{i}}" bindtap="barchange" data-index="{{i}}" wx:for="{{list}}" wx:for-index="i" wx:for-item="item" class="_div {{['classify_bar', i == bar ? 'classify_bar_active' : '']}}">
+                {{item.typeName}}
+            </view>
+        </view>
+        <!-- 右侧选择 -->
+        <view class="_div choose" wx:if="{{list[bar]}}">
+            <!-- chooseBar(item.word) -->
+            <view class="_div choose_bar" wx:key="i" key="{{i}}" bindtap="chooseBar" data-name="{{ item.word }}" wx:for="{{list[bar].dataList}}" wx:for-index="i" wx:for-item="item">
+                <view class="_div">{{item.word}}</view>
+                <image wx:if="{{localImg&&(keywords[0]==item.word||keywords[1]==item.word||keywords[2]==item.word||keywords[3]==item.word)}}" src="{{localImg+'mine/is_choose.png'}}" class="_image choose_icon"></image>
+                <image wx:elif="{{localImg}}" src="{{localImg+'mine/no_choose.png'}}" class="_image choose_icon"></image>
+            </view>
+        </view>
+    </view>
+    <!-- 搜索到的关键词列表 -->
+    <view hidden="{{ value==''  }}" class="search-list">
+        <view class="search-item" hidden="{{ searchList.length === 0  }}" wx:key="i" key="{{i}}" wx:for="{{searchList}}" bindtap="onselectedItem" data-name="{{item}}">
+            {{ item }}
+        </view>
+        <view hidden="{{ searchList.length != 0  }}" class="_div  Prompt">
+            <image wx:if="{{localImg}}" src="{{imagePath+'no_search.png'}}" class="_image  Prompt_Img_Icon"></image>
+            <view class="_div  Prompt_Title">暂无搜索结果噢～</view>
+        </view>
+    </view>
+</view>
