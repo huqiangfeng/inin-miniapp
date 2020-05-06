@@ -1,140 +1,101 @@
-.item {
-  /* // single row */
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin: 0 30rpx;
-  /* padding: 39rpx 0rpx 32rpx 0rpx; */
-  border-bottom: 1rpx solid #eaeaea;
+page {
+  background: rgba(242, 242, 242, 1);
 }
 
-.single_row {
+.card-content {
   display: flex;
-  justify-content: flex-start;
+  flex-direction: column;
+  align-items: center;
+  padding: 20rpx;
+  /* flex-wrap: wrap; */
 }
 
-.item_all {
-  /* // img+content */
+/* item */
+
+.card-content .card-item {
+  width: 670rpx;
+  height: 240rpx;
+  background: rgba(255, 255, 255, 1);
+  box-shadow: 2rpx 4rpx 12rpx 6rpx rgba(140, 140, 140, 0.1);
+  border-radius: 20rpx;
   display: flex;
-  justify-content: flex-start;
-  flex: 1;
+  align-items: center;
+  padding: 0 20rpx;
   box-sizing: border-box;
-  align-items: center;
+  position: relative;
 }
 
-.avatar {
-  width: 100rpx;
-  height: 100rpx;
-  margin-right: 21rpx;
-  border-radius: 100%;
+.card-content .card-item .del {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 20rpx;
+  height: 20rpx;
+  padding: 30rpx;
 }
 
-.item_content {
-  font-size: 22rpx;
-  line-height: 30rpx;
+.card-content .card-item .user_avatar {
+  width: 120rpx;
+  height: 120rpx;
+  background: rgba(216, 216, 216, 1);
+  border-radius: 50%;
+  margin-right: 20rpx;
+}
+
+.card-content .card-item .card-info {
   flex: 1;
+  overflow: hidden;
 }
 
-.item_content_people {
-  height: 48rpx;
+.card-content .card-item .card-info .row {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: flex;
   font-size: 28rpx;
-  font-family: PingFangSC-Medium, PingFang SC;
-  font-weight: 500;
-  color: rgba(51, 51, 51, 1);
-  line-height: 40rpx;
-  margin-top: 25rpx;
+  color: rgba(6, 6, 6, 1);
+  line-height: 60rpx;
 }
 
-.item_content_company {
-  margin-top: 2rpx;
-  height: 30rpx;
-  font-size: 22rpx;
-  font-family: PingFangSC-Regular, PingFang SC;
-  font-weight: 400;
-  color: rgba(102, 102, 102, 1);
-  line-height: 30rpx;
-}
+.card-content .card-item .card-info .k {}
 
-.item_content_job {
-  margin-top: 3rpx;
-  height: 30rpx;
-  font-size: 22rpx;
-  font-family: PingFangSC-Regular, PingFang SC;
-  font-weight: 400;
-  color: rgba(102, 102, 102, 1);
-  line-height: 30rpx;
-}
-
-.item_content_tags {
-  display: flex;
-  justify-content: flex-start;
-  flex-wrap: wrap;
-  margin-bottom: 24rpx;
-
-}
-
-.item_content_tags .Grey_Tag {
-  margin-right: 10rpx;
-  margin-top: 8rpx;
-  height: 30rpx;
-  background: rgba(240, 240, 240, 1);
-  border-radius: 34rpx;
-  font-size: 18rpx;
-  font-family: PingFangSC-Regular, PingFang SC;
-  font-weight: 400;
-  color: rgba(51, 51, 51, 1);
-  line-height: 30rpx;
-}
-
-.is_add_friend {
+.card-content .card-item .card-info .v {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
   white-space: nowrap;
-  margin: 13rpx 0 0 0;
-  font-size: 26rpx;
-  line-height: 44rpx;
 }
 
-.add_friend {
-  white-space: nowrap;
-  margin: 13rpx 0 0 0;
-  width: 122rpx;
-  font-size: 26rpx;
-  line-height: 44rpx;
-  color: #fff;
-  background: linear-gradient(316deg,
-      rgba(47, 88, 255, 1) 0%,
-      rgba(111, 141, 255, 1) 100%);
+/* btn */
+.card-content .add-card-btn {
+  margin: 170rpx 0;
+  width: 610rpx;
+  height: 88rpx;
+  background: linear-gradient(317deg, rgba(95, 122, 255, 1) 0%, rgba(119, 169, 255, 1) 100%);
+  border-radius: 44rpx;
+  position: relative;
 }
 
-.add_white {
-  width: 21rpx;
-  height: 21rpx;
+.add-card-btn::before {
+  content: '';
+  width: 8rpx;
+  height: 48rpx;
+  background: rgba(255, 255, 255, 1);
+  border-radius: 6rpx;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
 
-.are_friend {
-  width: 122rpx;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  color: #5f7aff;
-  border-radius: 22rpx;
-  border: 1rpx solid #5f7aff;
-}
-
-.apply_friend {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 168rpx;
-  font-size: 24rpx;
-  text-align: center;
-  color: #666;
-  border-radius: 22rpx;
-  border: 1rpx solid #666;
-}
-
-.icon {
-  width: 24rpx;
-  height: 24rpx;
-  margin-right: 8rpx;
+.add-card-btn::after {
+  content: '';
+  width: 48rpx;
+  height: 8rpx;
+  background: rgba(255, 255, 255, 1);
+  border-radius: 6rpx;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }

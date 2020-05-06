@@ -73,6 +73,13 @@
 					"pathName": "pages/email/search/search",
 					"query": "",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/personalInfo/myCard/myCard",
+					"pathName": "pages/personalInfo/myCard/myCard",
+					"query": "",
+					"scene": null
 				}
 			]
 		}
