@@ -31,7 +31,6 @@
         </view>
     </view>
     <!-- <view class="admin_message" wx:if="{{isAdminMsg}}">这里还是小传的信息显示</view> -->
-
     <!-- changePage(item.listid) -->
     <!-- :style="{'height':listsHeight+'px'}" -->
     <view class="_div lists" scroll-y="true" wx:if="{{lists.length>0}}">
@@ -51,7 +50,7 @@
                                     <label wx:if="{{item.data[item.data.length-1].type=='txt'}}" class="_span">
                                         消息
                                     </label>
-                                    <label wx:if="{{item.data[item.data.length-1].type=='emoji'}}" class="_span">
+                                    <label wx:if="{{item.data[item.data.length-1].type=='emoji'||item.data[item.data.length-1].type=='admin'}}" class="_span">
                                         消息
                                     </label>
                                     <label wx:if="{{item.data[item.data.length-1].type=='img'}}" class="_span">
@@ -66,7 +65,7 @@
                                     <label wx:if="{{item.data[item.data.length-1].type=='txt'}}" class="_span">
                                         {{item.data[item.data.length-1].text}}
                                     </label>
-                                    <label wx:if="{{item.data[item.data.length-1].type=='emoji'}}" class="_span emoji-box">
+                                    <label wx:if="{{item.data[item.data.length-1].type=='emoji'||item.data[item.data.length-1].type=='admin'}}" class="_span emoji-box">
                                         <view wx:for="{{ item.data[item.data.length-1].text  }}" wx:for-index="emojiI" wx:for-item="emojiItmen" wx:key="emojiI">
                                             <view wx:if="{{ emojiItmen.type == 'emoji' }}">
                                                 <image class="img-emoji" src="{{ localImg +'faces/'+ emojiItmen.data }}" mode="widthFix"></image>
