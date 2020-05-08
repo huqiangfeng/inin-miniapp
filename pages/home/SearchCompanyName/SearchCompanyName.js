@@ -22,7 +22,8 @@ Page({
     canSearch: true,
     searchData: "", //公司
     page: 1,
-    amend: false
+    amend: false,
+    isBack: false
   },
 
   /**
@@ -39,6 +40,8 @@ Page({
       setObj.searchData = options.name
     if (options.amend)
       setObj.amend = options.amend
+    if (options.isBack)
+      setObj.isBack = options.isBack
 
     this.setData(setObj)
 
@@ -164,14 +167,30 @@ Page({
   // 需求名片详情
   changeCompanyPage(e) {
     let index = e.currentTarget.dataset.index
-    wx.redirectTo({
-      url: `/pages/home/companyName/companyName?name=${this.data.companyLists[index].name}&amend=${this.data.amend}`
-    })
+    if (this.data.isBack) {
+      const eventChannel = this.getOpenerEventChannel()
+      eventChannel.emit('getCompanyName', {
+        companyName: this.data.companyLists[index].name
+      })
+      wx.navigateBack({
+        delta: 1
+      })
+    } else {
+      wx.redirectTo({
+        url: `/pages/home/companyName/companyName?name=${this.data.companyLists[index].name}&amend=${this.data.amend}`
+      })
+    }
   },
   // (取消) 返回上一页
   returnPage(e) {
-    wx.redirectTo({
-      url: '/pages/home/companyName/companyName'
-    })
+    if (this.data.isBack) {
+      wx.navigateBack({
+        delta: 1
+      })
+    } else {
+      wx.redirectTo({
+        url: '/pages/home/companyName/companyName'
+      })
+    }
   }
 })

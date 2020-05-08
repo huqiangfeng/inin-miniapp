@@ -89,6 +89,7 @@
         "setCity/setCity",
         "qrCode/qrCode",
         "myCard/myCard",
+        "addCard/addCard",
         "myVisitBusiness/myVisitBusiness",
         "myVisitProcess/myVisitProcess"
       ]

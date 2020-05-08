@@ -61,12 +61,11 @@ Page({
   // 调用本地头像
   getAvatar() {
     if (this.data.preventClick) {
-
       this.data.preventClick = false;
       wx.chooseImage({
         count: 1,
-        sizeType: ["original", "compressed"],
-        sourceType: ["album", "camera"],
+        sizeType: ['original', 'compressed'],
+        sourceType: ['album', 'camera'],
         success: res => {
           this.data.preventClick = true;
           const tempFilePaths = res.tempFilePaths;
@@ -76,11 +75,12 @@ Page({
             filePath: tempFilePaths[0],
             name: "file",
             success: res1 => {
+              let res1Data = JSON.parse(res1.data)
               //  更新头像
               req_fn
                 .req(
                   "api/user/update", {
-                    avatar: JSON.parse(res1.data).data.id
+                    avatar: res1Data.data.id
                   },
                   "post"
                 )

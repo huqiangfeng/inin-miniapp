@@ -23,6 +23,7 @@ page {
   padding: 0 20rpx;
   box-sizing: border-box;
   position: relative;
+  margin-bottom: 20rpx;
 }
 
 .card-content .card-item .del {
@@ -37,7 +38,6 @@ page {
 .card-content .card-item .user_avatar {
   width: 120rpx;
   height: 120rpx;
-  background: rgba(216, 216, 216, 1);
   border-radius: 50%;
   margin-right: 20rpx;
 }

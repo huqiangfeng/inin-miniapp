@@ -1,23 +1,23 @@
 <view class="card-content">
   <!-- item -->
-  <view class="card-item">
-    <image src="https://wx.onechuan.com/api_test/images/wx/send_blue.png" class="_image user_avatar"></image>
+  <view class="card-item" bind:tap="on_tapItem" data-index="{{ index }}" wx:for="{{list}}" wx:key="index">
+    <image src="{{avatar}}" class="_image user_avatar"></image>
     <view class="card-info">
       <view class="row">
         <view class="k">姓名：</view>
-        <view class="v">林晓宇</view>
+        <view class="v">{{ userName }}</view>
       </view>
       <view class="row">
         <view class="k">职位：</view>
-        <view class="v">设计师</view>
+        <view class="v">{{item.positionName }}</view>
       </view>
       <view class="row">
         <view class="k">公司：</view>
-        <view class="v">行鲨鱼（上海）科技股份有限公司</view>
+        <view class="v">{{item.companyName}}</view>
       </view>
     </view>
-    <image bind:tap="on_del" data-index="123" src="{{localImg+'fanhui.png'}}" class="_image del"></image>
+    <image wx:if="{{item.defaultStatus !=='yes'}}" catch:tap="on_del" data-index="{{ index }}" src="{{localImg+'fanhui.png'}}" class="_image del"></image>
   </view>
   <!-- btn -->
-  <view class="add-card-btn"></view>
+  <view class="add-card-btn" bind:tap="on_addCard"></view>
 </view>

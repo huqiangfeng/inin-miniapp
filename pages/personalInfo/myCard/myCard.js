@@ -12,117 +12,150 @@ Page({
   data: {
     localImg: app.localImg,
     imagePath: req_fn.imagePath,
-    list: [1]
+    userName: '',
+    avatar: '',
+    list: [],
+    isSelect: false
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    if (options.isSelect) {
+      this.setData({
+        isSelect: true
+      })
+    }
+    this.getInfo()
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
   onShow: function () {
-
+    this.getList()
   },
+  // 选中
+  on_tapItem(e) {
+    let index = e.currentTarget.dataset.index
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
+    if (this.data.isSelect) {
+      const eventChannel = this.getOpenerEventChannel()
+      let data = {
+        defaultAuthEmail: this.data.list[index].defaultAuthEmail,
+        defaultCardId: this.data.list[index].defaultCardId,
+        logo: this.data.list[index].avatar,
+        name: this.data.list[index].defaultCompanyName,
+        personName: this.data.list[index].name,
+        defaultCompanyPosition: this.data.list[index].defaultCompanyPosition,
+        defaultAuthStatus: this.data.list[index].defaultAuthStatus,
+        sendUserName: this.data.list[index].name,
+        sendUserPosition: this.data.list[index].defaultCompanyPosition,
+        sendUserCompany: this.data.list[index].defaultCompanyName,
+        userShortId: this.data.list[index].userShortId,
+        userId: this.data.list[index].userId
+      };
+      eventChannel.emit('getChangeCard', {
+        card: data
+      });
+    } else {
+      let data = this.data.list[index].companyInfo
+      util.setLocal('companyInfo', data)
+      wx.navigateTo({
+        url: "/pages/email/demandCompany/demandCompany"
+      });
+    }
   },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
+  // 删除
   on_del(e) {
-    console.log(e.currentTarget);
+    let index = e.currentTarget.dataset.index
+    let _this = this
     wx.showModal({
       content: '确认要删除吗？',
       success(res) {
         if (res.confirm) {
-          console.log('用户点击确定')
+          req_fn
+            .req(
+              `/api/user/card/${_this.data.list[index].id}/delete`, {
+                id: _this.data.list[index].id
+              },
+              "post"
+            )
+            .then((result) => {
+              wx.showToast({
+                title: '删除成功',
+                icon: 'none',
+                duration: 2000
+              })
+              _this.getList()
+            }).catch((err) => {
+
+            });
         } else if (res.cancel) {
           console.log('用户点击取消')
         }
       }
     })
   },
-  getList(keyword = "", lastTime = "") {
-    if (lastTime == "")
-      wx.showLoading({
-        title: "加载中..."
-      });
+  // 获取列表
+  getList() {
+    wx.showLoading({
+      title: "加载中..."
+    });
     req_fn
       .req(
-        "api/user/maybe-friends", {
-          keyword: keyword,
-          lastTime: lastTime
-        },
+        "api/user/cards", {},
         "post"
       )
       .then(res => {
-        let setObj = {}
         wx.hideLoading();
-        //console.log("感兴趣的好友列表: ", res);
         if (res.code == 0) {
-          if (res.data != null) {
-            res.data.forEach(element => {
-              if (
-                element.avatar != null &&
-                element.avatar.indexOf("http") == -1
-              ) {
-                element.avatar = req_fn.imgUrl + element.avatar + "?width=50";
-              }
-            });
-          }
-
-          if (lastTime == "") {
-            setObj.lists = res.data != null ? res.data : [];
-          } else {
-            // 下一页
-            setObj.loading = false;
-            setObj.lists = [...this.data.lists, ...res.data];
-          }
-
-          setObj.isPhone = util.pattern(keyword, "phone");
+          this.setData({
+            list: res.data
+          })
         }
-        this.setData(setObj)
       })
       .catch(err => {
         wx.hideLoading();
       });
   },
-  // 点击好友名片，跳转聊天页面
-  changePage(e) {
-    let id = e.currentTarget.dataset.id
-    if (id) {
-      wx.navigateTo({
-        url: "/pages/im/chat/chat?id=" + id
-      });
-    } else {
-      wx.showToast({
-        title: "暂未开放和自己聊天",
-        icon: "none",
-        duration: 1500
-      });
-    }
-    this.setData({
-      isRetuen: true
-    })
+  // 获取信息
+  getInfo() {
+    //console.log('this localImg',this.data.localImg)
+    req_fn.req("api/user", {}, "post").then(res => {
+      if (res.code == 0) {
+        let data = {
+          defaultAuthEmail: res.data.defaultAuthEmail,
+          defaultCardId: res.data.defaultCardId,
+          logo: res.data.avatar,
+          name: res.data.defaultCompanyName,
+          personName: res.data.name,
+          defaultCompanyPosition: res.data.defaultCompanyPosition,
+          defaultAuthStatus: res.data.defaultAuthStatus,
+          sendUserName: res.data.name,
+          sendUserPosition: res.data.defaultCompanyPosition,
+          sendUserCompany: res.data.defaultCompanyName,
+          userShortId: res.data.userShortId,
+          userId: res.data.userId
+        };
+        if (data.logo != null) {
+          if (data.logo.indexOf("http") == -1) {
+            data.logo = req_fn.imgUrl + data.logo;
+          }
+        }
+        util.setLocal("card", data);
+        this.setData({
+          userName: res.data.name,
+          avatar: data.logo
+        })
+      } else if (res.code == 40001) {
+        setTimeout(() => {
+          this.getInfo();
+        }, 1500);
+      }
+    });
+  },
+  // 添加
+  on_addCard(e) {
+    wx.navigateTo({
+      url: "/pages/personalInfo/addCard/addCard"
+    });
   },
 })

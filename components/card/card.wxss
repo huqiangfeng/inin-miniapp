@@ -57,7 +57,7 @@
     font-family: PingFangSC-Regular;
     font-size: 22rpx;
     justify-content: center;
-    width: 110rpx;
+    width: 120rpx;
     border-radius: 23rpx;
     color: #fff;
     background: linear-gradient(315deg, #5f7aff 0%, #77a9ff 100%);
