@@ -1,11 +1,11 @@
 <view class="card-content">
   <!-- item -->
   <view class="card-item" bind:tap="on_tapItem" data-index="{{ index }}" wx:for="{{list}}" wx:key="index">
-    <image src="{{avatar}}" class="_image user_avatar"></image>
+    <image src="{{userInfo.logo}}" class="_image user_avatar"></image>
     <view class="card-info">
       <view class="row">
         <view class="k">姓名：</view>
-        <view class="v">{{ userName }}</view>
+        <view class="v">{{userInfo.personName }}</view>
       </view>
       <view class="row">
         <view class="k">职位：</view>

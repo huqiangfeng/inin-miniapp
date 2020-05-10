@@ -1,79 +1,107 @@
 /* pages/email/visitHome/visitHome.wxss */
-.visit_home{
+.visit_home {
     width: 100%;
     height: 100%;
     background-color: #F5F6F8;
 }
-.header{
-    width:100%;
-    height:240rpx;
+
+.header {
+    width: 100%;
+    height: 240rpx;
     position: relative;
 }
-.header .header_top{
+
+.header .header_top {
     width: 100%;
     height: 90rpx;
-    background:#77A9FF;
+    background: #77A9FF;
 }
-.header .header_body{
-    width:670rpx;
-    height:240rpx;
-    background:rgba(255,255,255,1);
-    box-shadow:2rpx 4rpx 12rpx 6rpx rgba(140,140,140,0.1);
-    border-radius:20rpx;
+
+.header .header_body {
+    width: 670rpx;
+    height: 240rpx;
+    background: rgba(255, 255, 255, 1);
+    box-shadow: 2rpx 4rpx 12rpx 6rpx rgba(140, 140, 140, 0.1);
+    border-radius: 20rpx;
     position: absolute;
     top: 0;
     left: 40rpx;
     display: flex;
-    justify-content:center;
+    justify-content: center;
     align-items: center;
 }
-.header .header_body .user{
+
+.header .header_body .change-btn {
+    position: absolute;
+    top: 20rpx;
+    right: 20rpx;
+    height: 45rpx;
+    display: flex;
+    align-items: center;
+    font-weight: 400;
+    font-family: PingFangSC-Regular;
+    font-size: 22rpx;
+    justify-content: center;
+    width: 120rpx;
+    border-radius: 23rpx;
+    color: #fff;
+    background: linear-gradient(315deg, #5f7aff 0%, #77a9ff 100%);
+}
+
+.header .header_body .user {
     width: 550rpx;
     height: 120rpx;
     display: flex;
     justify-content: flex-start;
     align-items: center;
 }
-.header .header_body .user .user_avarte{
+
+.header .header_body .user .user_avarte {
     width: 120rpx;
     height: 120rpx;
     margin-right: 20rpx;
 }
-.header .header_body .user .user_avarte .no_logo{
+
+.header .header_body .user .user_avarte .no_logo {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.header .header_body .user .user_info{
+.header .header_body .user .user_info {
     width: auto;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: flex-start;
 }
-.header .header_body .user .user_info .user_name{
+
+.header .header_body .user .user_info .user_name {
     font-size: 36rpx;
     color: #333;
     font-weight: bold;
 }
-.header .header_body .user .user_info .user_companyname{
+
+.header .header_body .user .user_info .user_companyname {
     font-size: 26rpx;
     font-weight: 700;
     color: #666;
     font-family: Courier, monospace;
 }
-.header .header_body .user .user_info .user_positionname{
+
+.header .header_body .user .user_info .user_positionname {
     font-size: 24rpx;
     color: #666;
 }
-.appointment{
+
+.appointment {
     width: 100%;
     height: 90rpx;
     background-color: #fff;
     margin: 40rpx 0 20rpx 0;
 }
-.appointment .appointment_body{
+
+.appointment .appointment_body {
     width: 670rpx;
     height: 100%;
     margin: 0 auto;
@@ -81,29 +109,34 @@
     justify-content: space-between;
     align-items: center;
 }
-.appointment .appointment_body .title{
+
+.appointment .appointment_body .title {
     display: flex;
     justify-content: flex-start;
     align-items: center;
     height: 40rpx;
     line-height: 40rpx;
 }
-.appointment .appointment_body .title .time{
+
+.appointment .appointment_body .title .time {
     font-size: 28rpx;
     color: #333;
     font-weight: 700;
     margin-left: 20rpx;
 }
-.appointment .appointment_body .chose_time{
+
+.appointment .appointment_body .chose_time {
     font-size: 24rpx;
     color: #999;
 }
-.visit_department{
+
+.visit_department {
     width: 100%;
     height: 90rpx;
     background-color: #fff;
 }
-.visit_department .department_body{
+
+.visit_department .department_body {
     width: 670rpx;
     height: 100%;
     margin: 0 auto;
@@ -111,62 +144,72 @@
     justify-content: space-between;
     align-items: center;
 }
-.visit_department .department_body .title{
+
+.visit_department .department_body .title {
     display: flex;
     justify-content: flex-start;
     align-items: center;
     height: 40rpx;
     line-height: 40rpx;
 }
-.visit_department .department_body .title .time{
+
+.visit_department .department_body .title .time {
     font-size: 28rpx;
     color: #333;
     font-weight: 700;
     margin-left: 20rpx;
 }
-.visit_department .department_body .chose_time{
+
+.visit_department .department_body .chose_time {
     font-size: 24rpx;
     color: #999;
 }
-.department_box{
+
+.department_box {
     width: 640rpx;
     height: 600rpx;
     padding-top: 10rpx;
 }
-.department_name{
-    width:145rpx;
-    height:60rpx;
+
+.department_name {
+    width: 145rpx;
+    height: 60rpx;
     display: inline-block;
-    border-radius:10rpx;
+    border-radius: 10rpx;
     margin-right: 0;
     margin-bottom: 30rpx;
-    background:rgba(245,246,248,1);
+    background: rgba(245, 246, 248, 1);
     color: #333333;
     text-align: center;
     line-height: 60rpx;
     font-size: 24rpx;
 }
-.department_name_margin{
-     margin-right: 20rpx;
+
+.department_name_margin {
+    margin-right: 20rpx;
 }
-.departmentActive{
-    background:linear-gradient(317deg,rgba(95,122,255,1) 0%,rgba(119,169,255,1) 100%);
+
+.departmentActive {
+    background: linear-gradient(317deg, rgba(95, 122, 255, 1) 0%, rgba(119, 169, 255, 1) 100%);
     color: #FFFFFF;
 }
-.visit_business{
-    width:750rpx;
-    height:370rpx;
-    background:rgba(255,255,255,1);
+
+.visit_business {
+    width: 750rpx;
+    height: 370rpx;
+    background: rgba(255, 255, 255, 1);
     margin-top: 20rpx;
 }
-.visit_business .title{
+
+.visit_business .title {
     padding: 25rpx 0 0 40rpx;
-    font-size:32rpx;
-    font-family:PingFangSC-Medium,PingFang SC;
-    font-weight:700;
-    color:rgba(51,51,51,1);
+    font-size: 32rpx;
+    font-family: PingFangSC-Medium, PingFang SC;
+    font-weight: 700;
+    color: rgba(51, 51, 51, 1);
 }
-.visit_business .content{
+
+.visit_business .content {
     width: 670rpx;
     min-height: 120rpx;
     margin: 0 auto;
@@ -174,11 +217,13 @@
     justify-content: flex-start;
     align-items: center;
 }
-.tips{
-   padding-left: 40rpx;
-   padding-top: 20rpx;
+
+.tips {
+    padding-left: 40rpx;
+    padding-top: 20rpx;
 }
-.tips .fy_v{
+
+.tips .fy_v {
     width: 32rpx;
     height: 32rpx;
     background: #77A9FF;
@@ -188,13 +233,15 @@
     align-items: center;
     float: left;
 }
-.tips .text{
+
+.tips .text {
     color: #888888;
     font-size: 26rpx;
     float: left;
-    margin-left:16rpx ;
+    margin-left: 16rpx;
 }
-.submit_btn{
+
+.submit_btn {
     width: 100%;
     height: 70rpx;
     display: flex;
@@ -202,11 +249,12 @@
     align-items: center;
     margin-top: 90rpx;
 }
-.submit_btn .btn{
-    width:610rpx;
-    height:88rpx;
-    background:linear-gradient(317deg,rgba(95,122,255,1) 0%,rgba(119,169,255,1) 100%);
-    border-radius:44rpx;
+
+.submit_btn .btn {
+    width: 610rpx;
+    height: 88rpx;
+    background: linear-gradient(317deg, rgba(95, 122, 255, 1) 0%, rgba(119, 169, 255, 1) 100%);
+    border-radius: 44rpx;
     color: #fff;
     font-size: 32rpx;
     text-align: center;

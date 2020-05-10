@@ -12,6 +12,7 @@ Page({
   data: {
     localImg: app.localImg,
     imagePath: req_fn.imagePath,
+    userInfo: {},
     userName: '',
     avatar: '',
     list: [],
@@ -35,32 +36,64 @@ Page({
   // 选中
   on_tapItem(e) {
     let index = e.currentTarget.dataset.index
-
+    let item = this.data.list[index]
     if (this.data.isSelect) {
       const eventChannel = this.getOpenerEventChannel()
       let data = {
-        defaultAuthEmail: this.data.list[index].defaultAuthEmail,
-        defaultCardId: this.data.list[index].defaultCardId,
-        logo: this.data.list[index].avatar,
-        name: this.data.list[index].defaultCompanyName,
-        personName: this.data.list[index].name,
-        defaultCompanyPosition: this.data.list[index].defaultCompanyPosition,
-        defaultAuthStatus: this.data.list[index].defaultAuthStatus,
-        sendUserName: this.data.list[index].name,
-        sendUserPosition: this.data.list[index].defaultCompanyPosition,
-        sendUserCompany: this.data.list[index].defaultCompanyName,
-        userShortId: this.data.list[index].userShortId,
-        userId: this.data.list[index].userId
+        companyId: item.companyId,
+        defaultAuthEmail: item.email,
+        defaultCardId: this.data.userInfo.defaultCardId,
+        logo: this.data.userInfo.logo,
+        name: item.companyName,
+        personName: this.data.userInfo.personName,
+        defaultCompanyPosition: item.positionName,
+        defaultAuthStatus: item.authStatus,
+        sendUserName: this.data.userInfo.sendUserName,
+        sendUserPosition: item.positionName,
+        sendUserCompany: item.companyName,
+        userShortId: this.data.userInfo.userShortId,
+        userId: this.data.userInfo.userId
       };
       eventChannel.emit('getChangeCard', {
         card: data
       });
+      // 在C页面内 navigateBack，将返回A页面
+      wx.navigateBack({
+        delta: 1
+      })
     } else {
-      let data = this.data.list[index].companyInfo
-      util.setLocal('companyInfo', data)
-      wx.navigateTo({
-        url: "/pages/email/demandCompany/demandCompany"
-      });
+      req_fn
+        .req(
+          `api/company/${item.companyId}`, {
+            id: item.companyId
+          },
+          "get"
+        )
+        .then(res => {
+          wx.hideLoading();
+          if (res.code == 0) {
+            res.data.id = res.data.statistics.companyId;
+            // 
+            if (res.data.logo) {
+              res.data.logo = res.data.logo.replace(/\s/g, '')
+            }
+            if (res.data.logoUrl) {
+              res.data.logoUrl = res.data.logoUrl.replace(/\s/g, '')
+            }
+            if (res.data.logo && res.data.logo.indexOf("http") == -1)
+              res.data.logo = req_fn.imgUrl + res.data.logo;
+
+            res.data.rename = util.getCompanName(res.data.name)
+
+            util.setLocal('companyInfo', res.data)
+            wx.navigateTo({
+              url: "/pages/email/demandCompany/demandCompany"
+            });
+          }
+        })
+        .catch(err => {
+          wx.hideLoading();
+        });
     }
   },
   // 删除
@@ -142,8 +175,7 @@ Page({
         }
         util.setLocal("card", data);
         this.setData({
-          userName: res.data.name,
-          avatar: data.logo
+          userInfo: data
         })
       } else if (res.code == 40001) {
         setTimeout(() => {

@@ -4,14 +4,13 @@
  * @Last Modified by:   wonyuan@163.com 
  * @Last Modified time: 2020-03-26 16:33:51 
  */ -->
-
- <view class="visit_home">
+<view class="visit_home">
     <!-- 时间选择 -->
     <van-popup closeable round show="{{ popupShow }}" position="bottom" custom-style="height: 62%;" bind:close="onClose">
         <view style="padding-top: 36rpx;margin-left: 40rpx;color: #333;">期望约见时间</view>
         <van-row>
             <van-col span="10">
-                <van-datetime-picker bind:input="dateChange" confirm-button-text="" cancel-button-text="" type="date" value="{{ currentDate }}" min-date="{{ minDate }}"/>
+                <van-datetime-picker bind:input="dateChange" confirm-button-text="" cancel-button-text="" type="date" value="{{ currentDate }}" min-date="{{ minDate }}" />
             </van-col>
             <van-col span="14">
                 <radio-group class="radio-group" bindchange="radioChange">
@@ -22,7 +21,9 @@
             </van-col>
         </van-row>
         <view style="width:100%;height:80rpx;display: flex;justify-content: center;align-items: center;">
-            <view bindtap="confirmTime" class="confirm_date" style="width: 610rpx;height: 80rpx;background:linear-gradient(317deg,rgba(95,122,255,1) 0%,rgba(119,169,255,1) 100%);border-radius:44px;color:#fff;text-align: center;line-height: 80rpx;">确定</view>
+            <view bindtap="confirmTime" class="confirm_date" style="width: 610rpx;height: 80rpx;background:linear-gradient(317deg,rgba(95,122,255,1) 0%,rgba(119,169,255,1) 100%);border-radius:44px;color:#fff;text-align: center;line-height: 80rpx;">
+                确定
+            </view>
         </view>
     </van-popup>
     <!-- 部门选折 -->
@@ -32,29 +33,34 @@
             <van-col style="display: flex;justify-content: center;align-items: center;">
                 <view class="department_box">
                     <block>
-                        <view bindtap="choseDepartment" data-index="{{index}}" data-name="{{item.name}}"  wx:for="{{initDepartmentName}}" wx:key="index" class="department_name {{item.marginRight ? 'department_name_margin' : ''}} {{departmentActiveIndex == index ? 'departmentActive' : ''}}">{{item.name}}</view>
+                        <view bindtap="choseDepartment" data-index="{{index}}" data-name="{{item.name}}" wx:for="{{initDepartmentName}}" wx:key="index" class="department_name {{item.marginRight ? 'department_name_margin' : ''}} {{departmentActiveIndex == index ? 'departmentActive' : ''}}">
+                            {{item.name}}
+                        </view>
                     </block>
                 </view>
-                
             </van-col>
         </van-row>
         <view style="width:100%;height:80rpx;display: flex;justify-content: center;align-items: center;">
-            <view bindtap="confirmDepart" class="confirm_date" style="width: 610rpx;height: 80rpx;background:linear-gradient(317deg,rgba(95,122,255,1) 0%,rgba(119,169,255,1) 100%);border-radius:44px;color:#fff;text-align: center;line-height: 80rpx;">确定</view>
+            <view bindtap="confirmDepart" class="confirm_date" style="width: 610rpx;height: 80rpx;background:linear-gradient(317deg,rgba(95,122,255,1) 0%,rgba(119,169,255,1) 100%);border-radius:44px;color:#fff;text-align: center;line-height: 80rpx;">
+                确定
+            </view>
         </view>
     </van-popup>
-
     <view class="header">
         <view class="header_top"></view>
         <view class="header_body">
             <view class="user">
                 <view class="user_avarte">
-                    <van-image round width="120rpx" height="120rpx" src="{{myselfInfo.logo}}"/>
+                    <van-image round width="120rpx" height="120rpx" src="{{myselfInfo.logo}}" />
                 </view>
                 <view class="user_info">
                     <text class="user_name">{{myselfInfo.sendUserName}}</text>
                     <text class="user_companyname">{{myselfInfo.sendUserCompany}}</text>
                     <text class="user_positionname">{{myselfInfo.sendUserPosition}}</text>
                 </view>
+            </view>
+            <view bindtap="on_Change" class="change-btn">
+                <view>更换名片</view>
             </view>
         </view>
     </view>
@@ -64,9 +70,7 @@
                 <image style="width: 34rpx;height: 32rpx;" src="../../../static/chosetime.png"></image>
                 <text class="time">期望约见日期</text>
             </view>
-            <view class="chose_time" bindtap="showChoseTime">
-                选择时间 {{appointmentTime}}
-            </view>
+            <view class="chose_time" bindtap="showChoseTime">选择时间 {{appointmentTime}}</view>
         </view>
     </view>
     <view class="visit_department">
@@ -75,31 +79,25 @@
                 <image style="width: 34rpx;height: 32rpx;" src="../../../static/visitdepart.png"></image>
                 <text class="time">拜访部门</text>
             </view>
-            <view class="chose_time" bindtap="showChoseDepartment">
-                选择部门 {{departmenytName}}
-            </view>
+            <view class="chose_time" bindtap="showChoseDepartment">选择部门 {{departmenytName}}</view>
         </view>
     </view>
-
     <view class="visit_business">
         <view class="title">拜访业务</view>
         <view class="content">
-            <van-field style="width: 90%;" value="{{visitText}}" placeholder="请描述您的需求，可以增大拜访几率哦～" border="false" bind:input="bindinput"/>
+            <van-field style="width: 90%;" value="{{visitText}}" placeholder="请描述您的需求，可以增大拜访几率哦～" border="false" bind:input="bindinput" />
             <image catch:tap="on_showWechatSI" style="width: 41rpx;height: 46rpx;" src="../../../static/images/message/voice_upright.png"></image>
             <!-- <textarea bindinput='bindinput' maxlength='100' placeholder-style="" style="width: 100%;height: 300rpx;color: #333;font-size: 28rpx;" value="{{visitText}}" placeholder="请描述您的需求，可以增大拜访几率哦～"></textarea> -->
         </view>
     </view>
-
     <view class="tips">
         <view class="fy_v">
             <image style="width: 14rpx;height: 16rpx;" src="../../../static/fy.png"></image>
         </view>
         <text class="text">极速传达，拜访业务5分钟级即达。</text>
     </view>
-
     <view class="submit_btn">
         <view class="btn" bindtap="submit">发送</view>
     </view>
     <wechatSI isShow="{{wechatSIIsShow}}" bindhidden="on_hiddenWechatSI" bindsetValue="on_WechatSIValue"></wechatSI>
- </view>
-
+</view>
