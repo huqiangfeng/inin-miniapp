@@ -57,7 +57,7 @@ Page({
   addCard() {
 
     for (const key in this.data.newCard) {
-      if (!this.data.newCard[key] || !(key != 'phone' || this.data.newCard[key].length == 11)) {
+      if (!this.data.newCard[key]) {
         wx.showToast({
           title: '请完善信息',
           icon: 'none',
@@ -66,7 +66,15 @@ Page({
         return
       }
     }
-
+    let myreg = /^1[0-9]{10}$/
+    if (!myreg.test(this.data.newCard.phone)) {
+      wx.showToast({
+        title: '请填写真确的手机号',
+        icon: 'none',
+        duration: 2000
+      })
+      return
+    }
 
     req_fn
       .req(

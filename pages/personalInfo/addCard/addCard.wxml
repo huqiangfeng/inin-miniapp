@@ -17,28 +17,28 @@
     <!-- 公司 -->
     <view bind:tap="on_getCompanyName" class="_navigator weui-cell weui-cell_access" hover-class="weui-cell_active">
       <view class="_div weui-cell__bd">公司</view>
-      <view class="_div weui-cell__ft weui-cell__ft_in-access {{ newCard.companyName||'color' }}">
+      <view  class="_div weui-cell__ft weui-cell__ft_in-access {{ newCard.companyName||'color' }}">
         {{newCard.companyName?newCard.companyName:'请选择公司'}}
       </view>
     </view>
     <!-- 公司职位 -->
     <view class="_navigator weui-cell weui-cell_access" hover-class="weui-cell_active">
       <view class="_div weui-cell__bd">公司职位</view>
-      <view class="_div weui-cell__ft weui-cell__ft_in-access">
+      <view style=" padding-right: 0;"  class="_div weui-cell__ft weui-cell__ft_in-access">
         <input class="weui-input" cursor-spacing="20" bindinput="on_setInputVal" data-valk="positionName" value="{{newCard.positionName}}" placeholder="请输入公司职位" />
       </view>
     </view>
     <!-- 手机号 -->
     <view class="_navigator weui-cell weui-cell_access" hover-class="weui-cell_active">
       <view class="_div weui-cell__bd">手机号</view>
-      <view class="_div weui-cell__ft weui-cell__ft_in-access">
+      <view style=" padding-right: 0;"  class="_div weui-cell__ft weui-cell__ft_in-access">
         <input class="weui-input" cursor-spacing="20" bindinput="on_setInputVal" data-valk="phone" value="{{newCard.phone}}" placeholder="请输入手机号" />
       </view>
     </view>
     <!-- 微信号 -->
     <view class="_navigator weui-cell weui-cell_access" hover-class="weui-cell_active">
       <view class="_div weui-cell__bd">微信号</view>
-      <view class="_div weui-cell__ft weui-cell__ft_in-access">
+      <view style=" padding-right: 0;"  class="_div weui-cell__ft weui-cell__ft_in-access">
         <input class="weui-input" cursor-spacing="20" bindinput="on_setInputVal" data-valk="otherContact" value="{{newCard.otherContact}}" placeholder="请输入微信号" />
       </view>
     </view>

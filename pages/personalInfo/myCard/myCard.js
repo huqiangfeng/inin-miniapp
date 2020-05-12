@@ -186,6 +186,14 @@ Page({
   },
   // 添加
   on_addCard(e) {
+    if (this.data.list.length > 4) {
+      wx.showToast({
+        title: '最多添加5张名片哦!',
+        icon: 'none',
+        duration: 2000
+      })
+      return
+    }
     wx.navigateTo({
       url: "/pages/personalInfo/addCard/addCard"
     });

@@ -1,18 +1,40 @@
 <!-- info -->
-<view class="component_info_content">
-  <image class="_image  component_info_img" src="{{userInfo.avatar}}"></image>
-  <view class="flex1">
-    <view class="  component_info_msg">{{userInfo.name}}</view>
-    <view class="  component_info_statistic">
-      <view style="text-align:center" class=" ">
-        <view class="  component_info_statistic_num">{{userVisitLogTotal}}</view>
-        <view class="  component_info_statistic_title">浏览量</view>
-      </view>
-      <view class="  line"></view>
-      <view style="text-align:center" class=" ">
-        <view class="  component_info_statistic_num">{{ userTotal}}</view>
-        <view class="  component_info_statistic_title">人脉</view>
+<view class="user-info-page">
+  <!-- 信息 -->
+  <view class="component_info_content">
+    <image class="_image  component_info_img" src="{{userInfo.avatar}}"></image>
+    <view class="flex1">
+      <view class="  component_info_msg">{{userInfo.name}}</view>
+      <view class="  component_info_statistic">
+        <view style="text-align:center" class=" ">
+          <view class="  component_info_statistic_num">{{userVisitLogTotal}}</view>
+          <view class="  component_info_statistic_title">浏览量</view>
+        </view>
+        <view class="  line"></view>
+        <view style="text-align:center" class=" ">
+          <view class="  component_info_statistic_num">{{ userTotal}}</view>
+          <view class="  component_info_statistic_title">人脉</view>
+        </view>
       </view>
     </view>
+  </view>
+  <!-- 标记 -->
+  <view class="component-box">
+    <view class="title">他人标记</view>
+  </view>
+  <!--  -->
+  <view class="bg-box"></view>
+  <view class="kankan">
+    <view class="left">这些人也在看</view>
+    <view class="right">
+      <image class="_image  avatar_img" src="{{userInfo.avatar}}"></image>
+      <view>19人 》</view>
+    </view>
+  </view>
+  <view class="bg-box"></view>
+  <!-- 人脉 -->
+  <view class="component-box">
+    <view class="title">相关人脉</view>
+    <view class="user-list"></view>
   </view>
 </view>

@@ -106,6 +106,9 @@
   color: rgba(255, 255, 255, 1);
 }
 
+.weui-input {
+  padding-right: 16px;
+}
 .weui-cell__ft_in-access:after {
   right: 5px;
 }
