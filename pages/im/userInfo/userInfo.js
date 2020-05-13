@@ -9,14 +9,15 @@ Page({
    */
   data: {
     localImg: app.localImg,
+    imgUrl: req_fn.imgUrl,
     userVisitLogTotal: 0, // 访问数 （这些人也在看）
+    userVisitLogList: [], //访问列表（这些人也在看）
     keywordList: [], // 关键字
     userInfo: {}, // 用户信息
-    userList: [], //用户列表
+    userList: [], // 相关人脉
     userTagTotal: 10, //用户标签数
     userTotal: 1, // 用户数 （人脉）
     userTagList: [], //用户标签
-    userVisitLogList: [], //访问列表
     keywordTotal: 0, //关键词数
     vodPages: {}
   },
@@ -26,7 +27,7 @@ Page({
    */
   onLoad: function (options) {
     // let userId = 'c5c8aef83bd74d94bf373e1d646020d9'
-    let userId = '1227588784409804800'
+    let userId = '1228208823261462528'
     wx.showLoading({
       title: "加载中..."
     });

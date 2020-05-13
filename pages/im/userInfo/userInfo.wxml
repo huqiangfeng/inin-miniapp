@@ -2,7 +2,7 @@
 <view class="user-info-page">
   <!-- 信息 -->
   <view class="component_info_content">
-    <image class="_image  component_info_img" src="{{userInfo.avatar}}"></image>
+    <image class="_image  component_info_img" src="{{wxs.initAvatar(userInfo.avatar,imgUrl)}}"></image>
     <view class="flex1">
       <view class="  component_info_msg">{{userInfo.name}}</view>
       <view class="  component_info_statistic">
@@ -21,20 +21,76 @@
   <!-- 标记 -->
   <view class="component-box">
     <view class="title">他人标记</view>
+    <view class="tabs">
+      <view class="tab-item" wx:for="{{userTagList}}">{{item.tagName}}</view>
+    </view>
+    <view class="tab_img-box">
+      <image class="_image  tab_img" src="../../../static/images/inbox/pen_blue.png"></image>
+    </view>
   </view>
   <!--  -->
   <view class="bg-box"></view>
-  <view class="kankan">
+  <view class="kankan" wx:if="{{ userVisitLogList.length>0 }}">
     <view class="left">这些人也在看</view>
     <view class="right">
-      <image class="_image  avatar_img" src="{{userInfo.avatar}}"></image>
-      <view>19人 》</view>
+      <image class="_image  avatar_img" src="{{ wxs.initAvatar(userVisitLogList[0].avatar,imgUrl) }}"></image>
+      <view>{{ userVisitLogTotal }}人 》</view>
     </view>
   </view>
-  <view class="bg-box"></view>
+  <view class="bg-box" wx:if="{{ userVisitLogList.length>0 }}"></view>
   <!-- 人脉 -->
   <view class="component-box">
     <view class="title">相关人脉</view>
-    <view class="user-list"></view>
+    <view class="user-list">
+      <view class="_div list" wx:key="i" key="{{i}}" bindtap="changePage" data-id="{{ item.friendStatus =='myself'?'': item.userId }}" wx:for="{{userList}}" wx:for-index="i" wx:for-item="item">
+        <view class="_div list_all">
+          <image wx:if="{{item.avatar}}" src="{{ wxs.initAvatar( item.avatar,imgUrl) }}" class="_image avatar"></image>
+          <view class="_div avatar" wx:else>{{item.name!=null?item.name:''}}</view>
+          <view class="_div list_content">
+            <view class="_div list_content_people">{{item.name!=null?item.name:''}}</view>
+            <view wx:if="{{item.userCard.companyName}}" class="_div list_content_company">
+              {{item.userCard.companyName}}
+            </view>
+            <view wx:if="{{item.userCard.positionName}}" class="_div list_content_job">
+              {{item.userCard.positionName!=null?item.userCard.positionName:''}}
+            </view>
+            <view class="_div list_content_tags">
+              <view class="_div Grey_Tag" wx:key="j" key="{{j}}" wx:for="{{item.keywordList}}" wx:for-index="index" wx:for-item="j">
+                {{j}}
+              </view>
+            </view>
+          </view>
+        </view>
+        <view wx:if="{{item.friendStatus==null}}" class="_div Blue_Gradual_Btn add_friend" catchtap="addFriend" data-index="{{ i }}">
+          <image class="add_white" src="{{localImg+'message/add_white.png'}}" mode="aspectFit" l></image>
+          好友
+        </view>
+        <view wx:elif="{{item.friendStatus=='friend'}}" class="_div are_friend is_add_friend" bindtap="addFriend" data-index="{{ i }}">
+          <image wx:if="{{localImg}}" src="{{localImg+'message/message_blue.png'}}" class="_image icon"></image>
+          联系
+        </view>
+        <view wx:elif="{{item.friendStatus=='applying'}}" class="_div apply_friend is_add_friend" bindtap="addFriend(item)" data-index="{{ i }}">
+          <image wx:if="{{localImg}}" src="{{localImg+'message/message_grey.png'}}" class="_image icon"></image>
+          等待验证
+        </view>
+      </view>
+      <!-- 所有数据已加载完 -->
+      <view class="_div Grey_Bottom_Sense">
+        <!-- <image wx:if="{{localImg&&loading}}" src="{{localImg+'loading_icon.png'}}" style="width:30rpx;height:30rpx;margin-right:6rpx;" class="_image"></image> -->
+        <!-- {{loading?'加载更多':'所有数据已加载完'}} -->
+        所有数据已加载完
+      </view>
+    </view>
   </view>
 </view>
+<!-- wxs -->
+<wxs module="wxs">
+var initAvatar = function(str,imgUrl) {
+     if (str && str.indexOf("http") == -1) {
+        str = imgUrl + str
+     }
+ return  str         
+}
+
+module.exports.initAvatar = initAvatar;
+</wxs>
