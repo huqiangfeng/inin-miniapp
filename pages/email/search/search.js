@@ -8,15 +8,32 @@ Page({
    * 页面的初始数据
    */
   data: {
-    option1: [
-      { text: '不限', value: 0 },
-      { text: '1km', value: 1 },
-      { text: '2km', value: 2 },
-      { text: '3km', value: 3 },
-      { text: '4km', value: 4 },
-      { text: '5km', value: 5 },
+    option1: [{
+        text: '不限',
+        value: 0
+      },
+      {
+        text: '1km',
+        value: 1
+      },
+      {
+        text: '2km',
+        value: 2
+      },
+      {
+        text: '3km',
+        value: 3
+      },
+      {
+        text: '4km',
+        value: 4
+      },
+      {
+        text: '5km',
+        value: 5
+      },
     ],
-    currentVal:0,
+    currentVal: 0,
     localImg: app.localImg,
     imagePath: req_fn.imagePath,
     transmit: false, // 是否业务广场
@@ -37,8 +54,8 @@ Page({
     icon: '',
     page: 1,
     searchCheckde: '', // 搜索条件展开判断 region / businessType
-    showModal:false,
-    currentSendIndex:0
+    showModal: false,
+    currentSendIndex: 0
   },
 
   /**
@@ -49,8 +66,8 @@ Page({
       isLogin: util.isLogin(),
       transmit: options.transmit
     })
-    this.getData("",'','','');
-    if(app.globalData.locationAuth == false){
+    this.getData("", '', '', '');
+    if (app.globalData.locationAuth == false) {
       wx.showToast({
         title: "请开启小程序的定位权限",
         icon: 'none',
@@ -78,12 +95,12 @@ Page({
       this.data.page
     );
   },
-  changeDistance(e){
+  changeDistance(e) {
     console.log(e);
-    if(e.detail == 0){
-      this.getData(this.data.searchData,'','','')
-    }else{
-      this.getData(this.data.searchData,app.globalData.currentLat,app.globalData.currentLng,Number(e.detail * 1000))
+    if (e.detail == 0) {
+      this.getData(this.data.searchData, '', '', '')
+    } else {
+      this.getData(this.data.searchData, app.globalData.currentLat, app.globalData.currentLng, Number(e.detail * 1000))
     }
   },
   /**
@@ -107,35 +124,39 @@ Page({
       isSearch: false,
     })
   },
-  showModal(e){
+  showModal(e) {
     this.setData({
-      showModal:true,
-      currentSendIndex:e.detail.index
+      showModal: true,
+      currentSendIndex: e.detail.index
     })
   },
   onClickHide() {
-    this.setData({ showModal: false });
+    this.setData({
+      showModal: false
+    });
   },
-  visitEvent(){
+  visitEvent() {
     let index = this.data.currentSendIndex;
     let companyItem = this.data.companyLists[index];
-    let companyName,companyID,logo ,userName;
-    companyName =  companyItem.name;
+    let companyName, companyID, logo, userName;
+    companyName = companyItem.name;
     companyID = companyItem.id;
     userName = companyItem.rename;
     logo = companyItem.logoUrl;
     wx.navigateTo({
-      url:'/pages/email/visitHome/visitHome?companyName=' + companyName + '&companyID=' + companyID + '&logo=' + logo + '&userName=' + userName
+      url: '/pages/email/visitHome/visitHome?companyName=' + companyName + '&companyID=' + companyID + '&logo=' + logo + '&userName=' + userName
     })
-    this.setData({ showModal: false })
+    this.setData({
+      showModal: false
+    })
   },
-  cooperationEvent(){
+  cooperationEvent() {
     this.onIconSendEvent()
     this.setData({
-      showModal:false
+      showModal: false
     })
   },
-  getData(keyword,lat,lng,distance, page = 1,) {
+  getData(keyword, lat, lng, distance, page = 1, ) {
     this.setData({
       hasNone: false,
       // 切换显示列表
@@ -152,9 +173,9 @@ Page({
       .req(url, {
         keyword: keyword instanceof Object ? this.data.searchData : keyword,
         page: page,
-        lat:lat,
-        lng:lng,
-        distance:distance
+        lat: lat,
+        lng: lng,
+        distance: distance
       }, "post")
       .then(res => {
         this.setData({
@@ -234,7 +255,7 @@ Page({
       searchData: value,
       page: 1
     })
-    this.getData(value,'','','');
+    this.getData(value, '', '', '');
   },
   // 同步input值获取数据
   onChangeValue(e) {
@@ -245,7 +266,7 @@ Page({
       page: 1
     })
     // if (value.length > 0)
-    this.getData(value,'','','');
+    this.getData(value, '', '', '');
   },
   // 需求名片详情
   onChangeCompanyPage(e) {
@@ -276,19 +297,19 @@ Page({
         companyInfo.nameCompany = companyItem.name;
         req_fn.req("api/user/card/authed", {}, "post").then(res => {
           if (res.code == 0) {
-            if (res.data) {
-              let tempString = JSON.stringify(companyInfo);
-              wx.navigateTo({
-                url: `/pages/email/outDemandCard/outDemandCard?companyInfo=${encodeURIComponent(tempString)}`
-                // url: `/pages/email/outDemandCard/outDemandCard?companyInfo=${JSON.stringify(companyInfo)}&delta=2`
-              });
-            } else {
-              //未认证的情况下跳转认证页面
-              wx.navigateTo({
-                url: `/pages/email/authentication/authentication?companyItem=${JSON.stringify(companyItem)}`
-                // url: `/pages/email/authentication/authentication?companyItem=${JSON.stringify(companyItem)}&delta=2`
-              });
-            }
+            // if (res.data) {
+            let tempString = JSON.stringify(companyInfo);
+            wx.navigateTo({
+              url: `/pages/email/outDemandCard/outDemandCard?companyInfo=${encodeURIComponent(tempString)}`
+              // url: `/pages/email/outDemandCard/outDemandCard?companyInfo=${JSON.stringify(companyInfo)}&delta=2`
+            });
+            // } else {
+            //   //未认证的情况下跳转认证页面
+            //   wx.navigateTo({
+            //     url: `/pages/email/authentication/authentication?companyItem=${JSON.stringify(companyItem)}`
+            //     // url: `/pages/email/authentication/authentication?companyItem=${JSON.stringify(companyItem)}&delta=2`
+            //   });
+            // }
           } else {
             wx.showToast({
               title: res.msg,

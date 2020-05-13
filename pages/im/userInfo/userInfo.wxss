@@ -38,7 +38,7 @@
   /* align-items: center; */
   flex: 1;
   padding: 40rpx;
-  margin-bottom: 100rpx;
+  margin-bottom: 50rpx;
 }
 
 .flex1 {

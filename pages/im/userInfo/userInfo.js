@@ -61,6 +61,56 @@ Page({
       });
   },
 
+
+  // 点击好友名片，跳转聊天页面
+  changePage(e) {
+    let id = e.currentTarget.dataset.id
+    if (id) {
+      wx.navigateTo({
+        url: "/pages/im/chat/chat?id=" + id
+      });
+    } else {
+      wx.showToast({
+        title: "暂未开放和自己聊天",
+        icon: "none",
+        duration: 1500
+      });
+    }
+    this.setData({
+      isRetuen: true
+    })
+  },
+  // 点击添加好友 friend,applying,null
+  addFriend(e) {
+    let index = e.currentTarget.dataset.index
+    let item = this.data.userList[index]
+    if (item.friendStatus == null) {
+      req_fn
+        .req("api/user/friend-apply", {
+          friendUserId: item.userId
+        }, "post")
+        .then(res => {
+          if (res.code == 0) {
+            let userList = this.data.userList
+            userList.forEach((element, i) => {
+              if (element.userId == item.userId) {
+                userList[i].friendStatus = "applying";
+              }
+            });
+            this.setData({
+              userList: userList
+            })
+          } else {
+            wx.showToast({
+              title: res.msg,
+              icon: "none",
+              duration: 2000
+            });
+          }
+        });
+    }
+  },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

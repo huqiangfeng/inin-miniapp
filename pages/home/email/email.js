@@ -15,8 +15,8 @@ Page({
     companyLists: [],
     companyInfo: null,
     login: false,
-    overlayShow:false,
-    currentSendIndex:0
+    overlayShow: false,
+    currentSendIndex: 0
   },
 
   /**
@@ -77,32 +77,34 @@ Page({
     });
   },
   // 显示modal
-  showModal(e){
-    this.setData({ 
+  showModal(e) {
+    this.setData({
       overlayShow: true,
-      currentSendIndex:e.detail.index
+      currentSendIndex: e.detail.index
     });
   },
   onClickHide() {
-    this.setData({ overlayShow: false });
+    this.setData({
+      overlayShow: false
+    });
   },
-  visitEvent(){
+  visitEvent() {
     let index = this.data.currentSendIndex;
     let companyItem = this.data.companyLists[index];
     //console.log(companyItem,'companyItem')
-    let companyName,companyID,logo ,userName;
-    companyName =  companyItem.statistics.companyName;
+    let companyName, companyID, logo, userName;
+    companyName = companyItem.statistics.companyName;
     companyID = companyItem.statistics.companyId;
     userName = companyItem.rename;
     logo = companyItem.logoUrl;
     wx.navigateTo({
-      url:'/pages/email/visitHome/visitHome?companyName=' + companyName + '&companyID=' + companyID + '&logo=' + logo + '&userName=' + userName
+      url: '/pages/email/visitHome/visitHome?companyName=' + companyName + '&companyID=' + companyID + '&logo=' + logo + '&userName=' + userName
     })
   },
-  cooperationEvent(){
+  cooperationEvent() {
     this.onIconSendEvent()
     this.setData({
-      overlayShow:false
+      overlayShow: false
     })
   },
   // 一键投递
@@ -125,20 +127,20 @@ Page({
         companyInfo.nameCompany = companyItem.statistics.name;
         req_fn.req("api/user/card/authed", {}, "post").then(res => {
           if (res.code == 0) {
-            if (res.data) {
-              let tempString = JSON.stringify(companyInfo);
-              wx.navigateTo({
-                url: "/pages/email/outDemandCard/outDemandCard?companyInfo=" + encodeURIComponent(tempString)
-              });
-              
-              return;
-            } else {
-              //未认证的情况下跳转认证页面
-              wx.navigateTo({
-                url: "/pages/email/authentication/authentication?companyItem=" +
-                  JSON.stringify(companyItem)
-              });
-            }
+            // if (res.data) {
+            let tempString = JSON.stringify(companyInfo);
+            wx.navigateTo({
+              url: "/pages/email/outDemandCard/outDemandCard?companyInfo=" + encodeURIComponent(tempString)
+            });
+
+            return;
+            // } else {
+            //   //未认证的情况下跳转认证页面
+            //   wx.navigateTo({
+            //     url: "/pages/email/authentication/authentication?companyItem=" +
+            //       JSON.stringify(companyItem)
+            //   });
+            // }
           } else {
             wx.showToast({
               title: res.msg,
@@ -178,12 +180,12 @@ Page({
           sendUserCompany: res.data.defaultCompanyName,
           userShortId: res.data.userShortId,
           userId: res.data.userId
-		};
-		if(data.logo != null){
-			if (data.logo.indexOf("http") == -1){
-				data.logo = req_fn.imgUrl + data.logo;
-			}
-		}
+        };
+        if (data.logo != null) {
+          if (data.logo.indexOf("http") == -1) {
+            data.logo = req_fn.imgUrl + data.logo;
+          }
+        }
         util.setLocal("card", data);
         this.setData({
           companyInfo: data
@@ -206,26 +208,26 @@ Page({
     let collect = this.getCollectList()
     Promise.all([companies, collect]).then((res) => {
       wx.hideLoading();
-	  let tempArr = [...res[0], ...res[1]];
-	  let unArr = this.uniqueArr(tempArr)
+      let tempArr = [...res[0], ...res[1]];
+      let unArr = this.uniqueArr(tempArr)
       _this.setData({
         companyLists: unArr
       })
     })
-    console.log(this.data.companyLists,'companyLists')
+    console.log(this.data.companyLists, 'companyLists')
   },
-  uniqueArr(arr){
-	//console.log(arr,'uniqueArr')
-	for(let i=0; i< arr.length; i++){
-		var item = arr[i]
-		for(var j = i+1; j< arr.length; j++){
-			if(item.id == arr[j].id){
-				arr.splice(j,1)
-				i--
-			}                          
-		}
-	}
-	return arr;
+  uniqueArr(arr) {
+    //console.log(arr,'uniqueArr')
+    for (let i = 0; i < arr.length; i++) {
+      var item = arr[i]
+      for (var j = i + 1; j < arr.length; j++) {
+        if (item.id == arr[j].id) {
+          arr.splice(j, 1)
+          i--
+        }
+      }
+    }
+    return arr;
   },
   // 获取名片公司列表
   getCompaniesList() {
@@ -233,12 +235,12 @@ Page({
     return new Promise(function (resolve, reject) {
       req_fn.req("api/user/card-companies", {}, "post").then(data => {
         if (data.code == 0) {
-			if (data.data != null) _this.changeAvatar(data.data);
-			let response = data.data;
-			for (let index = 0; index < response.length; index++) {
-				const element = response[index];
-				element.id = element.statistics.companyId;
-			}
+          if (data.data != null) _this.changeAvatar(data.data);
+          let response = data.data;
+          for (let index = 0; index < response.length; index++) {
+            const element = response[index];
+            element.id = element.statistics.companyId;
+          }
           resolve(data.data != null ? response : [])
         } else if (data.code != 40001) {
           wx.showToast({
@@ -264,29 +266,29 @@ Page({
         }, "post")
         .then(res => {
           if (res.code == 0) {
-            if (res.data != null){
-				 _this.changeAvatar(res.data);
-			}
+            if (res.data != null) {
+              _this.changeAvatar(res.data);
+            }
             if (lastTime == "") {
-				let response = res.data;
-				if(response != null){
-					for (let index = 0; index < response.length; index++) {
-						const element = response[index];
-						element.id = element.statistics.companyId;
-					}
-				}
+              let response = res.data;
+              if (response != null) {
+                for (let index = 0; index < response.length; index++) {
+                  const element = response[index];
+                  element.id = element.statistics.companyId;
+                }
+              }
               resolve(res.data != null ? response : [])
             } else if (res.data != null) {
-				let response = res.data;
-				for (let index = 0; index < response.length; index++) {
-					const element = response[index];
-					element.id = element.statistics.companyId;
-				}
-				let tempArr = [..._this.data.companyLists, ...response];
-				_this.setData({
-					loading: false,
-					companyLists: tempArr
-				})
+              let response = res.data;
+              for (let index = 0; index < response.length; index++) {
+                const element = response[index];
+                element.id = element.statistics.companyId;
+              }
+              let tempArr = [..._this.data.companyLists, ...response];
+              _this.setData({
+                loading: false,
+                companyLists: tempArr
+              })
             } else {
               _this.setData({
                 loading: false
@@ -350,11 +352,11 @@ Page({
       })
     }
   },
-	// 跳全球传递
-	goGlobalTransmit() {
-		wx.navigateTo({
-			// url: "/pages/email/search/search?transmit=true"
-			url:"/pages/email/bussiness/bussiness"
-		});
-	}
+  // 跳全球传递
+  goGlobalTransmit() {
+    wx.navigateTo({
+      // url: "/pages/email/search/search?transmit=true"
+      url: "/pages/email/bussiness/bussiness"
+    });
+  }
 })
