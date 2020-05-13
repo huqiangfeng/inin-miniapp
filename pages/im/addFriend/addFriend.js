@@ -12,6 +12,8 @@ Page({
    */
   data: {
     localImg: app.localImg,
+    userId: '',
+    title: "",
     imagePath: req_fn.imagePath,
     searchData: "", //18911111111
     lists: [],
@@ -22,13 +24,25 @@ Page({
     isRetuen: false,
     // 翻页
     loading: true,
-    loadingShow: false
+    loadingShow: false,
+    page: 1
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    if (options.title) {
+      wx.setNavigationBarTitle({
+        title: options.title
+      })
+    }
+    if (options.userId) {
+      this.setData({
+        userId: options.userId,
+        title: options.title && options.title
+      })
+    }
     // this.getList();
     // this.setData({
     //   isRetuen: false
@@ -62,6 +76,9 @@ Page({
       loadingShow: true,
       loading: true
     })
+    this.setData({
+      page: ++this.data.page
+    })
     this.getList("", this.data.lists[this.data.lists.length - 1].createTime);
   },
 
@@ -94,11 +111,19 @@ Page({
       wx.showLoading({
         title: "加载中..."
       });
+
+    let url = "api/user/maybe-friends"
+    if (this.data.userId) {
+      url = `/api/user/${this.data.userId}/visit-users`
+    }
     req_fn
       .req(
-        "api/user/maybe-friends", {
+        url, {
+          id: this.data.userId,
           keyword: keyword,
-          lastTime: lastTime
+          lastTime: lastTime,
+          size: 20,
+          page: this.data.page
         },
         "post"
       )
@@ -206,5 +231,12 @@ Page({
     this.setData({
       isButtomShow: false
     })
-  }
+  },
+  // 跳用户信息
+  to_userInfo(e) {
+    let userId = e.currentTarget.dataset.id
+    wx.navigateTo({
+      url: "/pages/im/userInfo/userInfo?userId=" + userId
+    });
+  },
 })

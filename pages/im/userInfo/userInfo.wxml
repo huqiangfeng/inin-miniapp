@@ -22,29 +22,33 @@
   <view class="component-box">
     <view class="title">他人标记</view>
     <view class="tabs">
-      <view class="tab-item" wx:for="{{userTagList}}">{{item.tagName}}</view>
+      <view class="tab-item" wx:for="{{userTagList}}" wx:key="id">{{item.tagName}}</view>
     </view>
-    <view class="tab_img-box">
+    <view class="tab_img-box" bind:tap="tagsClose">
       <image class="_image  tab_img" src="../../../static/images/inbox/pen_blue.png"></image>
     </view>
   </view>
   <!--  -->
   <view class="bg-box"></view>
-  <view class="kankan" wx:if="{{ userVisitLogList.length>0 }}">
+  <!-- 这些人也在看 -->
+  <view class="kankan" wx:if="{{ userVisitLogList.length>0 ||userVisitLogTotal>0 }}" bind:tap="to_friend" data-type="kk">
     <view class="left">这些人也在看</view>
     <view class="right">
       <image class="_image  avatar_img" src="{{ wxs.initAvatar(userVisitLogList[0].avatar,imgUrl) }}"></image>
       <view>{{ userVisitLogTotal }}人 》</view>
     </view>
   </view>
-  <view class="bg-box" wx:if="{{ userVisitLogList.length>0 }}"></view>
+  <view class="bg-box" wx:if="{{ userVisitLogList.length>0 ||userVisitLogTotal>0 }}"></view>
   <!-- 人脉 -->
   <view class="component-box">
-    <view class="title">相关人脉</view>
+    <view class="title" bind:tap="to_friend" data-type="rm">
+      <view>相关人脉</view>
+      <!-- <view>全部 》</view> -->
+    </view>
     <view class="user-list">
       <view class="_div list" wx:key="i" key="{{i}}" bindtap="changePage" data-id="{{ item.friendStatus =='myself'?'': item.userId }}" wx:for="{{userList}}" wx:for-index="i" wx:for-item="item">
         <view class="_div list_all">
-          <image wx:if="{{item.avatar}}" src="{{ wxs.initAvatar( item.avatar,imgUrl) }}" class="_image avatar"></image>
+          <image catch:tap="to_userInfo" data-id="{{ item.userId }}" wx:if="{{item.avatar}}" src="{{ wxs.initAvatar( item.avatar,imgUrl) }}" class="_image avatar"></image>
           <view class="_div avatar" wx:else>{{item.name!=null?item.name:''}}</view>
           <view class="_div list_content">
             <view class="_div list_content_people">{{item.name!=null?item.name:''}}</view>
@@ -80,6 +84,28 @@
         <!-- {{loading?'加载更多':'所有数据已加载完'}} -->
         所有数据已加载完
       </view>
+    </view>
+  </view>
+  <!-- 浮动按钮 -->
+  <div class="float-btn-box">
+    <image wx:if="{{userInfo.friendStatus==null}}" bindtap="addFriend" src="./jia-ok.png" class="_image jia_icon"></image>
+    <image wx:else src="./jia-no.png" class="_image jia_icon"></image>
+    <image bindtap="changePage" data-id="{{ userInfo.friendStatus =='myself'?'': userInfo.userId }}" src="./liao.png" class="_image liao_icon"></image>
+  </div>
+  <!-- 弹框 -->
+  <view class="_div dialog" wx:if="{{dialogVisible}}">
+    <view class="_div dialog_body">
+      <view class="_div dialog_body_del" bindtap="tagsClose">
+        <image wx:if="{{localImg}}" src="{{localImg+'fanhui.png'}}" class="_image del_icon"></image>
+      </view>
+      <view class="_div dialog_body_title">他人标记</view>
+      <!-- <view class="_div dialog_body_title1">添加关键词增加反馈几率</view> -->
+      <view class="_div dialog_body_content">
+        <input bindinput="changeTags" class="weui-input" maxlength="6" placeholder="请输入关键词" />
+        <view>{{tagsValue.length}}/6</view>
+      </view>
+      <view class="_div Blue_Gradual_Btn dialog_body_btn" bindtap="tagsSubmit">完成</view>
+      <view class="_div dialog_body_tip">{{'　'}}</view>
     </view>
   </view>
 </view>

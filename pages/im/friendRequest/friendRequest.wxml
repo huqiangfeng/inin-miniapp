@@ -1,12 +1,11 @@
-<!--pages/im//friendRequest/friendRequest.wxml-->
+<!-- pages/im//friendRequest/friendRequest.wxml -->
 <view class="_div entire">
     <view class="_div shadow"></view>
     <view class="_div lists">
-        <view class="_div list" wx:key="i" key="{{i}}" bindtap="changePage" data-userid="{{ item.userId }}"
-            wx:for="{{lists}}" wx:for-index="i" wx:for-item="item">
+        <view class="_div list" wx:key="i" key="{{i}}" bindtap="changePage" data-userid="{{ item.userId }}" wx:for="{{lists}}" wx:for-index="i" wx:for-item="item">
             <view class="_div list_all">
-                <image wx:if="{{item.avatar}}" src="{{item.avatar}}" class="_image avatar"></image>
-                <view class="_div avatar" wx:else>
+                <image catch:tap="to_userInfo" data-id="{{ item.userId }}" wx:if="{{item.avatar}}" src="{{item.avatar}}" class="_image avatar"></image>
+                <view catch:tap="to_userInfo" data-id="{{ item.userId }}" class="_div avatar" wx:else>
                     {{item.name!=null?item.name:''}}
                 </view>
                 <view class="_div list_content">
@@ -18,21 +17,20 @@
                         {{item.userCard.positionName!=null?item.userCard.positionName:''}}
                     </view>
                     <view class="_div list_content_tags">
-                        <view class="_div Grey_Tag" wx:key="j" key="{{j}}" wx:for="{{item.keywordList}}"
-                            wx:for-index="index" wx:for-item="j">
+                        <view class="_div Grey_Tag" wx:key="j" key="{{j}}" wx:for="{{item.keywordList}}" wx:for-index="index" wx:for-item="j">
                             {{j}}
                         </view>
                     </view>
                 </view>
             </view>
-            <view wx:if="{{item.status=='undo'}}" data-index="{{ i }}" data-type="ignore"
-                class="_div add_friend_white is_add_friend" catchtap="addFriend"> 忽略
+            <view wx:if="{{item.status=='undo'}}" data-index="{{ i }}" data-type="ignore" class="_div add_friend_white is_add_friend" catchtap="addFriend">
+                忽略
             </view>
-            <view wx:if="{{item.status=='undo'}}" data-index="{{ i }}" data-type="accept"
-                class="_div add_friend_blue is_add_friend" catchtap="addFriend"> 接受
+            <view wx:if="{{item.status=='undo'}}" data-index="{{ i }}" data-type="accept" class="_div add_friend_blue is_add_friend" catchtap="addFriend">
+                接受
             </view>
-            <view class="_div add_friend_Grey" wx:if="{{item.status=='ignore'}}"> 已忽略 </view>
-            <view class="_div add_friend_Grey" wx:if="{{item.status=='accept'}}"> 已添加 </view>
+            <view class="_div add_friend_Grey" wx:if="{{item.status=='ignore'}}">已忽略</view>
+            <view class="_div add_friend_Grey" wx:if="{{item.status=='accept'}}">已添加</view>
         </view>
     </view>
 </view>

@@ -1,7 +1,9 @@
 <!-- im//addFriend/addFriend.wxml -->
 <view class="_div entire">
-    <!-- 搜索 -->
-    <publicSearch placeholder='搜索姓名/手机号/一传号' value="{{searchData}}" bind:onSearch="search" bind:onClear="cancel" bind:onChangeValue="changeValue"></publicSearch>
+    <block wx:if="{{!title}}">
+        <!-- 搜索 -->
+        <publicSearch placeholder='搜索姓名/手机号/一传号' value="{{searchData}}" bind:onSearch="search" bind:onClear="cancel" bind:onChangeValue="changeValue"></publicSearch>
+    </block>
     <view class="_div user_inexistence" wx:if="{{lists.length==0&&searchData!=''}}">
         <image wx:if="{{localImg}}" src="{{imagePath+'user_inexistence.png'}}" class="_image user_inexistence"></image>
         <view style class="_div">该用户不存在噢～</view>
@@ -10,12 +12,14 @@
         </view>
     </view>
     <view class="_div lists" wx:else>
-        <view class="_div tip" wx:if="{{searchData==''}}">你可能感兴趣：</view>
+        <view class="_div tip" wx:if="{{searchData=='' && !title }}">你可能感兴趣：</view>
         <!-- (item) -->
         <view class="_div list" wx:key="i" key="{{i}}" bindtap="changePage" data-id="{{ item.friendStatus =='myself'?'': item.userId }}" wx:for="{{lists}}" wx:for-index="i" wx:for-item="item">
             <view class="_div list_all">
-                <image wx:if="{{item.avatar}}" src="{{item.avatar}}" class="_image avatar"></image>
-                <view class="_div avatar" wx:else>{{item.name!=null?item.name:''}}</view>
+                <image catch:tap="to_userInfo" data-id="{{ item.userId }}" wx:if="{{item.avatar}}" src="{{item.avatar}}" class="_image avatar"></image>
+                <view catch:tap="to_userInfo" data-id="{{ item.userId }}" class="_div avatar" wx:else>
+                    {{item.name!=null?item.name:''}}
+                </view>
                 <view class="_div list_content">
                     <view class="_div list_content_people">{{item.name!=null?item.name:''}}</view>
                     <view wx:if="{{item.userCard.companyName}}" class="_div list_content_company">

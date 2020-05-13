@@ -73,5 +73,12 @@ Page({
           }
         });
     }
-  }
+  },
+  // 跳用户信息
+  to_userInfo(e) {
+    let userId = e.currentTarget.dataset.id
+    wx.navigateTo({
+      url: "/pages/im/userInfo/userInfo?userId=" + userId
+    });
+  },
 })

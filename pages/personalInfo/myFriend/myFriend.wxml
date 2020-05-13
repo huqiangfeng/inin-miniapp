@@ -14,8 +14,10 @@
             </view>
             <mp-slideview buttons="{{ item.userId === delBtnId ?slideButtons2:slideButtons1}}" index="{{ i }}" bindshow="showDel" bindhide="hideDel" bindbuttontap="slideButtonTap" ishiddendel="{{ confirmDel && delBtnId == item.userId }}">
                 <view class="_div list move-x" bindtap="changePage" data-id="{{ item.userId }}">
-                    <image wx:if="{{item.avatar}}" src="{{item.avatar+'?width=100'}}" class="_image list_img"></image>
-                    <view wx:elif="{{localImg}}" class="_div avatar_none">{{item.name}}</view>
+                    <image catch:tap="to_userInfo" data-id="{{ item.userId }}" wx:if="{{item.avatar}}" src="{{item.avatar+'?width=100'}}" class="_image list_img"></image>
+                    <view catch:tap="to_userInfo" data-id="{{ item.userId }}" wx:elif="{{localImg}}" class="_div avatar_none">
+                        {{item.name}}
+                    </view>
                     <view class="_div list_con">
                         <view class="overspread"></view>
                         <view class="_div list_con_name">{{item.name}}</view>

@@ -9,6 +9,9 @@ Page({
    */
   data: {
     localImg: app.localImg,
+    userId: '', // 用户id
+    tagsValue: '', // 标记
+    dialogVisible: false, // 弹框
     imgUrl: req_fn.imgUrl,
     userVisitLogTotal: 0, // 访问数 （这些人也在看）
     userVisitLogList: [], //访问列表（这些人也在看）
@@ -26,8 +29,17 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    if (options.userId) {
+      this.setData({
+        userId: options.userId
+      })
+    }
     // let userId = 'c5c8aef83bd74d94bf373e1d646020d9'
-    let userId = '1228208823261462528'
+    this.getPageData()
+  },
+  // 获取页面数据
+  getPageData() {
+    let userId = this.data.userId
     wx.showLoading({
       title: "加载中..."
     });
@@ -60,8 +72,56 @@ Page({
         wx.hideLoading();
       });
   },
-
-
+  // 绑定input值
+  changeTags(e) {
+    this.setData({
+      tagsValue: e.detail.value
+    })
+  },
+  // 切换添加关键词弹框
+  tagsClose() {
+    this.setData({
+      dialogVisible: !this.data.dialogVisible,
+    })
+  },
+  // 添加关键词
+  tagsSubmit() {
+    req_fn
+      .req(`/api/user/${this.data.userId}/tag`, {
+        userId: this.data.userId,
+        tagName: this.data.tagsValue
+      }, "post")
+      .then(res => {
+        if (res.code == 0) {
+          this.tagsClose()
+          this.getPageData()
+        } else {
+          wx.showToast({
+            title: res.msg,
+            icon: "none",
+            duration: 2000
+          });
+        }
+      });
+  },
+  // 跳有关好友
+  to_friend(e) {
+    let type = e.currentTarget.dataset.type
+    let title = '相关人脉'
+    if (type == 'kk') {
+      title = '同看'
+      wx.navigateTo({
+        url: `/pages/im/addFriend/addFriend?userId=${this.data.userId }&title=${title}`
+      });
+    }
+  },
+  // 跳用户信息
+  to_userInfo(e) {
+    let userId = e.currentTarget.dataset.id
+    wx.navigateTo({
+      url: "/pages/im/userInfo/userInfo?userId=" + userId
+    });
+  },
   // 点击好友名片，跳转聊天页面
   changePage(e) {
     let id = e.currentTarget.dataset.id
@@ -83,7 +143,11 @@ Page({
   // 点击添加好友 friend,applying,null
   addFriend(e) {
     let index = e.currentTarget.dataset.index
+    console.log(index);
     let item = this.data.userList[index]
+    if (!index) {
+      item = this.data.userInfo
+    }
     if (item.friendStatus == null) {
       req_fn
         .req("api/user/friend-apply", {
@@ -91,15 +155,19 @@ Page({
         }, "post")
         .then(res => {
           if (res.code == 0) {
-            let userList = this.data.userList
-            userList.forEach((element, i) => {
-              if (element.userId == item.userId) {
-                userList[i].friendStatus = "applying";
-              }
-            });
-            this.setData({
-              userList: userList
-            })
+            if (index) {
+              let userList = this.data.userList
+              userList.forEach((element, i) => {
+                if (element.userId == item.userId) {
+                  userList[i].friendStatus = "applying";
+                }
+              });
+              this.setData({
+                userList: userList
+              })
+            } else {
+              this.getPageData()
+            }
           } else {
             wx.showToast({
               title: res.msg,

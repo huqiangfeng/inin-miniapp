@@ -2,7 +2,7 @@ const util = require('./util.js')
 
 let URL, imgUrl, imagePath, fileUrl,
     // envVersion = 'trial';
-    envVersion = 'release';
+    envVersion = 'develop';
 //开发版 develop 体验版 trial 正式版 release
 switch (envVersion) {
     case 'develop': {
