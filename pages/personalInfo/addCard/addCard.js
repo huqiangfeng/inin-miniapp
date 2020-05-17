@@ -83,15 +83,26 @@ Page({
         },
         "post"
       )
-      .then((result) => {
-        wx.showToast({
-          title: '添加成功',
-          icon: 'none',
-          duration: 2000
-        })
-        wx.navigateBack({
-          delta: 1 // 回退前 delta(默认为1) 页面
-        });
+      .then((res) => {
+        if (res.code === 0) {
+          wx.showToast({
+            title: '添加成功',
+            icon: 'none',
+            duration: 2000
+          })
+          setTimeout(_ => {
+            wx.navigateBack({
+              delta: 1 // 回退前 delta(默认为1) 页面
+            });
+          }, 500)
+        } else {
+          wx.showToast({
+            title: res.msg,
+            icon: 'none',
+            duration: 2000
+          })
+        }
+
       }).catch((err) => {
 
       });

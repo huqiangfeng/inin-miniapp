@@ -93,7 +93,7 @@
 										<!-- <text class="user-text">{{ item.yourname + ' ' + item.time}}</text> -->
 								</view>
 								<!-- 头像 -->
-								<image class="avatar portrait" src="{{item.send ?   myAvatar: cardInfo.avatar }}" />
+								<image catch:tap="to_userInfo" data-id="{{ item.send ? myUserId :cardInfo.userId }}" class="avatar portrait" src="{{item.send ?   myAvatar: cardInfo.avatar }}" />
 								<!-- 聊天内容 catch:touchend="handleCancel" -->
 								<view class="msg" data-index="{{ i }}" data-type="{{ item.type }}" catch:tap="handleCancel" bind:touchstart="handleStart" catch:touchmove="handleMove" catch:touchcancel="handleCancel">
 										<!-- 复制/删除 -->

@@ -24,9 +24,9 @@ App({
     isIPX: false, //是否为iphone X
     company: "", //公司
     webSocket: false,
-    locationAuth:false,//时候有定位权限
-    currentLat:'',
-    currentLng:''
+    locationAuth: false, //时候有定位权限
+    currentLat: '',
+    currentLng: ''
   },
   conn: {
     closed: false,
@@ -58,18 +58,18 @@ App({
       }
     }
   },
-  
+
   onLaunch() {
     var that = this;
     // 获取当前的位置信息
     wx.getLocation({
       type: 'wgs84',
-      success (res) {
-          that.globalData.currentLat = res.latitude;
-          that.globalData.currentLng = res.longitude;
-          that.globalData.locationAuth = true;
+      success(res) {
+        that.globalData.currentLat = res.latitude;
+        that.globalData.currentLng = res.longitude;
+        that.globalData.locationAuth = true;
       },
-      fail(){
+      fail() {
         that.globalData.currentLat = '';
         that.globalData.currentLng = '';
         that.globalData.locationAuth = false;
@@ -90,11 +90,11 @@ App({
       },
       // 重连中
       onReconnect() {
-        wx.showToast({
-          title: "重连中...",
-          icon: 'none',
-          duration: 2000
-        });
+        // wx.showToast({
+        //   title: "重连中...",
+        //   icon: 'none',
+        //   duration: 2000
+        // });
       },
       // 连接成功
       onSocketConnected() {
@@ -230,14 +230,14 @@ App({
       },
       // 处理文本消息的回调
       onTextMessage(message) {
-        if(message.from == 'admin'){
-		  console.log(message,'this is message from admin')
-		  util.setLocal('adminMsg',message.data)
-		}
+        if (message.from == 'admin') {
+          console.log(message, 'this is message from admin')
+          util.setLocal('adminMsg', message.data)
+        }
         if (onMessageError(message)) {
           WebIM.saveMsg(message, 'txt').then(res => {
-			  console.log(res,'onMessageError')
-            	getApp().onMessage(res); //调用全局方法
+            console.log(res, 'onMessageError')
+            getApp().onMessage(res); //调用全局方法
           });
         }
       },
@@ -301,7 +301,7 @@ App({
           wx.showToast({
             title: "多重登录离线，正在重新链接",
             icon: 'none',
-            duration: 1500
+            duration: 2500
           });
           // 发送链接请求
           getApp().conn.open();

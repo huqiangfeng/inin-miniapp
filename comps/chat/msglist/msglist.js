@@ -24,6 +24,7 @@ Component({
 		localImg: app.localImg,
 		toView: "",
 		myAvatar: "", // 我的头像
+		myUserId: '', // 我的userid
 		chatMsg: [],
 		cardInfo: {}, // 对方信息
 		__visibility__: false,
@@ -295,14 +296,25 @@ Component({
 		getuserLogo() {
 			req_fn.req("api/user", {}, "post").then(res => {
 				if (res.code == 0) {
+					let setObj = {
+						myUserId: res.data.userId
+					}
 					if (res.data.avatar.indexOf("http") == -1)
-						this.setData({
-							myAvatar: req_fn.imgUrl + res.data.avatar + "?width=50"
-						})
-					else this.setData({
-						myAvatar: res.data.avatar + "?width=50"
+						setObj.myAvatar = req_fn.imgUrl + res.data.avatar + "?width=50"
+					else
+						setObj.myAvatar = res.data.avatar + "?width=50"
+					this.setData({
+						myAvatar: req_fn.imgUrl + res.data.avatar + "?width=50",
+						myUserId: res.data.userId
 					})
 				}
+			});
+		},
+		// 跳用户信息
+		to_userInfo(e) {
+			let userId = e.currentTarget.dataset.id
+			wx.navigateTo({
+				url: "/pages/im/userInfo/userInfo?userId=" + userId
 			});
 		},
 		// 滑到最下面

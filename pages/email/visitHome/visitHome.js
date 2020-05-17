@@ -316,11 +316,11 @@ Page({
 					icon: 'none',
 					duration: 1500
 				})
-				setTimeout(() => {
-					wx.reLaunch({
-						url: '/pages/home/email/email'
-					})
-				}, 1800);
+				// setTimeout(() => {
+				// 	wx.reLaunch({
+				// 		url: '/pages/home/email/email'
+				// 	})
+				// }, 1800);
 			}
 		})
 	},

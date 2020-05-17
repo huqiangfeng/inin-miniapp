@@ -88,9 +88,9 @@
   </view>
   <!-- 浮动按钮 -->
   <div class="float-btn-box">
-    <image wx:if="{{userInfo.friendStatus==null}}" bindtap="addFriend" src="./jia-ok.png" class="_image jia_icon"></image>
-    <image wx:else src="./jia-no.png" class="_image jia_icon"></image>
-    <image bindtap="changePage" data-id="{{ userInfo.friendStatus =='myself'?'': userInfo.userId }}" src="./liao.png" class="_image liao_icon"></image>
+    <image mode="widthFix" wx:if="{{userInfo.friendStatus==null}}" bindtap="addFriend" src="./jia-ok.png" class="_image jia_icon"></image>
+    <image mode="widthFix" wx:else src="./jia-no.png" class="_image jia_icon"></image>
+    <image mode="widthFix" bindtap="changePage" data-id="{{ userInfo.friendStatus =='myself'?'': userInfo.userId }}" src="./liao.png" class="_image liao_icon"></image>
   </div>
   <!-- 弹框 -->
   <view class="_div dialog" wx:if="{{dialogVisible}}">

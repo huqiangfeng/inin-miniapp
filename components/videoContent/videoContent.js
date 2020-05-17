@@ -5,31 +5,53 @@ Component({
         company: {
             type: Object,
         },
-        shareFlag:{
-            type:Boolean
+        shareFlag: {
+            type: Boolean
         }
     },
-    data:{
-        videoList:[],
-        currentClickVideoIndex:'',
+    data: {
+        videoList: [],
+        currentClickVideoIndex: '',
     },
-    observers:{
-        "shareFlag":function(shareFlag){
+    observers: {
+        "shareFlag": function (shareFlag) {
             let shareVideoIndex = this.data.currentClickVideoIndex;
             let tempVideoList = this.data.videoList;
-            tempVideoList.map((item,index) => {
-                if(shareVideoIndex == index){
+            tempVideoList.map((item, index) => {
+                if (shareVideoIndex == index) {
                     return item.vod.isChecked = !shareFlag
                 }
             })
             this.setData({
-                videoList:tempVideoList
+                videoList: tempVideoList
             })
         }
     },
-    methods:{
+    methods: {
+        // 跳用户信息
+        to_userInfo(e) {
+            let userId = e.currentTarget.dataset.id
+            wx.navigateTo({
+                url: "/pages/im/userInfo/userInfo?userId=" + userId
+            });
+        },
+        // 点击好友名片，跳转聊天页面
+        changePage(e) {
+            let id = e.currentTarget.dataset.id
+            if (id) {
+                wx.navigateTo({
+                    url: "/pages/im/chat/chat?id=" + id
+                });
+            } else {
+                wx.showToast({
+                    title: "暂未开放和自己聊天",
+                    icon: "none",
+                    duration: 1500
+                });
+            }
+        },
         // 添加朋友
-        addFriend(e){    
+        addFriend(e) {
             let currentFriendUserId = e.currentTarget.dataset.userid
             //console.log('addFriend',e,currentFriendUserId)
             wx.showLoading({
@@ -40,7 +62,7 @@ Component({
             }, "post").then(res => {
                 wx.hideLoading()
                 //console.log(res,'addFriend')
-                if(res.code == 0){
+                if (res.code == 0) {
                     wx.showToast({
                         title: '添加成功',
                         icon: 'none',
@@ -49,9 +71,9 @@ Component({
                     let _videoList_ = this.data.videoList;
                     _videoList_[e.currentTarget.dataset.index].friendStatus = 'applying';
                     this.setData({
-                        videoList:_videoList_
+                        videoList: _videoList_
                     })
-                }else{
+                } else {
                     wx.showToast({
                         title: res.msg,
                         icon: 'none',
@@ -61,24 +83,24 @@ Component({
             })
         },
         // 到播放页面
-        playVideo(e){
+        playVideo(e) {
             let currentVideoUrl = this.data.videoList[e.currentTarget.dataset.index].vod.playUrl;
             let currentVideocoverUrl = this.data.videoList[e.currentTarget.dataset.index].vod.coverUrl;
-            let currentVideoId =  this.data.videoList[e.currentTarget.dataset.index].vod.videoId;
-            if(currentVideoUrl == ''){
+            let currentVideoId = this.data.videoList[e.currentTarget.dataset.index].vod.videoId;
+            if (currentVideoUrl == '') {
                 wx.showToast({
                     title: '暂无视频地址',
                     icon: 'none',
                     duration: 2000
                 })
-            }else{
+            } else {
                 wx.navigateTo({
-                    url:'/pages/email/videoPlay/videoPlay?playUrl=' + currentVideoUrl + "&coverUrl=" + currentVideocoverUrl + "&companyId=" + this.data.company.id + "&currentVideoId=" + currentVideoId
+                    url: '/pages/email/videoPlay/videoPlay?playUrl=' + currentVideoUrl + "&coverUrl=" + currentVideocoverUrl + "&companyId=" + this.data.company.id + "&currentVideoId=" + currentVideoId
                 })
             }
         },
         // 播放出错
-        binderror(){
+        binderror() {
             wx.showToast({
                 title: '请重试',
                 icon: 'none',
@@ -86,34 +108,34 @@ Component({
             })
         },
         // 显示分享空间
-        shareBtn(e){
+        shareBtn(e) {
             let currentVideoIndex = e.currentTarget.dataset.index;
             let currentVideoUrl = this.data.videoList[e.currentTarget.dataset.index].vod.playUrl;
-            if(currentVideoUrl == ''){
+            if (currentVideoUrl == '') {
                 wx.showToast({
                     title: '暂无视频地址',
                     icon: 'none',
                     duration: 2000
                 })
-            }else{
+            } else {
                 let clickVideoInfo = this.data.videoList[currentVideoIndex]
                 let tempVideoList = this.data.videoList;
-                tempVideoList.map((item,index) => {
-                    if(currentVideoIndex == index){
+                tempVideoList.map((item, index) => {
+                    if (currentVideoIndex == index) {
                         return item.vod.isChecked = true
-                    }else{
+                    } else {
                         return item.vod.isChecked = false
-                    } 
+                    }
                 })
                 this.setData({
-                    videoList:tempVideoList,
-                    currentClickVideoIndex:currentVideoIndex
+                    videoList: tempVideoList,
+                    currentClickVideoIndex: currentVideoIndex
                 })
-                this.triggerEvent('compontpass',clickVideoInfo)
+                this.triggerEvent('compontpass', clickVideoInfo)
             }
         }
     },
-     // 组件生命周期
+    // 组件生命周期
     lifetimes: {
         // 在组件实例进入页面节点树时执行
         attached() {
@@ -125,31 +147,31 @@ Component({
             let access_token = value.inin.access_token;
             let data = {
                 access_token: access_token,
-                companyId:this.data.company.id,//
-                pageNum:1,
-                pageSize:100,
+                companyId: this.data.company.id, //
+                pageNum: 1,
+                pageSize: 100,
             }
             req_fn.req('api/company/vod/page', data, "get").then(res => {
-                if(res.code == "000000"){
+                if (res.code == "000000") {
                     let response = res.data.records;
                     response.map(item => {
                         return item.vod.isChecked = false
                     })
                     response.forEach(element => {
-                        if(element.user.avatar != null && element.user.avatar.indexOf("http") == -1){
+                        if (element.user.avatar != null && element.user.avatar.indexOf("http") == -1) {
                             element.user.avatar = req_fn.imgUrl + element.user.avatar;
                         }
-                        if(element.vod.createTime == null || element.vod.createTime == ''){
+                        if (element.vod.createTime == null || element.vod.createTime == '') {
                             element.vod.releaseTime = '暂无发布时间'
-                        }else{
+                        } else {
                             element.vod.releaseTime = util.timeDifference(element.vod.createTime)
                         }
                     });
                     this.setData({
                         videoList: response
                     })
-                    console.log(this.data.videoList,'videoList')
-                }else{
+                    console.log(this.data.videoList, 'videoList')
+                } else {
                     wx.showToast({
                         title: '获取企业视频失败',
                         icon: 'none',
@@ -157,9 +179,9 @@ Component({
                     })
                 }
             })
-           
-            
-            
+
+
+
         },
         // 在组件实例被移动到节点树另一个位置时执行
         moved() {},

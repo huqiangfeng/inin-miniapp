@@ -86,6 +86,16 @@ Page({
   },
   // 添加关键词
   tagsSubmit() {
+
+    if (this.data.tagsValue.trim() === '') {
+      wx.showToast({
+        title: '关键词不能为空哦.',
+        icon: "none",
+        duration: 2000
+      });
+      return
+    }
+
     req_fn
       .req(`/api/user/${this.data.userId}/tag`, {
         userId: this.data.userId,

@@ -1,11 +1,8 @@
 <view class="_div card" hidden="{{!(cardInfo.userId)}}">
     <!-- {{cardInfo.avatar}} -->
-    <image src="{{cardInfo.avatar}}" class="_image card-avatar">
-    </image>
+    <image catch:tap="to_userInfo" data-id="{{ cardInfo.userId }}" src="{{cardInfo.avatar}}" class="_image card-avatar"></image>
     <view class="_div card-con">
-        <view class="_div card-name">
-            {{cardInfo.name!=null?cardInfo.name:''}}
-        </view>
+        <view class="_div card-name">{{cardInfo.name!=null?cardInfo.name:''}}</view>
         <view class="_div card-company" wx:if="{{cardInfo.userCard}}">
             {{cardInfo.userCard.companyName!=null?cardInfo.userCard.companyName:''}}
         </view>
@@ -20,6 +17,6 @@
             <image src="/static/images/message/beFriends.png" class="_image card-icon"></image>
             <label class="_span">互为好友</label>
         </view>
-        <view wx:else class="_div add_friend_grey"> 等待验证 </view>
+        <view wx:else class="_div add_friend_grey">等待验证</view>
     </view>
 </view>
