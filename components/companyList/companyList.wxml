@@ -1,5 +1,4 @@
 <!-- components/companyList/companyList.wxml -->
-
 <view class="  component_entire">
     <view class="  component_company_list" wx:key="index" key="{{index}}" wx:for="{{lists}}" wx:for-index="index" wx:for-item="item">
         <view class="crecommend icon_box" wx:if="{{recommend}}" bindtap="onRecommendChecked" data-index="{{ index }}">
@@ -46,8 +45,9 @@
             </view>
         </view>
         <view class="icon_box" wx:if="{{iconSend}}">
-            <image wx:if="{{item.canSendRequirement}}" class="_image  component_send_icon" src="{{imagePath+'send_blue.png'}}" bindtap="onIconSendEvent" data-index="{{ index }}"></image>
-            <image wx:else class="_image  component_send_icon" src="{{localImg+'inbox/send_grey.png'}}" bindtap="onIconSendEvent" data-index="{{ index }}"></image>
+            <!-- wx:if="{{item.canSendRequirement}}" -->
+            <image class="_image  component_send_icon" src="{{imagePath+'send_blue.png'}}" bindtap="onIconSendEvent" data-index="{{ index }}"></image>
+            <!-- <image wx:else class="_image  component_send_icon" src="{{localImg+'inbox/send_grey.png'}}" bindtap="onIconSendEvent" data-index="{{ index }}"></image> -->
         </view>
         <view class="icon_box" wx:if="{{iconCollect}}">
             <image wx:if="{{item.grey}}" class="_image  component_send_icon" src="{{localImg+'mine/grey_collected.png'}}" bindtap="onIconCollectEvent" data-index="{{ index }}"></image>
