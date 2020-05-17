@@ -21,6 +21,8 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
+    height: 250rpx;
+    box-sizing: border-box;
     /* // padding: 39rpx 30rpx 32rpx 30rpx; */
     margin: 0 30rpx;
     padding: 39rpx 0rpx 32rpx 0rpx;
@@ -37,6 +39,7 @@
 }
 
 .list_all {
+    height: 100%;
     /* // img+content */
     display: flex;
     justify-content: flex-start;
@@ -67,6 +70,10 @@
 }
 
 .list_content_company {
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
     margin-top: 2rpx;
 }
 

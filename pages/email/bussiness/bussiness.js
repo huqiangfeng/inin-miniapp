@@ -21,6 +21,7 @@ Page({
 		fourNavTitle: "距离",
 		currentLocationAreaIndex: 0,
 		currentLoaction: '',
+
 		provinceList: [],
 		contentList: [],
 		cityList: [{
@@ -32,6 +33,10 @@ Page({
 			content: "不限",
 			id: 20200430
 		}],
+		industriesSecondList: [{
+			id: 20200431,
+			name: "不限"
+		}], // 二级
 		industriesList: [{
 			id: 20200431,
 			name: "不限"
@@ -40,6 +45,7 @@ Page({
 		currentBussinessActiveName: '',
 		currentBussinessActiveNameTemp: '',
 		currentInstryActiveIndex: 0,
+		currentInstrySecondActiveIndex: 0, //二级
 		currentInstryActiveName: '',
 		currentInstryActiveNameTemp: '',
 		currentProvinceActiveIndex: 0,
@@ -204,7 +210,8 @@ Page({
 			firstNavTitle: '地址',
 			fourNavTitle: "距离",
 			currentBussinessActiveIndex: -1,
-			currentInstryActiveIndex: -1
+			currentInstryActiveIndex: -1,
+			currentInstrySecondActiveIndex: -1
 
 		})
 		if (searchVal != '') {
@@ -225,7 +232,8 @@ Page({
 			firstNavTitle: '地址',
 			fourNavTitle: "距离",
 			currentBussinessActiveIndex: -1,
-			currentInstryActiveIndex: -1
+			currentInstryActiveIndex: -1,
+			currentInstrySecondActiveIndex: -1
 		})
 		this.getCompanyList(this.data.currenSearchVal, '', '', '', '')
 	},
@@ -337,16 +345,24 @@ Page({
 
 	},
 	// 获取行业分类
-	getIndustryList() {
+	getIndustryList(id) {
+		console.log('id-----', id);
 		let data = {
-			access_token: wx.getStorageSync('Login').inin.access_token
+			access_token: wx.getStorageSync('Login').inin.access_token,
+			id: id
 		}
-		wxRequest.req('api/company/investment/search/industries', data, 'get').then(res => {
+		wxRequest.req('api/company/investment/search/industries?id=' + id, data, 'get').then(res => {
 			if (res.code == 0) {
 				let response = res.data;
-				this.setData({
-					industriesList: this.data.industriesList.concat(response)
-				})
+				if (id) {
+					this.setData({
+						industriesSecondList: this.data.industriesList
+					})
+				} else {
+					this.setData({
+						industriesList: this.data.industriesList.concat(response)
+					})
+				}
 			} else {
 				this.setData({
 					industriesList: []
@@ -374,8 +390,16 @@ Page({
 	},
 	// 选择行业
 	choseIinstry(e) {
+		let index = e.currentTarget.dataset.index
+		this.getIndustryList(this.data.industriesList[index].id)
 		this.setData({
-			currentInstryActiveIndex: e.currentTarget.dataset.index,
+			currentInstryActiveIndex: index,
+		})
+	},
+	// 选择二级行业
+	choseSecondIinstry(e) {
+		this.setData({
+			currentInstrySecondActiveIndex: e.currentTarget.dataset.index,
 			currentInstryActiveNameTemp: e.currentTarget.dataset.name
 		})
 	},
@@ -399,6 +423,7 @@ Page({
 	resetIndustry() {
 		this.setData({
 			currentInstryActiveIndex: -1,
+			currentInstrySecondActiveIndex: -1,
 			currentInstryActiveName: '',
 			currentInstryActiveNameTemp: '',
 			defaultStart: 1

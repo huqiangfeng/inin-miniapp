@@ -4,8 +4,8 @@
  * @Last Modified by:   wonyuan@163.com 
  * @Last Modified time: 2020-04-17 16:38:46 
  */ -->
- <!-- modal -->
- <van-overlay show="{{ overlayShow }}" bind:click="onClickHide" style="position:relative">
+<!-- modal -->
+<van-overlay show="{{ overlayShow }}" bind:click="onClickHide" style="position:relative">
     <view class="opations">
         <veiw class="option_item">
             <text class="text">拜访</text>
@@ -19,15 +19,14 @@
                 <image style="width: 36rpx;height: 36rpx;" class="icon_item" src="../../../static/coor.png"></image>
             </view>
         </veiw>
-
     </view>
 </van-overlay>
 <view class="bussiness">
     <view class="header-search">
-        <van-search bind:change="startSearch" bind:clear="cacelSearch"  value="{{ searchvalue }}" shape="round" placeholder="搜索关键词/企业"/>
+        <van-search bind:change="startSearch" bind:clear="cacelSearch" value="{{ searchvalue }}" shape="round" placeholder="搜索关键词/企业" />
     </view>
     <view class="switch nav selectnav">
-        <van-dropdown-menu >
+        <van-dropdown-menu>
             <van-dropdown-item value="{{ location }}" title="{{firstNavTitle}}" id="dropdown">
                 <View class="chose-location loaction-nav">
                     <view class="domestic item" data-index="0" bindtap="switchLocation" data-val="100000">
@@ -37,7 +36,7 @@
                     </view>
                     <view class="international item" data-index="1" bindtap="switchLocation" data-val="0">
                         <view class="i inner {{currentLocationAreaIndex == 1 ? 'active' : ''}}">
-                           国际
+                            国际
                         </view>
                     </view>
                 </View>
@@ -45,10 +44,14 @@
                     <view class="header position">
                         <view class="l-text">定位城市</view>
                         <view class="location-info">
-                            <view class="current-location city" bindtap='getLocationInfo' >
+                            <view class="current-location city" bindtap='getLocationInfo'>
                                 <image class="icon" src="../../../static/images/dingwei.png"></image>
-                                <text class="lo-text" wx:if="{{locationSuccess == true}}">{{currentLocationCityName}}</text>
-                                <text class="lo-text" wx:if="{{locationSuccess == false}}" style="font-size: 18rpx;">定位失败</text>
+                                <text class="lo-text" wx:if="{{locationSuccess == true}}">
+                                    {{currentLocationCityName}}
+                                </text>
+                                <text class="lo-text" wx:if="{{locationSuccess == false}}" style="font-size: 18rpx;">
+                                    定位失败
+                                </text>
                             </view>
                             <view class="refresh-location" bindtap="resetLocation">
                                 <image class="refresg-icon" src="../../../static/images/shuaxing.png"></image>
@@ -59,7 +62,9 @@
                     <view class="aera-content">
                         <view class="left province">
                             <block wx:for="{{provinceList}}" wx:key='index'>
-                                <view bindtap="switchProvince" class="province-item {{currentProvinceActiveIndex == index ? 'active' : ''}}" data-index="{{index}}" data-id="{{item.id}}" data-val="{{item.name}}">{{item.shortName}}</view>
+                                <view bindtap="switchProvince" class="province-item {{currentProvinceActiveIndex == index ? 'active' : ''}}" data-index="{{index}}" data-id="{{item.id}}" data-val="{{item.name}}">
+                                    {{item.shortName}}
+                                </view>
                             </block>
                         </view>
                         <view class="right city">
@@ -79,7 +84,9 @@
                 <view class="business-type" style="padding-top: 20rpx;">
                     <view class="bussiness-content">
                         <block wx:for="{{bussinessList}}" wx:key="index">
-                            <view data-id="{{item.id}}" data-index="{{index}}" data-name="{{item.content}}" bindtap="choseBusiness"  class="bussiness-item {{currentBussinessActiveIndex == index ? 'active' : ''}}">{{item.content}}</view>
+                            <view data-id="{{item.id}}" data-index="{{index}}" data-name="{{item.content}}" bindtap="choseBusiness" class="bussiness-item {{currentBussinessActiveIndex == index ? 'active' : ''}}">
+                                {{item.content}}
+                            </view>
                         </block>
                     </view>
                 </view>
@@ -88,24 +95,44 @@
                     <view class="confirm btn" bindtap="confirmBusiness">确定</view>
                 </view>
             </van-dropdown-item>
-
             <van-dropdown-item value="{{ location }}" title="行业" id="industry">
                 <view class="business-type" style="padding-top: 20rpx;">
-                    <view class="bussiness-content">
+                    <!--  -->
+                    <view class="aera-content">
+                        <view class="left province">
+                            <block wx:for="{{industriesList}}" wx:key='index'>
+                                <view bindtap="choseIinstry" class="province-item {{currentInstryActiveIndex == index ? 'active' : ''}}" data-index="{{index}}" data-id="{{item.id}}" >
+                                    {{item.name}}
+                                </view>
+                            </block>
+                        </view>
+                        <view class="right city">
+                            <block wx:for="{{industriesSecondList}}" wx:key='index'>
+                                <view bindtap="choseSecondIinstry" class="city-content item" data-index="{{index}}" data-id="{{item.id}}" data-name="{{item.name}}">
+                                    <view class="name-text">{{item.name}}</view>
+                                    <!-- ../../../static/images/bing.png -->
+                                    <image wx:if="{{currentInstrySecondActiveIndex != index}}" class="city-icon" src="../../../static/images/bing.png"></image>
+                                    <image wx:if="{{currentInstrySecondActiveIndex == index}}" class="city-icon active" src="../../../static/images/yt-yes.png"></image>
+                                </view>
+                            </block>
+                        </view>
+                    </view>
+                    <!-- <view class="bussiness-content">
                         <block wx:for="{{industriesList}}" wx:key="index">
                             <view data-id="{{item.id}}" data-index="{{index}}" data-name="{{item.name}}" bindtap="choseIinstry"  class="bussiness-item {{currentInstryActiveIndex == index ? 'active' : ''}}">{{item.name}}</view>
                         </block>
-                    </view>
+                    </view> -->
                 </view>
                 <view class="options">
                     <view class="reset btn" bindtap="resetIndustry">重置</view>
                     <view class="confirm btn" bindtap="confirmIndustry">确定</view>
                 </view>
             </van-dropdown-item>
-
             <van-dropdown-item wx:if="{{isCurrentLocationCity}}" value="{{ location }}" title="{{fourNavTitle}}" id="distance">
                 <block wx:for="{{distanceList}}" wx:key="index">
-                    <view bindtap="choseDistance" data-index="{{index}}" data-id="{{item.id}}" data-val="{{item.val}}" class="distance-item {{currentDistanceIndex == index ? 'diatance-active' :''}}" style="line-height: 80rpx;">{{item.val}}</view>
+                    <view bindtap="choseDistance" data-index="{{index}}" data-id="{{item.id}}" data-val="{{item.val}}" class="distance-item {{currentDistanceIndex == index ? 'diatance-active' :''}}" style="line-height: 80rpx;">
+                        {{item.val}}
+                    </view>
                 </block>
             </van-dropdown-item>
         </van-dropdown-menu>
@@ -117,8 +144,10 @@
                 <view class="item-left avarte">
                     <view class="company-logo">
                         <!--  -->
-                        <view class="unread-msg"  wx:if="{{item.msgMyUnread != 0 && item.msgMyUnread < 100}}">{{item.msgMyUnread}}</view>
-                        <view class="unread-msg"  wx:if="{{item.msgMyUnread >= 100}}">99+</view>
+                        <view class="unread-msg" wx:if="{{item.msgMyUnread != 0 && item.msgMyUnread < 100}}">
+                            {{item.msgMyUnread}}
+                        </view>
+                        <view class="unread-msg" wx:if="{{item.msgMyUnread >= 100}}">99+</view>
                         <van-image wx:if="{{item.logoUrl != ''}}" width="90rpx" height="90rpx" src="{{item.logoUrl}}"></van-image>
                         <view wx:else class="simple-name" style="font-size: 28rpx;width:80rpx;height:90rpx;text-align: center;">
                             {{item.simpleName}}
@@ -150,11 +179,15 @@
                 </view>
                 <view class="item-right send">
                     <view class="icon-box" bindtap="send" data-index="{{index}}">
-                        <image src="https://wx.onechuan.com/api_test/images/wx/send_blue.png" style="width: 48rpx;height: 48rpx;"> </image>
+                        <image src="https://wx.onechuan.com/api_test/images/wx/send_blue.png" style="width: 48rpx;height: 48rpx;"></image>
                     </view>
                     <view class="company-dis" wx:if="{{item.distance}}">
-                        <text class="text-two" wx:if="{{item.distance >= 1000}}">{{item.distanceKM}}千米</text>
-                        <text class="text-two" wx:if="{{item.distance < 1000}}">{{item.distance}}米</text> 
+                        <text class="text-two" wx:if="{{item.distance >= 1000}}">
+                            {{item.distanceKM}}千米
+                        </text>
+                        <text class="text-two" wx:if="{{item.distance < 1000}}">
+                            {{item.distance}}米
+                        </text>
                     </view>
                 </view>
             </view>
