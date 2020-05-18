@@ -31,21 +31,21 @@ Page({
 		}],
 		bussinessList: [{
 			content: "不限",
-			id: 20200430
+			id: ''
 		}],
 		industriesSecondList: [{
-			id: 20200431,
+			id: -1,
 			name: "不限"
 		}], // 二级
 		industriesList: [{
-			id: 20200431,
+			id: -1,
 			name: "不限"
 		}],
 		currentBussinessActiveIndex: 0,
 		currentBussinessActiveName: '',
 		currentBussinessActiveNameTemp: '',
 		currentInstryActiveIndex: 0,
-		currentInstrySecondActiveIndex: 0, //二级
+		currentInstrySecondActiveId: '', //二级
 		currentInstryActiveName: '',
 		currentInstryActiveNameTemp: '',
 		currentProvinceActiveIndex: 0,
@@ -211,7 +211,7 @@ Page({
 			fourNavTitle: "距离",
 			currentBussinessActiveIndex: -1,
 			currentInstryActiveIndex: -1,
-			currentInstrySecondActiveIndex: -1
+			currentInstrySecondActiveId: ''
 
 		})
 		if (searchVal != '') {
@@ -233,7 +233,7 @@ Page({
 			fourNavTitle: "距离",
 			currentBussinessActiveIndex: -1,
 			currentInstryActiveIndex: -1,
-			currentInstrySecondActiveIndex: -1
+			currentInstrySecondActiveId: ''
 		})
 		this.getCompanyList(this.data.currenSearchVal, '', '', '', '')
 	},
@@ -346,18 +346,29 @@ Page({
 	},
 	// 获取行业分类
 	getIndustryList(id) {
-		console.log('id-----', id);
 		let data = {
 			access_token: wx.getStorageSync('Login').inin.access_token,
-			id: id
 		}
-		wxRequest.req('api/company/investment/search/industries?id=' + id, data, 'get').then(res => {
+		if (id) {
+			data.pid = id
+		}
+		wxRequest.req('api/company/investment/search/industries', data, 'get').then(res => {
 			if (res.code == 0) {
 				let response = res.data;
+
 				if (id) {
-					this.setData({
-						industriesSecondList: this.data.industriesList
-					})
+					if (response.length > 0) {
+						this.setData({
+							industriesSecondList: response
+						})
+					} else {
+						this.setData({
+							industriesSecondList: [{
+								id: -1,
+								name: "不限"
+							}]
+						})
+					}
 				} else {
 					this.setData({
 						industriesList: this.data.industriesList.concat(response)
@@ -399,7 +410,7 @@ Page({
 	// 选择二级行业
 	choseSecondIinstry(e) {
 		this.setData({
-			currentInstrySecondActiveIndex: e.currentTarget.dataset.index,
+			currentInstrySecondActiveId: e.currentTarget.dataset.id,
 			currentInstryActiveNameTemp: e.currentTarget.dataset.name
 		})
 	},
@@ -423,7 +434,7 @@ Page({
 	resetIndustry() {
 		this.setData({
 			currentInstryActiveIndex: -1,
-			currentInstrySecondActiveIndex: -1,
+			currentInstrySecondActiveId: '',
 			currentInstryActiveName: '',
 			currentInstryActiveNameTemp: '',
 			defaultStart: 1

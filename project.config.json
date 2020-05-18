@@ -80,6 +80,12 @@
 					"pathName": "pages/personalInfo/myCard/myCard",
 					"query": "",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/im/search/search",
+					"pathName": "pages/im/search/search",
+					"scene": null
 				}
 			]
 		}

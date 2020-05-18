@@ -22,18 +22,19 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // 好友
-    this.selectComponent('#friendList').getData()
-    // 推送
-    this.selectComponent('#pushList').getPushList()
-    // 聊天记录
-    this.selectComponent('#chattingRecordss').getList()
-    this.getMailboxes()
+    // // 好友
+    // this.selectComponent('#friendList').getData()
+    // // 推送
+    // // this.selectComponent('#pushList').getPushList()
+    // // 聊天记录
+    // this.selectComponent('#chattingRecordss').getList()
+    // this.getMailboxes()
   },
   // 获取数据
   getData() {
     let value = this.data.searchData
     this.selectComponent('#friendList').getData(value)
+    this.selectComponent('#chattingRecordss').getList(value)
   },
   // 清空
   clear() {

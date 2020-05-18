@@ -46,7 +46,7 @@
     </view>
   </view>
   <!-- 推送消息 -->
-  <view class="record">
+  <!-- <view class="record">
     <view class="title">推送消息</view>
     <view class="list">
       <pushList id="pushList"></pushList>
@@ -58,5 +58,5 @@
       <view class="_div weui-cell__bd">更多推送消息</view>
       <view class="_div weui-cell__ft weui-cell__ft_in-access"></view>
     </view>
-  </view>
+  </view> -->
 </view>

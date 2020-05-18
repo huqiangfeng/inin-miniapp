@@ -152,5 +152,6 @@
       "desc": "  "
     }
   },
+  "workers": "workers",
   "sitemapLocation": "sitemap.json"
 }

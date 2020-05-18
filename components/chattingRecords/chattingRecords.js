@@ -16,25 +16,30 @@ Component({
   data: {
     localImg: app.localImg,
     lists: [], // 会话列表
+    msgList: [],
+    worker: null
   },
 
   /**
    * 组件的方法列表
    */
   methods: {
-    getList() {
-      if (util.getLocal("msgList")) {
-        this.setData({
-          lists: this.setListDate(util.getLocal("msgList")),
-        })
+    getList(value) {
+      if (this.data.worker) {
+        this.data.worker.terminate()
       }
-    },
-    // 设置时间格式化
-    setListDate(list) {
-      for (let i = 0; i < list.length; i++) {
-        list[i].data[list[i].data.length - 1].day = util.getDate(list[i].data[list[i].data.length - 1].time);
-      }
-      return list
+      const worker = wx.createWorker('workers/request/index.js')
+      worker.postMessage({
+        value,
+        msgList: this.data.msgList
+      })
+      worker.onMessage((lists) => {
+        console.log(lists);
+      })
+
+      this.setData({
+        worker: worker
+      })
     },
     // 聊天页面跳转
     changePage(e) {
@@ -52,6 +57,20 @@ Component({
       });
 
 
+    },
+  },
+  lifetimes: {
+    attached: function () {
+      // 在组件实例进入页面节点树时执行
+      let msgList = util.getLocal("msgList")
+      if (msgList) {
+        this.setData({
+          msgList: util.getLocal("msgList"),
+        })
+      }
+    },
+    detached: function () {
+      // 在组件实例被从页面节点树移除时执行
     },
   }
 })

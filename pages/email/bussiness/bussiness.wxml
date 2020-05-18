@@ -46,12 +46,12 @@
                         <view class="location-info">
                             <view class="current-location city" bindtap='getLocationInfo'>
                                 <image class="icon" src="../../../static/images/dingwei.png"></image>
-                                <text class="lo-text" wx:if="{{locationSuccess == true}}">
+                                <view class="lo-text" wx:if="{{locationSuccess == true}}">
                                     {{currentLocationCityName}}
-                                </text>
-                                <text class="lo-text" wx:if="{{locationSuccess == false}}" style="font-size: 18rpx;">
+                                </view>
+                                <view class="lo-text" wx:if="{{locationSuccess == false}}" style="font-size: 18rpx;">
                                     定位失败
-                                </text>
+                                </view>
                             </view>
                             <view class="refresh-location" bindtap="resetLocation">
                                 <image class="refresg-icon" src="../../../static/images/shuaxing.png"></image>
@@ -101,7 +101,7 @@
                     <view class="aera-content">
                         <view class="left province">
                             <block wx:for="{{industriesList}}" wx:key='index'>
-                                <view bindtap="choseIinstry" class="province-item {{currentInstryActiveIndex == index ? 'active' : ''}}" data-index="{{index}}" data-id="{{item.id}}" >
+                                <view bindtap="choseIinstry" class="province-item {{currentInstryActiveIndex == index ? 'active' : ''}}" data-index="{{index}}" data-id="{{item.id}}">
                                     {{item.name}}
                                 </view>
                             </block>
@@ -111,8 +111,8 @@
                                 <view bindtap="choseSecondIinstry" class="city-content item" data-index="{{index}}" data-id="{{item.id}}" data-name="{{item.name}}">
                                     <view class="name-text">{{item.name}}</view>
                                     <!-- ../../../static/images/bing.png -->
-                                    <image wx:if="{{currentInstrySecondActiveIndex != index}}" class="city-icon" src="../../../static/images/bing.png"></image>
-                                    <image wx:if="{{currentInstrySecondActiveIndex == index}}" class="city-icon active" src="../../../static/images/yt-yes.png"></image>
+                                    <image wx:if="{{currentInstrySecondActiveId != item.id}}" class="city-icon" src="../../../static/images/bing.png"></image>
+                                    <image wx:if="{{currentInstrySecondActiveId == item.id}}" class="city-icon active" src="../../../static/images/yt-yes.png"></image>
                                 </view>
                             </block>
                         </view>
