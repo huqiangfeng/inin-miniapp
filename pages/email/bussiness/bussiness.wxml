@@ -80,7 +80,7 @@
                     </view>
                 </view>
             </van-dropdown-item>
-            <van-dropdown-item value="{{ location }}" title="业务" id="business">
+            <van-dropdown-item value="{{ location }}" title="{{currentBussinessActiveName?currentBussinessActiveName:'业务'}}" id="business">
                 <view class="business-type" style="padding-top: 20rpx;">
                     <view class="bussiness-content">
                         <block wx:for="{{bussinessList}}" wx:key="index">
@@ -95,7 +95,7 @@
                     <view class="confirm btn" bindtap="confirmBusiness">确定</view>
                 </view>
             </van-dropdown-item>
-            <van-dropdown-item value="{{ location }}" title="行业" id="industry">
+            <van-dropdown-item value="{{ location }}" title="{{ currentInstryActiveName?currentInstryActiveName: '行业'}}" id="industry">
                 <view class="business-type" style="padding-top: 20rpx;">
                     <!--  -->
                     <view class="aera-content">
