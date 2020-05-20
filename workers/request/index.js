@@ -2,8 +2,7 @@ const utils = require('./utils')
 
 
 worker.onMessage((msg) => {
-  console.log(msg);
-  let msgList = msg.msgList // 聊天数据
+  let msgList = JSON.parse(msg.msgList) // 聊天数据
   let value = msg.value // 查询条件
   let lists = msgList.filter(element => {
     let dataArr = element.data
@@ -30,7 +29,6 @@ worker.onMessage((msg) => {
     return countArr.length > 0
   });
   worker.postMessage(lists)
-  worker.terminate()
 })
 
 function filtrate(val, txt) {

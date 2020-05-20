@@ -41,8 +41,8 @@ Component({
         this.setData({
           lists: lists
         })
+        worker.terminate()
       })
-
       this.setData({
         worker: worker
       })
@@ -51,18 +51,9 @@ Component({
     changePage(e) {
       let index = e.currentTarget.dataset.index
       let lists = this.data.lists
-      lists[index].unread = 0
-      if (lists instanceof Array) {
-        util.setLocal("msgList", lists)
-      }
-      this.setData({
-        lists: lists
-      })
       wx.navigateTo({
         url: "/pages/im/chat/chat?id=" + lists[index].listid.replace("p2p-", "")
       });
-
-
     },
   },
   lifetimes: {
@@ -71,7 +62,7 @@ Component({
       let msgList = util.getLocal("msgList")
       if (msgList) {
         this.setData({
-          msgList: util.getLocal("msgList"),
+          msgList: JSON.stringify(msgList)
         })
       }
     },
