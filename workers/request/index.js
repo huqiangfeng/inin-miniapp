@@ -5,15 +5,34 @@ worker.onMessage((msg) => {
   console.log(msg);
   let msgList = msg.msgList // 聊天数据
   let value = msg.value // 查询条件
-  let list = [] // 筛选完的列表
-  msgList.filter(element => {
-    let arr = element.data
-    let count = 0 // 符合条件的条数 
-    for (const item of arr) {
-      if (item.type === 'emoji') {
-
+  let lists = msgList.filter(element => {
+    let dataArr = element.data
+    let countArr = [] // 符合条件的条数
+    for (const item of dataArr) {
+      let flg = false
+      if (item.type === 'emoji' || item.type === 'txt') {
+        let textArr = item.text
+        for (const chatItem of textArr) {
+          if (chatItem.type === 'txt') {
+            if (filtrate(value, chatItem.data)) {
+              flg = true
+            }
+          }
+        }
+      }
+      if (flg) {
+        countArr.push(item)
       }
     }
+    if (countArr.length > 0) {
+      element.data = countArr
+    }
+    return countArr.length > 0
   });
-  worker.postMessage(list)
+  worker.postMessage(lists)
+  worker.terminate()
 })
+
+function filtrate(val, txt) {
+  return txt.includes(val)
+}
