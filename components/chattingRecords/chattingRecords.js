@@ -28,6 +28,9 @@ Component({
       if (this.data.worker) {
         this.data.worker.terminate()
       }
+      if (!value.trim()) {
+        return
+      }
       const worker = wx.createWorker('workers/request/index.js')
       worker.postMessage({
         value,
@@ -35,6 +38,9 @@ Component({
       })
       worker.onMessage((lists) => {
         console.log(lists);
+        this.setData({
+          lists: lists
+        })
       })
 
       this.setData({
