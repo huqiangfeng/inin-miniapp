@@ -50,7 +50,6 @@ Component({
     changePage(e) {
       // let index = e.currentTarget.dataset.index
       let id = this.properties.userObj.listid.replace("p2p-", "")
-      console.log('12123213');
       wx.navigateTo({
         url: "/pages/im/chat/chat?id=" + id
       });

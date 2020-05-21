@@ -47,6 +47,16 @@ Page({
       this.setData({
         userObj: userObj
       })
+    } else if (this.data.searchData) {
+      this.data.userObj.searchData = []
+      this.setData({
+        userObj: this.data.userObj
+      })
+    } else {
+      this.data.userObj.searchData = this.data.userObj.data
+      this.setData({
+        userObj: this.data.userObj
+      })
     }
   },
   // 清空
