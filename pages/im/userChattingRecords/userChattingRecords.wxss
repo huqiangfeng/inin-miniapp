@@ -1,5 +1,3 @@
-/* pages/im//searchChattingRecords/searchChattingRecords.wxss */
-/* pages/im//search/search.wxss */
 /* 搜索 */
 .search {
   padding-bottom: 30rpx;

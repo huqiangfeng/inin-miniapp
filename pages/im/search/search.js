@@ -2,6 +2,7 @@
 const req_fn = require("../../../utils/route");
 const util = require("../../../utils/util");
 const app = getApp();
+let timeoutId
 Page({
 
   /**
@@ -49,7 +50,10 @@ Page({
     this.setData({
       searchData: value,
     })
-    this.getData();
+    timeoutId || clearTimeout(timeoutId)
+    timeoutId = setTimeout(() => {
+      this.getData();
+    }, 100);
   },
   // 跳转页面
   changePage(e) {

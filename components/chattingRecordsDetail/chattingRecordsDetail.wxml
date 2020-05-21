@@ -1,0 +1,37 @@
+<!--  -->
+<view class="_div lists" scroll-y="true" wx:if="{{userObj.searchData.length>0}}">
+  <!-- :style="{transform:delBtnId==item.listid?'translateX(-180rpx)':'none'}" -->
+  <view class="_div list_contentbox" wx:key="i" data-userId="{{userObj.listid}}" bindtap="changePage" data-index="{{ i }}" wx:for="{{userObj.searchData}}" wx:for-index="i" wx:for-item="item">
+    <view class="_div list">
+      <view class="_div list_all">
+        <image wx:if="{{userObj.avatar}}" src="{{userObj.avatar+'?width=100'}}" class="_image avatar"></image>
+        <image wx:elif="{{localImg}}" src="{{imagePath+'user.png'}}" class="_image avatar"></image>
+        <view class="_div list_content">
+          <view class="_div list_content_title_l">{{userObj.name}}</view>
+          <view class="_div list_content_flag">
+            <view class="_div flag">
+              「
+              <label wx:if="{{item.type=='txt'}}" class="_span">消息</label>
+              <label wx:if="{{item.type=='emoji'||item.type=='admin'}}" class="_span">消息</label>
+              <label wx:if="{{item.type=='img'}}" class="_span">图片</label>
+              <label wx:if="{{item.type=='audio'}}" class="_span">语音</label>
+              」
+            </view>
+            <view class="_div Omit">
+              <label wx:if="{{item.type=='txt'}}" class="_span">{{item.text}}</label>
+              <label wx:if="{{item.type=='emoji'||item.type=='admin'}}" class="_span emoji-box">
+                <view wx:for="{{ item.text  }}" wx:for-index="emojiI" wx:for-item="emojiItmen" wx:key="emojiI">
+                  <view wx:if="{{ emojiItmen.type == 'emoji' }}">
+                    <image class="img-emoji" src="{{ localImg +'faces/'+ emojiItmen.data }}" mode="widthFix"></image>
+                  </view>
+                  <view wx:else>{{ emojiItmen.data }}</view>
+                </view>
+              </label>
+              <label wx:if="{{item.type=='audio'}}" class="_span">{{item.length}}s</label>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

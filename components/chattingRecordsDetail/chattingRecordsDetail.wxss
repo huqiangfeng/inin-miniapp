@@ -162,3 +162,7 @@
 .emoji-box view {
   display: inline-block
 }
+
+.template {
+  display: inline;
+}

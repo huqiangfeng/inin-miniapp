@@ -2,7 +2,7 @@
 /* 搜索 */
 .search {
   background-color: #F5F6F8;
-  padding-bottom: 30rpx;
+  margin-bottom: 90rpx;
 }
 
 .search .public-search {

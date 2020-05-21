@@ -41,6 +41,7 @@
         "userInfo/userInfo",
         "search/search",
         "searchChattingRecords/searchChattingRecords",
+        "userChattingRecords/userChattingRecords",
         "searchCard/searchCard",
         "searchPush/searchPush",
         "addFriend/addFriend",

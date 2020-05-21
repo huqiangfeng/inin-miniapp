@@ -27,7 +27,6 @@ Component({
       value: false,
     }
   },
-
   /**
    * 组件的初始数据
    */
@@ -73,14 +72,17 @@ Component({
     onCancelBtn(e) {
       this.triggerEvent('onCancelBtn');
     },
+    updataPublicValue() {
+      this.setData({
+        publicValue: this.properties.value
+      })
+    }
   },
   // 组件生命周期
   lifetimes: {
     // 在组件实例进入页面节点树时执行
     attached() {
-      this.setData({
-        publicValue: this.properties.value
-      })
+      this.updataPublicValue()
     }
   },
 })

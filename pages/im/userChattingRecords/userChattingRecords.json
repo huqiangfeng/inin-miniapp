@@ -1,7 +1,7 @@
 {
   "usingComponents": {
     "publicSearch": "/components/publicSearch/publicSearch",
-    "chattingRecords": "/components/chattingRecords/chattingRecords"
+    "chattingRecordsDetail": "/components/chattingRecordsDetail/chattingRecordsDetail"
   },
   "navigationBarTitleText": "聊天记录"
 }

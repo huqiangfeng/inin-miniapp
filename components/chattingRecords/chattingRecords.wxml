@@ -10,48 +10,7 @@
           <view class="_div list_content">
             <view class="_div list_content_title_l">{{item.name}}</view>
             <view class="_div list_content_title_r Omit">{{item.companyName}}</view>
-            <view class="_div list_content_flag">
-              <view class="_div flag">
-                「
-                <label wx:if="{{item.data[item.data.length-1].type=='txt'}}" class="_span">
-                  消息
-                </label>
-                <label wx:if="{{item.data[item.data.length-1].type=='emoji'}}" class="_span">
-                  消息
-                </label>
-                <label wx:if="{{item.data[item.data.length-1].type=='img'}}" class="_span">
-                  图片
-                </label>
-                <label wx:if="{{item.data[item.data.length-1].type=='audio'}}" class="_span">
-                  语音
-                </label>
-                」
-              </view>
-              <view class="_div Omit">
-                <label wx:if="{{item.data[item.data.length-1].type=='txt'}}" class="_span">
-                  {{item.data[item.data.length-1].text}}
-                </label>
-                <label wx:if="{{item.data[item.data.length-1].type=='emoji'}}" class="_span emoji-box">
-                  <view wx:for="{{ item.data[item.data.length-1].text  }}" wx:for-index="emojiI" wx:for-item="emojiItmen" wx:key="emojiI">
-                    <view wx:if="{{ emojiItmen.type == 'emoji' }}">
-                      <image class="img-emoji" src="{{ localImg +'faces/'+ emojiItmen.data }}" mode="widthFix"></image>
-                    </view>
-                    <view wx:else>{{ emojiItmen.data }}</view>
-                  </view>
-                </label>
-                <label wx:if="{{item.data[item.data.length-1].type=='audio'}}" class="_span">
-                  {{item.data[item.data.length-1].length}}s
-                </label>
-              </view>
-            </view>
-          </view>
-        </view>
-        <view class="_div list-right-box">
-          <view class="_div list_time">{{item.data[item.data.length-1].day}}</view>
-          <view class="_div unread-box" hidden="{{item.unread == 0}}">
-            <view class="_div unread  {{item.unread<10?'unread-min':''}} {{ item.unread>9&&item.unread<99?'unread-normal':''}} {{ item.unread>98?'unread-max':''}} ">
-              {{item.unread}}
-            </view>
+            <view class="_div list_content_flag">{{item.sum}} 条相关记录</view>
           </view>
         </view>
       </view>

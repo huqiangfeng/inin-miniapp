@@ -24,7 +24,11 @@ worker.onMessage((msg) => {
       }
     }
     if (countArr.length > 0) {
-      element.data = countArr
+      element.searchData = countArr
+      element.sum = countArr.length
+    } else {
+      element.searchData = []
+      element.sum = 0
     }
     return countArr.length > 0
   });
