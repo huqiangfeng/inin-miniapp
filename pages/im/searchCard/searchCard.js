@@ -12,6 +12,7 @@ Page({
     loading: true,
     loadingShow: false,
     searchData: "",
+    peopleData: [],
     company: {
       id: ''
     }
@@ -20,9 +21,7 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-    this.getMailboxes()
-  },
+  onLoad: function (options) {},
   // 获取数据
   getData() {
     let value = this.data.searchData
@@ -75,60 +74,44 @@ Page({
   },
   // 点击某一项
   ontapItem(e) {
+    console.log('123123321231');
     let index = e.detail.index
-    if (!this.data.isAuth && index > 2) {
-      return
-    }
     wx.navigateTo({
-      url: `/pages/email/cooperationOrfinancing/cooperationOrfinancing?companyId=${ this.data.company.id}&index=${index}`,
+      url: `/pages/email/cooperationOrfinancing/cooperationOrfinancing?companyId=${ this.data.peopleData[index].companyId}`,
     })
   },
   // 获取企业收件箱列表 after上翻(列表排序从旧到新)，before下翻(列表排序从新到旧)
-  getMailboxes(timeDirection = "before", lastTime = "") {
+  getMailboxes(value, lastTime = "") {
     this.setData({
-      hasNone: false
+      hasNone: false,
+      loading: true,
+      loadingShow: true,
     })
-    if (app.globalData.url == "cardInfo") delete app.globalData.url;
-    else
-      wx.showLoading({
-        title: "加载中"
-      });
-
-    let url = "public/company/" + this.data.company.id + "/mailboxes";
-    if (this.data.login) {
-      url = "api/company/" + this.data.company.id + "/mailboxes";
-    }
+    wx.showLoading({
+      title: "加载中"
+    });
     req_fn
-      .req(url, {
-        timeDirection: timeDirection,
+      .req('/api/company/mailboxes-in-friend', {
         lastTime: lastTime,
-        readStatus: this.data.readStatus
-      }, "post")
+        keyword: value,
+        size: 10
+      }, "get")
       .then(data => {
         this.setData({
           hasNone: true
         })
         if (data.code == 0) {
           if (data.data != null) this.changeAvatar(data.data);
-          if (timeDirection == "after") {
-            //上一页
-            data.data.reverse();
+          //下一页
+          if (lastTime != "") {
             this.setData({
-              peopleData: [...data.data, ...this.data.peopleData]
+              loading: false,
+              peopleData: [...this.data.peopleData, ...data.data]
             })
-            // wx.stopPullDownRefresh();
           } else {
-            //下一页
-            if (lastTime != "") {
-              this.setData({
-                loading: false,
-                peopleData: [...this.data.peopleData, ...data.data]
-              })
-            } else {
-              this.setData({
-                peopleData: data.data
-              })
-            }
+            this.setData({
+              peopleData: data.data
+            })
           }
         } else if (data.data == null) {
           // 没有上一页或者下一页
@@ -149,12 +132,35 @@ Page({
           hasNone: false
         })
         wx.hideLoading();
-        //console.log(err);
-        // wx.showToast({
-        //   title: "加载失败",
-        //   icon: "none",
-        //   duration: 2000
-        // });
       });
+  },
+  // 触底事件的处理函数
+  onReachBottom() {
+    let currentPeopleData = this.data.peopleData;
+    console.log('123');
+    if (currentPeopleData.length != 0) {
+      let lastTime = currentPeopleData[currentPeopleData.length - 1].createTime
+      this.getMailboxes(this.data.searchData, lastTime)
+    }
+  },
+  // 映射头像
+  changeAvatar(arr) {
+    for (let i in arr) {
+      try {
+        if (
+          arr[i].sendUserAvatar &&
+          arr[i].sendUserAvatar.indexOf("http") == -1
+        ) {
+          arr[i].sendUserAvatar = req_fn.imgUrl + arr[i].sendUserAvatar;
+        }
+        arr[i].time = util.getDate(arr[i].createTime);
+        arr[i].keywords = arr[i].keywords.split(",");
+        // @repair 公司别名  /\W/g
+        arr[i].rename = arr[i].sendUserCompany
+          .replace(/(.*?(省|区|市))/, "")
+          .substring(0, 2);
+      } catch (error) {}
+    }
+    return arr;
   },
 })

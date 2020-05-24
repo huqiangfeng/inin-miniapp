@@ -17,7 +17,6 @@ Component({
     localImg: app.localImg,
     lists: [], // 会话列表
     msgList: [],
-    worker: null,
     value: ''
   },
 
@@ -26,26 +25,27 @@ Component({
    */
   methods: {
     getList(value) {
-      if (this.data.worker) {
-        this.data.worker.terminate()
+      try {
+        app.globalData.worker.terminate()
+      } catch (error) {
+
       }
       if (!value.trim()) {
         return
       }
-      const worker = wx.createWorker('workers/request/index.js')
-      worker.postMessage({
+      app.globalData.worker = wx.createWorker('workers/request/index.js')
+      app.globalData.worker.postMessage({
         value,
         msgList: this.data.msgList
       })
-      worker.onMessage((lists) => {
+      app.globalData.worker.onMessage((lists) => {
         console.log(lists);
         this.setData({
           lists: lists
         })
-        worker.terminate()
+        app.globalData.worker.terminate()
       })
       this.setData({
-        worker: worker,
         value: value
       })
     },
