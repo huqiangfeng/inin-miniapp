@@ -26,8 +26,7 @@ App({
     webSocket: false,
     locationAuth: false, //时候有定位权限
     currentLat: '',
-    currentLng: '',
-    worker: null
+    currentLng: ''
   },
   conn: {
     closed: false,

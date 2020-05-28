@@ -33,6 +33,10 @@ Page({
 			content: "不限",
 			id: ''
 		}],
+		bussinessSecondList: [{
+			content: "不限",
+			id: ''
+		}],
 		industriesSecondList: [{
 			id: -1,
 			name: "不限"
@@ -42,6 +46,7 @@ Page({
 			name: "不限"
 		}],
 		currentBussinessActiveIndex: 0,
+		currentBussinessSecondActiveId: '', //二级
 		currentBussinessActiveName: '',
 		currentBussinessActiveNameTemp: '',
 		currentInstryActiveIndex: 0,
@@ -210,6 +215,7 @@ Page({
 			firstNavTitle: '地址',
 			fourNavTitle: "距离",
 			currentBussinessActiveIndex: -1,
+			currentBussinessSecondActiveId: '',
 			currentInstryActiveIndex: -1,
 			currentInstrySecondActiveId: ''
 
@@ -232,6 +238,7 @@ Page({
 			firstNavTitle: '地址',
 			fourNavTitle: "距离",
 			currentBussinessActiveIndex: -1,
+			currentBussinessSecondActiveId: '',
 			currentInstryActiveIndex: -1,
 			currentInstrySecondActiveId: ''
 		})
@@ -382,16 +389,35 @@ Page({
 		})
 	},
 	// 获取业务词
-	getBussinessList() {
+	getBussinessList(id) {
 		let data = {
 			access_token: wx.getStorageSync('Login').inin.access_token
+		}
+		if (id) {
+			data.pid = id
 		}
 		wxRequest.req('api/company/investment/search/businessWord', data, 'get').then(res => {
 			if (res.code == 0) {
 				let response = res.data;
-				this.setData({
-					bussinessList: this.data.bussinessList.concat(response)
-				})
+
+				if (id) {
+					if (response.length > 0) {
+						this.setData({
+							bussinessSecondList: response
+						})
+					} else {
+						this.setData({
+							bussinessSecondList: [{
+								id: -1,
+								content: "不限"
+							}]
+						})
+					}
+				} else {
+					this.setData({
+						bussinessList: this.data.bussinessList.concat(response)
+					})
+				}
 			} else {
 				this.setData({
 					bussinessList: []
@@ -444,9 +470,18 @@ Page({
 	},
 	// 选择业务
 	choseBusiness(e) {
+		let index = e.currentTarget.dataset.index
+		this.getBussinessList(this.data.bussinessList[index].id)
 		this.setData({
-			currentBussinessActiveIndex: e.currentTarget.dataset.index,
-			currentBussinessActiveNameTemp: e.currentTarget.dataset.name
+			currentBussinessActiveIndex: index,
+		})
+	},
+	// 选择二级业务
+	choseSecondBusiness(e) {
+		console.log(e);
+		this.setData({
+			currentBussinessSecondActiveId: e.currentTarget.dataset.id,
+			currentBussinessActiveNameTemp: e.currentTarget.dataset.content
 		})
 	},
 	// 确定选择的业务
@@ -471,6 +506,7 @@ Page({
 			currentBussinessActiveName: '',
 			currentBussinessActiveNameTemp: '',
 			currentBussinessActiveIndex: -1,
+			currentBussinessSecondActiveId: '',
 			defaultStart: 1
 		})
 		this.getCompanyList(this.data.currenSearchVal, this.data.currentlySelectedCityName, this.data.currentBussinessActiveName, this.data.currentInstryActiveName, this.data.choseDistance)

@@ -40,7 +40,7 @@ Page({
     if (this.data.isSelect) {
       const eventChannel = this.getOpenerEventChannel()
       let data = {
-        companyId: item.companyId,
+        // companyId: item.companyId,
         defaultAuthEmail: item.email,
         defaultCardId: this.data.userInfo.defaultCardId,
         logo: this.data.userInfo.logo,

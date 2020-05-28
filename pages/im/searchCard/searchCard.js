@@ -9,10 +9,12 @@ Page({
    */
   data: {
     localImg: app.localImg,
-    loading: true,
+    loading: false,
     loadingShow: false,
     searchData: "",
     peopleData: [],
+    isAuth: false,
+    size: 10,
     company: {
       id: ''
     }
@@ -21,7 +23,9 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {},
+  onLoad: function (options) {
+    this.hasAttestation()
+  },
   // 获取数据
   getData() {
     let value = this.data.searchData
@@ -47,7 +51,8 @@ Page({
     req_fn.req("api/user/card/authed", {}, "post").then(data => {
       if (data.code == 0) {
         this.setData({
-          isAuth: data.data
+          isAuth: data.data,
+          size: data.data ? 10 : 3
         })
       } else {
         wx.showToast({
@@ -74,10 +79,9 @@ Page({
   },
   // 点击某一项
   ontapItem(e) {
-    console.log('123123321231');
     let index = e.detail.index
     wx.navigateTo({
-      url: `/pages/email/cooperationOrfinancing/cooperationOrfinancing?companyId=${ this.data.peopleData[index].companyId}`,
+      url: `/pages/email/cooperationOrfinancing/cooperationOrfinancing?cardList=${ JSON.stringify(this.data.peopleData[index]) }`,
     })
   },
   // 获取企业收件箱列表 after上翻(列表排序从旧到新)，before下翻(列表排序从新到旧)
@@ -94,18 +98,17 @@ Page({
       .req('/api/company/mailboxes-in-friend', {
         lastTime: lastTime,
         keyword: value,
-        size: 10
+        size: this.data.size
       }, "get")
       .then(data => {
         this.setData({
-          hasNone: true
+          loading: false,
         })
         if (data.code == 0) {
           if (data.data != null) this.changeAvatar(data.data);
           //下一页
           if (lastTime != "") {
             this.setData({
-              loading: false,
               peopleData: [...this.data.peopleData, ...data.data]
             })
           } else {
@@ -129,7 +132,7 @@ Page({
       })
       .catch(err => {
         this.setData({
-          hasNone: false
+          loading: false,
         })
         wx.hideLoading();
       });
@@ -138,11 +141,12 @@ Page({
   onReachBottom() {
     let currentPeopleData = this.data.peopleData;
     console.log('123');
-    if (currentPeopleData.length != 0) {
+    if (currentPeopleData.length % 10 === 0) {
       let lastTime = currentPeopleData[currentPeopleData.length - 1].createTime
       this.getMailboxes(this.data.searchData, lastTime)
     }
   },
+
   // 映射头像
   changeAvatar(arr) {
     for (let i in arr) {

@@ -18,7 +18,7 @@
                     {{company.personName}}
                 </view>
                 <view class="{{schema=='collect'?'component_company_msg1':'component_company_msg2'}} ">
-                    <span>{{company.name}}</span>
+                    {{company.name}}
                 </view>
                 <view wx:if="{{schema=='collect'}}" class=" component_company_statistic">
                     <view style="text-align:center">

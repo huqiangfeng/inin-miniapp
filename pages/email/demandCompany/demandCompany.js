@@ -67,9 +67,9 @@ Page({
    */
   onLoad: function (options) {
     let companyInfo = util.getLocal('companyInfo')
-    if (companyInfo.name.length > 10) {
-      companyInfo.name = companyInfo.name.substring(0, 11) + '...'
-    }
+    // if (companyInfo.name.length > 10) {
+    //   companyInfo.name = companyInfo.name.substring(0, 11) + '...'
+    // }
     // 设置标题
     wx.setNavigationBarTitle({
       title: companyInfo.name.length > 10 ? companyInfo.name.substring(0, 11) : companyInfo.name
@@ -78,10 +78,6 @@ Page({
       company: companyInfo,
       delta: options.delta ? Number(options.delta) : 1
     })
-    this.getMailboxAmount(); //收件箱列表数量
-    this.getNavTotalNumber(); //获取导航栏的数量
-    this.getXuqiuUnreadNum();
-    this.getVisitUnreadNum()
   },
   getNavTotalNumber() {
     // /api/company/{id}/statistic
@@ -176,6 +172,10 @@ Page({
     }
     this.getData();
     this.selectComponent('#visitResult').getVisitList(this.data.getVisitOnshow);
+    this.getMailboxAmount(); //收件箱列表数量
+    this.getNavTotalNumber(); //获取导航栏的数量
+    this.getXuqiuUnreadNum();
+    this.getVisitUnreadNum()
   },
   currentStatus(e) {
     let _key = e.detail;

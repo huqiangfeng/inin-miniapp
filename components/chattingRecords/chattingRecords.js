@@ -25,29 +25,65 @@ Component({
    */
   methods: {
     getList(value) {
-      try {
-        app.globalData.worker.terminate()
-      } catch (error) {
-
-      }
-      if (!value.trim()) {
+      if (value.trim() === '') {
+        this.setData({
+          lists: [],
+          value: value
+        })
         return
       }
-      app.globalData.worker = wx.createWorker('workers/request/index.js')
-      app.globalData.worker.postMessage({
+      console.log('onMessage');
+      let lists = this.on_Message({
         value,
         msgList: this.data.msgList
       })
-      app.globalData.worker.onMessage((lists) => {
-        console.log(lists);
-        this.setData({
-          lists: lists
-        })
-        app.globalData.worker.terminate()
-      })
       this.setData({
+        lists: lists,
         value: value
       })
+    },
+    on_Message({
+      value,
+      msgList
+    }) {
+      let _this = this
+      console.log('onMessage');
+      try {
+        msgList = JSON.parse(msgList) // 聊天数据
+      } catch (error) {}
+      let lists = msgList.filter(element => {
+        let dataArr = element.data
+        let countArr = [] // 符合条件的条数
+        for (const item of dataArr) {
+          let flg = false
+          if (item.type === 'emoji' || item.type === 'txt') {
+            let textArr = item.text
+            for (const chatItem of textArr) {
+              if (chatItem.type === 'txt') {
+                if (_this.filtrate(value, chatItem.data)) {
+                  flg = true
+                }
+              }
+            }
+          }
+          if (flg) {
+            countArr.push(item)
+          }
+        }
+        if (countArr.length > 0) {
+          element.searchData = countArr
+          element.sum = countArr.length
+        } else {
+          element.searchData = []
+          element.sum = 0
+        }
+        return countArr.length > 0
+      });
+      return lists
+
+    },
+    filtrate(val, txt) {
+      return txt.includes(val)
     },
     // 聊天页面跳转
     changePage(e) {

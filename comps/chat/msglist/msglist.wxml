@@ -78,7 +78,7 @@
 <!-- view 换成 scroll-view效果更好 用view是为了要stopPullDownRefresh -->
 <view class="wrap">
 		<scroll-view scroll-y="true" bindscrolltoupper="refresh" upper-threshold='10' scroll-into-view="{{ toView }}">
-				<view class="pad-30">
+				<view class="pad-30" wx:if="{{cardInfo.friendStatus==null}}">
 						<!-- 好友卡片 -->
 						<card cardInfo="{{ cardInfo }}" bind:addFriend="addFriend"></card>
 				</view>

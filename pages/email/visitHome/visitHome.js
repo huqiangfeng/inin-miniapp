@@ -154,6 +154,9 @@ Page({
 			url: "/pages/personalInfo/myCard/myCard?isSelect=true",
 			events: {
 				getChangeCard: function (data) {
+					if (data.card.companyId) {
+						data.card.companyId = _this.company.companyId
+					}
 					_this.setData({
 						myselfInfo: data.card
 					})

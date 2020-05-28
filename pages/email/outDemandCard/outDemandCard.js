@@ -105,6 +105,7 @@ Page({
       url: "/pages/personalInfo/myCard/myCard?isSelect=true",
       events: {
         getChangeCard: function (data) {
+          data.card.companyId = _this.company.companyId
           _this.setData({
             company: data.card
           })

@@ -1,17 +1,35 @@
 /* pages/email/bussiness/bussiness.wxss */
+/* .van-dropdown-item--down {
+    top: 80px !important;
+} */
+
 .bussiness {
     width: 100%;
     height: auto;
 }
 
 .bussiness .header-search {
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100rpx;
+    z-index: 9999;
+    background-color: #fff;
 }
 
 .bussiness .switch {
+    background-color: #fff;
+    position: fixed;
+    z-index: 9999;
+    top: 100rpx;
+    left: 0;
     width: 100%;
     height: 96rpx;
+}
+
+.company-list {
+    margin-top: 200rpx;
 }
 
 .bussiness .switch .loaction-nav {

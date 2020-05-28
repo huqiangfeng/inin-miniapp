@@ -47,7 +47,7 @@ Page({
     timeoutId || clearTimeout(timeoutId)
     timeoutId = setTimeout(() => {
       this.getData();
-    }, 100);
+    }, 300);
   },
   // 跳转页面
   changePage(e) {
@@ -89,14 +89,19 @@ Page({
   },
   // 点击某一项
   ontapItem(e) {
-    console.log('123123321231');
     let index = e.detail.index
     wx.navigateTo({
-      url: `/pages/email/cooperationOrfinancing/cooperationOrfinancing?companyId=${ this.data.peopleData[index].companyId}`,
+      url: `/pages/email/cooperationOrfinancing/cooperationOrfinancing?cardList=${ JSON.stringify(this.data.peopleData[index]) }`,
     })
   },
   // 获取企业收件箱列表 after上翻(列表排序从旧到新)，before下翻(列表排序从新到旧)
   getMailboxes(value, lastTime = "") {
+    if (value.trim() === '') {
+      this.setData({
+        peopleData: []
+      })
+      return
+    }
     this.setData({
       hasNone: false
     })
@@ -107,7 +112,7 @@ Page({
       .req('/api/company/mailboxes-in-friend', {
         lastTime: lastTime,
         keyword: value,
-        size: 5
+        size: 3
       }, "get")
       .then(data => {
         this.setData({

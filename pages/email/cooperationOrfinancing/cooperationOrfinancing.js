@@ -3,131 +3,138 @@ const req_fn = require('../../../utils/route')
 const util = require('../../../utils/util')
 const app = getApp()
 Page({
-  /**
-   * 页面的初始数据
-   */
+	/**
+	 * 页面的初始数据
+	 */
 	data: {
 		companyId: '',
 		cardList: [], //需求名片
 		swiperIndex: 0, //默认显示的卡片
 		isAuth: false,
-		isLogin: true,//默认登陆状态
+		isLogin: true, //默认登陆状态
 		isEmpty: false, //判断是否还有数据,
-		testText:"登陆"
+		testText: "登陆"
 	},
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-onLoad: function (options) {
-	//console.log(options,options.shareItemId,util.getLocal('Login'),',options')
-	if(options.shareItemId != undefined){//分享页面进来
-		if(util.getLocal('Login') != false){//如果登陆，这走登陆正常流程
-			wx.showLoading({
-				title: '加载中'
-			})
-			if (options.companyId) {
+	/**
+	 * 生命周期函数--监听页面加载
+	 */
+	onLoad: function (options) {
+		//console.log(options,options.shareItemId,util.getLocal('Login'),',options')
+		if (options.shareItemId != undefined) { //分享页面进来
+			if (util.getLocal('Login') != false) { //如果登陆，这走登陆正常流程
+				wx.showLoading({
+					title: '加载中'
+				})
+				if (options.companyId) {
+					this.setData({
+						companyId: options.companyId ? options.companyId : util.getLocal('companyInfo').id,
+						swiperIndex: options.index
+					})
+				}
+				let size = 10
+				if (options.index >= 10) {
+					size = +options.index + (10 - (options.index % 10))
+				}
+				// 获取名片列表
+				this.hasAttestation().then((res) => {
+					if (res == true) {
+						this.getList('', size)
+					} else {
+						this.getList('', 3)
+					}
+				})
+			} else { //没有登陆则显示分享的单独卡片信息
 				this.setData({
-					companyId: options.companyId ? options.companyId : util.getLocal('companyInfo').id,
-					swiperIndex: options.index
+					isLogin: false
+				})
+				this.getShareItemDetail(options.shareItemId);
+			}
+		} else if (options.cardList) {
+			console.log(options.cardList);
+			let card = JSON.parse(options.cardList)
+			this.setData({
+				cardList: [card],
+				companyId: card.companyId
+			})
+		} else { //不是分享页面进来的
+			if (util.getLocal('Login') == false) { //未登录
+				this.setData({
+					isLogin: false
+				})
+			} else { //登陆
+				this.setData({
+					isLogin: true
+				})
+				if (options.companyId) {
+					this.setData({
+						companyId: options.companyId ? options.companyId : util.getLocal('companyInfo').id,
+						swiperIndex: options.index
+					})
+				}
+				wx.showLoading({
+					title: '加载中'
+				})
+				let size = 10
+				if (options.index >= 10) {
+					size = +options.index + (10 - (options.index % 10))
+				}
+				// 获取名片列表
+				this.hasAttestation().then((res) => {
+					if (res == true) {
+						this.getList('', size)
+					} else {
+						this.getList('', 3)
+					}
 				})
 			}
-			let size = 10
-			if (options.index >= 10) {
-				size = +options.index + (10 - (options.index % 10))
-			}
-			// 获取名片列表
-			this.hasAttestation().then((res) => {
-				if(res == true){
-					this.getList('', size)
-				}else{
-					this.getList('', 3)
-				}
-			})
-		}else{//没有登陆则显示分享的单独卡片信息
-			this.setData({
-				isLogin: false
-			})
-			this.getShareItemDetail(options.shareItemId);
+			// //console.log(this.data.isLogin,'after')
 		}
-	}else{//不是分享页面进来的
-		if(util.getLocal('Login') == false){//未登录
-			this.setData({
-				isLogin: false
-			})
-		}else{//登陆
-			this.setData({
-				isLogin: true
-			})
-			if (options.companyId) {
-				this.setData({
-					companyId: options.companyId ? options.companyId : util.getLocal('companyInfo').id,
-					swiperIndex: options.index
-				})
-			}
-			wx.showLoading({
-				title: '加载中'
-			})
-			let size = 10
-			if (options.index >= 10) {
-				size = +options.index + (10 - (options.index % 10))
-			}
-			// 获取名片列表
-			this.hasAttestation().then((res) => {
-				if(res == true){
-					this.getList('', size)
-				}else{
-					this.getList('', 3)
-				}
-			})
-		}
-		// //console.log(this.data.isLogin,'after')
-	}
-},
+	},
 
-  /**
-   * 用户点击右上角分享
-   */
-  	onShareAppMessage: function (e) {
+	/**
+	 * 用户点击右上角分享
+	 */
+	onShareAppMessage: function (e) {
 		if (e.from === 'button') {
 			// 来自页面内转发按钮  分享当前卡片
 			let shareItemId = e.target.dataset.id;
 			return {
 				title: '需求名片详情',
-				path:'/pages/email/cooperationOrfinancing/cooperationOrfinancing?companyId=' + this.data.companyId + '&index=' + this.data.swiperIndex + '&shareItemId=' + shareItemId
+				path: '/pages/email/cooperationOrfinancing/cooperationOrfinancing?companyId=' + this.data.companyId + '&index=' + this.data.swiperIndex + '&shareItemId=' + shareItemId
 			}
-		}else{//分享小程序
+		} else { //分享小程序
 			return {
 				title: '收件箱',
-				path:'/pages/home/email/email',
-				imageUrl:'./../../../static/images/share.png'
+				path: '/pages/home/email/email',
+				imageUrl: './../../../static/images/share.png'
 			}
 		}
 	},
 	// 未登录事，获取分享单独详情
-	getShareItemDetail(id){
+	getShareItemDetail(id) {
 		req_fn.req('/public/user/sendbox/' + id, {}, 'post').then(res => {
 			if (res.data.sendUserAvatar.indexOf('http') == -1) {
 				res.data.sendUserAvatar = req_fn.imgUrl + res.data.sendUserAvatar
 			}
-			if (typeof res.data.keywords == 'string'){
+			if (typeof res.data.keywords == 'string') {
 				res.data.keywords = res.data.keywords.split(',')
-			}else{
+			} else {
 				res.data.keywords = ['暂无']
 			}
 			this.setData({
-				cardList:[res.data]
+				cardList: [res.data]
 			})
 		})
 	},
-	
+
 	// 转发
 	forward(e, actionType = 'forward') {
 		let data = {
 			actionType: actionType,
 			platform: 'weixin'
 		}
-    	req_fn.req('api/company/mailbox/' + e.detail,data,'post').then(res => {
+		req_fn.req('api/company/mailbox/' + e.detail, data, 'post').then(res => {
 			if (res.code == 0) {
 				// wx.showToast({
 				//   title: "转发成功",
@@ -141,9 +148,9 @@ onLoad: function (options) {
 					durtion: 2000
 				})
 			}
-    	})
-  	},
-  	// 滑块的 index 发生改变
+		})
+	},
+	// 滑块的 index 发生改变
 	changeSwiperIndex(e) {
 		let index = e.detail
 		// this.infoRead(this.data.cardList[index].id)
@@ -156,7 +163,7 @@ onLoad: function (options) {
 	// 格式化列表数据
 	changeKeyword(arr) {
 		arr.forEach((element, i) => {
-			if (typeof arr[i].keywords == 'string'){
+			if (typeof arr[i].keywords == 'string') {
 				arr[i].keywords = element.keywords.split(',')
 			}
 			if (arr[i].sendUserAvatar.indexOf('http') == -1) {
@@ -183,31 +190,31 @@ onLoad: function (options) {
 			lastTime: lastTime,
 			size: size
 		}
-		req_fn.req( url, data,'post').then(res => {
-				if (res.code == 0) {
-					//console.log(res,'list')
-					this.changeKeyword(res.data)
-					let cardList = this.data.cardList
-					if (timeDirection == 'after') {
-						//上一页
-						res.data.reverse()
-						cardList = [...res.data, ...cardList]
-					} else {
-						// 下一页
-						if (size == 3) {
+		req_fn.req(url, data, 'post').then(res => {
+			if (res.code == 0) {
+				//console.log(res,'list')
+				this.changeKeyword(res.data)
+				let cardList = this.data.cardList
+				if (timeDirection == 'after') {
+					//上一页
+					res.data.reverse()
+					cardList = [...res.data, ...cardList]
+				} else {
+					// 下一页
+					if (size == 3) {
 						cardList = []
-						}
-						cardList = [...cardList, ...res.data]
 					}
-					this.setData({
-						cardList: cardList,
-						isEmpty: res.data.length % 10 != 0
-					})
+					cardList = [...cardList, ...res.data]
 				}
-				if (!lastTime) {
-					// this.infoRead(this.data.cardList[this.data.swiperIndex].id) //点查看详情
-				}
-				wx.hideLoading()
+				this.setData({
+					cardList: cardList,
+					isEmpty: res.data.length % 10 != 0
+				})
+			}
+			if (!lastTime) {
+				// this.infoRead(this.data.cardList[this.data.swiperIndex].id) //点查看详情
+			}
+			wx.hideLoading()
 		})
 	},
 	// 已读
@@ -221,7 +228,7 @@ onLoad: function (options) {
 	},
 	// 发消息
 	send(e) {
-		if(!this.data.isLogin){
+		if (!this.data.isLogin) {
 			wx.showToast({
 				title: "请先登录",
 				icon: "none",
@@ -232,7 +239,7 @@ onLoad: function (options) {
 					url: '/pages/home/login/login'
 				})
 			}, 2000);
-		}else{
+		} else {
 			let sendUserId = e.detail.userId
 			let id = e.detail.id
 			if (this.data.isLogin) {
@@ -244,9 +251,9 @@ onLoad: function (options) {
 					})
 				} else {
 					this.forward({
-						detail: id
-					},
-					'talk'
+							detail: id
+						},
+						'talk'
 					)
 					// 聊天
 					wx.navigateTo({
@@ -254,12 +261,12 @@ onLoad: function (options) {
 					})
 				}
 			} else {
-			// 登录弹框
+				// 登录弹框
 				util.modalIsLogin()
 			}
 		}
-  	},
-  	// 是否认证
+	},
+	// 是否认证
 	hasAttestation() {
 		return new Promise((resolve, reject) => {
 			req_fn.req('api/user/card/authed', {}, 'post').then(data => {

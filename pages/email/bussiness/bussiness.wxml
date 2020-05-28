@@ -22,10 +22,10 @@
     </view>
 </van-overlay>
 <view class="bussiness">
-    <view class="header-search">
+    <view  class="header-search">
         <van-search bind:change="startSearch" bind:clear="cacelSearch" value="{{ searchvalue }}" shape="round" placeholder="搜索关键词/企业" />
-    </view>
-    <view class="switch nav selectnav">
+    </view >
+    <view  class="switch nav selectnav">
         <van-dropdown-menu>
             <van-dropdown-item value="{{ location }}" title="{{firstNavTitle}}" id="dropdown">
                 <View class="chose-location loaction-nav">
@@ -82,13 +82,34 @@
             </van-dropdown-item>
             <van-dropdown-item value="{{ location }}" title="{{currentBussinessActiveName?currentBussinessActiveName:'业务'}}" id="business">
                 <view class="business-type" style="padding-top: 20rpx;">
-                    <view class="bussiness-content">
+                    <!--  -->
+                    <view class="aera-content">
+                        <view class="left province">
+                            <block wx:for="{{bussinessList}}" wx:key='index'>
+                                <view bindtap="choseBusiness" class="province-item {{currentBussinessActiveIndex == index ? 'active' : ''}}" data-index="{{index}}" data-id="{{item.id}}">
+                                    {{item.content}}
+                                </view>
+                            </block>
+                        </view>
+                        <view class="right city">
+                            <block wx:for="{{ bussinessSecondList }}" wx:key='index'>
+                                <view bindtap="choseSecondBusiness" class="city-content item" data-index="{{index}}" data-id="{{item.id}}" data-content="{{item.content}}">
+                                    <view class="name-text">{{item.content}}</view>
+                                    <image wx:if="{{currentBussinessSecondActiveId != item.id}}" class="city-icon" src="../../../static/images/bing.png"></image>
+                                    <image wx:if="{{currentBussinessSecondActiveId == item.id}}" class="city-icon active" src="../../../static/images/yt-yes.png"></image>
+                                </view>
+                            </block>
+                        </view>
+                    </view>
+                    <!--  -->
+                    <!-- <view class="bussiness-content">
                         <block wx:for="{{bussinessList}}" wx:key="index">
                             <view data-id="{{item.id}}" data-index="{{index}}" data-name="{{item.content}}" bindtap="choseBusiness" class="bussiness-item {{currentBussinessActiveIndex == index ? 'active' : ''}}">
                                 {{item.content}}
                             </view>
                         </block>
-                    </view>
+                    </view> -->
+                    <!--  -->
                 </view>
                 <view class="options">
                     <view class="reset btn" bindtap="resetBusiness">重置</view>
@@ -136,7 +157,7 @@
                 </block>
             </van-dropdown-item>
         </van-dropdown-menu>
-    </view>
+    </view >
     <view class="content company-list">
         <view class="noDate" wx:if="{{contentList.length == 0}}">暂无数据</view>
         <block wx:for="{{contentList}}" wx:key="index">

@@ -22,6 +22,12 @@ Component({
    */
   methods: {
     getData(name = "") {
+      if (name.trim() === '') {
+        this.setData({
+          lists: []
+        })
+        return
+      }
       req_fn.req("api/user/friends", {
         name: name
       }, "post").then(res => {
